@@ -32,17 +32,30 @@
                 <button id="skip" class="control-btn">Skip Visualization</button>
             </div>
 
-            <p class="howto" id="howto"><b>How to use</b> <br>
-                Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting will start
-                and
-                you can watch each pass as it gets sorted. When it shows green it means the two of them are being
-                compared
-                and
-                when red shows, it means the left number is greater than right number so it needs swapping. After
-                swapping
-                it will continue to check other numbers until it reaches end.The blue color means the number is at its
-                correct position and thus sorted.
-            </p>
+            <div class="howto" id="howto">
+                <div class="qs">
+                    <h3>How to use ?</h3>
+                    <button class="show">+</button>
+                    <button class="hide">-</button>
+                </div>
+                <div class="ans">
+                    <p>
+                        Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting will
+                        start
+                        and
+                        you can watch each pass as it gets sorted.
+                        When it shows green it means the two of them are
+                        being
+                        compared
+                        when red shows, it means the left number is greater than right number so it needs swapping
+                        The blue color means the number is
+                        at its
+                        correct position and thus sorted
+                        it will continue to check other numbers until it reaches end.
+                    </p>
+                </div>
+            </div>
+
         </div>
 
         <div class="sorting-algorithm-container">
@@ -268,8 +281,26 @@
             else return;
         }
 
+        //For accordian 
+        let item = document.getElementsByClassName("howto");
+        let show = document.getElementsByClassName("show");
+        let hide = document.getElementsByClassName("hide");
+
+
+        for (let i = 0; i < item.length; i++) {
+            item[i].addEventListener("click", () => {
+                let res = item[i].classList.toggle("active");
+                if (res == true) {
+                    show[i].style.display = "none";
+                    hide[i].style.display = "block";
+
+                } else {
+                    show[i].style.display = "block";
+                    hide[i].style.display = "none";
+                }
+            })
+        }
     </script>
-    <script src="script.js"></script>
 
 </body>
 
