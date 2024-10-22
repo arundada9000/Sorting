@@ -15,6 +15,13 @@ for (let i = 0; i < item.length; i++) {
   });
 }
 
+const navigation = document.querySelector(".nav-links1");
+const container = document.querySelector(".container");
+const containerRect = container.getBoundingClientRect();
+const containerLeft = containerRect.left;
+
+navigation.style.marginLeft = `${containerLeft}px`;
+
 function copyToClipboard(button) {
   const codeBlock = button.nextElementSibling.querySelector("code");
 
@@ -50,3 +57,8 @@ function displayBtn(dis) {
 inputBox.addEventListener("keyup", (event) => {
   if (event.key === "Enter" && sortBtn.textContent === "Sort") sortBtn.click();
 });
+//Nav toggle
+function toggleMenu() {
+  const navLinks = document.querySelector(".nav-links");
+  navLinks.classList.toggle("active");
+}

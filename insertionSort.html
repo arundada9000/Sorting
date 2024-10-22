@@ -5,11 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insertion Sort</title>
-    <link rel="icon" href="./s.png" type="image/x-icon">
+    <link rel="icon" href="./images/s.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
+
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links1">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble</a>
+            <a href="./selectionSort.html">Selection</a>
+            <a href="./insertionSort.html" class="bb">Insertion</a>
+            <a href="./mergeSort.html">Merge</a>
+            <a href="./quickSort.html">Quick</a>
+            <a href="./heapSort.html">Heap</a>
+            <a href="./radixSort.html">Radix</a>
+            <a href="./shellSort.html">Shell</a>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble Sort</a>
+            <a href="./selectionSort.html">Selection Sort</a>
+            <a href="./insertionSort.html">Insertion Sort</a>
+            <a href="./mergeSort.html">Merge Sort</a>
+            <a href="./quickSort.html">Quick Sort</a>
+            <a href="./heapSort.html">Heap Sort</a>
+            <a href="./radixSort.html">Radix Sort</a>
+            <a href="./shellSort.html">Shell Sort</a>
+        </div>
+    </nav>
+
     <div class="container">
         <h1>Insertion Sort</h1>
         <div class="sort-input flex">
@@ -19,16 +46,16 @@
             <button id="sort-btn" class="sort-btn">Sort</button>
         </div>
 
+        <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
+            <button id="skip" class="control-btn">Skip Visualization</button>
+        </div>
+
         <div class="passesandinfo flex">
             <div class="numbers" id="num-div">
 
             </div>
 
             <div class="passes" id="passes"></div>
-
-            <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
-                <button id="skip" class="control-btn">Skip Visualization</button>
-            </div>
 
             <div class="howto" id="howto">
                 <div class="qs">
@@ -108,21 +135,23 @@
                 <div class="code-container">
                     <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
                     <pre><code>
-                        function insertionSort(arr):
-                            for i from 1 to length(arr) - 1:
-                                key = arr[i]
-                                j = i - 1
-                        
-                                /* Move elements of arr[0..i-1] that are greater than key 
-                                   to one position ahead of their current position */
-                                while j >= 0 and arr[j] > key:
-                                    arr[j + 1] = arr[j]
-                                    j = j - 1
-                        
-                                arr[j + 1] = key
-                        
-                            return arr
-                    </code></pre>
+<!-- This is the pseudo code for Insertion Sort -->
+function insertionSort(arr):
+    for i from 1 to length(arr) - 1:
+        key = arr[i]
+        j = i - 1
+        
+        /* Move elements of arr[0..i-1] that are greater than key 
+           to one position ahead of their current position */
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j = j - 1
+            
+        arr[j + 1] = key
+        
+    return arr
+                        </code></pre>
+
                 </div>
             </section>
 
@@ -144,6 +173,20 @@
             </section>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>&copy; 2024 Arun Neupane. All rights reserved.</p>
+                <p>Made with ❤️ for learning and development</p>
+            </div>
+            <div class="footer-links">
+                <a href="./code.html">Code</a>
+                <a href="./feedback.html">Feedback</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
 
     <script>
         const sortBtn = document.getElementById("sort-btn");

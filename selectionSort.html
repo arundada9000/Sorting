@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selection Sort</title>
-    <link rel="icon" href="./s.png" type="image/x-icon">
+    <link rel="icon" href="./images/s.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
     <style>
         .least {
@@ -17,134 +17,178 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Selection Sort</h1>
-        <div class="sort-input flex">
-            <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
-                placeholder="Enter numbers separated with commas">
-
-            <button id="sort-btn" class="sort-btn">Sort</button>
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
+        <div class="nav-links1">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble</a>
+            <a href="./selectionSort.html" class="bb">Selection</a>
+            <a href="./insertionSort.html">Insertion</a>
+            <a href="./mergeSort.html">Merge</a>
+            <a href="./quickSort.html">Quick</a>
+            <a href="./heapSort.html">Heap</a>
+            <a href="./radixSort.html">Radix</a>
+            <a href="./shellSort.html">Shell</a>
         </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble Sort</a>
+            <a href="./selectionSort.html">Selection Sort</a>
+            <a href="./insertionSort.html">Insertion Sort</a>
+            <a href="./mergeSort.html">Merge Sort</a>
+            <a href="./quickSort.html">Quick Sort</a>
+            <a href="./heapSort.html">Heap Sort</a>
+            <a href="./radixSort.html">Radix Sort</a>
+            <a href="./shellSort.html">Shell Sort</a>
+        </div>
+    </nav>
 
-        <div class="passesandinfo flex">
-            <div class="numbers" id="num-div">
-                <!-- <div class="num">90</div>
-                <div class="num">12</div>
-                <div class="num">33</div>
-                <div class="num">41</div>
-                <div class="num">5</div>
-                <div class="num">6</div>
-                <div class="num">17</div>
-                <div class="num">28</div>
-                <div class="num">90</div>
-                <div class="num">100</div> -->
+        <div class="container">
+            <h1>Selection Sort</h1>
+            <div class="sort-input flex">
+                <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
+                    placeholder="Enter numbers separated with commas">
+
+                <button id="sort-btn" class="sort-btn">Sort</button>
             </div>
-
-            <div class="passes" id="passes"></div>
-
             <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
                 <button id="skip" class="control-btn">Skip Visualization</button>
             </div>
-
-            <div class="howto" id="howto">
-                <div class="qs">
-                    <h3>How to use ?</h3>
-                    <button class="show">+</button>
-                    <button class="hide">-</button>
+            <div class="passesandinfo flex">
+                <div class="numbers" id="num-div">
+                    <!-- <div class="num">90</div>
+                    <div class="num">12</div>
+                    <div class="num">33</div>
+                    <div class="num">41</div>
+                    <div class="num">5</div>
+                    <div class="num">6</div>
+                    <div class="num">17</div>
+                    <div class="num">28</div>
+                    <div class="num">90</div>
+                    <div class="num">100</div> -->
                 </div>
-                <div class="ans">
-                    <p>
-                        Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting will
-                        start
-                        and
-                        you can watch each pass as it gets sorted.
-                        When it shows green it means the two of them are
-                        being
-                        compared
-                        when red shows, it means the left number is greater than right number so it needs swapping
-                        The blue color means the number is
-                        at its
-                        correct position and thus sorted
-                        it will continue to check other numbers until it reaches end.
-                    </p>
+
+                <div class="passes" id="passes"></div>
+
+                <div class="howto" id="howto">
+                    <div class="qs">
+                        <h3>How to use ?</h3>
+                        <button class="show">+</button>
+                        <button class="hide">-</button>
+                    </div>
+                    <div class="ans">
+                        <p>
+                            Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting
+                            will
+                            start
+                            and
+                            you can watch each pass as it gets sorted.
+                            When it shows green it means the two of them are
+                            being
+                            compared
+                            when red shows, it means the left number is greater than right number so it needs swapping
+                            The blue color means the number is
+                            at its
+                            correct position and thus sorted
+                            it will continue to check other numbers until it reaches end.
+                        </p>
+                    </div>
                 </div>
             </div>
+
+            <div class="sorting-algorithm-container">
+                <h1 class="algorithm-title">Selection Sort Overview</h1>
+
+                <section class="history">
+                    <h2 class="section-title">History</h2>
+                    <p>Selection sort has been around since the early days of computer programming. It was developed as
+                        a
+                        simple, intuitive algorithm for sorting data. The concept has been used in various forms across
+                        multiple programming languages since the 1960s.</p>
+                </section>
+
+                <section class="current-uses">
+                    <h2 class="section-title">Current Uses</h2>
+                    <ul>
+                        <li><strong>Small Data Sets:</strong> Efficient for small datasets where performance is not
+                            critical.</li>
+                        <li><strong>Memory Constraints:</strong> Often used in systems with limited memory resources.
+                        </li>
+                        <li><strong>Selection Problems:</strong> Sometimes applied in selection algorithms where the
+                            smallest or largest element is needed.</li>
+                    </ul>
+                </section>
+
+                <section class="complexity">
+                    <h2 class="section-title">Time and Space Complexity</h2>
+                    <h3>Time Complexity</h3>
+                    <ul>
+                        <li><strong>Best Case:</strong> <code>O(n^2)</code> – Regardless of the initial arrangement.
+                        </li>
+                        <li><strong>Average Case:</strong> <code>O(n^2)</code> – Quadratic complexity for average cases.
+                        </li>
+                        <li><strong>Worst Case:</strong> <code>O(n^2)</code> – Quadratic complexity for worst cases.
+                        </li>
+                    </ul>
+                    <h3>Space Complexity</h3>
+                    <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm
+                        requiring
+                        a constant amount of additional space.</p>
+                </section>
+
+                <section class="pseudo-code">
+                    <h2 class="section-title">Pseudo Code</h2>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                        <pre><code>
+<!-- This is the pseudo code for Selection Sort -->
+function selectionSort(arr):
+    n = length(arr)
+    for i from 0 to n-1:
+        minIndex = i
+        for j from i+1 to n:
+            if arr[j] < arr[minIndex]:
+                minIndex = j
+        /* Swap the found minimum element with the first element */
+        temp = arr[i]
+        arr[i] = arr[minIndex]
+        arr[minIndex] = temp
+    return arr
+                                 </code></pre>
+                    </div>
+
+                </section>
+
+                <section class="characteristics">
+                    <h2 class="section-title">Key Characteristics</h2>
+                    <ul>
+                        <li><strong>Stability:</strong> Selection sort is not a stable sorting algorithm.</li>
+                        <li><strong>Adaptability:</strong> It does not adapt well to varying input patterns.</li>
+                    </ul>
+                </section>
+
+                <section class="summary">
+                    <h2 class="section-title">Summary</h2>
+                    <p>Selection sort is a simple algorithm that divides the input list into a sorted and an unsorted
+                        region. Despite its <code>O(n^2)</code> complexity, its simplicity makes it useful for small
+                        datasets and educational purposes.</p>
+                </section>
+            </div>
         </div>
-
-        <div class="sorting-algorithm-container">
-            <h1 class="algorithm-title">Selection Sort Overview</h1>
-
-            <section class="history">
-                <h2 class="section-title">History</h2>
-                <p>Selection sort has been around since the early days of computer programming. It was developed as a
-                    simple, intuitive algorithm for sorting data. The concept has been used in various forms across
-                    multiple programming languages since the 1960s.</p>
-            </section>
-
-            <section class="current-uses">
-                <h2 class="section-title">Current Uses</h2>
-                <ul>
-                    <li><strong>Small Data Sets:</strong> Efficient for small datasets where performance is not
-                        critical.</li>
-                    <li><strong>Memory Constraints:</strong> Often used in systems with limited memory resources.</li>
-                    <li><strong>Selection Problems:</strong> Sometimes applied in selection algorithms where the
-                        smallest or largest element is needed.</li>
-                </ul>
-            </section>
-
-            <section class="complexity">
-                <h2 class="section-title">Time and Space Complexity</h2>
-                <h3>Time Complexity</h3>
-                <ul>
-                    <li><strong>Best Case:</strong> <code>O(n^2)</code> – Regardless of the initial arrangement.</li>
-                    <li><strong>Average Case:</strong> <code>O(n^2)</code> – Quadratic complexity for average cases.
-                    </li>
-                    <li><strong>Worst Case:</strong> <code>O(n^2)</code> – Quadratic complexity for worst cases.</li>
-                </ul>
-                <h3>Space Complexity</h3>
-                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm requiring
-                    a constant amount of additional space.</p>
-            </section>
-
-            <section class="pseudo-code">
-                <h2 class="section-title">Pseudo Code</h2>
-                <div class="code-container">
-                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                    <pre><code>
-                        function selectionSort(arr):
-                            n = length(arr)
-                            for i from 0 to n-1:
-                                minIndex = i
-                                for j from i+1 to n:
-                                    if arr[j] < arr[minIndex]:
-                                        minIndex = j
-                                /* Swap the found minimum element with the first element */
-                                temp = arr[i]
-                                arr[i] = arr[minIndex]
-                                arr[minIndex] = temp
-                            return arr
-                             </code></pre>
-                </div>
-
-            </section>
-
-            <section class="characteristics">
-                <h2 class="section-title">Key Characteristics</h2>
-                <ul>
-                    <li><strong>Stability:</strong> Selection sort is not a stable sorting algorithm.</li>
-                    <li><strong>Adaptability:</strong> It does not adapt well to varying input patterns.</li>
-                </ul>
-            </section>
-
-            <section class="summary">
-                <h2 class="section-title">Summary</h2>
-                <p>Selection sort is a simple algorithm that divides the input list into a sorted and an unsorted
-                    region. Despite its <code>O(n^2)</code> complexity, its simplicity makes it useful for small
-                    datasets and educational purposes.</p>
-            </section>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <p>&copy; 2024 Arun Neupane. All rights reserved.</p>
+                <p>Made with ❤️ for learning and development</p>
+            </div>
+            <div class="footer-links">
+                <a href="./code.html">Code</a>
+                <a href="./feedback.html">Feedback</a>
+                <a href="./contact.html">Contact</a>
+            </div>
         </div>
-    </div>
-
+    </footer>
     <script>
         const sortBtn = document.getElementById("sort-btn");
         const inputBox = document.getElementById("input-num");
