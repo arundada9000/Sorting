@@ -105,22 +105,25 @@
 
             <section class="pseudo-code">
                 <h2 class="section-title">Pseudo Code</h2>
-                <pre><code>
-    function insertionSort(arr):
-        for i from 1 to length(arr) - 1:
-            key = arr[i]
-            j = i - 1
-    
-            // Move elements of arr[0..i-1] that are greater than key
-            // to one position ahead of their current position
-            while j >= 0 and arr[j] > key:
-                arr[j + 1] = arr[j]
-                j = j - 1
-    
-            arr[j + 1] = key
-    
-        return arr
-                </code></pre>
+                <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    <pre><code>
+                        function insertionSort(arr):
+                            for i from 1 to length(arr) - 1:
+                                key = arr[i]
+                                j = i - 1
+                        
+                                /* Move elements of arr[0..i-1] that are greater than key 
+                                   to one position ahead of their current position */
+                                while j >= 0 and arr[j] > key:
+                                    arr[j + 1] = arr[j]
+                                    j = j - 1
+                        
+                                arr[j + 1] = key
+                        
+                            return arr
+                    </code></pre>
+                </div>
             </section>
 
             <section class="characteristics">
@@ -151,28 +154,6 @@
         const fastBtn = document.getElementById("fast-btn");
 
         let ms = 1000;
-
-        fastBtn.addEventListener("click", () => {
-            ms = ms > 5 ? Math.abs(ms - 199) : ms = 5;
-            ms <= 5 ? fastBtn.style.display = "none" : 1;
-            console.log(ms);
-
-        });
-
-        skipBtn.addEventListener("click", () => {
-            ms = 0;
-            displayBtn("none");
-        });
-
-        function displayBtn(dis) {
-            fastBtn.style.display = dis;
-            skipBtn.style.display = dis;
-        }
-
-        inputBox.addEventListener("keyup", (event) => {
-            if (event.key === "Enter" && sortBtn.textContent === "Sort")
-                sortBtn.click();
-        })
 
         sortBtn.addEventListener("click", () => {
             if (sortBtn.textContent == "Sorting...") return;
@@ -245,9 +226,13 @@
                 const btn = document.createElement("button");
                 btn.textContent = "Copy";
                 btn.className = "copy-btn";
+                btn.id = "ans-copy-btn";
                 btn.addEventListener("click", () => {
                     navigator.clipboard.writeText(sortedArray);
-                    alert("Sorted array copied to clipboard")
+                    btn.textContent = "Copied!";
+                    setTimeout(() => {
+                        btn.textContent = "Copy";
+                    }, 2000);
                 });
                 howto.appendChild(btn);
 
@@ -282,31 +267,8 @@
             divs[j + 1].classList.toggle(cn);
         }
 
-        function sleep(ms) {
-            if (ms > 0)
-                return new Promise(resolve => setTimeout(resolve, ms));
-            else return;
-        }
-
-        let item = document.getElementsByClassName("howto");
-        let show = document.getElementsByClassName("show");
-        let hide = document.getElementsByClassName("hide");
-
-
-        for (let i = 0; i < item.length; i++) {
-            item[i].addEventListener("click", () => {
-                let res = item[i].classList.toggle("active");
-                if (res == true) {
-                    show[i].style.display = "none";
-                    hide[i].style.display = "block";
-
-                } else {
-                    show[i].style.display = "block";
-                    hide[i].style.display = "none";
-                }
-            })
-        }
     </script>
+    <script src="./script.js"></script>
 
 </body>
 

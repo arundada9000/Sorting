@@ -16,7 +16,7 @@
         <div class="sort-input flex">
 
             <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
-                placeholder="Enter numbers separated with commas">
+                placeholder="Enter numbers separated with commas as 1,2,3,4">
 
             <button id="sort-btn" class="sort-btn">Sort</button>
         </div>
@@ -99,18 +99,22 @@
 
             <section class="pseudo-code">
                 <h2 class="section-title">Pseudo Code</h2>
-                <pre><code>
-    function bubbleSort(arr):
-        n = length(arr)
-        for i from 0 to n-1:
-            for j from 0 to n-i-1:
-                if arr[j] > arr[j + 1]:
-                    // swap arr[j] and arr[j + 1]
-                    temp = arr[j]
-                    arr[j] = arr[j + 1]
-                    arr[j + 1] = temp
-        return arr
-                </code></pre>
+                <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    <pre><code>
+                        function bubbleSort(arr):
+                            n = length(arr)
+                            for i from 0 to n-1:
+                                for j from 0 to n-i-1:
+                                    if arr[j] > arr[j + 1]:
+                                        // swap arr[j] and arr[j + 1]
+                                        temp = arr[j]
+                                        arr[j] = arr[j + 1]
+                                        arr[j + 1] = temp
+                            return arr
+                                    </code></pre>
+                </div>
+
             </section>
 
             <section class="characteristics">
@@ -138,34 +142,11 @@
         const howto = document.getElementById("howto");
         const skipBtn = document.getElementById("skip");
         const fastBtn = document.getElementById("fast-btn");
-
         let ms = 1000;
-
-        fastBtn.addEventListener("click", () => {
-            ms = ms > 5 ? Math.abs(ms - 199) : ms = 5;
-            ms <= 5 ? fastBtn.style.display = "none" : 1;
-            console.log(ms);
-
-        });
-
-        skipBtn.addEventListener("click", () => {
-            ms = 0;
-            displayBtn("none");
-        });
-
-        function displayBtn(dis) {
-            fastBtn.style.display = dis;
-            skipBtn.style.display = dis;
-        }
-
-        inputBox.addEventListener("keyup", (event) => {
-            if (event.key === "Enter" && sortBtn.textContent === "Sort")
-                sortBtn.click();
-        })
 
         sortBtn.addEventListener("click", () => {
             if (sortBtn.textContent == "Sorting...") return;
-            let input = inputBox.value;
+            let input = inputBox.value.trim();
             if (input == "") {
                 alert("Please enter some values ! ");
                 return;
@@ -230,14 +211,18 @@
                 console.log(values);
                 sortedArray = values.join(", ");
                 howto.style.visibility = "visible";
-                howto.textContent = "The array is successfully sorted.There were " + values.length + " numbers and it took " + (values.length - 1) + " passes.The sorted array is : " + sortedArray;
+                howto.innerHTML = "The array is successfully sorted.There were " + values.length + " numbers and it took " + (values.length - 1) + " passes.The sorted array is : <br>" + sortedArray;
 
                 const btn = document.createElement("button");
                 btn.textContent = "Copy";
                 btn.className = "copy-btn";
+                btn.id = "ans-copy-btn";
                 btn.addEventListener("click", () => {
                     navigator.clipboard.writeText(sortedArray);
-                    alert("Sorted array copied to clipboard")
+                    btn.textContent = "Copied!";
+                    setTimeout(() => {
+                        btn.textContent = "Copy";
+                    }, 2000);
                 });
                 howto.appendChild(btn);
 
@@ -275,33 +260,8 @@
             divs[j + 1].classList.toggle(cn);
         }
 
-        function sleep(ms) {
-            if (ms > 0)
-                return new Promise(resolve => setTimeout(resolve, ms));
-            else return;
-        }
-
-        //For accordian 
-        let item = document.getElementsByClassName("howto");
-        let show = document.getElementsByClassName("show");
-        let hide = document.getElementsByClassName("hide");
-
-
-        for (let i = 0; i < item.length; i++) {
-            item[i].addEventListener("click", () => {
-                let res = item[i].classList.toggle("active");
-                if (res == true) {
-                    show[i].style.display = "none";
-                    hide[i].style.display = "block";
-
-                } else {
-                    show[i].style.display = "block";
-                    hide[i].style.display = "none";
-                }
-            })
-        }
     </script>
-
+    <script src="./script.js"></script>
 </body>
 
 </html>
