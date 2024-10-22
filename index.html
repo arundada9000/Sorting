@@ -4,70 +4,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorting - Bubble Sort, Insertion Sort, Quick Sort & More</title>
-    <meta name="description"
-        content="Sorting visualized step by step , pass by pass for better understanding in easy way." />
-    <meta name="keywords"
-        content="Sorting, sorting visualized, sorting in easy way, sorting in c , sorting implementation, sorting pseudo code, sorting in c++" />
-    <link rel="icon" href="./s.png" type="image/x-icon">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sorting Algorithms Visualizer</title>
+    <style>
+        /* Global styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="./index.css">
-    <link rel="stylesheet" href="./footer.css">
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #141414 0%, #000000 100%);
+            /* Subtle gradient */
+            color: #ecf0f1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            /* Reduced title size */
+            color: #ecf0f1;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #bdc3c7;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .algorithm-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        .algorithm-item {
+            background-color: #2c3e50;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-align: center;
+        }
+
+        .algorithm-item:hover {
+            transform: translateY(-10px);
+            background-color: #34495e;
+        }
+
+        .algorithm-item img {
+            width: 50px;
+            margin-bottom: 15px;
+        }
+
+        .algorithm-item h3 {
+            font-size: 1.4rem;
+            color: #ecf0f1;
+            margin-bottom: 10px;
+        }
+
+        .algorithm-item p {
+            font-size: 1rem;
+            color: #95a5a6;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+
+        footer {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Sorting</h1>
-    <div class="index-container">
-        <div class="card">
-            <h2>Bubble Sort</h2>
-            <a href="./bubbleSort.html">Go to Bubble Sort</a>
-        </div>
-        <div class="card">
-            <h2>Insertion Sort</h2>
-            <a href="./insertionSort.html">Go to Insertion Sort</a>
-        </div>
-        <div class="card">
-            <h2>Selection Sort</h2>
-            <a href="./selectionSort.html">Go to Selection Sort</a>
-        </div>
-        <div class="card">
-            <h2>Mass Converter</h2>
-            <a href="./mass.html">Go to Mass Converter</a>
-        </div>
-        <div class="card">
-            <h2>Temperature Converter</h2>
-            <a href="./temperature.html">Go to Temperature Converter</a>
-        </div>
-        <div class="card">
-            <h2>Number System Converter</h2>
-            <a href="./numbersystem.html">Go to Number System Converter</a>
-        </div>
-        <div class="card">
-            <h2>Discount Calculator</h2>
-            <a href="./discount.html">Go to Discount Calculator</a>
-        </div>
-        <div class="card">
-            <h2>Power mod Calculator</h2>
-            <a href="./power.html">Go to Power mod Calculator</a>
-        </div>
-        <div class="card">
-            <h2>Text Editor</h2>
-            <a href="./text.html">Go to Text editor</a>
+
+    <div class="container">
+        <h1>Sorting Algorithms Visualizer</h1>
+        <p>Explore different sorting algorithms and understand how they work, step-by-step. Click on any algorithm below
+            to start the visualization!</p>
+
+        <div class="algorithm-list">
+            <a href="bubble_sort.html" class="algorithm-item">
+                <!-- <img src="images/bubble_sort_icon.png" alt="Bubble Sort Icon"> -->
+                <h3>Bubble Sort</h3>
+                <p>Compares adjacent elements and swaps them if they're in the wrong order.</p>
+            </a>
+
+            <a href="selection_sort.html" class="algorithm-item">
+                <!-- <img src="images/selection_sort_icon.png" alt="Selection Sort Icon"> -->
+                <h3>Selection Sort</h3>
+                <p>Finds the smallest element in the array and places it at the front.</p>
+            </a>
+
+            <a href="insertion_sort.html" class="algorithm-item">
+                <!-- <img src="images/insertion_sort_icon.png" alt="Insertion Sort Icon"> -->
+                <h3>Insertion Sort</h3>
+                <p>Builds the sorted array by inserting elements in their correct position.</p>
+            </a>
+
+            <a href="merge_sort.html" class="algorithm-item">
+                <!-- <img src="images/merge_sort_icon.png" alt="Merge Sort Icon"> -->
+                <h3>Merge Sort</h3>
+                <p>Divides the array, sorts them, and merges them back together.</p>
+            </a>
+
+            <a href="quick_sort.html" class="algorithm-item">
+                <!-- <img src="images/quick_sort_icon.png" alt="Quick Sort Icon"> -->
+                <h3>Quick Sort</h3>
+                <p>Uses a pivot to partition the array and sorts each partition.</p>
+            </a>
+
+            <a href="heap_sort.html" class="algorithm-item">
+                <!-- <img src="images/heap_sort_icon.png" alt="Heap Sort Icon"> -->
+                <h3>Heap Sort</h3>
+                <p>Transforms the array into a heap structure and sorts it.</p>
+            </a>
+
+            <a href="radix_sort.html" class="algorithm-item">
+                <!-- <img src="images/radix_sort_icon.png" alt="Radix Sort Icon"> -->
+                <h3>Radix Sort</h3>
+                <p>Sorts numbers by processing individual digits from least to most significant.</p>
+            </a>
+
+            <a href="shell_sort.html" class="algorithm-item">
+                <!-- <img src="images/shell_sort_icon.png" alt="Shell Sort Icon"> -->
+                <h3>Shell Sort</h3>
+                <p>Sorts elements by comparing elements at a gap and reducing the gap over time.</p>
+            </a>
         </div>
     </div>
 
     <footer>
-        <div class="footer-container">
-            <div class="footer-info">
-                <p>&copy; 2024 Arun Neupane. All rights reserved.</p>
-                <p>Made with ❤️ by Arun Neupane</p>
-            </div>
-            <div class="footer-links">
-                <a href="./about.html">About</a>
-                <a href="./privacy.html">Privacy Policy</a>
-                <a href="./contact.html">Contact</a>
-            </div>
-        </div>
+        <p>Created by Arun Neupane | <a href="https://github.com/arundada9000">GitHub</a></p>
     </footer>
 
 </body>

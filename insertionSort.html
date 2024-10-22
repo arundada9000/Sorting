@@ -21,16 +21,7 @@
 
         <div class="passesandinfo flex">
             <div class="numbers" id="num-div">
-                <!-- <div class="num">90</div>
-                <div class="num">12</div>
-                <div class="num">33</div>
-                <div class="num">41</div>
-                <div class="num">5</div>
-                <div class="num">6</div>
-                <div class="num">17</div>
-                <div class="num">28</div>
-                <div class="num">90</div>
-                <div class="num">100</div> -->
+
             </div>
 
             <div class="passes" id="passes"></div>
@@ -50,6 +41,92 @@
                 it will continue to check other numbers until it reaches end.The blue color means the number is at its
                 correct position and thus sorted.
             </p>
+        </div>
+        <div class="sorting-algorithm-container">
+            <h1 class="algorithm-title">Insertion Sort Overview</h1>
+
+            <section class="history">
+                <h2 class="section-title">History</h2>
+                <p>Insertion sort is one of the oldest sorting algorithms, dating back to the early days of computer
+                    science. It is inspired by the way people sort playing cards: by taking one card at a time and
+                    inserting
+                    it into its correct position within an already sorted portion of the deck.</p>
+                <p>First documented in the 1950s, it was commonly used in early computer systems due to its simplicity
+                    and
+                    ease of implementation. It was often used for sorting small data sets or nearly sorted data.</p>
+            </section>
+
+            <section class="current-uses">
+                <h2 class="section-title">Current Uses</h2>
+                <ul>
+                    <li><strong>Small Data Sets:</strong> Insertion sort is often used for small datasets (typically
+                        less
+                        than 20 items).</li>
+                    <li><strong>Nearly Sorted Data:</strong> Particularly efficient for data that is already mostly
+                        sorted.
+                    </li>
+                    <li><strong>Embedded Systems:</strong> Used in some embedded systems and applications where memory
+                        space
+                        is limited.</li>
+                    <li><strong>Hybrid Algorithms:</strong> Often used in conjunction with other algorithms for small
+                        partitions.</li>
+                </ul>
+            </section>
+
+            <section class="complexity">
+                <h2 class="section-title">Time and Space Complexity</h2>
+                <h3>Time Complexity</h3>
+                <ul>
+                    <li><strong>Best Case:</strong> <code>O(n)</code> – When the array is already sorted.</li>
+                    <li><strong>Average Case:</strong> <code>O(n<sup>2</sup>)</code> – Quadratic complexity for average
+                        cases.
+                    </li>
+                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> – When the array is sorted in reverse
+                        order.
+                    </li>
+                </ul>
+                <h3>Space Complexity</h3>
+                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm requiring
+                    a
+                    constant amount of additional space.</p>
+            </section>
+
+            <section class="pseudo-code">
+                <h2 class="section-title">Pseudo Code</h2>
+                <pre><code>
+    function insertionSort(arr):
+        for i from 1 to length(arr) - 1:
+            key = arr[i]
+            j = i - 1
+    
+            // Move elements of arr[0..i-1] that are greater than key
+            // to one position ahead of their current position
+            while j >= 0 and arr[j] > key:
+                arr[j + 1] = arr[j]
+                j = j - 1
+    
+            arr[j + 1] = key
+    
+        return arr
+                </code></pre>
+            </section>
+
+            <section class="characteristics">
+                <h2 class="section-title">Key Characteristics</h2>
+                <ul>
+                    <li><strong>Stability:</strong> Insertion sort is a stable sorting algorithm.</li>
+                    <li><strong>Adaptability:</strong> It performs better when the input is partially sorted.</li>
+                </ul>
+            </section>
+
+            <section class="summary">
+                <h2 class="section-title">Summary</h2>
+                <p>Insertion sort is a straightforward and efficient algorithm for small or nearly sorted datasets.
+                    Despite
+                    its <code>O(n<sup>2</sup>)</code> worst-case complexity, it remains popular in certain applications
+                    due to its
+                    simplicity, low overhead, and adaptive nature.</p>
+            </section>
         </div>
     </div>
 
@@ -87,15 +164,14 @@
 
         sortBtn.addEventListener("click", () => {
             if (sortBtn.textContent == "Sorting...") return;
-            ms = 1000;
-            displayBtn("inline");
-            sortBtn.textContent = "Sorting...";
             let input = inputBox.value;
             if (input == "") {
                 alert("Please enter some values ! ");
                 return;
             }
-
+            ms = 1000;
+            displayBtn("inline");
+            sortBtn.textContent = "Sorting...";
             const values = input.split(',');
             console.log(values);
 
@@ -103,6 +179,7 @@
             numDiv.innerHTML = "";
             passesDiv.innerHTML = "";
             howto.innerHTML = "";
+            howto.style.visibility = "hidden";
 
             for (let i = 0; i < values.length; i++) {
                 let li = document.createElement("div");
@@ -150,10 +227,12 @@
 
                 console.log(values);
                 sortedArray = values.join(", ");
+                howto.style.visibility = "visible";
                 howto.textContent = "The array is successfully sorted.There were " + values.length + " numbers and it took " + (values.length - 1) + " passes.The sorted array is : " + sortedArray;
 
                 const btn = document.createElement("button");
                 btn.textContent = "Copy";
+                btn.className = "copy-btn";
                 btn.addEventListener("click", () => {
                     navigator.clipboard.writeText(sortedArray);
                     alert("Sorted array copied to clipboard")
@@ -198,7 +277,6 @@
         }
 
     </script>
-    <script src="script.js"></script>
 
 </body>
 

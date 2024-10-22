@@ -2,110 +2,238 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: roboto, sans-serif;
+  font-family: "Roboto", sans-serif;
 }
+
 .flex {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-.sort-input {
-  flex-direction: row;
-}
+
 body {
   padding: 2rem;
-  background-color: #f9f9f9;
+  background-color: #141414;
+  color: #ecf0f1;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 }
+
+/* Heading Styling */
 h1 {
   text-align: center;
-  margin-bottom: 1rem;
-  padding: 0.5rem 0;
+  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+  color: #f1c40f;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1c40f;
 }
+
+/* Input Section */
+.sort-input {
+  flex-direction: row;
+  margin-bottom: 2rem;
+}
+
+input[type="text"] {
+  padding: 0.8rem 1rem;
+  outline: none;
+  border-radius: 8px;
+  border: 1px solid #3498db;
+  background-color: #2c3e50;
+  color: white;
+  font-size: 1rem;
+  width: 60%;
+  margin-right: 10px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #f1c40f;
+}
+
+button {
+  cursor: pointer;
+}
+
+.sort-btn,
+.control-btn {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.sort-btn:hover,
+.control-btn:hover {
+  background-color: #2980b9;
+}
+
+.control-btn {
+  display: none;
+  margin-top: 1rem;
+}
+
+#fast-btn {
+  margin-right: 10px;
+}
+
+/* Numbers and Passes */
 .numbers {
   display: flex;
-  gap: 5px;
-  padding-top: 5px;
+  gap: 8px;
+  padding-top: 10px;
   flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
-.container {
-  width: 100%;
-  background-color: white;
-  border: 1px solid teal;
-  padding: 1rem;
-}
-#num-div {
-  margin-left: 45px;
-}
+
 .num {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  font-size: 1rem;
-  background-color: black;
-  color: white;
-  transition: background-color 0.25s ease-in-out;
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  border-radius: 4px;
+  transition: transform 0.25s ease, background-color 0.3s ease;
 }
-input[type="text"] {
-  padding: 0.5rem 1rem;
-  outline: none;
-  border-radius: 10px;
-  border: 0.5px solid black;
-  font-size: 1rem;
-  font-family: roboto, arial;
-  width: 50%;
-}
-button {
-  cursor: pointer;
-}
-.sort-btn,
-.control-btn {
-  padding: 0.5rem 2rem;
-  font-size: 1rem;
-  border: none;
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-  height: 40px;
-}
-.control-btn {
-  display: none;
-  margin-top: 10px;
-}
+
 .comparing {
-  background-color: green;
-  /* border-radius: 50%; */
+  background-color: #f39c12;
 }
+
 .swapping {
-  background-color: red;
+  background-color: #e74c3c;
   transform: scale(1.2);
 }
+
 .sorted {
-  background-color: rgb(102, 102, 243);
+  background-color: #27ae60;
   color: white;
 }
-.howto {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  text-align: justify;
+
+/* Passes Information */
+.passesandinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+#passes {
+  margin-bottom: 2rem;
+}
+
+.howto {
+  background-color: #2c3e50;
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 600px;
+  color: #bdc3c7;
+  text-align: justify;
+  font-size: 0.95rem;
+}
+
+.howto b {
+  color: #f1c40f;
+}
+
+/* Container */
+.container {
+  background-color: #1e272e;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 1000px;
+  width: 100%;
+  border: 1px solid #f1c40f;
+}
+
 @media (max-width: 768px) {
   body {
-    padding: 10px;
+    padding: 1rem;
   }
+
   input[type="text"] {
-    width: 70vw;
+    width: 80vw;
+    font-size: 0.9rem;
   }
+
   .numbers {
-    gap: 1px;
+    gap: 5px;
   }
-  #num-div {
-    margin-left: 41px;
+
+  .num {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
+
+  .container {
+    padding: 1rem;
+  }
+}
+.copy-btn {
+  background-color: gray;
+  color: white;
+  border: none;
+  margin-left: 1rem;
+  padding: 0rem 1rem;
+  cursor: pointer;
+}
+
+/* Sorting Algorithm Container */
+.sorting-algorithm-container {
+  padding: 2rem;
+  background-color: #1e272e;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  margin: auto;
+}
+
+.sorting-algorithm-container .algorithm-title {
+  text-align: center;
+  color: #f1c40f;
+  margin-bottom: 1.5rem;
+}
+
+.sorting-algorithm-container .section-title {
+  color: #ecf0f1;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sorting-algorithm-container p {
+  color: #bdc3c7;
+  line-height: 1.6;
+}
+
+.sorting-algorithm-container ul {
+  list-style-type: disc;
+  margin-left: 2rem;
+  color: #bdc3c7;
+}
+
+.sorting-algorithm-container pre {
+  background-color: #34495e;
+  padding: 1rem;
+  border-radius: 8px;
+  color: #ecf0f1;
+}
+
+.sorting-algorithm-container code {
+  background-color: #2c3e50;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  overflow-wrap: break-word;
 }

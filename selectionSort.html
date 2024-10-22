@@ -58,6 +58,75 @@
                 correct position and thus sorted.
             </p>
         </div>
+
+        <div class="sorting-algorithm-container">
+            <h1 class="algorithm-title">Selection Sort Overview</h1>
+
+            <section class="history">
+                <h2 class="section-title">History</h2>
+                <p>Selection sort has been around since the early days of computer programming. It was developed as a
+                    simple, intuitive algorithm for sorting data. The concept has been used in various forms across
+                    multiple programming languages since the 1960s.</p>
+            </section>
+
+            <section class="current-uses">
+                <h2 class="section-title">Current Uses</h2>
+                <ul>
+                    <li><strong>Small Data Sets:</strong> Efficient for small datasets where performance is not
+                        critical.</li>
+                    <li><strong>Memory Constraints:</strong> Often used in systems with limited memory resources.</li>
+                    <li><strong>Selection Problems:</strong> Sometimes applied in selection algorithms where the
+                        smallest or largest element is needed.</li>
+                </ul>
+            </section>
+
+            <section class="complexity">
+                <h2 class="section-title">Time and Space Complexity</h2>
+                <h3>Time Complexity</h3>
+                <ul>
+                    <li><strong>Best Case:</strong> <code>O(n^2)</code> – Regardless of the initial arrangement.</li>
+                    <li><strong>Average Case:</strong> <code>O(n^2)</code> – Quadratic complexity for average cases.
+                    </li>
+                    <li><strong>Worst Case:</strong> <code>O(n^2)</code> – Quadratic complexity for worst cases.</li>
+                </ul>
+                <h3>Space Complexity</h3>
+                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm requiring
+                    a constant amount of additional space.</p>
+            </section>
+
+            <section class="pseudo-code">
+                <h2 class="section-title">Pseudo Code</h2>
+                <pre><code>
+    function selectionSort(arr):
+        n = length(arr)
+        for i from 0 to n-1:
+            minIndex = i
+            for j from i+1 to n:
+                if arr[j] < arr[minIndex]:
+                    minIndex = j
+            // Swap the found minimum element with the first element
+            temp = arr[i]
+            arr[i] = arr[minIndex]
+            arr[minIndex] = temp
+        return arr
+                </code></pre>
+            </section>
+
+            <section class="characteristics">
+                <h2 class="section-title">Key Characteristics</h2>
+                <ul>
+                    <li><strong>Stability:</strong> Selection sort is not a stable sorting algorithm.</li>
+                    <li><strong>Adaptability:</strong> It does not adapt well to varying input patterns.</li>
+                </ul>
+            </section>
+
+            <section class="summary">
+                <h2 class="section-title">Summary</h2>
+                <p>Selection sort is a simple algorithm that divides the input list into a sorted and an unsorted
+                    region. Despite its <code>O(n^2)</code> complexity, its simplicity makes it useful for small
+                    datasets and educational purposes.</p>
+            </section>
+        </div>
     </div>
 
     <script>
@@ -110,6 +179,7 @@
             numDiv.innerHTML = "";
             passesDiv.innerHTML = "";
             howto.innerHTML = "";
+            howto.style.visibility = "hidden";
 
             for (let i = 0; i < values.length; i++) {
                 let li = document.createElement("div");
@@ -170,10 +240,12 @@
                 }
                 console.log(values);
                 sortedArray = values.join(", ");
+                howto.style.visibility = "visible";
                 howto.textContent = "The array is successfully sorted.There were " + values.length + " numbers and it took " + (values.length - 1) + " passes.The sorted array is : " + sortedArray;
 
                 const btn = document.createElement("button");
                 btn.textContent = "Copy";
+                btn.className = "copy-btn";
                 btn.addEventListener("click", () => {
                     navigator.clipboard.writeText(sortedArray);
                     alert("Sorted array copied to clipboard");
