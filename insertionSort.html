@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion Sort</title>
+    <link rel="icon" href="./s.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Insertion Sort</h1>
+        <div class="sort-input flex">
+            <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
+                placeholder="Enter numbers separated with commas">
+
+            <button id="sort-btn" class="sort-btn">Sort</button>
+        </div>
+
+        <div class="passesandinfo flex">
+            <div class="numbers" id="num-div">
+                <!-- <div class="num">90</div>
+                <div class="num">12</div>
+                <div class="num">33</div>
+                <div class="num">41</div>
+                <div class="num">5</div>
+                <div class="num">6</div>
+                <div class="num">17</div>
+                <div class="num">28</div>
+                <div class="num">90</div>
+                <div class="num">100</div> -->
+            </div>
+
+            <div class="passes" id="passes"></div>
+
+            <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
+                <button id="skip" class="control-btn">Skip Visualization</button>
+            </div>
+
+            <p class="howto" id="howto"><b>How to use</b> <br>
+                Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting will start
+                and
+                you can watch each pass as it gets sorted. When it shows green it means the two of them are being
+                compared
+                and
+                when red shows, it means the left number is greater than right number so it needs swapping. After
+                swapping
+                it will continue to check other numbers until it reaches end.The blue color means the number is at its
+                correct position and thus sorted.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const sortBtn = document.getElementById("sort-btn");
+        const inputBox = document.getElementById("input-num");
+        const passesDiv = document.getElementById("passes");
+        const howto = document.getElementById("howto");
+        const skipBtn = document.getElementById("skip");
+        const fastBtn = document.getElementById("fast-btn");
+
+        let ms = 1000;
+
+        fastBtn.addEventListener("click", () => {
+            ms = ms > 5 ? Math.abs(ms - 199) : ms = 5;
+            ms <= 5 ? fastBtn.style.display = "none" : 1;
+            console.log(ms);
+
+        });
+
+        skipBtn.addEventListener("click", () => {
+            ms = 0;
+            displayBtn("none");
+        });
+
+        function displayBtn(dis) {
+            fastBtn.style.display = dis;
+            skipBtn.style.display = dis;
+        }
+
+        inputBox.addEventListener("keyup", (event) => {
+            if (event.key === "Enter" && sortBtn.textContent === "Sort")
+                sortBtn.click();
+        })
+
+        sortBtn.addEventListener("click", () => {
+            if (sortBtn.textContent == "Sorting...") return;
+            ms = 1000;
+            displayBtn("inline");
+            sortBtn.textContent = "Sorting...";
+            let input = inputBox.value;
+            if (input == "") {
+                alert("Please enter some values ! ");
+                return;
+            }
+
+            const values = input.split(',');
+            console.log(values);
+
+            const numDiv = document.getElementById("num-div");
+            numDiv.innerHTML = "";
+            passesDiv.innerHTML = "";
+            howto.innerHTML = "";
+
+            for (let i = 0; i < values.length; i++) {
+                let li = document.createElement("div");
+                li.className = "num";
+                li.textContent = values[i];
+                numDiv.appendChild(li);
+                values[i] = parseFloat(values[i]);
+            }
+            const divs = document.querySelectorAll(".num");
+            insertionSort();
+
+            async function insertionSort() {
+                divs[0].classList.add("sorted");
+                let i, key, j;
+                for (i = 1; i < values.length; i++) {
+                    key = values[i];
+                    j = i - 1;
+                    divs[i].classList.add("comparing");
+
+                    while (j >= 0 && values[j] > key) {
+                        await sleep(ms);
+                        for (let k = 0; k < i; k++)
+                            divs[k].classList.remove("sorted");
+                        toggleClass(divs, j, "swapping");
+                        await sleep(ms);
+                        values[j + 1] = values[j];
+                        divs[j + 1].textContent = values[j];
+                        divs[j].textContent = key;
+                        await sleep(ms);
+                        toggleClass(divs, j, "swapping");
+                        j--;
+                    }
+                    values[j + 1] = key;
+                    divs[j + 1].textContent = key;
+                    await sleep(ms);
+                    divs[i].classList.remove("comparing");
+                    for (let k = i; k >= 0; k--)
+                        divs[k].classList.add("sorted");
+                    await sleep(ms);
+
+                    let passCount = i;
+                    let passes = createDiv("numbers", "num", values, values.length, i, passCount);
+                    passesDiv.appendChild(passes);
+                }
+
+                console.log(values);
+                sortedArray = values.join(", ");
+                howto.textContent = "The array is successfully sorted.There were " + values.length + " numbers and it took " + (values.length - 1) + " passes.The sorted array is : " + sortedArray;
+
+                const btn = document.createElement("button");
+                btn.textContent = "Copy";
+                btn.addEventListener("click", () => {
+                    navigator.clipboard.writeText(sortedArray);
+                    alert("Sorted array copied to clipboard")
+                });
+                howto.appendChild(btn);
+
+                displayBtn("none");
+                sortBtn.textContent = "Sort";
+            }
+        });
+
+        function createDiv(cn1, cn2, content, time, j, passCount) {
+            const outerDiv = document.createElement("div");
+            outerDiv.className = cn1;
+
+            const li = document.createElement("div");
+            li.className = cn2;
+            li.textContent = "Pass " + passCount;
+            outerDiv.appendChild(li);
+
+            for (let i = 0; i < time; i++) {
+                const li = document.createElement("div");
+                li.className = cn2;
+                if (i <= passCount)
+                    li.classList.add("sorted");
+                li.textContent = content[i];
+                outerDiv.appendChild(li);
+            }
+
+            return outerDiv;
+        }
+
+        function toggleClass(divs, j, cn) {
+            divs[j].classList.toggle(cn);
+            divs[j + 1].classList.toggle(cn);
+        }
+
+        function sleep(ms) {
+            if (ms > 0)
+                return new Promise(resolve => setTimeout(resolve, ms));
+            else return;
+        }
+
+    </script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
