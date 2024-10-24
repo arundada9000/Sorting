@@ -241,7 +241,8 @@ function partition(arr, low, high):
             async function quickSort() {
                 document.getElementById("pi").style.display = "none";
                 await sleep(ms);
-                let i, j, pivot;
+                let i, j, pivot, count = 0;
+
                 async function partition(values, low, high) {
                     pivot = values[high];
                     divs[high].classList.add("pivot");
@@ -296,6 +297,8 @@ function partition(arr, low, high):
                     if (low == high - 1 || low == high) {
                         divs[low].classList.add("sorted");
                     }
+
+                    count++;
                     return i + 1;
                 }
 
@@ -312,13 +315,6 @@ function partition(arr, low, high):
                 }
 
                 await quickSort(values, 0, values.length - 1);
-
-                // {
-                //     divs[j].classList.add("sorted");
-                //     let passCount = i + 1;
-                //     let passes = createDiv("numbers", "num", values, values.length, j, passCount);
-                //     passesDiv.appendChild(passes);
-                // }
 
                 console.log(values);
                 sortedArray = values.join(", ");
@@ -341,36 +337,11 @@ function partition(arr, low, high):
                 displayBtn("none");
                 sortBtn.textContent = "Sort";
             }
+
         });
 
-        function createDiv(cn1, cn2, content, time, j, passCount) {
-            const outerDiv = document.createElement("div");
-            outerDiv.className = cn1;
 
-            const li = document.createElement("div");
-            li.className = cn2;
-            if (passCount == time)
-                li.textContent = "Sorted ";
-            else
-                li.textContent = "Pass " + passCount;
-            outerDiv.appendChild(li);
 
-            for (let i = 0; i < time; i++) {
-                const li = document.createElement("div");
-                li.className = cn2;
-                if (j <= i)
-                    li.classList.add("sorted");
-                li.textContent = content[i];
-                outerDiv.appendChild(li);
-            }
-
-            return outerDiv;
-        }
-
-        function toggleClass(divs, j, cn) {
-            divs[j].classList.toggle(cn);
-            divs[j + 1].classList.toggle(cn);
-        }
 
     </script>
     <script src="./script.js"></script>

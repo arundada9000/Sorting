@@ -220,11 +220,20 @@ function selectionSort(arr):
             howto.style.visibility = "hidden";
 
             for (let i = 0; i < values.length; i++) {
+                let el = document.createElement("div");
+                el.className = "num-wrapper";
+
                 let li = document.createElement("div");
                 li.className = "num";
                 li.textContent = values[i];
-                numDiv.appendChild(li);
                 values[i] = parseFloat(values[i]);
+
+                let li1 = document.createElement("p");
+                li1.classList = "ij";
+                li1.textContent = i;
+                el.appendChild(li1);
+                el.appendChild(li);
+                numDiv.appendChild(el);
             }
 
             const divs = document.querySelectorAll(".num");
