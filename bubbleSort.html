@@ -36,102 +36,102 @@
         </div>
     </nav>
 
-        <div class="container">
-            <h1>Bubble Sort</h1>
+    <div class="container">
+        <h1>Bubble Sort</h1>
 
-            <div class="sort-input flex">
+        <div class="sort-input flex">
 
-                <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
-                    placeholder="Enter numbers separated with commas as 1,2,3,4">
+            <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
+                placeholder="Enter numbers separated with commas as 1,2,3,4">
 
-                <button id="sort-btn" class="sort-btn">Sort</button>
+            <button id="sort-btn" class="sort-btn">Sort</button>
+        </div>
+        <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
+            <button id="skip" class="control-btn">Skip Visualization</button>
+        </div>
+        <div class="passesandinfo flex">
+            <div class="numbers" id="num-div">
+
             </div>
-            <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
-                <button id="skip" class="control-btn">Skip Visualization</button>
-            </div>
-            <div class="passesandinfo flex">
-                <div class="numbers" id="num-div">
 
+            <div class="passes" id="passes"></div>
+
+            <div class="howto" id="howto">
+                <div class="qs">
+                    <h3>How to use ?</h3>
+                    <button class="show">+</button>
+                    <button class="hide">-</button>
                 </div>
-
-                <div class="passes" id="passes"></div>
-
-                <div class="howto" id="howto">
-                    <div class="qs">
-                        <h3>How to use ?</h3>
-                        <button class="show">+</button>
-                        <button class="hide">-</button>
-                    </div>
-                    <div class="ans">
-                        <p>
-                            Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting
-                            will
-                            start
-                            and
-                            you can watch each pass as it gets sorted.
-                            When it shows green it means the two of them are
-                            being
-                            compared
-                            when red shows, it means the left number is greater than right number so it needs swapping
-                            The blue color means the number is
-                            at its
-                            correct position and thus sorted
-                            it will continue to check other numbers until it reaches end.
-                        </p>
-                    </div>
+                <div class="ans">
+                    <p>
+                        Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting
+                        will
+                        start
+                        and
+                        you can watch each pass as it gets sorted.
+                        When it shows green it means the two of them are
+                        being
+                        compared
+                        when red shows, it means the left number is greater than right number so it needs swapping
+                        The blue color means the number is
+                        at its
+                        correct position and thus sorted
+                        it will continue to check other numbers until it reaches end.
+                    </p>
                 </div>
-
             </div>
 
-            <div class="sorting-algorithm-container">
-                <h1 class="algorithm-title">Bubble Sort Overview</h1>
+        </div>
 
-                <section class="history">
-                    <h2 class="section-title">History</h2>
-                    <p>Bubble sort is one of the simplest sorting algorithms, often introduced in computer science
-                        education. It was first documented in the 1950s and has been widely used in programming for
-                        educational purposes due to its straightforward concept.</p>
-                </section>
+        <div class="sorting-algorithm-container">
+            <h1 class="algorithm-title">Bubble Sort Overview</h1>
 
-                <section class="current-uses">
-                    <h2 class="section-title">Current Uses</h2>
-                    <ul>
-                        <li><strong>Educational Purposes:</strong> Commonly used to teach the basics of sorting
-                            algorithms.
-                        </li>
-                        <li><strong>Small Data Sets:</strong> Occasionally used for small datasets where efficiency is
-                            not a
-                            concern.</li>
-                        <li><strong>Data Analysis:</strong> Sometimes utilized in data analysis tasks when simplicity is
-                            preferred.</li>
-                    </ul>
-                </section>
+            <section class="history">
+                <h2 class="section-title">History</h2>
+                <p>Bubble sort is one of the simplest sorting algorithms, often introduced in computer science
+                    education. It was first documented in the 1950s and has been widely used in programming for
+                    educational purposes due to its straightforward concept.</p>
+            </section>
 
-                <section class="complexity">
-                    <h2 class="section-title">Time and Space Complexity</h2>
-                    <h3>Time Complexity</h3>
-                    <ul>
-                        <li><strong>Best Case:</strong> <code>O(n)</code> – When the array is already sorted.</li>
-                        <li><strong>Average Case:</strong> <code>O(n<sup>2</sup>)</code> – Quadratic complexity for
-                            average
-                            cases.
-                        </li>
-                        <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> – When the array is sorted in
-                            reverse
-                            order.
-                        </li>
-                    </ul>
-                    <h3>Space Complexity</h3>
-                    <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm
-                        requiring
-                        a constant amount of additional space.</p>
-                </section>
+            <section class="current-uses">
+                <h2 class="section-title">Current Uses</h2>
+                <ul>
+                    <li><strong>Educational Purposes:</strong> Commonly used to teach the basics of sorting
+                        algorithms.
+                    </li>
+                    <li><strong>Small Data Sets:</strong> Occasionally used for small datasets where efficiency is
+                        not a
+                        concern.</li>
+                    <li><strong>Data Analysis:</strong> Sometimes utilized in data analysis tasks when simplicity is
+                        preferred.</li>
+                </ul>
+            </section>
 
-                <section class="pseudo-code">
-                    <h2 class="section-title">Pseudo Code</h2>
-                    <div class="code-container">
-                        <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                        <pre><code>
+            <section class="complexity">
+                <h2 class="section-title">Time and Space Complexity</h2>
+                <h3>Time Complexity</h3>
+                <ul>
+                    <li><strong>Best Case:</strong> <code>O(n)</code> – When the array is already sorted.</li>
+                    <li><strong>Average Case:</strong> <code>O(n<sup>2</sup>)</code> – Quadratic complexity for
+                        average
+                        cases.
+                    </li>
+                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> – When the array is sorted in
+                        reverse
+                        order.
+                    </li>
+                </ul>
+                <h3>Space Complexity</h3>
+                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm
+                    requiring
+                    a constant amount of additional space.</p>
+            </section>
+
+            <section class="pseudo-code">
+                <h2 class="section-title">Pseudo Code</h2>
+                <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    <pre><code>
 <!-- This is the pseudo code for Bubble Sort -->
 function bubbleSort(arr):
     n = length(arr)
@@ -144,39 +144,38 @@ function bubbleSort(arr):
                 arr[j + 1] = temp
     return arr
                                         </code></pre>
-                    </div>
+                </div>
 
-                </section>
+            </section>
 
-                <section class="characteristics">
-                    <h2 class="section-title">Key Characteristics</h2>
-                    <ul>
-                        <li><strong>Stability:</strong> Bubble sort is a stable sorting algorithm.</li>
-                        <li><strong>Adaptability:</strong> Performs better on nearly sorted datasets.</li>
-                    </ul>
-                </section>
+            <section class="characteristics">
+                <h2 class="section-title">Key Characteristics</h2>
+                <ul>
+                    <li><strong>Stability:</strong> Bubble sort is a stable sorting algorithm.</li>
+                    <li><strong>Adaptability:</strong> Performs better on nearly sorted datasets.</li>
+                </ul>
+            </section>
 
-                <section class="summary">
-                    <h2 class="section-title">Summary</h2>
-                    <p>Bubble sort is an easy-to-understand sorting algorithm that works by repeatedly swapping adjacent
-                        elements. While it is inefficient for large datasets with its <code>O(n<sup>2</sup>)</code>
-                        worst-case
-                        complexity, its simplicity makes it suitable for educational purposes.</p>
-                </section>
-            </div>
+            <section class="summary">
+                <h2 class="section-title">Summary</h2>
+                <p>Bubble sort is an easy-to-understand sorting algorithm that works by repeatedly swapping adjacent
+                    elements. While it is inefficient for large datasets with its <code>O(n<sup>2</sup>)</code>
+                    worst-case
+                    complexity, its simplicity makes it suitable for educational purposes.</p>
+            </section>
         </div>
+    </div>
 
-    <footer>
+    <footer class="site-footer">
         <div class="footer-container">
-            <div class="footer-info">
-                <p>&copy; 2024 Arun Neupane. All rights reserved.</p>
-                <p>Made with ❤️ for learning and development</p>
-            </div>
+            <p class="footer-title">Sorting Visualizer</p>
             <div class="footer-links">
-                <a href="./code.html">Code</a>
-                <a href="./feedback.html">Feedback</a>
+                <a href="https://github.com/arundada9000/Sorting">Code</a> |
+                <a href="./feedback.html">Feedback</a> |
                 <a href="./contact.html">Contact</a>
             </div>
+            <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
         </div>
     </footer>
 
@@ -253,6 +252,7 @@ function bubbleSort(arr):
                     let passes = createDiv("numbers", "num", values, values.length, j, passCount);
                     passesDiv.appendChild(passes);
                 }
+                
                 console.log(values);
                 sortedArray = values.join(", ");
                 howto.style.visibility = "visible";

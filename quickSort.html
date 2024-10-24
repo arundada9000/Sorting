@@ -4,16 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selection Sort</title>
+    <title>Quick Sort</title>
     <link rel="icon" href="./images/s.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
-    <style>
-        .least {
-            background-color: green;
-            color: white;
-            transform: scale(1);
-        }
-    </style>
 </head>
 
 <body>
@@ -22,10 +15,10 @@
         <div class="nav-links1">
             <a href="./index.html">Home</a>
             <a href="./bubbleSort.html">Bubble</a>
-            <a href="./selectionSort.html" class="bb">Selection</a>
+            <a href="./selectionSort.html">Selection</a>
             <a href="./insertionSort.html">Insertion</a>
             <a href="./mergeSort.html">Merge</a>
-            <a href="./quickSort.html">Quick</a>
+            <a href="./quickSort.html" class="bb">Quick</a>
             <a href="./heapSort.html">Heap</a>
             <a href="./radixSort.html">Radix</a>
             <a href="./shellSort.html">Shell</a>
@@ -44,28 +37,29 @@
     </nav>
 
     <div class="container">
-        <h1>Selection Sort</h1>
+        <h1>Quick Sort</h1>
+
         <div class="sort-input flex">
+
             <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
                 placeholder="Enter numbers separated with commas as 1,2,3,4">
 
             <button id="sort-btn" class="sort-btn">Sort</button>
         </div>
-        <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
+
+        <div class="buttons-div">
+            <button id="fast-btn" class="control-btn">Fast Visualization</button>
             <button id="skip" class="control-btn">Skip Visualization</button>
         </div>
         <div class="passesandinfo flex">
+            <div class="passInfo">
+                <span class="info-btn" id="pivot"></span>
+                <span class="info-btn" id="low"></span>
+                <span class="info-btn" id="high"></span>
+                <span class="info-btn" id="pi"></span>
+            </div>
             <div class="numbers" id="num-div">
-                <!-- <div class="num">90</div>
-                    <div class="num">12</div>
-                    <div class="num">33</div>
-                    <div class="num">41</div>
-                    <div class="num">5</div>
-                    <div class="num">6</div>
-                    <div class="num">17</div>
-                    <div class="num">28</div>
-                    <div class="num">90</div>
-                    <div class="num">100</div> -->
+
             </div>
 
             <div class="passes" id="passes"></div>
@@ -94,28 +88,28 @@
                     </p>
                 </div>
             </div>
+
         </div>
 
         <div class="sorting-algorithm-container">
-            <h1 class="algorithm-title">Selection Sort Overview</h1>
+            <h1 class="algorithm-title">Quick Sort Overview</h1>
 
             <section class="history">
                 <h2 class="section-title">History</h2>
-                <p>Selection sort has been around since the early days of computer programming. It was developed as
-                    a
-                    simple, intuitive algorithm for sorting data. The concept has been used in various forms across
-                    multiple programming languages since the 1960s.</p>
+                <p>Quick sort was developed by Tony Hoare in 1960. It is a divide-and-conquer algorithm that is
+                    efficient for large datasets. Quick sort has become one of the most widely used sorting algorithms
+                    due to its performance in practice and its ability to sort in place.</p>
             </section>
 
             <section class="current-uses">
                 <h2 class="section-title">Current Uses</h2>
                 <ul>
-                    <li><strong>Small Data Sets:</strong> Efficient for small datasets where performance is not
-                        critical.</li>
-                    <li><strong>Memory Constraints:</strong> Often used in systems with limited memory resources.
-                    </li>
-                    <li><strong>Selection Problems:</strong> Sometimes applied in selection algorithms where the
-                        smallest or largest element is needed.</li>
+                    <li><strong>General Purpose:</strong> Used in a variety of applications, including databases and
+                        memory sorting.</li>
+                    <li><strong>Libraries:</strong> Often implemented in standard libraries for programming languages
+                        due to its efficiency.</li>
+                    <li><strong>Embedded Systems:</strong> Commonly used in systems with limited resources for efficient
+                        sorting.</li>
                 </ul>
             </section>
 
@@ -123,38 +117,41 @@
                 <h2 class="section-title">Time and Space Complexity</h2>
                 <h3>Time Complexity</h3>
                 <ul>
-                    <li><strong>Best Case:</strong> <code>O(n^2)</code> – Regardless of the initial arrangement.
-                    </li>
-                    <li><strong>Average Case:</strong> <code>O(n^2)</code> – Quadratic complexity for average cases.
-                    </li>
-                    <li><strong>Worst Case:</strong> <code>O(n^2)</code> – Quadratic complexity for worst cases.
-                    </li>
+                    <li><strong>Best Case:</strong> <code>O(n log n)</code> – When the pivot divides the array into
+                        nearly equal halves.</li>
+                    <li><strong>Average Case:</strong> <code>O(n log n)</code> – The average case performance is
+                        efficient.</li>
+                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> – Occurs when the smallest or largest
+                        element
+                        is always chosen as the pivot.</li>
                 </ul>
                 <h3>Space Complexity</h3>
-                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm
-                    requiring
-                    a constant amount of additional space.</p>
+                <p><strong>Space Complexity:</strong> <code>O(log n)</code> – Due to the recursive stack space used
+                    during the algorithm's execution.</p>
             </section>
 
             <section class="pseudo-code">
                 <h2 class="section-title">Pseudo Code</h2>
                 <div class="code-container">
                     <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    <!-- This is the pseudo code for Quick Sort -->
                     <pre><code>
-<!-- This is the pseudo code for Selection Sort -->
-function selectionSort(arr):
-    n = length(arr)
-    for i from 0 to n-1:
-        minIndex = i
-        for j from i+1 to n:
-            if arr[j] < arr[minIndex]:
-                minIndex = j
-        /* Swap the found minimum element with the first element */
-        temp = arr[i]
-        arr[i] = arr[minIndex]
-        arr[minIndex] = temp
-    return arr
-                                 </code></pre>
+function quickSort(arr, low, high):
+    if low < high:
+        pi = partition(arr, low, high)
+        quickSort(arr, low, pi - 1)
+        quickSort(arr, pi + 1, high)
+
+function partition(arr, low, high):
+    pivot = arr[high]
+    i = low - 1
+    for j from low to high - 1:
+        if arr[j] <= pivot:
+            i = i + 1
+            swap arr[i] and arr[j]
+    swap arr[i + 1] and arr[high]
+    return i + 1
+                                    </code></pre>
                 </div>
 
             </section>
@@ -162,16 +159,17 @@ function selectionSort(arr):
             <section class="characteristics">
                 <h2 class="section-title">Key Characteristics</h2>
                 <ul>
-                    <li><strong>Stability:</strong> Selection sort is not a stable sorting algorithm.</li>
-                    <li><strong>Adaptability:</strong> It does not adapt well to varying input patterns.</li>
+                    <li><strong>In-Place:</strong> Quick sort requires minimal additional storage space.</li>
+                    <li><strong>Not Stable:</strong> The algorithm is not stable due to the way it swaps elements.</li>
                 </ul>
             </section>
 
             <section class="summary">
                 <h2 class="section-title">Summary</h2>
-                <p>Selection sort is a simple algorithm that divides the input list into a sorted and an unsorted
-                    region. Despite its <code>O(n^2)</code> complexity, its simplicity makes it useful for small
-                    datasets and educational purposes.</p>
+                <p>Quick sort is a highly efficient sorting algorithm that utilizes the divide-and-conquer strategy.
+                    Despite its worst-case time complexity of <code>O(n<sup>2</sup>)</code>, it is widely used due to
+                    its
+                    average-case efficiency and practical performance.</p>
             </section>
         </div>
     </div>
@@ -196,12 +194,11 @@ function selectionSort(arr):
         const howto = document.getElementById("howto");
         const skipBtn = document.getElementById("skip");
         const fastBtn = document.getElementById("fast-btn");
-
         let ms = 1000;
 
         sortBtn.addEventListener("click", () => {
             if (sortBtn.textContent == "Sorting...") return;
-            let input = inputBox.value;
+            let input = inputBox.value.trim();
             if (input == "") {
                 alert("Please enter some values ! ");
                 return;
@@ -220,66 +217,113 @@ function selectionSort(arr):
             howto.style.visibility = "hidden";
 
             for (let i = 0; i < values.length; i++) {
+                let el = document.createElement("div");
+                el.className = "num-wrapper";
+
                 let li = document.createElement("div");
                 li.className = "num";
                 li.textContent = values[i];
-                numDiv.appendChild(li);
                 values[i] = parseFloat(values[i]);
+
+                let li1 = document.createElement("p");
+                li1.classList = "ij";
+                li1.textContent = i;
+                el.appendChild(li1);
+                el.appendChild(li);
+                numDiv.appendChild(el);
             }
 
             const divs = document.querySelectorAll(".num");
-            selectionSort();
+            const infoBtn = document.querySelectorAll(".info-btn");
 
-            async function selectionSort() {
-                let p, least, i, j;
+            quickSort();
 
-                for (i = 0; i < values.length; i++) {
-                    least = values[i];
-                    p = i;
-                    divs[i].classList.add("comparing");
+            async function quickSort() {
+                document.getElementById("pi").style.display = "none";
+                await sleep(ms);
+                let i, j, pivot;
+                async function partition(values, low, high) {
+                    pivot = values[high];
+                    divs[high].classList.add("pivot");
+
+                    {
+                        document.getElementById("pivot").style.display = "block";
+                        document.getElementById("pivot").textContent = "Pivot = " + pivot;
+                        document.getElementById("low").style.display = "block";
+                        document.getElementById("low").textContent = "Low = " + low;
+                        document.getElementById("high").style.display = "block";
+                        document.getElementById("high").textContent = "High = " + high;
+                    }
+
                     await sleep(ms);
 
-                    for (j = i + 1; j < values.length; j++) {
-                        divs[j].classList.add("swapping");
-                        if (values[j] < least) {
-                            divs[i].classList.remove("comparing");
-                            divs[i].classList.add("least");
-                            divs[p].classList.remove("swapping");
-                            await sleep(ms);
-                            least = values[j];
-                            p = j;
+                    i = low - 1;
+                    for (j = low; j <= high - 1; j++) {
+                        divs[j].classList.add("comparing");
+                        if (values[j] < pivot) {
+                            i++;
+                            [values[i], values[j]] = [values[j], values[i]];
+
+                            divs[j].classList.remove("comparing");
+                            divs[i].classList.add("swapping");
                             divs[j].classList.add("swapping");
+                            await sleep(ms);
+                            divs[i].textContent = values[i];
+                            divs[j].textContent = values[j];
+                            await sleep(ms);
+                            divs[i].classList.remove("swapping");
+                            divs[j].classList.remove("swapping");
+                            await sleep(ms);
                             continue;
                         }
                         await sleep(ms);
-                        divs[j].classList.remove("swapping");
-                    }
-
-                    if (values[i] != least) {
-                        values[p] = values[i];
-                        values[i] = least;
-                        divs[i].classList.remove("least");
-                        divs[i].classList.add("swapping");
+                        divs[j].classList.remove("comparing");
                         await sleep(ms);
-                        divs[p].textContent = values[p];
-                        divs[i].textContent = least;
                     }
+                    [values[i + 1], values[high]] = [values[high], values[i + 1]];
+
                     await sleep(ms);
-
-                    divs[i].classList.remove("comparing");
-                    divs[i].classList.remove("least");
-                    divs[i].classList.remove("swapping");
-                    divs[p].classList.remove("swapping");
-                    divs[i].classList.add("sorted");
-
-                    let passCount = i + 1;
-                    let passes = createDiv("numbers", "num", values, values.length, j, passCount);
-                    passesDiv.appendChild(passes);
+                    divs[high].classList.remove("pivot");
+                    divs[i + 1].classList.add("swapping");
+                    divs[high].classList.add("swapping");
+                    await sleep(ms);
+                    divs[i + 1].textContent = values[i + 1];
+                    divs[high].textContent = values[high];
+                    divs[i + 1].classList.remove("swapping");
+                    divs[high].classList.remove("swapping");
+                    divs[i + 1].classList.add("sorted");
+                    await sleep(ms);
+                    if (low == high - 1 || low == high) {
+                        divs[low].classList.add("sorted");
+                    }
+                    return i + 1;
                 }
+
+                async function quickSort(values, low, high) {
+                    if (low < high) {
+                        let pi = await partition(values, low, high);
+                        document.getElementById("pi").style.display = "block";
+                        document.getElementById("pi").textContent = "Partition index = " + pi;
+
+                        await quickSort(values, low, pi - 1);
+                        await quickSort(values, pi + 1, high);
+                    }
+
+                }
+
+                await quickSort(values, 0, values.length - 1);
+
+                // {
+                //     divs[j].classList.add("sorted");
+                //     let passCount = i + 1;
+                //     let passes = createDiv("numbers", "num", values, values.length, j, passCount);
+                //     passesDiv.appendChild(passes);
+                // }
+
                 console.log(values);
                 sortedArray = values.join(", ");
                 howto.style.visibility = "visible";
-                howto.textContent = "The array is successfully sorted.There were " + values.length + " numbers and it took " + (values.length - 1) + " passes.The sorted array is : " + sortedArray;
+                howto.innerHTML = "The array is successfully sorted.There were " + values.length + " numbers.The sorted array is : <br>" + sortedArray;
 
                 const btn = document.createElement("button");
                 btn.textContent = "Copy";
@@ -305,14 +349,16 @@ function selectionSort(arr):
 
             const li = document.createElement("div");
             li.className = cn2;
-            li.textContent = (passCount == time) ? "Sorted" : "Pass " + passCount;
-
+            if (passCount == time)
+                li.textContent = "Sorted ";
+            else
+                li.textContent = "Pass " + passCount;
             outerDiv.appendChild(li);
 
             for (let i = 0; i < time; i++) {
                 const li = document.createElement("div");
                 li.className = cn2;
-                if (i < passCount)
+                if (j <= i)
                     li.classList.add("sorted");
                 li.textContent = content[i];
                 outerDiv.appendChild(li);
@@ -321,14 +367,13 @@ function selectionSort(arr):
             return outerDiv;
         }
 
-        function toggleClass(divs, i, j, cn) {
+        function toggleClass(divs, j, cn) {
             divs[j].classList.toggle(cn);
-            divs[i].classList.toggle(cn);
+            divs[j + 1].classList.toggle(cn);
         }
 
     </script>
     <script src="./script.js"></script>
-
 </body>
 
 </html>

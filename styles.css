@@ -6,43 +6,46 @@
 }
 
 /* Footer Styling */
-footer {
-  background-color: #33333300;
-  color: white;
-  padding: 20px 0;
-  text-align: center;
-  position: relative;
-  bottom: 0;
+
+.site-footer {
   width: 100%;
-  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+  background-color: #1e272e;
+  padding: 1.5rem;
+  text-align: center;
+  color: #ecf0f1;
+  margin-top: 2rem;
+  border-top: 2px solid #f1c40f;
 }
 
 .footer-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  max-width: 1000px;
+  margin: auto;
 }
 
-.footer-info p {
-  margin: 5px 0;
-  font-size: 0.9rem;
-}
-
-.footer-links {
-  margin-top: 10px;
+.footer-title {
+  font-size: 1.5rem;
+  color: #f1c40f;
+  margin-bottom: 1rem;
 }
 
 .footer-links a {
-  color: #00b4d8;
-  margin: 0 10px;
+  color: #ecf0f1;
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.3s;
+  margin: 0 0.5rem;
 }
 
 .footer-links a:hover {
-  color: #fff;
+  color: #f1c40f;
+}
+
+.footer-info {
+  margin-top: 1rem;
+}
+
+.footer-credit {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #bdc3c7;
 }
 
 /* Nav Styling */
@@ -171,7 +174,8 @@ button {
   justify-content: center;
 }
 .sort-btn,
-.control-btn {
+.control-btn,
+.info-btn {
   padding: 0.6rem 1.5rem;
   font-size: 1rem;
   background-color: #3498db;
@@ -180,7 +184,19 @@ button {
   border-radius: 8px;
   transition: background-color 0.3s ease;
 }
-
+.info-btn {
+  display: none;
+  background-color: transparent;
+}
+.passInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid white;
+}
 .sort-btn:hover,
 .control-btn:hover {
   background-color: #2980b9;
@@ -204,7 +220,11 @@ button {
   justify-content: center;
   margin-bottom: 2rem;
 }
-
+.num-wrapper {
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
 .num {
   display: flex;
   align-items: center;
@@ -217,7 +237,16 @@ button {
   border-radius: 4px;
   transition: transform 0.25s ease, background-color 0.3s ease;
 }
-
+.ij {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  width: 100%;
+  font-size: 0.5rem;
+  font-size: bold;
+  text-align: center;
+  z-index: 1;
+}
 .comparing {
   background-color: #f39c12;
 }
@@ -231,7 +260,10 @@ button {
   background-color: #27ae60;
   color: white;
 }
-
+.pivot {
+  background-color: #3498db;
+  transform: scale(1.2);
+}
 /* Passes Information */
 .passesandinfo {
   display: flex;
@@ -418,8 +450,13 @@ button {
     width: 40px;
     height: 40px;
     font-size: 1rem;
+    position: relative;
   }
-
+  .num-wrapper {
+    width: 40px;
+    height: 40px;
+    font-size: 0.4rem;
+  }
   .container {
     margin-top: 1.75rem;
     padding: 1rem;
