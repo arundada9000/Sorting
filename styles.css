@@ -471,7 +471,8 @@ button {
   nav {
     position: fixed;
     top: 10px;
-    width: 300px;
+    height: 30px;
+    width: fit-content;
   }
   .menu-toggle {
     display: flex;
@@ -481,6 +482,7 @@ button {
   }
   .nav-links {
     opacity: 0;
+    z-index: -99;
     flex-direction: column;
     width: 100%;
     background-color: #333;
@@ -490,7 +492,7 @@ button {
 
   .nav-links a {
     padding: 1rem 1rem;
-    width: 100%;
+    width: 300px;
     text-align: center;
     margin: 0;
     border-bottom: 1px solid #555;
@@ -499,6 +501,7 @@ button {
   .nav-links.active {
     opacity: 1;
     display: flex;
+    z-index: 1;
     transform: translateX(0px);
   }
 
