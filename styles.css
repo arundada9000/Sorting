@@ -51,19 +51,40 @@
 /* Nav Styling */
 nav {
   position: absolute;
+  padding-left: 10px;
   top: 10px;
   left: 0;
   width: 100%;
   z-index: 1000;
 }
-
 .menu-toggle {
+  width: 30px;
+  height: 25px;
   display: none;
-  font-size: 2em;
-  color: white;
+  flex-direction: column;
+  justify-content: space-between;
   cursor: pointer;
 }
 
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(11px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-11px) rotate(-45deg);
+}
 .nav-links,
 .nav-links1 {
   display: flex;
@@ -95,7 +116,7 @@ nav a:hover {
 }
 
 .nav-links {
-  display: none;
+  opacity: 0;
 }
 .nav-links a,
 .nav-links1 a {
@@ -406,35 +427,79 @@ button {
 .sorting-algorithm-container pre code {
   background-color: transparent;
 }
+/* Style for webkit scroll bars */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: gray;
+  border-radius: 0px;
+}
+
+/* Scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: #007bff;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+/* scroll tracker */
+.progress-bar-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 0;
+  background-color: #007bff;
+  transition: height 0.2s ease;
+}
+
 @media (max-width: 768px) {
+  .progress-bar-container {
+    width: 5px;
+  }
   nav {
     position: fixed;
+    top: 10px;
+    width: 300px;
   }
   .menu-toggle {
-    display: block;
+    display: flex;
   }
   .nav-links1 {
     display: none;
   }
   .nav-links {
-    display: none;
+    opacity: 0;
     flex-direction: column;
     width: 100%;
     background-color: #333;
+    transform: translateX(-300px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
   }
 
   .nav-links a {
-    padding: 10px;
+    padding: 1rem 1rem;
+    width: 100%;
     text-align: center;
     margin: 0;
     border-bottom: 1px solid #555;
   }
 
   .nav-links.active {
+    opacity: 1;
     display: flex;
-  }
-  body {
-    padding: 1rem;
+    transform: translateX(0px);
   }
 
   input[type="text"] {
@@ -459,6 +524,6 @@ button {
   }
   .container {
     margin-top: 1.75rem;
-    padding: 1rem;
+    padding: 0;
   }
 }

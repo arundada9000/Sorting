@@ -120,11 +120,35 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        ::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+        }
+
+        .progress-bar-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 100vh;
+            background-color: #f1f1f1;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 0;
+            background-color: #007bff;
+            transition: height 0.2s ease;
+        }
     </style>
 </head>
 
 <body>
 
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
     <div class="container">
         <h1>Sorting Algorithms Visualizer</h1>
         <p>Explore different sorting algorithms and understand how they work, step-by-step. Click on any algorithm below
@@ -184,7 +208,14 @@
     <footer>
         <p>Created by Arun Neupane | <a href="https://github.com/arundada9000">GitHub</a></p>
     </footer>
-
+    <script>
+        window.addEventListener("scroll", function () {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.querySelector(".progress-bar").style.height = scrollPercent + "%";
+        });
+    </script>
 </body>
 
 </html>

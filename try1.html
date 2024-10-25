@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <style>
+    .burn-in {
+    display: inline-block;
+    padding: 20px;
+    font-size: 1.5em;
+    color: white;
+    background-color: #333;
+    border-radius: 10px;
+    opacity: 0;
+    transform: scale(0.7);
+    animation: burnIn 1.5s ease forwards;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Create the "burning" animation */
+@keyframes burnIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+        filter: blur(10px);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+/* Optional: Flickering shadow for extra burning effect */
+.burn-in::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(0, 0, 0, 0));
+    animation: flicker 2s infinite ease-in-out;
+    pointer-events: none;
+    filter: blur(15px);
+}
+
+/* Flickering effect */
+@keyframes flicker {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 0.5; }
+}
+
+   </style>
+</head>
+
+<body>
+    <div class="burn-in">Your Content Here</div>
+
+
+</body>
+
+</html>

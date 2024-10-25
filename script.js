@@ -22,6 +22,13 @@ const containerLeft = containerRect.left;
 
 navigation.style.marginLeft = `${containerLeft}px`;
 
+window.addEventListener("scroll", function () {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  document.querySelector(".progress-bar").style.height = scrollPercent + "%";
+});
+
 function copyToClipboard(button) {
   const codeBlock = button.nextElementSibling.querySelector("code");
 
@@ -61,4 +68,5 @@ inputBox.addEventListener("keyup", (event) => {
 function toggleMenu() {
   const navLinks = document.querySelector(".nav-links");
   navLinks.classList.toggle("active");
+  document.querySelector(".menu-toggle").classList.toggle("active");
 }
