@@ -167,6 +167,7 @@ h1 {
 .sort-input {
   flex-direction: row;
   margin-bottom: 2rem;
+  padding: 0rem 0.5rem;
 }
 
 input[type="text"] {
@@ -306,7 +307,7 @@ button {
   text-align: justify;
   font-size: 0.95rem;
   width: 100%;
-  margin-bottom: 1rem;
+  margin: 1rem 0.5rem;
 }
 
 .howto b {
