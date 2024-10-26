@@ -52,7 +52,7 @@
 
     <div class="container">
         <h1>Selection Sort</h1>
-        <div class="sort-input flex">
+        <div class="sort-input">
             <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
                 placeholder="Enter numbers separated with commas as 1,2,3,4">
 
@@ -61,7 +61,7 @@
         <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
             <button id="skip" class="control-btn">Skip Visualization</button>
         </div>
-        <div class="passesandinfo flex">
+        <div class="passesandinfo">
             <div class="numbers" id="num-div">
                 <!-- <div class="num">90</div>
                     <div class="num">12</div>
@@ -130,11 +130,14 @@
                 <h2 class="section-title">Time and Space Complexity</h2>
                 <h3>Time Complexity</h3>
                 <ul>
-                    <li><strong>Best Case:</strong> <code>O(n^2)</code> – Regardless of the initial arrangement.
+                    <li><strong>Best Case:</strong> <code>O(n<sup>2</sup>)</code> – Regardless of the initial
+                        arrangement.
                     </li>
-                    <li><strong>Average Case:</strong> <code>O(n^2)</code> – Quadratic complexity for average cases.
+                    <li><strong>Average Case:</strong> <code>O(n<sup>2</sup>)</code> – Quadratic complexity for average
+                        cases.
                     </li>
-                    <li><strong>Worst Case:</strong> <code>O(n^2)</code> – Quadratic complexity for worst cases.
+                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> – Quadratic complexity for worst
+                        cases.
                     </li>
                 </ul>
                 <h3>Space Complexity</h3>
@@ -177,7 +180,8 @@ function selectionSort(arr):
             <section class="summary">
                 <h2 class="section-title">Summary</h2>
                 <p>Selection sort is a simple algorithm that divides the input list into a sorted and an unsorted
-                    region. Despite its <code>O(n^2)</code> complexity, its simplicity makes it useful for small
+                    region. Despite its <code>O(n<sup>2</sup>)</code> complexity, its simplicity makes it useful for
+                    small
                     datasets and educational purposes.</p>
             </section>
         </div>

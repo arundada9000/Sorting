@@ -103,7 +103,7 @@ nav a::after {
   height: 2px;
   background: white;
   left: 0;
-  bottom: 0;
+  top: 0;
   transition: width 0.3s ease;
 }
 
@@ -136,13 +136,6 @@ nav a:hover {
   transition: all 1s ease;
 }
 /* nav end */
-.flex {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
 body {
   display: flex;
   align-items: center;
@@ -159,12 +152,15 @@ h1 {
   margin-bottom: 1.5rem;
   font-size: 2.2rem;
   color: #f1c40f;
-  padding-bottom: 1rem;
+  padding: 1rem 0rem;
   border-bottom: 1px solid #f1c40f;
 }
 
 /* Input Section */
 .sort-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: row;
   margin-bottom: 2rem;
   padding: 0rem 0.5rem;
@@ -466,6 +462,9 @@ button {
 }
 
 @media (max-width: 768px) {
+  h1 {
+    font-size: 1.75rem;
+  }
   .progress-bar-container {
     width: 5px;
   }
@@ -527,7 +526,7 @@ button {
     font-size: 0.4rem;
   }
   .container {
-    margin-top: 1.75rem;
+    margin-top: 0;
     padding: 0;
   }
 }

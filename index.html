@@ -127,6 +127,7 @@
         }
 
         .progress-bar-container {
+            display: none;
             position: fixed;
             top: 0;
             right: 0;
@@ -140,6 +141,12 @@
             height: 0;
             background-color: #007bff;
             transition: height 0.2s ease;
+        }
+
+        @media (max-width:768px) {
+            .progress-bar-container {
+                display: block;
+            }
         }
     </style>
 </head>
