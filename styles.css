@@ -238,6 +238,10 @@ button {
   justify-content: center;
   margin-bottom: 2rem;
 }
+.passes .numbers .num:first-child {
+  width: 80px;
+  font-size: 1rem;
+}
 .num-wrapper {
   position: relative;
   width: 50px;
@@ -519,6 +523,9 @@ button {
     height: 40px;
     font-size: 1rem;
     position: relative;
+  }
+  .passes .numbers .num:first-child {
+    width: 60px;
   }
   .num-wrapper {
     width: 40px;
