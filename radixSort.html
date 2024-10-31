@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bubble Sort</title>
-    <meta name="description" content="Bubble sort visualized step by step with its time and space complexities" />
+    <meta name="description" content="Radix sort visualized step by step with its time and space complexities" />
     <meta name="keyword"
-        content="bubble sort, bubble sort visualized,step by step, bubble sort in easy way, time complexity, space complexity, bubble sort properties, arun neupane,sorting" />
+        content="radix sort, radix sort visualized,step by step, radix sort in easy way, time complexity, space complexity, radix sort properties, arun neupane,sorting" />
+    <title>Radix Sort</title>
     <link rel="icon" href="./images/s.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
 </head>
@@ -21,13 +21,13 @@
         </div>
         <div class="nav-links1">
             <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html" class="bb">Bubble</a>
+            <a href="./bubbleSort.html">Bubble</a>
             <a href="./selectionSort.html">Selection</a>
             <a href="./insertionSort.html">Insertion</a>
             <a href="./mergeSort.html">Merge</a>
             <a href="./quickSort.html">Quick</a>
             <a href="./heapSort.html">Heap</a>
-            <a href="./radixSort.html">Radix</a>
+            <a href="./radixSort.html" class="bb">Radix</a>
             <a href="./shellSort.html">Shell</a>
         </div>
         <div class="nav-links">
@@ -46,7 +46,7 @@
         <div class="progress-bar"></div>
     </div>
     <div class="container">
-        <h1>Bubble Sort</h1>
+        <h1>Radix Sort</h1>
 
         <div class="sort-input">
 
@@ -93,26 +93,23 @@
         </div>
 
         <div class="sorting-algorithm-container">
-            <h1 class="algorithm-title">Bubble Sort Overview</h1>
+            <h1 class="algorithm-title">Radix Sort Overview</h1>
 
             <section class="history">
                 <h2 class="section-title">History</h2>
-                <p>Bubble sort is one of the simplest sorting algorithms, often introduced in computer science
-                    education. It was first documented in the 1950s and has been widely used in programming for
-                    educational purposes due to its straightforward concept.</p>
+                <p>Radix sort was developed in the 1960s and is a non-comparison-based sorting algorithm. It sorts
+                    numbers by processing individual digits. Radix sort is efficient for sorting large sets of integers
+                    and has been utilized in various applications.</p>
             </section>
 
             <section class="current-uses">
                 <h2 class="section-title">Current Uses</h2>
                 <ul>
-                    <li><strong>Educational Purposes:</strong> Commonly used to teach the basics of sorting
-                        algorithms.
-                    </li>
-                    <li><strong>Small Data Sets:</strong> Occasionally used for small datasets where efficiency is
-                        not a
-                        concern.</li>
-                    <li><strong>Data Analysis:</strong> Sometimes utilized in data analysis tasks when simplicity is
-                        preferred.</li>
+                    <li><strong>Large Integer Sets:</strong> Commonly used to sort large datasets of integers.</li>
+                    <li><strong>Specific Applications:</strong> Utilized in applications that require sorting of
+                        fixed-length strings or numbers.</li>
+                    <li><strong>Counting Sort Combination:</strong> Often used in combination with counting sort for
+                        efficiency.</li>
                 </ul>
             </section>
 
@@ -120,37 +117,65 @@
                 <h2 class="section-title">Time and Space Complexity</h2>
                 <h3>Time Complexity</h3>
                 <ul>
-                    <li><strong>Best Case:</strong> <code>O(n)</code> – When the array is already sorted.</li>
-                    <li><strong>Average Case:</strong> <code>O(n<sup>2</sup>)</code> – Quadratic complexity for
-                        average
-                        cases.
+                    <li><strong>Best Case:</strong> <code>O(nk)</code> – Where <code>n</code> is the number of elements
+                        and <code>k</code> is the number of digits in the largest number.</li>
+                    <li><strong>Average Case:</strong> <code>O(nk)</code> – Efficiency depends on the number of digits.
                     </li>
-                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> – When the array is sorted in
-                        reverse
-                        order.
-                    </li>
+                    <li><strong>Worst Case:</strong> <code>O(nk)</code> – Same as the average case.</li>
                 </ul>
                 <h3>Space Complexity</h3>
-                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm
-                    requiring
-                    a constant amount of additional space.</p>
+                <p><strong>Space Complexity:</strong> <code>O(n + k)</code> – Requires additional space for the output
+                    array and counting array.</p>
             </section>
 
             <section class="pseudo-code">
                 <h2 class="section-title">Pseudo Code</h2>
                 <div class="code-container">
                     <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                    <pre><code><!-- This is the pseudo code for Bubble Sort -->function bubbleSort(arr):
-    n = length(arr)
-    for i from 0 to n-1:
-        for j from 0 to n-i-1:
-            if arr[j] > arr[j + 1]:
-                // swap arr[j] and arr[j + 1]
-                temp = arr[j]
-                arr[j] = arr[j + 1]
-                arr[j + 1] = temp
-    return arr
-                                        </code></pre>
+                    <pre><code><!-- This is the pseudo code for Bubble Sort -->function radixSort(array)
+    maxNumber = findMax(array)
+    numberOfDigits = countDigits(maxNumber)
+    
+    for digit in 1 to numberOfDigits do
+        applyCountingSort(array, digit)
+    end for
+end function
+
+function applyCountingSort(array, digitPosition)
+    create 10 buckets to represent each digit (0 to 9)
+    
+    for each element in array do
+        digit = getDigit(element, digitPosition)
+        place element into corresponding bucket based on digit
+    end for
+    
+    merge all buckets in order to form the sorted array for this digit position
+end function
+
+function getDigit(number, position)
+    return (number / 10^(position - 1)) % 10
+end function
+
+function findMax(array)
+    maxNumber = array[0]
+    for i = 1 to array.length - 1 do
+        if array[i] > maxNumber then
+            maxNumber = array[i]
+        end if
+    end for
+    return maxNumber
+end function
+
+function countDigits(number)
+    count = 0
+    while number > 0 do
+        number = number / 10
+        count = count + 1
+    end while
+    return count
+end function
+
+                                    </code></pre>
                 </div>
 
             </section>
@@ -158,17 +183,16 @@
             <section class="characteristics">
                 <h2 class="section-title">Key Characteristics</h2>
                 <ul>
-                    <li><strong>Stability:</strong> Bubble sort is a stable sorting algorithm.</li>
-                    <li><strong>Adaptability:</strong> Performs better on nearly sorted datasets.</li>
+                    <li><strong>Non-Comparison Sort:</strong> Radix sort does not compare elements directly.</li>
+                    <li><strong>Stable:</strong> Radix sort can be implemented as a stable sorting algorithm.</li>
                 </ul>
             </section>
 
             <section class="summary">
                 <h2 class="section-title">Summary</h2>
-                <p>Bubble sort is an easy-to-understand sorting algorithm that works by repeatedly swapping adjacent
-                    elements. While it is inefficient for large datasets with its <code>O(n<sup>2</sup>)</code>
-                    worst-case
-                    complexity, its simplicity makes it suitable for educational purposes.</p>
+                <p>Radix sort is an efficient non-comparison sorting algorithm that processes individual digits to sort
+                    integers. Its time complexity of <code>O(nk)</code> makes it suitable for sorting large sets of
+                    data, particularly when the range of digits is small.</p>
             </section>
         </div>
     </div>
@@ -232,64 +256,64 @@
                 numDiv.appendChild(el);
             }
             const divs = document.querySelectorAll(".num");
-            bubbleSort();
+            radixSort();
+            console.log("Here", values);
 
-            async function bubbleSort() {
-                for (let i = 0; i < values.length; i++) {
-                    let j;
-                    for (j = 0; j < values.length - i - 1; j++) {
+            async function radixSort() {
 
-                        toggleClass(divs, j, "comparing");
-                        await sleep(ms);
+                const maxNumber = await findMax();
+                const numberOfDigits = await countDigits(maxNumber);
 
-                        if (values[j] > values[j + 1]) {
-                            let temp = values[j];
-                            values[j] = values[j + 1];
-                            values[j + 1] = temp;
-
-                            toggleClass(divs, j, "swapping");
-                            await sleep(ms);
-                            toggleClass(divs, j, "comparing");
-
-                            temp = divs[j].textContent;
-                            divs[j].textContent = divs[j + 1].textContent;
-                            divs[j + 1].textContent = temp;
-                            await sleep(ms);
-                            toggleClass(divs, j, "swapping");
-                            continue;
-                        }
-
-                        await sleep(ms);
-                        toggleClass(divs, j, "comparing");
-                    }
-
-                    divs[j].classList.add("sorted");
-                    let passCount = i + 1;
-                    let passes = createDiv("numbers", "num", values, values.length, j, passCount);
-                    passesDiv.appendChild(passes);
+                for (let digit = 1; digit <= numberOfDigits; digit++) {
+                    await applyCountingSort(digit);
                 }
 
-                console.log(values);
-                sortedArray = values.join(", ");
-                howto.style.visibility = "visible";
-                howto.innerHTML = "The array is successfully sorted.There were " + values.length + " numbers and it took " + (values.length - 1) + " passes.The sorted array is : <br>" + sortedArray;
 
-                const btn = document.createElement("button");
-                btn.textContent = "Copy";
-                btn.className = "copy-btn";
-                btn.id = "ans-copy-btn";
-                btn.addEventListener("click", () => {
-                    navigator.clipboard.writeText(sortedArray);
-                    btn.textContent = "Copied!";
-                    setTimeout(() => {
-                        btn.textContent = "Copy";
-                    }, 2000);
-                });
-                howto.appendChild(btn);
+                async function findMax() {
+                    let maxNumber = values[0];
+                    for (let i = 1; i < values.length; i++) {
+                        if (values[i] > maxNumber) {
+                            maxNumber = values[i];
+                        }
+                    }
+                    return maxNumber;
+                }
 
-                displayBtn("none");
-                sortBtn.textContent = "Sort";
+                async function countDigits(number) {
+                    let count = 0;
+                    while (number > 0) {
+                        number = Math.floor(number / 10);
+                        count++;
+                    }
+                    return count;
+                }
+
+                async function applyCountingSort(digitPosition) {
+                    const buckets = Array.from({ length: 10 }, () => []);
+
+                    // Place elements in buckets based on the current digit
+                    for (let i = 0; i < values.length; i++) {
+                        const digit = getDigit(values[i], digitPosition);
+                        console.log(values[i]);
+
+                        buckets[digit].push(values[i]);
+                    }
+
+                    // Merge all buckets back into the values
+                    let index = 0;
+                    for (let i = 0; i < buckets.length; i++) {
+                        for (let j = 0; j < buckets[i].length; j++) {
+                            values[index++] = buckets[i][j];
+                        }
+                    }
+                }
+
+                async function getDigit(number, position) {
+                    return Math.floor((number / Math.pow(10, position - 1)) % 10);
+                }
+
             }
+
         });
 
         function createDiv(cn1, cn2, content, time, j, passCount) {
