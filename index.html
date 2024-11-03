@@ -9,7 +9,7 @@
         content="Sorting visualized step by step , pass by pass for better understanding in easy way." />
     <meta name="keywords"
         content="Sorting, sorting visualized, sorting in easy way, sorting in c , sorting implementation, sorting pseudo code, sorting in c++" />
-    <link rel="icon" href="./images/s.png" type="image/x-icon">
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -28,6 +28,18 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+        }
+
+        .icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        .icon-container img {
+            width: 50px;
+            height: 50px;
         }
 
         h1 {
@@ -52,7 +64,7 @@
 
         .algorithm-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 20px;
             padding: 0 20px;
         }
@@ -157,56 +169,85 @@
         <div class="progress-bar"></div>
     </div>
     <div class="container">
-        <h1>Sorting Algorithms Visualizer</h1>
+        <div class="icon-container">
+            <img src="./images/reorder.gif" alt="Sorting">
+            <h1>Sorting Algorithms Visualizer</h1>
+        </div>
         <p>Explore different sorting algorithms and understand how they work, step-by-step. Click on any algorithm below
             to start the visualization!</p>
 
         <div class="algorithm-list">
             <a href="./bubbleSort.html" class="algorithm-item">
                 <!-- <img src="images/bubble_sort_icon.png" alt="Bubble Sort Icon"> -->
-                <h3>Bubble Sort</h3>
+                <div class="icon-container">
+                    <img src="./images/bubble.webp" alt="Bubble sort">
+                    <h3>Bubble Sort</h3>
+                </div>
+
                 <p>Compares adjacent elements and swaps them if they're in the wrong order.</p>
             </a>
 
             <a href="./selectionSort.html" class="algorithm-item">
-                <!-- <img src="images/selection_sort_icon.png" alt="Selection Sort Icon"> -->
-                <h3>Selection Sort</h3>
+               
+                <div class="icon-container">
+                    <img src="./images/selection.webp" alt="Selection sort">
+                    <h3>Selection Sort</h3>
+                </div>
                 <p>Finds the smallest element in the array and places it at the front.</p>
             </a>
 
             <a href="./insertionSort.html" class="algorithm-item">
                 <!-- <img src="images/insertion_sort_icon.png" alt="Insertion Sort Icon"> -->
-                <h3>Insertion Sort</h3>
+                <div class="icon-container">
+                    <img src="./images/insertion.webp" alt="Insertion sort">
+                    <h3>Insertion Sort</h3>
+                </div>
                 <p>Builds the sorted array by inserting elements in their correct position.</p>
             </a>
 
             <a href="./mergeSort.html" class="algorithm-item">
                 <!-- <img src="images/merge_sort_icon.png" alt="Merge Sort Icon"> -->
-                <h3>Merge Sort</h3>
+                <div class="icon-container">
+                    <img src="./images/merge.webp" alt="Merge sort">
+                    <h3>Merge Sort</h3>
+                </div>
+
                 <p>Divides the array, sorts them, and merges them back together.</p>
             </a>
 
             <a href="./quickSort.html" class="algorithm-item">
                 <!-- <img src="images/quick_sort_icon.png" alt="Quick Sort Icon"> -->
-                <h3>Quick Sort</h3>
+                <div class="icon-container">
+                    <img src="./images/quick.webp" alt="Quick sort">
+                    <h3>Quick Sort</h3>
+                </div>
                 <p>Uses a pivot to partition the array and sorts each partition.</p>
             </a>
 
             <a href="./heapSort.html" class="algorithm-item">
                 <!-- <img src="images/heap_sort_icon.png" alt="Heap Sort Icon"> -->
-                <h3>Heap Sort</h3>
+                <div class="icon-container">
+                    <img src="./images/heap.webp" alt="Heap sort">
+                    <h3>Heap Sort</h3>
+                </div>
                 <p>Transforms the array into a heap structure and sorts it.</p>
             </a>
 
             <a href="./radixSort.html" class="algorithm-item">
                 <!-- <img src="images/radix_sort_icon.png" alt="Radix Sort Icon"> -->
-                <h3>Radix Sort</h3>
+                <div class="icon-container">
+                    <img src="./images/radix.webp" alt="Radix sort">
+                    <h3>Radix Sort</h3>
+                </div>
                 <p>Sorts numbers by processing individual digits from least to most significant.</p>
             </a>
 
             <a href="./shellSort.html" class="algorithm-item">
                 <!-- <img src="images/shell_sort_icon.png" alt="Shell Sort Icon"> -->
-                <h3>Shell Sort</h3>
+                <div class="icon-container">
+                    <img src="./images/shell.webp" alt="Shell sort">
+                    <h3>Shell Sort</h3>
+                </div>
                 <p>Sorts elements by comparing elements at a gap and reducing the gap over time.</p>
             </a>
         </div>

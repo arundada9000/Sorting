@@ -8,8 +8,13 @@
     <meta name="keyword"
         content="radix sort, radix sort visualized,step by step, radix sort in easy way, time complexity, space complexity, radix sort properties, arun neupane,sorting" />
     <title>Radix Sort</title>
-    <link rel="icon" href="./images/s.png" type="image/x-icon">
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
+    <style>
+        .max-container {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -46,7 +51,10 @@
         <div class="progress-bar"></div>
     </div>
     <div class="container">
-        <h1>Radix Sort</h1>
+        <div class="icon-container">
+            <img src="./images/radix.webp" alt="Radix Sort">
+            <h1>Radix Sort</h1>
+        </div>
 
         <div class="sort-input">
 
@@ -59,10 +67,9 @@
             <button id="skip" class="control-btn">Skip Visualization</button>
         </div>
         <div class="passesandinfo">
-            <div class="numbers" id="num-div">
+            <div class="numbers" id="num-div"></div>
 
-            </div>
-
+            <div class="max-container" id="max-container">Max = <span id="max"></span></div>
             <div class="passes" id="passes"></div>
 
             <div class="howto" id="howto">
@@ -217,7 +224,7 @@ end function
         const howto = document.getElementById("howto");
         const skipBtn = document.getElementById("skip");
         const fastBtn = document.getElementById("fast-btn");
-        let ms = 1000;
+        let ms = 1000, ind = 0;
 
         sortBtn.addEventListener("click", () => {
             if (sortBtn.textContent == "Sorting...") return;
@@ -256,95 +263,114 @@ end function
                 numDiv.appendChild(el);
             }
             const divs = document.querySelectorAll(".num");
-            radixSort();
+
             console.log("Here", values);
+            radixSort();
+            console.log("After", values);
 
             async function radixSort() {
-
-                const maxNumber = await findMax();
-                const numberOfDigits = await countDigits(maxNumber);
-
-                for (let digit = 1; digit <= numberOfDigits; digit++) {
-                    await applyCountingSort(digit);
+                const max = getMax();
+                for (let exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
+                    await countingSort(exp);
                 }
-
-
-                async function findMax() {
-                    let maxNumber = values[0];
-                    for (let i = 1; i < values.length; i++) {
-                        if (values[i] > maxNumber) {
-                            maxNumber = values[i];
-                        }
-                    }
-                    return maxNumber;
-                }
-
-                async function countDigits(number) {
-                    let count = 0;
-                    while (number > 0) {
-                        number = Math.floor(number / 10);
-                        count++;
-                    }
-                    return count;
-                }
-
-                async function applyCountingSort(digitPosition) {
-                    const buckets = Array.from({ length: 10 }, () => []);
-
-                    // Place elements in buckets based on the current digit
-                    for (let i = 0; i < values.length; i++) {
-                        const digit = getDigit(values[i], digitPosition);
-                        console.log(values[i]);
-
-                        buckets[digit].push(values[i]);
-                    }
-
-                    // Merge all buckets back into the values
-                    let index = 0;
-                    for (let i = 0; i < buckets.length; i++) {
-                        for (let j = 0; j < buckets[i].length; j++) {
-                            values[index++] = buckets[i][j];
-                        }
-                    }
-                }
-
-                async function getDigit(number, position) {
-                    return Math.floor((number / Math.pow(10, position - 1)) % 10);
-                }
-
             }
+            function getMax() {
+                let max = values[0];
+                for (let i = 1; i < values.length; i++) {
+                    if (values[i] > max) {
+                        max = values[i];
+                    }
+                }
+                displayMax(max);
+                return max;
+            }
+
+            async function countingSort(exp) {
+                let output = new Array(values.length).fill(0);
+                let count = new Array(10).fill(0);
+
+                let passes = createDiv("numbers", "num", "Count Occurrence", count.length);
+                passesDiv.appendChild(passes);
+                const countDiv = document.querySelectorAll(".passes .numbers .num");
+
+                for (let i = 0; i < count.length; i++) {
+                    countDiv[ind * 10 + ind + i + 1].textContent = 0;
+                }
+                for (let i = 0; i < values.length; i++) {
+                    const index = Math.floor(values[i] / exp) % 10;
+                    console.log(index);
+
+                    count[index]++;
+                    toggleClass("comparing", divs[i], countDiv[ind * 10 + ind + index + 1]);
+                    await sleep(ms);
+
+                    countDiv[ind * 10 + ind + index + 1].textContent = count[index];
+
+                    toggleClass("comparing", divs[i], countDiv[ind * 10 + ind + index + 1]);
+                    await sleep(ms);
+                }
+                ind++;
+                // throw new Error("Stopping the program execution.");
+                for (let i = 1; i < 10; i++) {
+                    count[i] += count[i - 1];
+                }
+
+                for (let i = values.length - 1; i >= 0; i--) {
+                    const index = Math.floor(values[i] / exp) % 10;
+                    output[count[index] - 1] = values[i];
+                    count[index]--;
+                }
+
+                for (let i = 0; i < values.length; i++) {
+                    values[i] = output[i];
+                }
+            }
+
 
         });
 
-        function createDiv(cn1, cn2, content, time, j, passCount) {
+        function createDiv(cn1, cn2, dn, l) {
             const outerDiv = document.createElement("div");
             outerDiv.className = cn1;
 
-            const li = document.createElement("div");
-            li.className = cn2;
-            if (passCount == time)
-                li.textContent = "Sorted ";
-            else
-                li.textContent = "Pass " + passCount;
-            outerDiv.appendChild(li);
+            const lii = document.createElement("div");
+            lii.className = cn2;
 
-            for (let i = 0; i < time; i++) {
-                const li = document.createElement("div");
-                li.className = cn2;
-                if (j <= i)
-                    li.classList.add("sorted");
-                li.textContent = content[i];
-                outerDiv.appendChild(li);
+            lii.textContent = dn;
+            outerDiv.appendChild(lii);
+
+            for (let i = 0; i < l; i++) {
+                let el = document.createElement("div");
+                el.className = "num-wrapper";
+
+                let li = document.createElement("div");
+                li.className = "num";
+
+                let li1 = document.createElement("p");
+                li1.classList = "ij";
+                li1.textContent = i;
+                el.appendChild(li1);
+                el.appendChild(li);
+                outerDiv.appendChild(el);
             }
 
             return outerDiv;
         }
 
-        function toggleClass(divs, j, cn) {
-            divs[j].classList.toggle(cn);
-            divs[j + 1].classList.toggle(cn);
+        function toggleClass(className, ...elements) {
+            elements.forEach(element => {
+                if (element instanceof HTMLElement) {
+                    element.classList.toggle(className);
+                } else {
+                    console.error('Invalid element:', element);
+                }
+            });
         }
 
+        function displayMax(max) {
+            document.getElementById("max-container").style.display = "block";
+            document.getElementById("max").textContent = max;
+        }
     </script>
     <script src="./script.js"></script>
 </body>
