@@ -52,7 +52,7 @@
             <a href="./mergeSort.html">Merge Sort</a>
             <a href="./quickSort.html">Quick Sort</a>
             <a href="./heapSort.html">Heap Sort</a>
-            <a href="./radixSort.html">Radix Sort</a>
+            <a href="./radixSort.html" class="bb">Radix Sort</a>
             <a href="./shellSort.html">Shell Sort</a>
         </div>
     </nav>
@@ -192,9 +192,7 @@ function countDigits(number)
         count = count + 1
     end while
     return count
-end function
-
-                                    </code></pre>
+end function</code></pre>
                 </div>
 
             </section>
@@ -222,12 +220,13 @@ end function
         <div class="footer-container">
             <p class="footer-title">Sorting Visualizer</p>
             <div class="footer-links">
-                <a href="https://github.com/arundada9000/Sorting">Code</a> |
-                <a href="./feedback.html">Feedback</a> |
+                <a href="https://github.com/arundada9000/Sorting" target="_blank" rel="noopener">Source Code</a> |
+                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener">Portfolio</a> |
                 <a href="./contact.html">Contact</a>
             </div>
             <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
             <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-credit">For Learning and Development</p>
         </div>
     </footer>
 
@@ -283,7 +282,11 @@ end function
             async function radixSort() {
                 const max = getMax();
                 for (let exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
-                    await countingSort(exp);
+                    if (Math.floor(max / (exp * 10)) === 0) {
+                        await countingSort(exp, true);
+                    } else {
+                        await countingSort(exp, false);
+                    }
                 }
 
                 sortedArray = values.join(", ");
@@ -317,10 +320,36 @@ end function
                 return max;
             }
 
-            async function countingSort(exp) {
+            async function countingSort(exp, isSorted) {
                 let output = new Array(values.length).fill(0);
                 let count = new Array(10).fill(0);
 
+                let info;
+                switch (exp) {
+                    case 1:
+                        info = infoAboutPasses("Sorting for 1s place ...", "numbers");
+                        break;
+                    case 10:
+                        info = infoAboutPasses("Sorting for 10s place ...", "numbers");
+                        break;
+                    case 100:
+                        info = infoAboutPasses("Sorting for 100s place ...", "numbers");
+                        break;
+                    case 1000:
+                        info = infoAboutPasses("Sorting for 1000s place ...", "numbers");
+                        break;
+                    case 10000:
+                        info = infoAboutPasses("Sorting for 10000s place ...", "numbers");
+                        break;
+                    case 100000:
+                        info = infoAboutPasses("Sorting for 100000s place ...", "numbers");
+                        break;
+                    case 1000000:
+                        info = infoAboutPasses("Sorting for 100000s place ...", "numbers");
+                        break;
+                }
+
+                passesDiv.appendChild(info);
                 let passes = createDiv("numbers", "num", "Count Occurrence", count.length, "count-div");
                 passesDiv.appendChild(passes);
                 const countDiv = document.querySelectorAll("#passes #count-div .num");
@@ -330,7 +359,6 @@ end function
                 }
                 for (let i = 0; i < values.length; i++) {
                     const index = Math.floor(values[i] / exp) % 10;
-
                     count[index]++;
                     toggleClass("comparing", divs[i], countDiv[ind * 10 + ind + index + 1]);
                     await sleep(ms);
@@ -350,7 +378,7 @@ end function
                         toggleClass("comparing", countDiv[ind * 10 + ind + i], countDiv[ind * 10 + ind + i + 1]);
                     }
                     else {
-                        toggleClass("comparing", countOf[ind * 10 + ind + i], countDiv[ind * 10 + ind + i]);
+                        toggleClass("comparing", countOf[ind * 10 + ind + i], countDiv[ind * 10 + ind + i + 1]);
                     }
                     toggleClass("swapping", countOf[ind * 10 + ind + i + 1]);
                     await sleep(ms);
@@ -361,7 +389,7 @@ end function
                         toggleClass("comparing", countDiv[ind * 10 + ind + i], countDiv[ind * 10 + ind + i + 1]);
                     }
                     else {
-                        toggleClass("comparing", countOf[ind * 10 + ind + i], countDiv[ind * 10 + ind + i]);
+                        toggleClass("comparing", countOf[ind * 10 + ind + i], countDiv[ind * 10 + ind + i + 1]);
                     }
                     toggleClass("swapping", countOf[ind * 10 + ind + i + 1]);
                     await sleep(ms);
@@ -379,9 +407,16 @@ end function
                 for (let i = 0; i < values.length; i++) {
                     values[i] = output[i];
                     sortedArray[ind * values.length + ind + i + 1].textContent = values[i];
+                    divs[i].textContent = values[i];
                     await sleep(ms);
                 }
+                if (isSorted) {
+                    for (let i = 0; i < values.length; i++) {
+                        toggleClass("sorted", divs[i]);
+                        toggleClass("sorted", sortedArray[ind * values.length + ind + i + 1]);
+                    }
 
+                }
                 ind++;
             }
 
@@ -430,6 +465,14 @@ end function
             document.getElementById("max-container").style.display = "block";
             document.getElementById("max").textContent = max;
         }
+
+        function infoAboutPasses(content, cn) {
+            const li = document.createElement("div");
+            li.className = cn;
+            li.textContent = content;
+            return li;
+        }
+
     </script>
     <script src="./script.js"></script>
 </body>

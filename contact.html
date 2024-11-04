@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me | Arun Neupane</title>
+    <meta name="description" content="Get in touch for support or inquiries. I'm here to help!" />
+    <meta name="keywords" content="contact, support, inquiry, sorting help, reach out" />
+
+    <link rel="shortcut icon" href="./images/contact.webp" type="image/x-icon">
+    <link rel="stylesheet" href="./styles.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Roboto", Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: black;
+            background: linear-gradient(135deg, #07090c, #0fe0f7);
+        }
+
+        .menu-toggle span {
+            background-color: black;
+        }
+
+        .contact-page {
+            display: flex;
+            flex-direction: row;
+            max-width: 1000px;
+            width: 100%;
+            background-color: transparent;
+            border-radius: 12px;
+            /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); */
+            overflow: hidden;
+            padding-top: 3rem;
+        }
+
+        /* Contact Form Section */
+        .contact-form {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #b3cced70;
+        }
+
+        .contact-form h1 {
+            font-size: 2.5rem;
+            color: #0044cc;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form p,
+        .catchphrase {
+            font-size: 1rem;
+            color: #000000;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeSlideIn 1s ease-out forwards;
+        }
+
+        .catchphrase {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        label {
+            font-size: 1.1rem;
+            color: #0f0f0f;
+        }
+
+        input,
+        input[type="text"],
+        textarea {
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 20px;
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+            background-color: #0f0f0f;
+
+            border: none;
+        }
+
+        input[type="submit"] {
+            background-color: #0044cc40;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+
+        input[type="submit"]:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            color: white;
+        }
+
+        /* Follow Me Section */
+        .follow-me-section {
+            flex: 0.7;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #e3ecff70;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            margin: 1.5rem 0;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-photo:hover {
+            transform: translateY(-5px);
+        }
+
+        .follow-me-section h3 {
+            font-size: 1.8rem;
+            color: #0044cc;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-direction: column;
+        }
+
+        .socials {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: rgb(44, 149, 236);
+        }
+
+        .icon {
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+            background-color: white;
+            padding: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-form button:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .convert-logo-div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .convert-logo-div h3 {
+            padding-top: 15px;
+        }
+
+        .convert-logo-div img {
+            border-radius: 50%;
+        }
+
+        .convert-logo-div {
+            display: flex;
+            justify-content: center;
+        }
+
+        .description-image {
+            height: 50px;
+            width: 50px;
+        }
+
+        @media (max-width:768px) {
+            .contact-page {
+                flex-direction: column-reverse;
+                padding-top: 0rem;
+            }
+
+            .follow-me-section {
+                padding: 0;
+                padding-top: 4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links1">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble</a>
+            <a href="./selectionSort.html">Selection</a>
+            <a href="./insertionSort.html">Insertion</a>
+            <a href="./mergeSort.html">Merge</a>
+            <a href="./quickSort.html">Quick</a>
+            <a href="./heapSort.html">Heap</a>
+            <a href="./radixSort.html">Radix</a>
+            <a href="./shellSort.html">Shell</a>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble Sort</a>
+            <a href="./selectionSort.html">Selection Sort</a>
+            <a href="./insertionSort.html">Insertion Sort</a>
+            <a href="./mergeSort.html">Merge Sort</a>
+            <a href="./quickSort.html">Quick Sort</a>
+            <a href="./heapSort.html">Heap Sort</a>
+            <a href="./radixSort.html">Radix Sort</a>
+            <a href="./shellSort.html">Shell Sort</a>
+        </div>
+    </nav>
+
+    <div class="contact-page">
+        <!-- Contact Form Section -->
+        <div class="contact-form">
+            <div class="convert-logo-div">
+                <h1>Contact Me</h1>
+                <img src="./images/animated/phone-contact.gif" alt="Contact" class="description-image">
+            </div>
+            <p>Feel free to reach out through this form for any inquiries or support requests!</p>
+            <form action="mailto:arunneupane0000@gmail.com" method="post" enctype="text/plain">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+
+                <input type="submit" value="Send Message">
+            </form>
+        </div>
+
+        <!-- Follow Me Section with Profile Photo and Social Icons -->
+        <div class="follow-me-section">
+            <p class="catchphrase">"Connecting with you is just the beginning. Let's turn your ideas into reality!"</p>
+            <img src="./images/me-in-the-pool.jpg" alt="Profile Photo" class="profile-photo">
+
+            <div class="convert-logo-div">
+                <img src="./images/animated/add.gif" alt="Contact" class="description-image">
+                <h3>Follow Me On</h3>
+            </div>
+
+            <div class="social-icons">
+                <div class="socials">
+                    <img src="./images/socials/instagram.png" alt="Instagram" class="icon"
+                        onclick="window.open('https://www.instagram.com/arundada9000', '_blank')">
+                    <img src="./images/socials/facebook.png" alt="Facebook" class="icon"
+                        onclick="window.open('https://www.facebook.com/arunneupane9000/', '_blank')">
+                    <img src="./images/socials/youtube.png" alt="YouTube" class="icon"
+                        onclick="window.open('https://www.youtube.com/@code_with_ease', '_blank')">
+                    <img src="./images/socials/github.png" alt="GitHub" class="icon"
+                        onclick="window.open('https://github.com/arundada9000', '_blank')">
+                </div>
+                <div class="socials">
+                    <p>Email me</p>
+                    <img src="./images/socials/email.png" alt="Email" class="icon"
+                        onclick="window.open('mailto:arunneupane0000@gmail.com', '_blank')">
+                    <p>Whatsapp me</p>
+                    <img src="./images/socials/whatsapp.png" alt="WhatsApp" class="icon"
+                        onclick="window.open('tel:+9779811420975', '_blank')">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-title">Sorting Visualizer</p>
+            <div class="footer-links">
+                <a href="https://github.com/arundada9000/Sorting" target="_blank" rel="noopener">Source Code</a> |
+                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener">Portfolio</a> |
+                <a href="./contact.html" class="bb">Contact</a>
+            </div>
+            <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-credit">For Learning and Development</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

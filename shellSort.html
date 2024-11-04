@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shell Sort</title>
+    <meta name="description" content="shell sort visualized step by step with its time and space complexities" />
+    <meta name="keyword"
+        content="shell sort, shell sort visualized,step by step, shell sort in easy way, time complexity, space complexity, shell sort properties, arun neupane,sorting" />
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links1">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble</a>
+            <a href="./selectionSort.html">Selection</a>
+            <a href="./insertionSort.html">Insertion</a>
+            <a href="./mergeSort.html">Merge</a>
+            <a href="./quickSort.html">Quick</a>
+            <a href="./heapSort.html">Heap</a>
+            <a href="./radixSort.html">Radix</a>
+            <a href="./shellSort.html" class="bb">Shell</a>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble Sort</a>
+            <a href="./selectionSort.html">Selection Sort</a>
+            <a href="./insertionSort.html">Insertion Sort</a>
+            <a href="./mergeSort.html">Merge Sort</a>
+            <a href="./quickSort.html">Quick Sort</a>
+            <a href="./heapSort.html">Heap Sort</a>
+            <a href="./radixSort.html">Radix Sort</a>
+            <a href="./shellSort.html" class="bb">Shell Sort</a>
+        </div>
+    </nav>
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <div class="container">
+        <section class="front">
+            <div class="front-main">
+                <div class="icon-container">
+                    <img src="./images/shell.webp" alt="shell sort">
+                    <h1>Shell Sort</h1>
+                </div>
+
+                <div class="sort-input">
+
+                    <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
+                        placeholder="Enter numbers separated with commas as 1,2,3,4">
+
+                    <button id="sort-btn" class="sort-btn">Sort</button>
+                </div>
+            </div>
+            <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
+                <button id="skip" class="control-btn">Skip Visualization</button>
+            </div>
+            <div class="passesandinfo">
+                <div class="numbers" id="num-div"></div>
+                <div class="passes" id="passes"></div>
+            </div>
+        </section>
+
+        <div class="howto-wrapper">
+            <div class="howto" id="howto">
+                <div class="qs">
+                    <h3>How to use ?</h3>
+                    <button class="show">+</button>
+                    <button class="hide">-</button>
+                </div>
+                <div class="ans">
+                    <p>
+                        Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting
+                        will
+                        start
+                        and
+                        you can watch each pass as it gets sorted.
+                        When it shows green it means the two of them are
+                        being
+                        compared
+                        when red shows, it means the left number is greater than right number so it needs swapping
+                        The blue color means the number is
+                        at its
+                        correct position and thus sorted
+                        it will continue to check other numbers until it reaches end.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sorting-algorithm-container">
+            <h1 class="algorithm-title">Shell Sort Overview</h1>
+
+            <section class="history">
+                <h2 class="section-title">History</h2>
+                <p>Shell sort was proposed by Donald Shell in 1959 as a generalization of insertion sort. It improves
+                    upon the insertion sort algorithm by allowing the exchange of items that are far apart, making it
+                    more efficient for larger datasets.</p>
+            </section>
+
+            <section class="current-uses">
+                <h2 class="section-title">Current Uses</h2>
+                <ul>
+                    <li><strong>Intermediate Sorting:</strong> Used as an intermediate sort for larger datasets.</li>
+                    <li><strong>Small to Medium Datasets:</strong> Effective for small to medium-sized datasets where
+                        performance is essential.</li>
+                    <li><strong>Hybrid Algorithms:</strong> Often used in combination with other sorting algorithms to
+                        enhance performance.</li>
+                </ul>
+            </section>
+
+            <section class="complexity">
+                <h2 class="section-title">Time and Space Complexity</h2>
+                <h3>Time Complexity</h3>
+                <ul>
+                    <li><strong>Best Case:</strong> <code>O(n log n)</code> – Efficient for certain sequences.</li>
+                    <li><strong>Average Case:</strong> <code>O(n<sup>3/2</sup>)</code> – Dependent on the gap sequence
+                        used.
+                    </li>
+                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> – Similar to insertion sort for
+                        certain gap
+                        sequences.</li>
+                </ul>
+                <h3>Space Complexity</h3>
+                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm requiring
+                    minimal additional space.</p>
+            </section>
+
+            <section class="pseudo-code">
+                <h2 class="section-title">Pseudo Code</h2>
+                <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    <pre><code><!-- This is the pseudo code for Shell Sort -->function shellSort(arr):
+    n = length(arr)
+    gap = n / 2
+    while gap > 0:
+        for i from gap to n:
+            temp = arr[i]
+            j = i
+            while j >= gap and arr[j - gap] > temp:
+                arr[j] = arr[j - gap]
+                j = j - gap
+            arr[j] = temp
+        gap = gap / 2</code></pre>
+                </div>
+
+            </section>
+
+            <section class="characteristics">
+                <h2 class="section-title">Key Characteristics</h2>
+                <ul>
+                    <li><strong>In-Place:</strong> Shell sort requires minimal additional memory.</li>
+                    <li><strong>Not Stable:</strong> The algorithm is not stable as it may change the relative order of
+                        equal elements.</li>
+                </ul>
+            </section>
+
+            <section class="summary">
+                <h2 class="section-title">Summary</h2>
+                <p>Shell sort is an efficient generalization of insertion sort that enhances performance through the use
+                    of gaps. With a time complexity that varies based on the gap sequence, it is particularly effective
+                    for small to medium datasets.</p>
+            </section>
+        </div>
+
+    </div>
+
+    <button id="backToTopBtn" title="Go to top">↑</button>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-title">Sorting Visualizer</p>
+            <div class="footer-links">
+                <a href="https://github.com/arundada9000/Sorting" target="_blank" rel="noopener">Source Code</a> |
+                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener">Portfolio</a> |
+                <a href="./contact.html">Contact</a>
+            </div>
+            <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-credit">For Learning and Development</p>
+        </div>
+    </footer>
+
+    <script>
+        const sortBtn = document.getElementById("sort-btn");
+        const inputBox = document.getElementById("input-num");
+        const passesDiv = document.getElementById("passes");
+        const howto = document.getElementById("howto");
+        const skipBtn = document.getElementById("skip");
+        const fastBtn = document.getElementById("fast-btn");
+        let ms = 1000;
+
+        sortBtn.addEventListener("click", () => {
+            if (sortBtn.textContent == "Sorting...") return;
+            let input = inputBox.value.trim();
+            if (input == "") {
+                alert("Please enter some values ! ");
+                return;
+            }
+            ms = 1000;
+            displayBtn("inline");
+            sortBtn.textContent = "Sorting...";
+
+            const values = input.split(',');
+            console.log(values);
+
+            const numDiv = document.getElementById("num-div");
+            numDiv.innerHTML = "";
+            passesDiv.innerHTML = "";
+            howto.innerHTML = "";
+            howto.style.visibility = "hidden";
+
+            for (let i = 0; i < values.length; i++) {
+                let el = document.createElement("div");
+                el.className = "num-wrapper";
+
+                let li = document.createElement("div");
+                li.className = "num";
+                li.textContent = values[i];
+                values[i] = parseFloat(values[i]);
+
+                let li1 = document.createElement("p");
+                li1.classList = "ij";
+                li1.textContent = i;
+                el.appendChild(li1);
+                el.appendChild(li);
+                numDiv.appendChild(el);
+            }
+            const divs = document.querySelectorAll(".num");
+
+        });
+
+    </script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

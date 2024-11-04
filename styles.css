@@ -166,7 +166,7 @@ h1 {
 }
 
 .front {
-  min-height: 100svh;
+  min-height: 80svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -287,7 +287,10 @@ button {
   text-align: center;
   z-index: 1;
 }
-
+#sorted-div {
+  border-bottom: 2px solid salmon;
+  padding-bottom: 10px;
+}
 .comparing {
   background-color: #f39c12;
 }
@@ -513,6 +516,9 @@ button {
 }
 
 @media (max-width: 768px) {
+  .front {
+    min-height: 95svh;
+  }
   h1 {
     font-size: 1.75rem;
   }

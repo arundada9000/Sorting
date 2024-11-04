@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heap Sort</title>
+    <meta name="description" content="heap sort visualized step by step with its time and space complexities" />
+    <meta name="keyword"
+        content="heap sort, heap sort visualized,step by step, heap sort in easy way, time complexity, space complexity, heap sort properties, arun neupane,sorting" />
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links1">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble</a>
+            <a href="./selectionSort.html">Selection</a>
+            <a href="./insertionSort.html">Insertion</a>
+            <a href="./mergeSort.html">Merge</a>
+            <a href="./quickSort.html">Quick</a>
+            <a href="./heapSort.html" class="bb">Heap</a>
+            <a href="./radixSort.html">Radix</a>
+            <a href="./shellSort.html">Shell</a>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble Sort</a>
+            <a href="./selectionSort.html">Selection Sort</a>
+            <a href="./insertionSort.html">Insertion Sort</a>
+            <a href="./mergeSort.html">Merge Sort</a>
+            <a href="./quickSort.html">Quick Sort</a>
+            <a href="./heapSort.html" class="bb">Heap Sort</a>
+            <a href="./radixSort.html">Radix Sort</a>
+            <a href="./shellSort.html">Shell Sort</a>
+        </div>
+    </nav>
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
+    <div class="container">
+        <section class="front">
+            <div class="front-main">
+                <div class="icon-container">
+                    <img src="./images/heap.webp" alt="heap sort">
+                    <h1>heap Sort</h1>
+                </div>
+
+                <div class="sort-input">
+
+                    <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
+                        placeholder="Enter numbers separated with commas as 1,2,3,4">
+
+                    <button id="sort-btn" class="sort-btn">Sort</button>
+                </div>
+            </div>
+            <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
+                <button id="skip" class="control-btn">Skip Visualization</button>
+            </div>
+            <div class="passesandinfo">
+                <div class="numbers" id="num-div"></div>
+                <div class="passes" id="passes"></div>
+            </div>
+        </section>
+
+        <div class="howto-wrapper">
+            <div class="howto" id="howto">
+                <div class="qs">
+                    <h3>How to use ?</h3>
+                    <button class="show">+</button>
+                    <button class="hide">-</button>
+                </div>
+                <div class="ans">
+                    <p>
+                        Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting
+                        will
+                        start
+                        and
+                        you can watch each pass as it gets sorted.
+                        When it shows green it means the two of them are
+                        being
+                        compared
+                        when red shows, it means the left number is greater than right number so it needs swapping
+                        The blue color means the number is
+                        at its
+                        correct position and thus sorted
+                        it will continue to check other numbers until it reaches end.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sorting-algorithm-container">
+            <h1 class="algorithm-title">Heap Sort Overview</h1>
+
+            <section class="history">
+                <h2 class="section-title">History</h2>
+                <p>Heap sort is based on the binary heap data structure and was developed in the 1960s. It is considered
+                    an efficient sorting algorithm and is often used in systems that require high performance.</p>
+            </section>
+
+            <section class="current-uses">
+                <h2 class="section-title">Current Uses</h2>
+                <ul>
+                    <li><strong>Data Processing:</strong> Used in systems that require efficient sorting and management
+                        of data.</li>
+                    <li><strong>Priority Queues:</strong> Often employed in implementing priority queues due to its
+                        underlying heap structure.</li>
+                    <li><strong>Embedded Systems:</strong> Suitable for environments with limited memory resources.</li>
+                </ul>
+            </section>
+
+            <section class="complexity">
+                <h2 class="section-title">Time and Space Complexity</h2>
+                <h3>Time Complexity</h3>
+                <ul>
+                    <li><strong>Best Case:</strong> <code>O(n log n)</code> – Performance is consistent regardless of
+                        input.</li>
+                    <li><strong>Average Case:</strong> <code>O(n log n)</code> – Efficient average performance.</li>
+                    <li><strong>Worst Case:</strong> <code>O(n log n)</code> – Consistent performance even in the worst
+                        case.</li>
+                </ul>
+                <h3>Space Complexity</h3>
+                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm that
+                    requires minimal additional space.</p>
+            </section>
+
+            <section class="pseudo-code">
+                <h2 class="section-title">Pseudo Code</h2>
+                <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    <pre><code><!-- Heap sort -->function heapSort(arr):
+    n = length(arr)
+    // Build heap (rearrange array)
+    for i from n/2 - 1 to 0:
+        heapify(arr, n, i)
+    // One by one extract elements from heap
+    for i from n-1 to 0:
+        swap arr[0] and arr[i]
+        heapify(arr, i, 0)
+
+function heapify(arr, n, i):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+    if left < n and arr[left] > arr[largest]:
+        largest = left
+    if right < n and arr[right] > arr[largest]:
+        largest = right
+    if largest != i:
+        swap arr[i] and arr[largest]
+        heapify(arr, n, largest)</code></pre>
+                </div>
+            </section>
+
+            <section class="characteristics">
+                <h2 class="section-title">Key Characteristics</h2>
+                <ul>
+                    <li><strong>In-Place:</strong> Heap sort operates in place, requiring minimal additional memory.
+                    </li>
+                    <li><strong>Not Stable:</strong> The algorithm is not stable, as equal elements may change order.
+                    </li>
+                </ul>
+            </section>
+
+            <section class="summary">
+                <h2 class="section-title">Summary</h2>
+                <p>Heap sort is a comparison-based sorting algorithm that utilizes the properties of a binary heap. With
+                    a time complexity of <code>O(n log n)</code>, it is efficient and suitable for applications
+                    requiring guaranteed performance.</p>
+            </section>
+        </div>
+
+    </div>
+    <button id="backToTopBtn" title="Go to top">↑</button>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-title">Sorting Visualizer</p>
+            <div class="footer-links">
+                <a href="https://github.com/arundada9000/Sorting" target="_blank" rel="noopener">Source Code</a> |
+                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener">Portfolio</a> |
+                <a href="./contact.html">Contact</a>
+            </div>
+            <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-credit">For Learning and Development</p>
+        </div>
+    </footer>
+
+    <script>
+        const sortBtn = document.getElementById("sort-btn");
+        const inputBox = document.getElementById("input-num");
+        const passesDiv = document.getElementById("passes");
+        const howto = document.getElementById("howto");
+        const skipBtn = document.getElementById("skip");
+        const fastBtn = document.getElementById("fast-btn");
+        let ms = 1000;
+
+        sortBtn.addEventListener("click", () => {
+            if (sortBtn.textContent == "Sorting...") return;
+            let input = inputBox.value.trim();
+            if (input == "") {
+                alert("Please enter some values ! ");
+                return;
+            }
+            ms = 1000;
+            displayBtn("inline");
+            sortBtn.textContent = "Sorting...";
+
+            const values = input.split(',');
+            console.log(values);
+
+            const numDiv = document.getElementById("num-div");
+            numDiv.innerHTML = "";
+            passesDiv.innerHTML = "";
+            howto.innerHTML = "";
+            howto.style.visibility = "hidden";
+
+            for (let i = 0; i < values.length; i++) {
+                let el = document.createElement("div");
+                el.className = "num-wrapper";
+
+                let li = document.createElement("div");
+                li.className = "num";
+                li.textContent = values[i];
+                values[i] = parseFloat(values[i]);
+
+                let li1 = document.createElement("p");
+                li1.classList = "ij";
+                li1.textContent = i;
+                el.appendChild(li1);
+                el.appendChild(li);
+                numDiv.appendChild(el);
+            }
+            const divs = document.querySelectorAll(".num");
+
+        });
+
+        function createDiv(cn1, cn2, content, time, j, passCount) {
+            const outerDiv = document.createElement("div");
+            outerDiv.className = cn1;
+
+            const li = document.createElement("div");
+            li.className = cn2;
+            if (passCount == time)
+                li.textContent = "Sorted ";
+            else
+                li.textContent = "Pass " + passCount;
+            outerDiv.appendChild(li);
+
+            for (let i = 0; i < time; i++) {
+                const li = document.createElement("div");
+                li.className = cn2;
+                if (j <= i)
+                    li.classList.add("sorted");
+                li.textContent = content[i];
+                outerDiv.appendChild(li);
+            }
+
+            return outerDiv;
+        }
+
+        function toggleClass(divs, j, cn) {
+            divs[j].classList.toggle(cn);
+            divs[j + 1].classList.toggle(cn);
+        }
+
+    </script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Sort</title>
+    <meta name="description" content="Merge sort visualized step by step with its time and space complexities" />
+    <meta name="keyword"
+        content="merge sort, merge sort visualized,step by step, merge sort in easy way, time complexity, space complexity, merge sort properties, arun neupane,sorting" />
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links1">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble</a>
+            <a href="./selectionSort.html">Selection</a>
+            <a href="./insertionSort.html">Insertion</a>
+            <a href="./mergeSort.html" class="bb">Merge</a>
+            <a href="./quickSort.html">Quick</a>
+            <a href="./heapSort.html">Heap</a>
+            <a href="./radixSort.html">Radix</a>
+            <a href="./shellSort.html">Shell</a>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble Sort</a>
+            <a href="./selectionSort.html">Selection Sort</a>
+            <a href="./insertionSort.html">Insertion Sort</a>
+            <a href="./mergeSort.html" class="bb">Merge Sort</a>
+            <a href="./quickSort.html">Quick Sort</a>
+            <a href="./heapSort.html">Heap Sort</a>
+            <a href="./radixSort.html">Radix Sort</a>
+            <a href="./shellSort.html">Shell Sort</a>
+        </div>
+    </nav>
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
+    <div class="container">
+        <section class="front">
+            <div class="front-main">
+                <div class="icon-container">
+                    <img src="./images/merge.webp" alt="merge sort">
+                    <h1>Merge Sort</h1>
+                </div>
+
+                <div class="sort-input">
+
+                    <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
+                        placeholder="Enter numbers separated with commas as 1,2,3,4">
+
+                    <button id="sort-btn" class="sort-btn">Sort</button>
+                </div>
+            </div>
+            <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
+                <button id="skip" class="control-btn">Skip Visualization</button>
+            </div>
+            <div class="passesandinfo">
+                <div class="numbers" id="num-div"></div>
+                <div class="passes" id="passes"></div>
+            </div>
+        </section>
+
+        <div class="howto-wrapper">
+            <div class="howto" id="howto">
+                <div class="qs">
+                    <h3>How to use ?</h3>
+                    <button class="show">+</button>
+                    <button class="hide">-</button>
+                </div>
+                <div class="ans">
+                    <p>
+                        Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting
+                        will
+                        start
+                        and
+                        you can watch each pass as it gets sorted.
+                        When it shows green it means the two of them are
+                        being
+                        compared
+                        when red shows, it means the left number is greater than right number so it needs swapping
+                        The blue color means the number is
+                        at its
+                        correct position and thus sorted
+                        it will continue to check other numbers until it reaches end.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sorting-algorithm-container">
+            <h1 class="algorithm-title">Merge Sort Overview</h1>
+
+            <section class="history">
+                <h2 class="section-title">History</h2>
+                <p>Merge sort was invented by John von Neumann in 1945. It is a classic divide-and-conquer algorithm
+                    that is particularly effective for large datasets and is widely used in computer science and
+                    programming.</p>
+            </section>
+
+            <section class="current-uses">
+                <h2 class="section-title">Current Uses</h2>
+                <ul>
+                    <li><strong>Large Data Sets:</strong> Often employed for sorting large datasets where performance is
+                        critical.</li>
+                    <li><strong>Stable Sort:</strong> Utilized in applications where stable sorting is required.</li>
+                    <li><strong>External Sorting:</strong> Commonly used in external sorting algorithms for managing
+                        large files that do not fit into memory.</li>
+                </ul>
+            </section>
+
+            <section class="complexity">
+                <h2 class="section-title">Time and Space Complexity</h2>
+                <h3>Time Complexity</h3>
+                <ul>
+                    <li><strong>Best Case:</strong> <code>O(n log n)</code> – Consistent performance across all cases.
+                    </li>
+                    <li><strong>Average Case:</strong> <code>O(n log n)</code> – Maintains efficient performance on
+                        average.</li>
+                    <li><strong>Worst Case:</strong> <code>O(n log n)</code> – Efficient even in the worst-case
+                        scenario.</li>
+                </ul>
+                <h3>Space Complexity</h3>
+                <p><strong>Space Complexity:</strong> <code>O(n)</code> – Requires additional space for the temporary
+                    arrays used in the merging process.</p>
+            </section>
+
+            <section class="pseudo-code">
+                <h2 class="section-title">Pseudo Code</h2>
+                <div class="code-container">
+                    <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+                    <pre><code><!-- Merge sort -->function mergeSort(arr):
+    if length(arr) <= 1:
+        return arr
+    mid = length(arr) / 2
+    left = mergeSort(arr[0:mid])
+    right = mergeSort(arr[mid:length(arr)])
+    return merge(left, right)
+
+function merge(left, right):
+    result = []
+    while left and right are not empty:
+        if left[0] <= right[0]:
+            append left[0] to result
+            remove left[0]
+        else:
+            append right[0] to result
+            remove right[0]
+    append remaining elements of left and right to result
+    return result</code></pre>
+                </div>
+            </section>
+
+            <section class="characteristics">
+                <h2 class="section-title">Key Characteristics</h2>
+                <ul>
+                    <li><strong>Stable:</strong> Merge sort is a stable sorting algorithm.</li>
+                    <li><strong>Divide and Conquer:</strong> The algorithm utilizes the divide-and-conquer strategy
+                        effectively.</li>
+                </ul>
+            </section>
+
+            <section class="summary">
+                <h2 class="section-title">Summary</h2>
+                <p>Merge sort is a powerful and efficient sorting algorithm that consistently performs at
+                    <code>O(n log n)</code> complexity. Its stability and performance make it ideal for sorting large
+                    datasets and is widely utilized in computer science applications.
+                </p>
+            </section>
+        </div>
+    </div>
+    <button id="backToTopBtn" title="Go to top">↑</button>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-title">Sorting Visualizer</p>
+            <div class="footer-links">
+                <a href="https://github.com/arundada9000/Sorting" target="_blank" rel="noopener">Source Code</a> |
+                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener">Portfolio</a> |
+                <a href="./contact.html">Contact</a>
+            </div>
+            <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-credit">For Learning and Development</p>
+        </div>
+    </footer>
+
+    <script>
+        const sortBtn = document.getElementById("sort-btn");
+        const inputBox = document.getElementById("input-num");
+        const passesDiv = document.getElementById("passes");
+        const howto = document.getElementById("howto");
+        const skipBtn = document.getElementById("skip");
+        const fastBtn = document.getElementById("fast-btn");
+        let ms = 1000;
+
+        sortBtn.addEventListener("click", () => {
+            if (sortBtn.textContent == "Sorting...") return;
+            let input = inputBox.value.trim();
+            if (input == "") {
+                alert("Please enter some values ! ");
+                return;
+            }
+            ms = 1000;
+            displayBtn("inline");
+            sortBtn.textContent = "Sorting...";
+
+            const values = input.split(',');
+            console.log(values);
+
+            const numDiv = document.getElementById("num-div");
+            numDiv.innerHTML = "";
+            passesDiv.innerHTML = "";
+            howto.innerHTML = "";
+            howto.style.visibility = "hidden";
+
+            for (let i = 0; i < values.length; i++) {
+                let el = document.createElement("div");
+                el.className = "num-wrapper";
+
+                let li = document.createElement("div");
+                li.className = "num";
+                li.textContent = values[i];
+                values[i] = parseFloat(values[i]);
+
+                let li1 = document.createElement("p");
+                li1.classList = "ij";
+                li1.textContent = i;
+                el.appendChild(li1);
+                el.appendChild(li);
+                numDiv.appendChild(el);
+            }
+            const divs = document.querySelectorAll(".num");
+
+        });
+
+    </script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
