@@ -4,11 +4,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Summary | Sorting</title>
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .menu-toggle span {
+            background-color: black;
+        }
+
+        body {
+            background: #f4f7f9;
+            color: #333;
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 20px auto;
+            max-width: 1000px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #444;
+            border: none;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            padding-top: 70px;
+        }
+
+        .table-container table {
+            min-width: 800px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .table-container table th:first-child,
+        .table-container table td:first-child {
+            position: sticky;
+            left: 0px;
+            z-index: 999;
+            background-color: #f4f7f9;
+        }
+
+        .table-container table th:first-child {
+            background-color: #007acc;
+        }
+
+        thead {
+            background-color: #007acc;
+            color: #fff;
+        }
+
+        .table-container table tbody tr:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .definitions {
+            background-color: #e8f6f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .definitions p {
+            margin-bottom: 10px;
+        }
+
+        .definitions strong {
+            color: #007acc;
+        }
+
+        @media (max-width: 600px) {
+
+            th,
+            td {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            .container {
+                padding-top: 40px;
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links1">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble</a>
+            <a href="./selectionSort.html">Selection</a>
+            <a href="./insertionSort.html">Insertion</a>
+            <a href="./mergeSort.html">Merge</a>
+            <a href="./quickSort.html">Quick</a>
+            <a href="./heapSort.html">Heap</a>
+            <a href="./radixSort.html">Radix</a>
+            <a href="./shellSort.html">Shell</a>
+            <a href="./summary.html" class="bb">Summary</a>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html" class="bb">Bubble Sort</a>
+            <a href="./selectionSort.html">Selection Sort</a>
+            <a href="./insertionSort.html">Insertion Sort</a>
+            <a href="./mergeSort.html">Merge Sort</a>
+            <a href="./quickSort.html">Quick Sort</a>
+            <a href="./heapSort.html">Heap Sort</a>
+            <a href="./radixSort.html">Radix Sort</a>
+            <a href="./shellSort.html">Shell Sort</a>
+            <a href="./summary.html" class="bb">Summary</a>
+        </div>
+    </nav>
 
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <div class="container">
+        <h1>Sorting Algorithm Summary</h1>
+
+        <h2>Algorithm Complexity Table</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Algorithm</th>
+                        <th>Average Time</th>
+                        <th>Worst Time</th>
+                        <th>Best Time</th>
+                        <th>Space Complexity</th>
+                        <th>Stable</th>
+                        <th>In-place</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bubble Sort</td>
+                        <td>O(n²)</td>
+                        <td>O(n²)</td>
+                        <td>O(n)</td>
+                        <td>O(1)</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Comparison</td>
+                    </tr>
+                    <tr>
+                        <td>Selection Sort</td>
+                        <td>O(n²)</td>
+                        <td>O(n²)</td>
+                        <td>O(n²)</td>
+                        <td>O(1)</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Comparison</td>
+                    </tr>
+                    <tr>
+                        <td>Insertion Sort</td>
+                        <td>O(n²)</td>
+                        <td>O(n²)</td>
+                        <td>O(n)</td>
+                        <td>O(1)</td>
+                        <td>Yes</td>
+                        <td>Yes</td>
+                        <td>Comparison</td>
+                    </tr>
+                    <tr>
+                        <td>Merge Sort</td>
+                        <td>O(n log n)</td>
+                        <td>O(n log n)</td>
+                        <td>O(n log n)</td>
+                        <td>O(n)</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>Comparison</td>
+                    </tr>
+                    <tr>
+                        <td>Quick Sort</td>
+                        <td>O(n log n)</td>
+                        <td>O(n²)</td>
+                        <td>O(n log n)</td>
+                        <td>O(log n)</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Comparison</td>
+                    </tr>
+                    <tr>
+                        <td>Heap Sort</td>
+                        <td>O(n log n)</td>
+                        <td>O(n log n)</td>
+                        <td>O(n log n)</td>
+                        <td>O(1)</td>
+                        <td>No</td>
+                        <td>Yes</td>
+                        <td>Comparison</td>
+                    </tr>
+                    <tr>
+                        <td>Radix Sort</td>
+                        <td>O(nk)</td>
+                        <td>O(nk)</td>
+                        <td>O(nk)</td>
+                        <td>O(n + k)</td>
+                        <td>Yes</td>
+                        <td>No</td>
+                        <td>Non-comparison</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Key Definitions</h2>
+        <div class="definitions">
+            <p><strong>Sorting:</strong> Sorting is the process of arranging elements in a specific order (ascending or
+                descending) based on a criterion, typically numerical or lexicographical.</p>
+
+            <p><strong>In-place Sorting:</strong> An algorithm is in-place if it requires a constant amount of extra
+                space (O(1)) to rearrange the elements. These algorithms do not use additional data structures for
+                storage.</p>
+
+            <p><strong>Stable Sorting:</strong> A sorting algorithm is stable if it maintains the relative order of
+                equal elements in the input array. In other words, two equal elements retain their positions relative to
+                each other even after sorting.</p>
+        </div>
+    </div>
+
+    <button id="backToTopBtn" title="Go to top">↑</button>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-title">Sorting Visualizer</p>
+            <div class="footer-links">
+                <a href="https://github.com/arundada9000/Sorting" target="_blank" rel="noopener">Source Code</a> |
+                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener">Portfolio</a> |
+                <a href="./contact.html">Contact</a>
+            </div>
+            <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-credit">For Learning and Development</p>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
 </body>
 
 </html>

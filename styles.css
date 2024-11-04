@@ -96,7 +96,7 @@ nav.scrolled {
 }
 .nav-links1 {
   background-color: #0f0f0f;
-  max-width: 710px;
+  max-width: 810px;
 }
 nav a::after {
   content: "";
@@ -223,6 +223,21 @@ button {
   display: none;
   background-color: transparent;
 }
+.info {
+  font-size: 1.1rem;
+  font-weight: bold;
+  /* font-style: italic; */
+  margin-top: 1rem;
+  text-align: center;
+  color: rgb(237, 214, 82);
+  word-wrap: break-word;
+}
+/* #comparingDiv {
+  max-width: 700px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */
 .passInfo {
   display: flex;
   align-items: center;
@@ -247,6 +262,10 @@ button {
 }
 
 /* Numbers and Passes */
+.passes .numbers {
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgb(150, 60, 229);
+}
 .numbers {
   display: flex;
   gap: 8px;
@@ -259,6 +278,9 @@ button {
 .passes .numbers .num:first-child {
   width: 80px;
   font-size: 1rem;
+  background: linear-gradient(135deg, #faaef0, #0fe0f7);
+  color: black;
+  font-weight: bolder;
 }
 .num-wrapper {
   position: relative;
@@ -518,6 +540,9 @@ button {
 @media (max-width: 768px) {
   .front {
     min-height: 95svh;
+  }
+  .icon-container h1 {
+    padding-top: 8px;
   }
   h1 {
     font-size: 1.75rem;

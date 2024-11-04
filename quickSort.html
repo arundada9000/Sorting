@@ -29,6 +29,7 @@
             <a href="./heapSort.html">Heap</a>
             <a href="./radixSort.html">Radix</a>
             <a href="./shellSort.html">Shell</a>
+            <a href="./summary.html">Summary</a>
         </div>
         <div class="nav-links">
             <a href="./index.html">Home</a>
@@ -40,6 +41,7 @@
             <a href="./heapSort.html">Heap Sort</a>
             <a href="./radixSort.html">Radix Sort</a>
             <a href="./shellSort.html">Shell Sort</a>
+            <a href="./summary.html">Summary</a>
         </div>
     </nav>
 
@@ -184,7 +186,7 @@ function partition(arr, low, high):
             </section>
         </div>
     </div>
-    
+
     <button id="backToTopBtn" title="Go to top">↑</button>
 
     <footer class="site-footer">
@@ -229,6 +231,7 @@ function partition(arr, low, high):
             passesDiv.innerHTML = "";
             howto.innerHTML = "";
             howto.style.visibility = "hidden";
+            let sorted = [];
 
             for (let i = 0; i < values.length; i++) {
                 let el = document.createElement("div");
@@ -250,9 +253,9 @@ function partition(arr, low, high):
             const divs = document.querySelectorAll(".num");
             const infoBtn = document.querySelectorAll(".info-btn");
 
-            quickSort();
+            quickSort1();
 
-            async function quickSort() {
+            async function quickSort1() {
                 document.getElementById("pi").style.display = "none";
                 await sleep(ms);
                 let i, j, pivot, count = 0;
@@ -307,12 +310,16 @@ function partition(arr, low, high):
                     divs[i + 1].classList.remove("swapping");
                     divs[high].classList.remove("swapping");
                     divs[i + 1].classList.add("sorted");
+                    sorted.push(i + 1);
                     await sleep(ms);
                     if (low == high - 1 || low == high) {
                         divs[low].classList.add("sorted");
+                        sorted.push(low);
                     }
 
                     count++;
+                    let passes = createDiv("numbers", "num", values, sorted, count, i + 1);
+                    passesDiv.appendChild(passes);
                     return i + 1;
                 }
 
@@ -325,7 +332,6 @@ function partition(arr, low, high):
                         await quickSort(values, low, pi - 1);
                         await quickSort(values, pi + 1, high);
                     }
-
                 }
 
                 await quickSort(values, 0, values.length - 1);
@@ -354,9 +360,30 @@ function partition(arr, low, high):
 
         });
 
+        function createDiv(cn1, cn2, content, sorted, passCount, pivot) {
+            const outerDiv = document.createElement("div");
+            outerDiv.className = cn1;
 
+            const li = document.createElement("div");
+            li.className = cn2;
+            li.textContent = "Pass " + passCount;
+            outerDiv.appendChild(li);
 
+            for (let i = 0; i < content.length; i++) {
+                const li = document.createElement("div");
+                li.className = cn2;
+                li.textContent = content[i];
+                outerDiv.appendChild(li);
+                if (sorted.includes(i)) {
+                    li.classList.add("sorted");
+                }
+                if (i == pivot) {
+                    li.classList.add("pivot");
+                }
+            }
 
+            return outerDiv;
+        }
     </script>
     <script src="./script.js"></script>
 </body>
