@@ -557,9 +557,13 @@ button {
     transform: translateX(0px);
   }
 
+  .sort-input {
+    flex-direction: column;
+    gap: 1rem;
+  }
   input[type="text"] {
-    width: 80vw;
-    font-size: 0.9rem;
+    width: 90vw;
+    font-size: 1rem;
   }
 
   .numbers {
