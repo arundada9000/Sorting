@@ -14,6 +14,15 @@
         .max-container {
             display: none;
         }
+
+        .passes #countof-div .num-wrapper:nth-child(2) {
+            display: none !important;
+        }
+
+        /* .container {
+            border: none;
+            background-color: transparent;
+        } */
     </style>
 </head>
 
@@ -51,27 +60,31 @@
         <div class="progress-bar"></div>
     </div>
     <div class="container">
-        <div class="icon-container">
-            <img src="./images/radix.webp" alt="Radix Sort">
-            <h1>Radix Sort</h1>
-        </div>
+        <section class="front">
+            <div class="front-main">
+                <div class="icon-container">
+                    <img src="./images/radix.webp" alt="Radix Sort">
+                    <h1>Radix Sort</h1>
+                </div>
+                <div class="sort-input">
 
-        <div class="sort-input">
+                    <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
+                        placeholder="Enter numbers separated with commas as 1,2,3,4">
 
-            <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
-                placeholder="Enter numbers separated with commas as 1,2,3,4">
+                    <button id="sort-btn" class="sort-btn">Sort</button>
+                </div>
+            </div>
+            <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
+                <button id="skip" class="control-btn">Skip Visualization</button>
+            </div>
+            <div class="passesandinfo">
+                <div class="numbers" id="num-div"></div>
+                <div class="max-container" id="max-container">Max = <span id="max"></span></div>
+                <div class="passes" id="passes"></div>
+            </div>
+        </section>
 
-            <button id="sort-btn" class="sort-btn">Sort</button>
-        </div>
-        <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
-            <button id="skip" class="control-btn">Skip Visualization</button>
-        </div>
-        <div class="passesandinfo">
-            <div class="numbers" id="num-div"></div>
-
-            <div class="max-container" id="max-container">Max = <span id="max"></span></div>
-            <div class="passes" id="passes"></div>
-
+        <div class="howto-wrapper">
             <div class="howto" id="howto">
                 <div class="qs">
                     <h3>How to use ?</h3>
@@ -96,7 +109,6 @@
                     </p>
                 </div>
             </div>
-
         </div>
 
         <div class="sorting-algorithm-container">
@@ -204,6 +216,8 @@ end function
         </div>
     </div>
 
+    <button id="backToTopBtn" title="Go to top">↑</button>
+
     <footer class="site-footer">
         <div class="footer-container">
             <p class="footer-title">Sorting Visualizer</p>
@@ -234,11 +248,11 @@ end function
                 return;
             }
             ms = 1000;
+            ind = 0;
             displayBtn("inline");
             sortBtn.textContent = "Sorting...";
 
             const values = input.split(',');
-            console.log(values);
 
             const numDiv = document.getElementById("num-div");
             numDiv.innerHTML = "";
@@ -264,15 +278,33 @@ end function
             }
             const divs = document.querySelectorAll(".num");
 
-            console.log("Here", values);
             radixSort();
-            console.log("After", values);
 
             async function radixSort() {
                 const max = getMax();
                 for (let exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
                     await countingSort(exp);
                 }
+
+                sortedArray = values.join(", ");
+                howto.style.visibility = "visible";
+                howto.innerHTML = "The array is successfully sorted.There were " + values.length + " numbers." + "The sorted array is : <br>" + sortedArray;
+
+                const btn = document.createElement("button");
+                btn.textContent = "Copy";
+                btn.className = "copy-btn";
+                btn.id = "ans-copy-btn";
+                btn.addEventListener("click", () => {
+                    navigator.clipboard.writeText(sortedArray);
+                    btn.textContent = "Copied!";
+                    setTimeout(() => {
+                        btn.textContent = "Copy";
+                    }, 2000);
+                });
+                howto.appendChild(btn);
+
+                displayBtn("none");
+                sortBtn.textContent = "Sort";
             }
             function getMax() {
                 let max = values[0];
@@ -289,16 +321,15 @@ end function
                 let output = new Array(values.length).fill(0);
                 let count = new Array(10).fill(0);
 
-                let passes = createDiv("numbers", "num", "Count Occurrence", count.length);
+                let passes = createDiv("numbers", "num", "Count Occurrence", count.length, "count-div");
                 passesDiv.appendChild(passes);
-                const countDiv = document.querySelectorAll(".passes .numbers .num");
+                const countDiv = document.querySelectorAll("#passes #count-div .num");
 
                 for (let i = 0; i < count.length; i++) {
                     countDiv[ind * 10 + ind + i + 1].textContent = 0;
                 }
                 for (let i = 0; i < values.length; i++) {
                     const index = Math.floor(values[i] / exp) % 10;
-                    console.log(index);
 
                     count[index]++;
                     toggleClass("comparing", divs[i], countDiv[ind * 10 + ind + index + 1]);
@@ -309,12 +340,36 @@ end function
                     toggleClass("comparing", divs[i], countDiv[ind * 10 + ind + index + 1]);
                     await sleep(ms);
                 }
-                ind++;
                 // throw new Error("Stopping the program execution.");
+                passes = createDiv("numbers", "num", "Count", count.length, "countof-div");
+                passesDiv.appendChild(passes);
+                const countOf = document.querySelectorAll("#passes #countof-div .num");
                 for (let i = 1; i < 10; i++) {
                     count[i] += count[i - 1];
+                    if (i == 1) {
+                        toggleClass("comparing", countDiv[ind * 10 + ind + i], countDiv[ind * 10 + ind + i + 1]);
+                    }
+                    else {
+                        toggleClass("comparing", countOf[ind * 10 + ind + i], countDiv[ind * 10 + ind + i]);
+                    }
+                    toggleClass("swapping", countOf[ind * 10 + ind + i + 1]);
+                    await sleep(ms);
+                    countOf[ind * 10 + ind + i + 1].textContent = count[i];
+                    await sleep(ms);
+
+                    if (i == 1) {
+                        toggleClass("comparing", countDiv[ind * 10 + ind + i], countDiv[ind * 10 + ind + i + 1]);
+                    }
+                    else {
+                        toggleClass("comparing", countOf[ind * 10 + ind + i], countDiv[ind * 10 + ind + i]);
+                    }
+                    toggleClass("swapping", countOf[ind * 10 + ind + i + 1]);
+                    await sleep(ms);
                 }
 
+                passes = createDiv("numbers", "num", "Sorted", values.length, "sorted-div");
+                passesDiv.appendChild(passes);
+                const sortedArray = document.querySelectorAll("#passes #sorted-div .num");
                 for (let i = values.length - 1; i >= 0; i--) {
                     const index = Math.floor(values[i] / exp) % 10;
                     output[count[index] - 1] = values[i];
@@ -323,15 +378,19 @@ end function
 
                 for (let i = 0; i < values.length; i++) {
                     values[i] = output[i];
+                    sortedArray[ind * values.length + ind + i + 1].textContent = values[i];
+                    await sleep(ms);
                 }
-            }
 
+                ind++;
+            }
 
         });
 
-        function createDiv(cn1, cn2, dn, l) {
+        function createDiv(cn1, cn2, dn, l, aid, content) {
             const outerDiv = document.createElement("div");
             outerDiv.className = cn1;
+            outerDiv.id = aid;
 
             const lii = document.createElement("div");
             lii.className = cn2;

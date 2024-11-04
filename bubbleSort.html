@@ -46,28 +46,31 @@
         <div class="progress-bar"></div>
     </div>
     <div class="container">
-        <div class="icon-container">
-            <img src="./images/bubble.webp" alt="Bubble sort">
-            <h1>Bubble Sort</h1>
-        </div>
+        <section class="front">
+            <div class="front-main">
+                <div class="icon-container">
+                    <img src="./images/bubble.webp" alt="Bubble sort">
+                    <h1>Bubble Sort</h1>
+                </div>
 
-        <div class="sort-input">
+                <div class="sort-input">
 
-            <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
-                placeholder="Enter numbers separated with commas as 1,2,3,4">
+                    <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
+                        placeholder="Enter numbers separated with commas as 1,2,3,4">
 
-            <button id="sort-btn" class="sort-btn">Sort</button>
-        </div>
-        <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
-            <button id="skip" class="control-btn">Skip Visualization</button>
-        </div>
-        <div class="passesandinfo">
-            <div class="numbers" id="num-div">
-
+                    <button id="sort-btn" class="sort-btn">Sort</button>
+                </div>
             </div>
+            <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
+                <button id="skip" class="control-btn">Skip Visualization</button>
+            </div>
+            <div class="passesandinfo">
+                <div class="numbers" id="num-div"></div>
+                <div class="passes" id="passes"></div>
+            </div>
+        </section>
 
-            <div class="passes" id="passes"></div>
-
+        <div class="howto-wrapper">
             <div class="howto" id="howto">
                 <div class="qs">
                     <h3>How to use ?</h3>
@@ -92,9 +95,7 @@
                     </p>
                 </div>
             </div>
-
         </div>
-
         <div class="sorting-algorithm-container">
             <h1 class="algorithm-title">Bubble Sort Overview</h1>
 
@@ -175,6 +176,7 @@
             </section>
         </div>
     </div>
+    <button id="backToTopBtn" title="Go to top">↑</button>
 
     <footer class="site-footer">
         <div class="footer-container">

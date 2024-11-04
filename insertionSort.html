@@ -47,28 +47,30 @@
         <div class="progress-bar"></div>
     </div>
     <div class="container">
-        <div class="icon-container">
-            <img src="./images/insertion.webp" alt="Insertion sort">
-            <h1>Insertion Sort</h1>
-        </div>
-        <div class="sort-input">
-            <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
-                placeholder="Enter numbers separated with commas as 1,2,3,4">
+        <section class="front">
+            <div class="front-main">
+                <div class="icon-container">
+                    <img src="./images/insertion.webp" alt="Insertion sort">
+                    <h1>Insertion Sort</h1>
+                </div>
+                <div class="sort-input">
+                    <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
+                        placeholder="Enter numbers separated with commas as 1,2,3,4">
 
-            <button id="sort-btn" class="sort-btn">Sort</button>
-        </div>
-
-        <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
-            <button id="skip" class="control-btn">Skip Visualization</button>
-        </div>
-
-        <div class="passesandinfo">
-            <div class="numbers" id="num-div">
-
+                    <button id="sort-btn" class="sort-btn">Sort</button>
+                </div>
             </div>
 
-            <div class="passes" id="passes"></div>
+            <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
+                <button id="skip" class="control-btn">Skip Visualization</button>
+            </div>
 
+            <div class="passesandinfo">
+                <div class="numbers" id="num-div"></div>
+                <div class="passes" id="passes"></div>
+            </div>
+        </section>
+        <div class="howto-wrapper">
             <div class="howto" id="howto">
                 <div class="qs">
                     <h3>How to use ?</h3>
@@ -77,7 +79,8 @@
                 </div>
                 <div class="ans">
                     <p>
-                        Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting will
+                        Enter an array separated by commas as : 1,2,4,3,5 then press enter or Sort button. Sorting
+                        will
                         start
                         and
                         you can watch each pass as it gets sorted.
@@ -183,6 +186,7 @@
             </section>
         </div>
     </div>
+    <button id="backToTopBtn" title="Go to top">↑</button>
 
     <footer class="site-footer">
         <div class="footer-container">

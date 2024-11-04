@@ -21,12 +21,37 @@ const containerRect = container.getBoundingClientRect();
 const containerLeft = containerRect.left;
 
 navigation.style.marginLeft = `${containerLeft}px`;
-
+const navbar = document.querySelector("nav");
+let prevScrollPos = window.pageYOffset;
 window.addEventListener("scroll", function () {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
   const scrollPercent = (scrollTop / docHeight) * 100;
   document.querySelector(".progress-bar").style.height = scrollPercent + "%";
+
+  // for navbar show hide
+  const currentScrollPos = window.pageYOffset;
+  if (prevScrollPos > currentScrollPos) {
+    navbar.classList.remove("scrolled");
+  } else {
+    navbar.classList.add("scrolled");
+  }
+
+  prevScrollPos = currentScrollPos;
+});
+// back to top
+const backToTopBtn = document.getElementById("backToTopBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.pageYOffset > 100) {
+    backToTopBtn.style.display = "block";
+  } else {
+    backToTopBtn.style.display = "none";
+  }
+});
+
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 function copyToClipboard(button) {

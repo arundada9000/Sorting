@@ -54,35 +54,30 @@
     </div>
 
     <div class="container">
-        <div class="icon-container">
-            <img src="./images/selection.webp" alt="Selection sort">
-            <h1>Selection Sort</h1>
-        </div>
-        <div class="sort-input">
-            <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
-                placeholder="Enter numbers separated with commas as 1,2,3,4">
+        <section class="front">
+            <div class="front-main">
+                <div class="icon-container">
+                    <img src="./images/selection.webp" alt="Selection sort">
+                    <h1>Selection Sort</h1>
+                </div>
+                <div class="sort-input">
+                    <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
+                        placeholder="Enter numbers separated with commas as 1,2,3,4">
 
-            <button id="sort-btn" class="sort-btn">Sort</button>
-        </div>
-        <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
-            <button id="skip" class="control-btn">Skip Visualization</button>
-        </div>
-        <div class="passesandinfo">
-            <div class="numbers" id="num-div">
-                <!-- <div class="num">90</div>
-                    <div class="num">12</div>
-                    <div class="num">33</div>
-                    <div class="num">41</div>
-                    <div class="num">5</div>
-                    <div class="num">6</div>
-                    <div class="num">17</div>
-                    <div class="num">28</div>
-                    <div class="num">90</div>
-                    <div class="num">100</div> -->
+                    <button id="sort-btn" class="sort-btn">Sort</button>
+                </div>
             </div>
 
-            <div class="passes" id="passes"></div>
+            <div class="buttons-div"><button id="fast-btn" class="control-btn">Fast Visualization</button>
+                <button id="skip" class="control-btn">Skip Visualization</button>
+            </div>
+            <div class="passesandinfo">
+                <div class="numbers" id="num-div"></div>
+                <div class="passes" id="passes"></div>
+            </div>
+        </section>
 
+        <div class="howto-wrapper">
             <div class="howto" id="howto">
                 <div class="qs">
                     <h3>How to use ?</h3>
@@ -108,7 +103,6 @@
                 </div>
             </div>
         </div>
-
         <div class="sorting-algorithm-container">
             <h1 class="algorithm-title">Selection Sort Overview</h1>
 
@@ -190,6 +184,8 @@
             </section>
         </div>
     </div>
+
+    <button id="backToTopBtn" title="Go to top">↑</button>
 
     <footer class="site-footer">
         <div class="footer-container">
