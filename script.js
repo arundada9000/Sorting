@@ -55,15 +55,13 @@ backToTopBtn.addEventListener("click", () => {
 });
 
 // Animation on scroll
-// Select all elements with the scroll-animate class
 const animatedElements = document.querySelectorAll(".scroll-animate");
 
-// Set up the IntersectionObserver
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add("show");
+        entry.target.classList.add("show-content");
       }
       //else {
       //   entry.target.classList.remove("show");
@@ -71,7 +69,7 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.5, // Trigger when 50% of the element is visible
+    threshold: 0.5,
   }
 );
 
