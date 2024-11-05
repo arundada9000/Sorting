@@ -93,6 +93,27 @@
             color: #007acc;
         }
 
+        .best {
+            color: blue;
+        }
+
+        .worst {
+            color: red;
+        }
+
+        table tr {
+            transition: opacity 0.1s ease-in-out;
+            cursor: pointer;
+        }
+
+        .faded {
+            opacity: 0.15;
+        }
+
+        caption {
+            font-size: 1.5rem;
+        }
+
         @media (max-width: 600px) {
 
             th,
@@ -104,6 +125,12 @@
             .container {
                 padding-top: 40px;
             }
+
+            caption,
+            tfoot tr td {
+                text-align: left;
+            }
+
         }
     </style>
 </head>
@@ -129,7 +156,7 @@
         </div>
         <div class="nav-links">
             <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html" class="bb">Bubble Sort</a>
+            <a href="./bubbleSort.html">Bubble Sort</a>
             <a href="./selectionSort.html">Selection Sort</a>
             <a href="./insertionSort.html">Insertion Sort</a>
             <a href="./mergeSort.html">Merge Sort</a>
@@ -151,8 +178,9 @@
         <h2 class=" scroll-animate">Algorithm Complexity Table</h2>
         <div class="table-container">
             <table>
+                <caption>Sorting Algorithms</caption>
                 <thead>
-                    <tr>
+                    <tr class="scroll-animate">
                         <th>Algorithm</th>
                         <th>Average Time</th>
                         <th>Worst Time</th>
@@ -164,77 +192,82 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="scroll-animate">
                         <td>Bubble Sort</td>
-                        <td>O(n²)</td>
-                        <td>O(n²)</td>
+                        <td class="worst">O(n²)</td>
+                        <td class="worst">O(n²)</td>
                         <td>O(n)</td>
-                        <td>O(1)</td>
-                        <td>Yes</td>
-                        <td>Yes</td>
+                        <td class="best">O(1)</td>
+                        <td>&#10004;</td>
+                        <td>&#10004;</td>
                         <td>Comparison</td>
                     </tr>
-                    <tr>
+                    <tr class="scroll-animate">
                         <td>Selection Sort</td>
-                        <td>O(n²)</td>
-                        <td>O(n²)</td>
-                        <td>O(n²)</td>
-                        <td>O(1)</td>
-                        <td>No</td>
-                        <td>Yes</td>
+                        <td class="worst">O(n²)</td>
+                        <td class="worst">O(n²)</td>
+                        <td class="worst">O(n²)</td>
+                        <td class="best">O(1)</td>
+                        <td>X</td>
+                        <td>&#10004;</td>
                         <td>Comparison</td>
                     </tr>
-                    <tr>
+                    <tr class="scroll-animate">
                         <td>Insertion Sort</td>
-                        <td>O(n²)</td>
-                        <td>O(n²)</td>
+                        <td class="worst">O(n²)</td>
+                        <td class="worst">O(n²)</td>
                         <td>O(n)</td>
-                        <td>O(1)</td>
-                        <td>Yes</td>
-                        <td>Yes</td>
+                        <td class="best">O(1)</td>
+                        <td>&#10004;</td>
+                        <td>&#10004;</td>
                         <td>Comparison</td>
                     </tr>
-                    <tr>
+                    <tr class="scroll-animate">
                         <td>Merge Sort</td>
                         <td>O(n log n)</td>
                         <td>O(n log n)</td>
                         <td>O(n log n)</td>
                         <td>O(n)</td>
-                        <td>Yes</td>
-                        <td>No</td>
+                        <td>&#10004;</td>
+                        <td>X</td>
                         <td>Comparison</td>
                     </tr>
-                    <tr>
+                    <tr class="scroll-animate">
                         <td>Quick Sort</td>
                         <td>O(n log n)</td>
-                        <td>O(n²)</td>
+                        <td class="worst">O(n²)</td>
                         <td>O(n log n)</td>
                         <td>O(log n)</td>
-                        <td>No</td>
-                        <td>Yes</td>
+                        <td>X</td>
+                        <td>&#10004;</td>
                         <td>Comparison</td>
                     </tr>
-                    <tr>
+                    <tr class="scroll-animate">
                         <td>Heap Sort</td>
                         <td>O(n log n)</td>
                         <td>O(n log n)</td>
                         <td>O(n log n)</td>
-                        <td>O(1)</td>
-                        <td>No</td>
-                        <td>Yes</td>
+                        <td class="best">O(1)</td>
+                        <td>X</td>
+                        <td>&#10004;</td>
                         <td>Comparison</td>
                     </tr>
-                    <tr>
+                    <tr class="scroll-animate">
                         <td>Radix Sort</td>
                         <td>O(nk)</td>
                         <td>O(nk)</td>
                         <td>O(nk)</td>
                         <td>O(n + k)</td>
-                        <td>Yes</td>
-                        <td>No</td>
+                        <td>&#10004;</td>
+                        <td>X</td>
                         <td>Non-comparison</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr class="scroll-animate">
+                        <td colspan="8">You can click on and scroll the table.</td>
+                    </tr>
+                </tfoot>
             </table>
         </div>
 
@@ -272,7 +305,37 @@
         </div>
     </footer>
 
+    <script>
+        const rows = document.querySelectorAll("tr");
+        let isActive = true;
+        rows.forEach(row => {
+            row.addEventListener("click", () => {
+                if (isActive) {
+                    hideThemRows(row);
+                    isActive = false;
+                }
+                else {
+                    showThemRows();
+                    isActive = true;
+                }
+            });
+
+        });
+        function hideThemRows(row1) {
+            rows.forEach(row => {
+                row.classList.add("faded");
+            });
+            row1.classList.remove("faded");
+            rows[0].classList.remove("faded");
+        }
+        function showThemRows() {
+            rows.forEach(row => {
+                row.classList.remove("faded");
+            });
+        }
+    </script>
     <script src="./script.js"></script>
+
 </body>
 
 </html>

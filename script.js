@@ -31,10 +31,12 @@ window.addEventListener("scroll", function () {
 
   // for navbar show hide
   const currentScrollPos = window.pageYOffset;
-  if (prevScrollPos > currentScrollPos) {
-    navbar.classList.remove("scrolled");
-  } else {
-    navbar.classList.add("scrolled");
+  if (window.innerWidth > 768) {
+    if (prevScrollPos > currentScrollPos) {
+      navbar.classList.remove("scrolled");
+    } else {
+      navbar.classList.add("scrolled");
+    }
   }
 
   prevScrollPos = currentScrollPos;

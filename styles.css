@@ -119,6 +119,7 @@ nav a:hover {
 
 .nav-links {
   opacity: 0;
+  pointer-events: none;
 }
 .nav-links a,
 .nav-links1 a {
@@ -582,6 +583,7 @@ button {
   }
 
   .nav-links.active {
+    pointer-events: all;
     opacity: 1;
     display: flex;
     z-index: 1;
