@@ -620,3 +620,27 @@ button {
     padding: 0;
   }
 }
+.num {
+  opacity: 0;
+  animation: fadeInPopup 0.75s ease forwards;
+}
+@keyframes fadeInPopup {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}

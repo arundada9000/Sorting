@@ -160,6 +160,17 @@
                 display: block;
             }
         }
+
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(20px) scale(0.5);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
     </style>
 </head>
 
@@ -170,14 +181,15 @@
     </div>
     <div class="container">
         <div class="icon-container">
-            <img src="./images/reorder.gif" alt="Sorting">
-            <h1>Sorting Algorithms Visualizer</h1>
+            <img src="./images/reorder.gif" alt="Sorting" class="scroll-animate">
+            <h1 class="scroll-animate">Sorting Algorithms Visualizer</h1>
         </div>
-        <p>Explore different sorting algorithms and understand how they work, step-by-step. Click on any algorithm below
+        <p class="scroll-animate">Explore different sorting algorithms and understand how they work, step-by-step. Click
+            on any algorithm below
             to start the visualization!</p>
 
         <div class="algorithm-list">
-            <a href="./bubbleSort.html" class="algorithm-item">
+            <a href="./bubbleSort.html" class="algorithm-item scroll-animate">
                 <!-- <img src="images/bubble_sort_icon.png" alt="Bubble Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/bubble.webp" alt="Bubble sort">
@@ -187,7 +199,7 @@
                 <p>Compares adjacent elements and swaps them if they're in the wrong order.</p>
             </a>
 
-            <a href="./selectionSort.html" class="algorithm-item">
+            <a href="./selectionSort.html" class="algorithm-item scroll-animate">
 
                 <div class="icon-container">
                     <img src="./images/selection.webp" alt="Selection sort">
@@ -196,7 +208,7 @@
                 <p>Finds the smallest element in the array and places it at the front.</p>
             </a>
 
-            <a href="./insertionSort.html" class="algorithm-item">
+            <a href="./insertionSort.html" class="algorithm-item scroll-animate">
                 <!-- <img src="images/insertion_sort_icon.png" alt="Insertion Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/insertion.webp" alt="Insertion sort">
@@ -205,7 +217,7 @@
                 <p>Builds the sorted array by inserting elements in their correct position.</p>
             </a>
 
-            <a href="./mergeSort.html" class="algorithm-item">
+            <a href="./mergeSort.html" class="algorithm-item scroll-animate">
                 <!-- <img src="images/merge_sort_icon.png" alt="Merge Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/merge.webp" alt="Merge sort">
@@ -215,7 +227,7 @@
                 <p>Divides the array, sorts them, and merges them back together.</p>
             </a>
 
-            <a href="./quickSort.html" class="algorithm-item">
+            <a href="./quickSort.html" class="algorithm-item scroll-animate">
                 <!-- <img src="images/quick_sort_icon.png" alt="Quick Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/quick.webp" alt="Quick sort">
@@ -224,7 +236,7 @@
                 <p>Uses a pivot to partition the array and sorts each partition.</p>
             </a>
 
-            <a href="./heapSort.html" class="algorithm-item">
+            <a href="./heapSort.html" class="algorithm-item scroll-animate">
                 <!-- <img src="images/heap_sort_icon.png" alt="Heap Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/heap.webp" alt="Heap sort">
@@ -233,7 +245,7 @@
                 <p>Transforms the array into a heap structure and sorts it.</p>
             </a>
 
-            <a href="./radixSort.html" class="algorithm-item">
+            <a href="./radixSort.html" class="algorithm-item scroll-animate">
                 <!-- <img src="images/radix_sort_icon.png" alt="Radix Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/radix.webp" alt="Radix sort">
@@ -242,7 +254,7 @@
                 <p>Sorts numbers by processing individual digits from least to most significant.</p>
             </a>
 
-            <a href="./shellSort.html" class="algorithm-item">
+            <a href="./shellSort.html" class="algorithm-item scroll-animate">
                 <!-- <img src="images/shell_sort_icon.png" alt="Shell Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/shell.webp" alt="Shell sort">
@@ -250,7 +262,7 @@
                 </div>
                 <p>Sorts elements by comparing elements at a gap and reducing the gap over time.</p>
             </a>
-            <a href="./summary.html" class="algorithm-item">
+            <a href="./summary.html" class="algorithm-item scroll-animate">
                 <!-- <img src="images/shell_sort_icon.png" alt="Shell Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/summary.png" alt="Summary">
@@ -262,7 +274,7 @@
         </div>
     </div>
 
-    <footer>
+    <footer class="scroll-animate">
         <p>Created by Arun Neupane | <a href="https://github.com/arundada9000">GitHub</a></p>
     </footer>
     <script>
@@ -272,6 +284,24 @@
             const scrollPercent = (scrollTop / docHeight) * 100;
             document.querySelector(".progress-bar").style.height = scrollPercent + "%";
         });
+
+        // scroll animate
+        const animatedElements = document.querySelectorAll('.scroll-animate');
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, {
+            threshold: 0.25
+        });
+
+        animatedElements.forEach(element => observer.observe(element));
+
     </script>
 </body>
 

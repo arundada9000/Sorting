@@ -54,6 +54,31 @@ backToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+// Animation on scroll
+// Select all elements with the scroll-animate class
+const animatedElements = document.querySelectorAll(".scroll-animate");
+
+// Set up the IntersectionObserver
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+      //else {
+      //   entry.target.classList.remove("show");
+      // }
+    });
+  },
+  {
+    threshold: 0.5, // Trigger when 50% of the element is visible
+  }
+);
+
+// Observe each animated element
+animatedElements.forEach((element) => observer.observe(element));
+// this much for observer
+
 function copyToClipboard(button) {
   const codeBlock = button.nextElementSibling.querySelector("code");
 
