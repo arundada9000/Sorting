@@ -102,12 +102,12 @@
         }
 
         table tr {
-            transition: opacity 0.1s ease-in-out;
+            transition: filter 0.1s ease-in-out;
             cursor: pointer;
         }
 
         .faded {
-            opacity: 0.15;
+            filter: opacity(0.15);
         }
 
         caption {
@@ -306,17 +306,21 @@
     </footer>
 
     <script>
-        const rows = document.querySelectorAll("tr");
+        const rows = document.querySelectorAll("table tr");
+        console.log(rows);
+
         let isActive = true;
         rows.forEach(row => {
             row.addEventListener("click", () => {
                 if (isActive) {
                     hideThemRows(row);
                     isActive = false;
+                    console.log(isActive);
                 }
                 else {
                     showThemRows();
                     isActive = true;
+                    console.log(isActive);
                 }
             });
 
@@ -328,6 +332,7 @@
             row1.classList.remove("faded");
             rows[0].classList.remove("faded");
         }
+
         function showThemRows() {
             rows.forEach(row => {
                 row.classList.remove("faded");

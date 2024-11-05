@@ -1,6 +1,7 @@
 let item = document.getElementsByClassName("howto");
 let show = document.getElementsByClassName("show");
 let hide = document.getElementsByClassName("hide");
+let fastBtnFs = 16;
 
 for (let i = 0; i < item.length; i++) {
   item[i].addEventListener("click", () => {
@@ -100,6 +101,11 @@ function sleep(ms) {
   else return;
 }
 fastBtn.addEventListener("click", () => {
+  fastBtnFs += 1;
+  fastBtn.style.fontSize = fastBtnFs + "px";
+  if (ms <= 5) {
+    fastBtn.style.fontSize = "16px";
+  }
   ms = ms > 5 ? Math.abs(ms - 199) : (ms = 5);
   ms <= 5 ? (fastBtn.style.display = "none") : 1;
 });
@@ -110,6 +116,8 @@ skipBtn.addEventListener("click", () => {
 function displayBtn(dis) {
   fastBtn.style.display = dis;
   skipBtn.style.display = dis;
+  fastBtn.style.fontSize = "1rem";
+  fastBtnFs = 16;
 }
 inputBox.addEventListener("keyup", (event) => {
   if (event.key === "Enter" && sortBtn.textContent === "Sort") sortBtn.click();
@@ -119,4 +127,15 @@ function toggleMenu() {
   const navLinks = document.querySelector(".nav-links");
   navLinks.classList.toggle("active");
   document.querySelector(".menu-toggle").classList.toggle("active");
+}
+function randomGenerate() {
+  if (sortBtn.textContent == "Sorting...") return;
+  const random = Math.floor(Math.random() * 10) + 5;
+  let randomNums = [];
+  for (let i = 0; i < random; i++) {
+    let rand = Math.floor(Math.random() * 100);
+    randomNums.push(rand);
+  }
+  console.log(...randomNums);
+  inputBox.value = randomNums.join(",");
 }

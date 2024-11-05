@@ -220,6 +220,24 @@ button {
   border-radius: 8px;
   transition: background-color 0.3s ease;
 }
+#generate-random-btn {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+}
+#generate-random-btn img {
+  height: 40px;
+  width: auto;
+}
+#sort-btn {
+  background: linear-gradient(135deg, #0439f9, #04f74d);
+}
+#sort-btn:hover {
+  filter: drop-shadow(0 0 0.75rem rgb(1, 41, 237));
+}
 .info-btn {
   display: none;
   background-color: transparent;
@@ -257,11 +275,24 @@ button {
   display: none;
   margin-top: 1rem;
 }
-
+#skip {
+  background: linear-gradient(90deg, #35d9f2, #ff4c4c);
+}
+#skip:hover {
+  filter: drop-shadow(0 0 0.75rem rgb(231, 23, 102));
+}
 #fast-btn {
   margin-right: 10px;
+  background: linear-gradient(90deg, #f060fa, #ff4c4c);
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease;
 }
-
+#fast-btn:hover {
+  filter: drop-shadow(0 0 0.75rem crimson);
+}
+#fast-button:active {
+  background-position: right;
+}
 /* Numbers and Passes */
 .passes .numbers {
   padding-bottom: 1rem;
@@ -514,7 +545,7 @@ button {
 .progress-bar {
   width: 100%;
   height: 0;
-  background-color: #007bff;
+  background: linear-gradient(180deg, #3901f3, #ed0404);
   transition: height 0.2s ease;
 }
 /* Back to top */
