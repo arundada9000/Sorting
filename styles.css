@@ -181,20 +181,25 @@ h1 {
   flex-direction: row;
   margin-bottom: 2rem;
   padding: 0rem 0.5rem;
+  border-radius: 20px;
+  border: 1px solid #3498db;
+  overflow-y: hidden;
 }
 
 input[type="text"] {
   padding: 1rem 1.5rem;
   outline: none;
   border-radius: 20px;
-  border: 1px solid #3498db;
+  /* border: 1px solid #3498db; */
   /* border: none; */
   background-color: #0e0e0e;
   color: white;
   font-size: 1rem;
-  width: max(60%, 600px);
+  width: max(60%, 400px);
   margin-right: 10px;
   transition: border-color 0.3s ease;
+  border: none;
+  outline: none;
 }
 
 input[type="text"]:focus {
@@ -642,10 +647,12 @@ button {
   .sort-input {
     flex-direction: column;
     gap: 1rem;
+    border: none;
   }
   input[type="text"] {
     width: 90vw;
     font-size: 1rem;
+    border: 1px solid #3498db;
   }
 
   .numbers {
