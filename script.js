@@ -1,20 +1,28 @@
-let item = document.getElementsByClassName("howto");
-let show = document.getElementsByClassName("show");
-let hide = document.getElementsByClassName("hide");
-let fastBtnFs = 16;
+// for show hide of how to
+let items = document.getElementsByClassName("howto");
+let showButtons = document.getElementsByClassName("show");
+let hideButtons = document.getElementsByClassName("hide");
 
-for (let i = 0; i < item.length; i++) {
-  item[i].addEventListener("click", () => {
-    let res = item[i].classList.toggle("active");
-    if (res == true) {
-      show[i].style.display = "none";
-      hide[i].style.display = "block";
+for (let i = 0; i < items.length; i++) {
+  items[i].addEventListener("click", () => {
+    const ansSection = items[i].querySelector(".ans");
+    const isActive = items[i].classList.toggle("active");
+
+    if (isActive) {
+      // Measure the full height needed for the answer section
+      ansSection.style.maxHeight = ansSection.scrollHeight + "px";
+      showButtons[i].style.display = "none";
+      hideButtons[i].style.display = "block";
     } else {
-      show[i].style.display = "block";
-      hide[i].style.display = "none";
+      // Reset the max-height to 0 to collapse
+      ansSection.style.maxHeight = 0;
+      showButtons[i].style.display = "block";
+      hideButtons[i].style.display = "none";
     }
   });
 }
+
+// yaha tak
 
 const navigation = document.querySelector(".nav-links1");
 const container = document.querySelector(".container");
@@ -136,6 +144,5 @@ function randomGenerate() {
     let rand = Math.floor(Math.random() * 100);
     randomNums.push(rand);
   }
-  console.log(...randomNums);
   inputBox.value = randomNums.join(",");
 }

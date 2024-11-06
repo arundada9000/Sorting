@@ -227,6 +227,7 @@ button {
   justify-content: center;
   background-color: transparent;
   cursor: pointer;
+  animation: shiver 5s step-end infinite;
 }
 #generate-random-btn img {
   height: 40px;
@@ -274,6 +275,7 @@ button {
 .control-btn {
   display: none;
   margin-top: 1rem;
+  animation: fadeInPopup 0.75s ease forwards;
 }
 #skip {
   background: linear-gradient(90deg, #35d9f2, #ff4c4c);
@@ -308,7 +310,7 @@ button {
 }
 
 .passes .numbers .num:first-child {
-  width: 80px;
+  width: 60px;
   font-size: 1rem;
   background: linear-gradient(135deg, #faaef0, #0fe0f7);
   color: black;
@@ -374,12 +376,14 @@ button {
   margin-bottom: 2rem;
 }
 
+/* How to information */
 .howto-wrapper {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .howto {
   background-color: #0c0e00;
   padding: 1rem;
@@ -395,13 +399,14 @@ button {
 .howto b {
   color: #f1c40f;
 }
-/* Accordian how to */
+
 .qs {
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
 }
+
 .qs button {
   border: none;
   outline: none;
@@ -410,37 +415,46 @@ button {
   font-size: 30px;
   cursor: pointer;
 }
-.hide {
-  display: none;
+
+/* Answer section - hidden by default */
+.ans {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
 }
+
 .ans p {
   margin-left: 12px;
   padding: 11px;
-  display: none;
   font-size: 16px;
 }
-.active p {
-  display: block;
+.hide {
+  display: none;
 }
+.howto.active .ans {
+  opacity: 1;
+}
+
 /* Container */
 .container {
   margin-top: 4.5rem;
-  /* background-color: #1e272e; */
   padding: 2rem;
   border-radius: 10px;
-  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
   max-width: 1000px;
   width: 100%;
-  /* border: 1px solid #f1c40f; */
+  /* background-color: #1e272e; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
+  border: 1px solid #f1c40f; */
 }
 /* Sorting Algorithm Container */
 .sorting-algorithm-container {
   padding: 2rem;
-  /* background-color: #1e272e; */
   border-radius: 10px;
-  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
   max-width: 800px;
   margin: auto;
+  /*background-color: #1e272e; 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); */
 }
 
 .sorting-algorithm-container .algorithm-title {
@@ -550,19 +564,23 @@ button {
 }
 /* Back to top */
 #backToTopBtn {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 10px;
+  right: 15px;
   display: none;
   border: none;
   outline: none;
-  background-color: #007bff;
+  /* background-color: #007bff; */
+  background-image: url("./images/up-btn.png");
+  background-repeat: no-repeat;
+  background-size: cover;
   color: white;
   cursor: pointer;
   padding: 15px;
   border-radius: 50%;
+  font-size: 0px;
 }
 
 #backToTopBtn:hover {
@@ -660,11 +678,29 @@ button {
 @keyframes fadeInPopup {
   0% {
     opacity: 0;
-    transform: scale(0.5);
+    transform: scale(0.25);
   }
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+@keyframes shiver {
+  0%,
+  90% {
+    transform: translateX(0);
+  }
+  92.5% {
+    transform: translateX(-2px);
+  }
+  95% {
+    transform: translateX(2px);
+  }
+  97.5% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 .scroll-animate {
@@ -676,4 +712,9 @@ button {
 .scroll-animate.show-content {
   opacity: 1;
   transform: translateY(0);
+}
+@media (min-width: 768px) {
+  .nav-links {
+    display: none;
+  }
 }

@@ -10,6 +10,74 @@
         content="heap sort, heap sort visualized,step by step, heap sort in easy way, time complexity, space complexity, heap sort properties, arun neupane,sorting" />
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
+
+    <style>
+        .heap-tree-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .heap-tree {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            overflow: auto;
+            margin: 1rem 0rem;
+            animation: fadeInPopup 0.5s ease forwards;
+            max-width: 100vw;
+        }
+
+        .node-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .node-container:last-child {
+            justify-content: start;
+        }
+
+        .node {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #4F6D7A;
+            color: white;
+            cursor: pointer;
+            animation: fadeInPopup 0.75s ease forwards;
+        }
+
+        .child {
+            transform: scale(1.25);
+            background-color: red;
+        }
+
+        .parent {
+            transform: scale(1.25);
+            background-color: red;
+        }
+
+        .comparing {
+            background-color: #f39c12;
+        }
+
+        .swapping {
+            background-color: #e74c3c;
+            transform: scale(1.2);
+        }
+
+        .sorted {
+            background-color: #27ae60;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -74,6 +142,9 @@
             </div>
             <div class="passesandinfo">
                 <div class="numbers" id="num-div"></div>
+                <div class="heap-tree-wrapper">
+                    <div class="heap-tree"></div>
+                </div>
                 <div class="passes" id="passes"></div>
             </div>
         </section>
@@ -210,7 +281,7 @@ function heapify(arr, n, i):
         const howto = document.getElementById("howto");
         const skipBtn = document.getElementById("skip");
         const fastBtn = document.getElementById("fast-btn");
-        let ms = 1000;
+        let ms = 1000, passCount = 0;
 
         sortBtn.addEventListener("click", () => {
             if (sortBtn.textContent == "Sorting...") return;
@@ -219,18 +290,18 @@ function heapify(arr, n, i):
                 alert("Please enter some values ! ");
                 return;
             }
-            ms = 1000;
+            ms = 1000; passCount = 0;
             displayBtn("inline");
             sortBtn.textContent = "Sorting...";
 
             const values = input.split(',');
-            console.log(values);
 
             const numDiv = document.getElementById("num-div");
             numDiv.innerHTML = "";
             passesDiv.innerHTML = "";
             howto.innerHTML = "";
             howto.style.visibility = "hidden";
+            document.querySelector(".heap-tree").innerHTML = "";
 
             for (let i = 0; i < values.length; i++) {
                 let el = document.createElement("div");
@@ -250,6 +321,109 @@ function heapify(arr, n, i):
             }
             const divs = document.querySelectorAll(".num");
 
+            heapVisualized(values);
+            const nodes = document.querySelectorAll(".node");
+
+
+            heapSort();
+            async function heapSort() {
+                await sleep(ms);
+                const length = values.length;
+                let i;
+                for (i = Math.floor(length / 2); i >= 0; i--) {
+                    await heapify(values, length, i);
+                }
+
+                for (i = length - 1; i > 0; i--) {
+                    [values[0], values[i]] = [values[i], values[0]];
+                    await sleep(ms);
+                    toggleClass("swapping", true, nodes[0], nodes[i]);
+                    await sleep(ms);
+                    nodes[0].textContent = values[0];
+                    nodes[i].textContent = values[i];
+                    nodes[i].classList.add("sorted");
+                    await sleep(ms);
+                    toggleClass("swapping", false, nodes[i], nodes[0]);
+                    await heapify(values, i, 0);
+
+                    passCount++;
+                    let passes = createDiv("numbers", "num", values, values.length, i, passCount);
+                    passesDiv.appendChild(passes);
+                }
+                passCount++;
+                let passes = createDiv("numbers", "num", values, values.length, i, passCount);
+                passesDiv.appendChild(passes);
+                nodes[0].classList.add("sorted");
+
+                sortedArray = values.join(", ");
+                howto.style.visibility = "visible";
+                howto.innerHTML = "The array is successfully sorted.There were " + values.length + " numbers and it took " + (values.length - 1) + " passes.The sorted array is : <br>" + sortedArray;
+
+                const btn = document.createElement("button");
+                btn.textContent = "Copy";
+                btn.className = "copy-btn";
+                btn.id = "ans-copy-btn";
+                btn.addEventListener("click", () => {
+                    navigator.clipboard.writeText(sortedArray);
+                    btn.textContent = "Copied!";
+                    setTimeout(() => {
+                        btn.textContent = "Copy";
+                    }, 2000);
+                });
+                howto.appendChild(btn);
+
+                displayBtn("none");
+                sortBtn.textContent = "Sort";
+            }
+
+            async function heapify(values, length, rootIndex) {
+                let largest = rootIndex;
+                const leftChild = 2 * rootIndex + 1;
+                const rightChild = 2 * rootIndex + 2;
+
+                // Check if leftChild and rightChild are within bounds before passing to toggleClass
+                const nodesToCompare = [nodes[rootIndex]];
+                if (leftChild < length) nodesToCompare.push(nodes[leftChild]);
+                if (rightChild < length) nodesToCompare.push(nodes[rightChild]);
+
+                // Add the comparing class to the nodes being compared
+                toggleClass("comparing", true, ...nodesToCompare);
+                await sleep(ms);
+
+                // If left child is larger than root
+                if (leftChild < length && values[leftChild] > values[largest]) {
+                    largest = leftChild;
+                }
+
+                // If right child is larger than the largest so far
+                if (rightChild < length && values[rightChild] > values[largest]) {
+                    largest = rightChild;
+                }
+
+                // Remove the comparing class after comparisons are done
+                toggleClass("comparing", false, ...nodesToCompare);
+
+                // If largest is not root, swap and update nodes
+                if (largest !== rootIndex) {
+                    // Swap values in the array
+                    [values[rootIndex], values[largest]] = [values[largest], values[rootIndex]];
+
+                    // Add the swapping class to indicate the swap visually
+                    toggleClass("swapping", true, nodes[rootIndex], nodes[largest]);
+                    await sleep(ms);
+
+                    // Update the text content of the swapped nodes
+                    nodes[rootIndex].textContent = values[rootIndex];
+                    nodes[largest].textContent = values[largest];
+                    await sleep(ms);
+                    // Remove the swapping class after the swap
+                    toggleClass("swapping", false, nodes[rootIndex], nodes[largest]);
+
+                    // Recursively heapify the affected subtree
+                    await heapify(values, length, largest);
+                }
+            }
+
         });
 
         function createDiv(cn1, cn2, content, time, j, passCount) {
@@ -267,7 +441,7 @@ function heapify(arr, n, i):
             for (let i = 0; i < time; i++) {
                 const li = document.createElement("div");
                 li.className = cn2;
-                if (j <= i)
+                if (i >= j)
                     li.classList.add("sorted");
                 li.textContent = content[i];
                 outerDiv.appendChild(li);
@@ -276,11 +450,101 @@ function heapify(arr, n, i):
             return outerDiv;
         }
 
-        function toggleClass(divs, j, cn) {
-            divs[j].classList.toggle(cn);
-            divs[j + 1].classList.toggle(cn);
+        function toggleClass(className, add, ...elements) {
+            elements.forEach(element => {
+                if (element instanceof HTMLElement) {
+                    if (add) {
+                        element.classList.add(className);
+                    } else
+                        element.classList.remove(className);
+                } else {
+                    console.error('Invalid element:', element);
+                }
+            });
         }
 
+        function heapVisualized(data) {
+            const heapTree = document.querySelector(".heap-tree");
+            let size = data.length;
+            let tSize = size;
+            let counter = 0, wid;
+            let depth = Math.ceil(Math.log2(data.length));
+            if (size % Math.pow(2, depth) == 0) {
+                depth++;
+            }
+
+            for (let i = 0; i < depth; i++) {
+
+                let div = document.createElement("div");
+                div.className = "node-container";
+                let end = Math.pow(2, i);
+
+                if (i == depth - 1) {
+                    if (tSize > Math.pow(2, i - 1)) {
+                        wid = tSize;
+                    }
+                    else {
+                        wid = Math.pow(2, i - 1) + tSize;
+                    }
+                }
+
+                for (let j = 0; j < end && counter < size; j++) {
+                    console.log(counter, size, end, depth);
+                    let idiv = document.createElement("div");
+                    idiv.textContent = data[counter];
+                    counter++;
+                    idiv.className = "node";
+                    div.appendChild(idiv);
+                    tSize--;
+                }
+
+                heapTree.appendChild(div);
+            }
+
+            let maxWidth = wid * 40 + (10 * (wid - 1));
+
+            const nodeContainers = document.querySelectorAll(".node-container");
+            nodeContainers.forEach(nodeContainer => {
+                nodeContainer.style.width = `${maxWidth}px`
+            });
+
+            scrollToMid(nodeContainers);
+
+            let nodes = document.querySelectorAll(".node");
+            nodes.forEach((node, index) => {
+                node.addEventListener("mouseover", () => {
+                    if (2 * index + 1 < size) {
+                        nodes[2 * index + 1].classList.add("child");
+                        if (2 * index + 2 < size)
+                            nodes[2 * index + 2].classList.add("child");
+                    }
+                    if (index > 0) {
+                        nodes[Math.floor((index - 1) / 2)].classList.add("parent");
+                    }
+                });
+                node.addEventListener("mouseout", () => {
+                    if ((2 * index + 1) < size) {
+                        nodes[2 * index + 1].classList.remove("child");
+                        if ((2 * index + 2) < size)
+                            nodes[2 * index + 2].classList.remove("child");
+                    }
+                    if (index > 0) {
+                        nodes[Math.floor((index - 1) / 2)].classList.remove("parent");
+                    }
+                });
+            });
+        }
+
+        function scrollToMid(nodeContainers) {
+            nodeContainers.forEach(node => {
+                node.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center',
+                    inline: 'center'
+                });
+            });
+
+        }
     </script>
     <script src="./script.js"></script>
 </body>

@@ -13,8 +13,9 @@
         }
 
         body {
-            background: #f4f7f9;
-            color: #333;
+            /* background: #f4f7f9; */
+            background: linear-gradient(135deg, #f4f1f4, #0a2cec);
+            color: #000000;
         }
 
         .table-container {
@@ -51,6 +52,7 @@
             padding: 12px;
             text-align: center;
             border: 1px solid #ddd;
+            font-size: 1.1rem;
         }
 
         .table-container table th:first-child,
@@ -79,7 +81,7 @@
         }
 
         .definitions {
-            background-color: #e8f6f9;
+            background-color: #e8f6f979;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -87,6 +89,8 @@
 
         .definitions p {
             margin-bottom: 10px;
+            color: #000000;
+            font-size: 1.1rem;
         }
 
         .definitions strong {
@@ -261,6 +265,16 @@
                         <td>&#10004;</td>
                         <td>X</td>
                         <td>Non-comparison</td>
+                    </tr>
+                    <tr>
+                        <td>Shell Sort</td>
+                        <td>O(n<sup>3/2</sup>)</td>
+                        <td class="worst">O(n<sup>2</sup>)</td>
+                        <td>O(n log n)</td>
+                        <td>O(1)</td>
+                        <td>X</td>
+                        <td>&#10004;</td>
+                        <td>Comparison</td>
                     </tr>
                 </tbody>
                 <tfoot>
