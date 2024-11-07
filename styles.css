@@ -578,7 +578,7 @@ button {
   border: none;
   outline: none;
   /* background-color: #007bff; */
-  background-image: url("./images/up-btn.png");
+  background-image: url("./images/up-btn3.png");
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -589,7 +589,7 @@ button {
 }
 
 #backToTopBtn:hover {
-  background-color: #0056b3;
+  opacity: 0.75;
 }
 
 @media (max-width: 768px) {

@@ -12,11 +12,17 @@
     <link rel="stylesheet" href="./styles.css">
 
     <style>
+        .passes .numbers .num:last-child {
+            cursor: pointer;
+            width: 50px;
+            padding: 0 5px;
+        }
+
         .heap-tree-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
+            width: 100vw;
         }
 
         .heap-tree {
@@ -302,14 +308,16 @@ function heapify(arr, n, i):
             howto.innerHTML = "";
             howto.style.visibility = "hidden";
             infoDiv.innerHTML - "";
-            document.querySelector(".heap-tree").innerHTML = "";
+            const heapTree = document.querySelector(".heap-tree");
+            heapTree.innerHTML = "";
 
             for (let i = 0; i < values.length; i++) {
                 values[i] = parseFloat(values[i]);
             }
             const divs = document.querySelectorAll(".num");
 
-            heapVisualized(values);
+            heapVisualized(values, heapTree, -1);
+            scrollToMidFirst(document.querySelectorAll(".node-container"));
             const nodes = document.querySelectorAll(".node");
             eventListener(values.length);
 
@@ -348,6 +356,7 @@ function heapify(arr, n, i):
                 let passes = createDiv("numbers", "num", values, values.length, i, passCount);
                 passesDiv.appendChild(passes);
                 nodes[0].classList.add("sorted");
+                infoDiv.textContent = "Array is successfully sorted.";
 
                 sortedArray = values.join(", ");
                 howto.style.visibility = "visible";
@@ -411,18 +420,20 @@ function heapify(arr, n, i):
         });
 
         function createDiv(cn1, cn2, content, time, j, passCount) {
-            const outerDiv = document.createElement("div");
+            let outerDiv = document.createElement("div");
             outerDiv.className = cn1;
 
-            const li = document.createElement("div");
+            let li = document.createElement("div");
             li.className = cn2;
             if (passCount == time)
                 li.textContent = "Sorted ";
             else
                 li.textContent = "Pass " + passCount;
+
             outerDiv.appendChild(li);
 
-            for (let i = 0; i < time; i++) {
+            let i;
+            for (i = 0; i < time; i++) {
                 const li = document.createElement("div");
                 li.className = cn2;
                 if (i >= j)
@@ -431,9 +442,33 @@ function heapify(arr, n, i):
                 outerDiv.appendChild(li);
             }
 
+
+            li = document.createElement("div");
+            li.textContent = "Tree";
+            li.className = cn2;
+            let first = true;
+            li.addEventListener("click", () => {
+                showHeap(content, outerDiv, j, first);
+                first = false;
+                li.style.display = "none";
+            });
+            outerDiv.appendChild(li);
+
             return outerDiv;
         }
 
+        function showHeap(values, outerDiv, j, first) {
+            if (first) {
+                const div = document.createElement("div");
+                div.className = "heap-tree-wrapper";
+                const heapTree = document.createElement("div");
+                heapTree.className = "heap-tree";
+                heapVisualized(values, heapTree, j);
+                div.appendChild(heapTree);
+                outerDiv.appendChild(div);
+            }
+
+        }
         function toggleClass(className, add, ...elements) {
             elements.forEach(element => {
                 if (element instanceof HTMLElement) {
@@ -447,8 +482,8 @@ function heapify(arr, n, i):
             });
         }
 
-        function heapVisualized(data) {
-            const heapTree = document.querySelector(".heap-tree");
+        function heapVisualized(data, heapTree, sor) {
+
             let size = data.length;
             let tSize = size;
             let counter = 0, wid;
@@ -464,7 +499,6 @@ function heapify(arr, n, i):
                 let end = Math.pow(2, i);
 
                 if (i == depth - 1) {
-                    console.log(tSize, Math.pow(2, i - 1));
                     if (tSize > Math.pow(2, i - 1)) {
                         wid = tSize;
                     }
@@ -479,9 +513,10 @@ function heapify(arr, n, i):
                 for (let j = 0; j < end && counter < size; j++) {
                     let idiv = document.createElement("div");
                     idiv.textContent = data[counter];
-                    counter++;
                     idiv.className = "node";
+                    if (sor >= 0 && counter >= sor) idiv.classList.add("sorted");
                     div.appendChild(idiv);
+                    counter++;
                     tSize--;
                 }
 
@@ -495,9 +530,11 @@ function heapify(arr, n, i):
                 nodeContainer.style.width = `${maxWidth}px`
             });
 
+            // scrollToMid(nodeContainers);
+        }
+        function scrollToMidFirst(nodeContainers) {
             scrollToMid(nodeContainers);
         }
-
         function eventListener(size) {
             let nodes = document.querySelectorAll(".node");
 
