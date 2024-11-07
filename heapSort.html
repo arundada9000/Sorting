@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="./styles.css">
 
     <style>
-        .passes .numbers .num:last-child {
+        .last-child {
             cursor: pointer;
-            width: 50px;
-            padding: 0 5px;
+            /* background: linear-gradient(135deg, #000000, #ffffff); */
+            background-color: #000000;
         }
 
         .heap-tree-wrapper {
@@ -23,9 +23,11 @@
             align-items: center;
             justify-content: center;
             width: 100vw;
+            transition: max-height 0.5s ease;
         }
 
         .heap-tree {
+            /* margin-top: 10px; */
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -317,7 +319,7 @@ function heapify(arr, n, i):
             const divs = document.querySelectorAll(".num");
 
             heapVisualized(values, heapTree, -1);
-            scrollToMidFirst(document.querySelectorAll(".node-container"));
+            scrollToMid(document.querySelectorAll(".node-container"));
             const nodes = document.querySelectorAll(".node");
             eventListener(values.length);
 
@@ -420,6 +422,9 @@ function heapify(arr, n, i):
         });
 
         function createDiv(cn1, cn2, content, time, j, passCount) {
+            let outerWrapper = document.createElement("div");
+            outerWrapper.className = "outer-div-wrapper";
+
             let outerDiv = document.createElement("div");
             outerDiv.className = cn1;
 
@@ -444,29 +449,54 @@ function heapify(arr, n, i):
 
 
             li = document.createElement("div");
-            li.textContent = "Tree";
+            li.textContent = "▼";
             li.className = cn2;
-            let first = true;
-            li.addEventListener("click", () => {
-                showHeap(content, outerDiv, j, first);
-                first = false;
-                li.style.display = "none";
-            });
+            li.classList.add("last-child");
             outerDiv.appendChild(li);
+            showHeap(content, outerWrapper, j);
+            const heapTreeWrapper = outerWrapper.querySelector(".heap-tree-wrapper");
+            heapTreeWrapper.style.maxHeight = 0;
+            heapTreeWrapper.style.overflow = "hidden";
 
-            return outerDiv;
+
+            li.addEventListener("click", () => {
+                const contentHeight = Array.from(heapTreeWrapper.children)
+                    .reduce((total, child) => total + child.offsetHeight, 0);
+
+                if (li.textContent == "▼") {
+                    heapTreeWrapper.style.maxHeight = contentHeight + 20 + "px";
+                    li.textContent = "▲";
+                    heapTreeWrapper.style.overflowX = "auto";
+
+                    const currentNodes = heapTreeWrapper.querySelectorAll(".node");
+                    setTimeout(() => {
+                        scrollToMid(currentNodes);
+                    }, 500);
+
+                } else {
+                    heapTreeWrapper.style.maxHeight = "0";
+                    heapTreeWrapper.style.overflow = "hidden";
+                    li.textContent = "▼";
+                }
+
+            });
+
+
+            outerWrapper.appendChild(outerDiv);
+            return outerWrapper;
         }
 
-        function showHeap(values, outerDiv, j, first) {
-            if (first) {
-                const div = document.createElement("div");
-                div.className = "heap-tree-wrapper";
-                const heapTree = document.createElement("div");
-                heapTree.className = "heap-tree";
-                heapVisualized(values, heapTree, j);
-                div.appendChild(heapTree);
-                outerDiv.appendChild(div);
-            }
+
+        function showHeap(values, outerDiv, j) {
+
+            const div = document.createElement("div");
+            div.className = "heap-tree-wrapper";
+            const heapTree = document.createElement("div");
+            heapTree.className = "heap-tree";
+            heapVisualized(values, heapTree, j);
+            div.appendChild(heapTree);
+            outerDiv.appendChild(div);
+
 
         }
         function toggleClass(className, add, ...elements) {
@@ -530,11 +560,8 @@ function heapify(arr, n, i):
                 nodeContainer.style.width = `${maxWidth}px`
             });
 
-            // scrollToMid(nodeContainers);
         }
-        function scrollToMidFirst(nodeContainers) {
-            scrollToMid(nodeContainers);
-        }
+
         function eventListener(size) {
             let nodes = document.querySelectorAll(".node");
 

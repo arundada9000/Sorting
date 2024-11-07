@@ -55,7 +55,7 @@ const backToTopBtn = document.getElementById("backToTopBtn");
 
 window.addEventListener("scroll", () => {
   if (window.pageYOffset > 100) {
-    backToTopBtn.style.display = "block";
+    backToTopBtn.style.display = "flex";
   } else {
     backToTopBtn.style.display = "none";
   }

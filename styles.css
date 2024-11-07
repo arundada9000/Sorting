@@ -301,10 +301,7 @@ button {
   background-position: right;
 }
 /* Numbers and Passes */
-.passes .numbers {
-  padding-bottom: 1rem;
-  border-bottom: 2px solid rgb(150, 60, 229);
-}
+
 .numbers {
   display: flex;
   gap: 8px;
@@ -376,7 +373,13 @@ button {
   justify-content: center;
   align-items: center;
 }
-
+.outer-div-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 5px;
+  padding: 10px 0;
+  border-bottom: 2px solid rgb(150, 60, 229);
+}
 #passes {
   margin-bottom: 2rem;
 }
@@ -577,15 +580,14 @@ button {
   display: none;
   border: none;
   outline: none;
-  /* background-color: #007bff; */
-  background-image: url("./images/up-btn3.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #007bff;
   color: white;
   cursor: pointer;
   padding: 15px;
   border-radius: 50%;
-  font-size: 0px;
+  font-size: 25px;
+  align-items: center;
+  justify-content: center;
 }
 
 #backToTopBtn:hover {
