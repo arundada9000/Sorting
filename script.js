@@ -4,6 +4,10 @@ const codeContainer = document.querySelector("#code-display");
 const copyButton = document.querySelector(".language-copy-button");
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelector('button[data-language="c"]').click();
+  if (window.innerWidth < 768) {
+    document.querySelector('button[data-language="javascript"]').textContent =
+      "js";
+  }
 });
 
 languageSelector.addEventListener("click", (event) => {

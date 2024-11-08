@@ -737,6 +737,9 @@ button {
     transform: translateX(-100vw) scale(0);
     /* transition: opacity 0.5s ease, transform 0.75s ease-in-out; */
   }
+  .language-code-container {
+    width: 100vw;
+  }
   .nav-links.active {
     pointer-events: all;
     opacity: 1;
