@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | EasySorting</title>
+    <meta name="keywords"
+        content="about easy sorting, arun neupane, arundada9000, about sorting , sorting visualized , about arun neupane, sorting , quick sort , bubble sort, insertion sort, merge sort, radix sort, shell sort, sorting algorithms" />
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="shortcut icon" href="./images/information.png" type="image/x-icon">
+
+    <style>
+        .container p {
+            text-align: justify;
+        }
+
+        body {
+            font-family: roboto, sans-serif, Arial, Helvetica;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #1e1e1e;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #0c49e4;
+            font-size: 2.8rem;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .container header h1 {
+            text-align: center;
+            border: none;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-left: 5px solid #e41abb;
+            background: #1c1c1c;
+            border-radius: 5px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #0c49e4;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        ul,
+        .details ul {
+            padding-left: 20px;
+            list-style-type: square;
+            margin: 0.7rem 0;
+        }
+
+        ul li,
+        .details ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .acknowledgment-list li {
+            margin-bottom: 12px;
+        }
+
+        .container a {
+            color: #f1c40f;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .container a:hover {
+            color: #ff02c4;
+        }
+
+        .about-projects-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .about-projects-container img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .happy {
+            width: 100%;
+            justify-content: center;
+            color: #e807a8;
+            font-size: 2rem;
+            background: linear-gradient(90deg, #f2ff00, #037bf4);
+        }
+
+        .happy img {
+            width: 2rem;
+            height: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble <span class="sort-text">Sort</span></a>
+            <a href="./selectionSort.html">Selection <span class="sort-text">Sort</span></a>
+            <a href="./insertionSort.html">Insertion <span class="sort-text">Sort</span></a>
+            <a href="./mergeSort.html">Merge <span class="sort-text">Sort</span></a>
+            <a href="./quickSort.html">Quick <span class="sort-text">Sort</span></a>
+            <a href="./heapSort.html">Heap <span class="sort-text">Sort</span></a>
+            <a href="./radixSort.html">Radix <span class="sort-text">Sort</span></a>
+            <a href="./shellSort.html">Shell <span class="sort-text">Sort</span></a>
+            <a href="./summary.html">Summary</a>
+        </div>
+    </nav>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <main class="container">
+        <header>
+            <div class="header-container scroll-animate">
+                <h1>About EasySorting</h1>
+            </div>
+        </header>
+        <!-- About Me Section -->
+        <section class="about-me ">
+            <h2 class="scroll-animate">About Me</h2>
+            <p class="scroll-animate">Hello! I’m Arun Neupane, a <span id="age">20</span>-year-old from Parbat, Nepal.
+                I am currently pursuing
+                a
+                Bachelor's of
+                Science in Computer Science and Information Technology. My interests lie in cybersecurity, software
+                development, and exploring new emerging technologies.</p>
+        </section>
+
+        <!-- How This Works Section -->
+        <section class="how-it-works">
+            <h2 class="scroll-animate">How EasySorting Works</h2>
+            <p class="scroll-animate">EasySorting is a platform created to help users understand sorting algorithms
+                better through real-time
+                visualizations. The website is built using simple HTML, CSS, and vanilla JavaScript, and includes:</p>
+            <div class="details scroll-animate">
+                <ul>
+                    <li>8 sorting algorithm pages</li>
+                    <li>1 index (home) page</li>
+                    <li>1 contact page</li>
+                    <li>1 about page</li>
+                    <li>1 summary page</li>
+                    <li>1 CSS file</li>
+                    <li>1 JS file</li>
+                    <li>Images folder for assets</li>
+                </ul>
+            </div>
+            <p class="scroll-animate">Each page provides a unique interface to help users visualize sorting algorithms
+                step-by-step. The site
+                includes a custom gradient scrollbar, a responsive navigation bar, and an overall smooth and
+                user-friendly design for a great experience on any device.</p>
+        </section>
+
+        <!-- Acknowledgments Section -->
+        <section class="acknowledgments">
+            <h2 class=" scroll-animate">Acknowledgments</h2>
+            <p class=" scroll-animate">This project would not have been possible without the support from the following
+                resources and
+                individuals:</p>
+            <ul class="acknowledgment-list scroll-animate">
+                <li><strong><a href="https://chatgpt.com/" target="_blank" rel="noopener">AI (ChatGPT):</a> </strong>
+                    Design ideas, coding improvements, and provided pseudo code and code
+                    for sorting algorithms in various languages.</li>
+                <li><strong> <a href="https://gemini.google.com/app" target="_blank" rel="noopener">AI
+                            (Gemini:)</a></strong> Assisted with
+                    structuring
+                    the code, design ideas, and enhancing code
+                    quality.</li>
+                <li><strong>
+                        <a href="https://developer.mozilla.org/" target="_blank" rel="noopener">Mozilla Developer:</a>
+                    </strong> Provided detailed guidance when AI resources were insufficient.
+                </li>
+                <li><strong>YouTube (
+                        <a href="https://www.youtube.com/@GateSmashers" target="_blank" rel="noopener">Gate Smashers</a>
+                        /
+                        <a href="https://www.youtube.com/@THEGATEHUB" target="_blank" rel="noopener">The Gatehub</a>
+                        ):</strong> Simplified explanations of sorting
+                    algorithms.</li>
+                <li><strong>
+                        <a href="https://www.facebook.com/shailesh.nowhish" rel="noopener" target="_blank">Mr. Shailesh
+                            Mishra:</a>
+                    </strong> Offered invaluable feedback, helping to refine the website's
+                    professionalism and polish.</li>
+            </ul>
+            <p class=" scroll-animate">Special thanks to the following resources for their high-quality icons used
+                throughout the site:</p>
+            <ul class="acknowledgment-list scroll-animate">
+                <li><strong><a href="https://www.iconfinder.com/" rel="noopener"
+                            target="_blank">Iconfinder</a>:</strong> Provided the social media icons.</li>
+                <li><strong><a href="https://iconscout.com/" rel="noopener" target="_blank">Iconscout</a>:</strong>
+                    Supplied all sorting icons used on the
+                    website.</li>
+                <li><strong><a href="https://www.flaticon.com/" rel="noopener" target="_blank">Flaticon</a>:</strong>
+                    Contributed
+                    additional icons, including
+                    animated ones.</li>
+            </ul>
+        </section>
+
+        <!-- Personal Message Section -->
+        <section class="personal-message scroll-animate">
+            <h2>Personal Message</h2>
+            <p>Sorting algorithms play a fundamental role in computer science, yet I struggled to fully grasp them when
+                I first learned about them. This inspired me to create EasySorting as a visual learning aid, where
+                anyone can experience sorting algorithms in action and gain a deeper understanding of each step.</p>
+            <p>I truly hope this site helps make sorting algorithms clearer and aids in building your problem-solving
+                skills. Please feel free to share your feedback, as I’m constantly working to improve and expand this
+                resource. Let’s keep learning and growing together!</p>
+        </section>
+
+        <!-- Collaboration Invite Section -->
+        <section class="collaboration-invite">
+            <h2 class=" scroll-animate">Let’s Collaborate</h2>
+            <p class=" scroll-animate">If you’re interested in collaborating on future projects, I’d love to connect!
+                Together, we can create
+                something impactful. Reach out anytime—let’s build something great together! Some of my other works
+                include : <br> <a href="https://allunitconverter.netlify.app/" target="_blank" rel="noopener"
+                    class="about-projects-container">
+                    <img src="./images/converter.webp" alt="All unit converter">
+                    All unit
+                    Converter
+                </a> <br> <a href="https://easyqrcreate.netlify.app" rel="noopener" target="_blank"
+                    class="about-projects-container">
+                    <img src="./images/qr-code.png" alt="Qr code Generator">
+                    Qr
+                    Scanner
+                    and Generator
+                </a>
+                <br> <a href="https://pseudorandom.netlify.app" target="_blank" rel="noopener"
+                    class="about-projects-container">
+                    <img src="./images/random.png" alt="Random number Generator">
+                    Random number
+                    Generator</a>
+
+            </p>
+
+            <p class="happy scroll-animate about-projects-container">
+                <img src="./images/happiness.png" alt="Happy Emoji">
+                <strong>Happy Learning!</strong>
+            </p>
+
+        </section>
+
+    </main>
+
+    <button id="backToTopBtn" title="Go to top">↑</button>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-title">Sorting Visualizer</p>
+            <div class="footer-links">
+                <a href="https://github.com/arundada9000/Sorting" target="_blank" rel="noopener">Source Code</a> |
+                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener">Portfolio</a> |
+                <a href="./contact.html">Contact</a>
+            </div>
+            <p class="footer-info">&copy; <span id="year">2020</span> Sorting Visualizer. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-credit">For Learning and Development</p>
+        </div>
+    </footer>
+
+    <div class="dummy-btn language-selector inside-code-container language-copy-button" id="dummy-btn">Dummy button
+    </div>
+    <button id="dummy-btn1" data-language="c">Dummy button</button>
+
+    <script>
+        const fastBtn = document.querySelector(".dummy-btn");
+        const skipBtn = document.querySelector(".dummy-btn");
+        const inputBox = document.querySelector(".dummy-btn");
+        let date = new Date();
+        document.getElementById("age").textContent = date.getFullYear() - 2004;
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
