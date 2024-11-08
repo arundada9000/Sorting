@@ -60,7 +60,7 @@ nav {
   top: 0px;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 9;
 }
 nav.scrolled {
   top: -100px; /* Adjust the negative value to control the hiding distance */
@@ -578,6 +578,7 @@ button {
   font-size: 25px;
   align-items: center;
   justify-content: center;
+  z-index: 8;
 }
 
 #backToTopBtn:hover {
@@ -748,7 +749,7 @@ button {
     pointer-events: all;
     opacity: 1;
     display: flex;
-    z-index: 1;
+    z-index: 7;
     animation: appear 0.75s ease forwards;
   }
 
