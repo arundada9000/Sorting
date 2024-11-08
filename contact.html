@@ -334,7 +334,13 @@
     </main>
 
     <button id="backToTopBtn" title="Go to top">↑</button>
-    <button class="dummy-btn">Dummy button</button>
+
+    <!-- dummy is used to stop those script.js errors that tries to fetch buttons -->
+    <div class="dummy-btn language-selector inside-code-container language-copy-button" id="dummy-btn"
+        data-language="c">Dummy
+        button</div>
+    <button id="dummy-btn1" data-language="c">Dummy button</button>
+
     <footer class="site-footer">
         <div class="footer-container">
             <p class="footer-title">Sorting Visualizer</p>
@@ -350,9 +356,9 @@
     </footer>
 
     <script>
-         const fastBtn = document.querySelector(".dummy-btn");
-         const skipBtn = document.querySelector(".dummy-btn");
-         const inputBox = document.querySelector(".dummy-btn");
+        const fastBtn = document.querySelector(".dummy-btn");
+        const skipBtn = document.querySelector(".dummy-btn");
+        const inputBox = document.querySelector(".dummy-btn");
     </script>
     <script src="script.js"></script>
 </body>

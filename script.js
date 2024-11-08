@@ -1,3 +1,25 @@
+// code implementation
+const languageSelector = document.querySelector(".language-selector");
+const codeContainer = document.querySelector("#code-display");
+const copyButton = document.querySelector(".language-copy-button");
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector('button[data-language="c"]').click();
+});
+
+languageSelector.addEventListener("click", (event) => {
+  const selectedLanguage = event.target.dataset.language;
+  codeContainer.style.display = "block";
+  codeContainer.textContent = codeSnippets[selectedLanguage];
+
+  codeContainer.style.animation = "none";
+  codeContainer.offsetHeight;
+  codeContainer.style.animation = "fadeInTopToBottom 1s forwards";
+});
+
+copyButton.addEventListener("click", () => {
+  navigator.clipboard.writeText(codeContainer.textContent);
+});
+
 // for show hide of how to
 let items = document.getElementsByClassName("howto");
 let showButtons = document.getElementsByClassName("show");

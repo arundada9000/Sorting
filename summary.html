@@ -296,10 +296,14 @@
         </div>
     </div>
 
-    <button id="backToTopBtn" title="Go to top">↑</button>
-    <button class="dummy-btn">Dummy button</button>
+    <button id="backToTopBtn" title="Go to top" type="button">↑</button>
 
-
+    <!-- dummy is used to stop those script.js errors that tries to fetch buttons -->
+    <div class="dummy-btn language-selector inside-code-container language-copy-button" id="dummy-btn"
+        data-language="c">Dummy
+        button</div>
+    <button id="dummy-btn1" data-language="c">Dummy button</button>
+    
     <footer class="site-footer">
         <div class="footer-container">
             <p class="footer-title">Sorting Visualizer</p>

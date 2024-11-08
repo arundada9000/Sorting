@@ -506,28 +506,22 @@ button {
 .copy-btn:hover {
   background-color: #2980b9;
 }
-.sorting-algorithm-container pre {
+.pseudo-code-code {
   background-color: #0c0e00;
   padding: 1rem;
   border-radius: 8px;
   color: #ecf0f1;
-  /* border: 1px solid green; */
   box-shadow: 0px 0px 8px 3px rgb(0, 255, 0, 0.75);
+  overflow-x: auto;
 }
 
-.sorting-algorithm-container code {
-  background-color: #2c3e50;
+.pseudo-code-code code {
+  background-color: transparent;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   overflow-x: hidden;
 }
-.sorting-algorithm-container pre {
-  word-wrap: break-word;
-  white-space: pre-wrap;
-}
-.sorting-algorithm-container pre code {
-  background-color: transparent;
-}
+
 /* Style for webkit scroll bars */
 ::-webkit-scrollbar {
   width: 0px;
@@ -566,8 +560,8 @@ button {
 }
 /* Back to top */
 #backToTopBtn {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   position: fixed;
   bottom: 10px;
   right: 15px;
@@ -598,9 +592,117 @@ button {
   opacity: 1;
   transform: translateY(0);
 }
-.dummy-btn {
+#dummy-btn,
+#dummy-btn1 {
   display: none;
 }
+
+/* Code container */
+.language-code-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #282c34;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+.language-code-container h1 {
+  font-size: 1.5rem;
+  color: #f0f0f0;
+  text-align: center;
+  margin: 10px 0 20px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.language-selector {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.language-selector button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.language-selector button[data-language="javascript"] {
+  background-color: #d2b916;
+}
+
+.language-selector button[data-language="c"] {
+  background-color: #00599c;
+}
+
+.language-selector button[data-language="cpp"] {
+  background-color: #00599c;
+}
+
+.language-selector button[data-language="java"] {
+  background-color: #f89820;
+}
+
+.language-selector button[data-language="python"] {
+  background-color: #3776ab;
+}
+
+.language-selector button:hover {
+  transform: scale(1.05);
+}
+
+.inside-code-container {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  padding: 15px;
+  border-radius: 6px;
+  font-family: monospace;
+  font-size: 1rem;
+  min-height: 150px;
+  margin-bottom: 10px;
+  overflow-x: auto;
+}
+#code-display {
+  padding: 15px;
+  border-radius: 6px;
+  color: #d4d4d4;
+  overflow-x: auto;
+  font-family: monospace;
+  display: none;
+  animation: fadeInTopToBottom 1s forwards;
+}
+@keyframes fadeInTopToBottom {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.language-copy-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.language-copy-button:hover {
+  background-color: #218838;
+}
+
 @media (max-width: 768px) {
   .front {
     min-height: 95svh;

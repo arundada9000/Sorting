@@ -215,10 +215,26 @@ end function</code></pre>
                     integers. Its time complexity of <code>O(nk)</code> makes it suitable for sorting large sets of
                     data, particularly when the range of digits is small.</p>
             </section>
+
+            <section class="language-code-container">
+                <h1 class="scroll-animate">Radix Sort Code Implementation</h1>
+                <div class="language-selector scroll-animate">
+                    <button data-language="c">C</button>
+                    <button data-language="cpp">C++</button>
+                    <button data-language="javascript">JavaScript</button>
+                    <button data-language="python">Python</button>
+                    <button data-language="java">Java</button>
+                </div>
+                <pre class="inside-code-container">
+                    <code id="code-display"></code>
+                </pre>
+                <button class="language-copy-button scroll-animate">Copy</button>
+            </section>
+
         </div>
     </div>
 
-    <button id="backToTopBtn" title="Go to top"></button>
+    <button id="backToTopBtn" title="Go to top">↑</button>
 
     <footer class="site-footer">
         <div class="footer-container">
@@ -235,6 +251,276 @@ end function</code></pre>
     </footer>
 
     <script>
+
+        const codeSnippets = {
+            javascript: `// JavaScript code for Radix Sort
+function getMax(arr) {
+    return Math.max(...arr);
+}
+
+function countingSort(arr, exp) {
+    const output = new Array(arr.length);
+    const count = new Array(10).fill(0);
+    
+    for (let i = 0; i < arr.length; i++) {
+        const index = Math.floor(arr[i] / exp) % 10;
+        count[index]++;
+    }
+    
+    for (let i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+    }
+
+    for (let i = arr.length - 1; i >= 0; i--) {
+        const index = Math.floor(arr[i] / exp) % 10;
+        output[count[index] - 1] = arr[i];
+        count[index]--;
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] = output[i];
+    }
+}
+
+function radixSort(arr) {
+    const max = getMax(arr);
+    for (let exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
+        countingSort(arr, exp);
+    }
+}
+
+let arr = [16, 15, 15, 10, 1];
+console.log('Before sorting:', arr);
+radixSort(arr);
+console.log('After sorting:', arr);`,
+
+            c: `// C code for Radix Sort
+#include <stdio.h>
+
+int getMax(int arr[], int n) {
+    int max = arr[0];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+void countingSort(int arr[], int n, int exp) {
+    int output[n];
+    int count[10] = {0};
+
+    for (int i = 0; i < n; i++) {
+        int index = (arr[i] / exp) % 10;
+        count[index]++;
+    }
+
+    for (int i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+    }
+
+    for (int i = n - 1; i >= 0; i--) {
+        int index = (arr[i] / exp) % 10;
+        output[count[index] - 1] = arr[i];
+        count[index]--;
+    }
+
+    for (int i = 0; i < n; i++) {
+        arr[i] = output[i];
+    }
+}
+
+void radixSort(int arr[], int n) {
+    int max = getMax(arr, n);
+
+    for (int exp = 1; max / exp > 0; exp *= 10) {
+        countingSort(arr, n, exp);
+    }
+}
+
+int main() {
+    int arr[] = {16, 15, 15, 10, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Before sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    radixSort(arr, n);
+
+    printf("\\nAfter sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}`,
+
+            cpp: `// C++ code for Radix Sort
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int getMax(vector<int>& arr) {
+    int max = arr[0];
+    for (int i = 1; i < arr.size(); i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+void countingSort(vector<int>& arr, int exp) {
+    vector<int> output(arr.size());
+    vector<int> count(10, 0);
+
+    for (int i = 0; i < arr.size(); i++) {
+        int index = (arr[i] / exp) % 10;
+        count[index]++;
+    }
+
+    for (int i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+    }
+
+    for (int i = arr.size() - 1; i >= 0; i--) {
+        int index = (arr[i] / exp) % 10;
+        output[count[index] - 1] = arr[i];
+        count[index]--;
+    }
+
+    for (int i = 0; i < arr.size(); i++) {
+        arr[i] = output[i];
+    }
+}
+
+void radixSort(vector<int>& arr) {
+    int max = getMax(arr);
+
+    for (int exp = 1; max / exp > 0; exp *= 10) {
+        countingSort(arr, exp);
+    }
+}
+
+int main() {
+    vector<int> arr = {16, 15, 15, 10, 1};
+
+    cout << "Before sorting: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+
+    radixSort(arr);
+
+    cout << "\\nAfter sorting: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+
+    return 0;
+}`,
+
+            java: `// Java code for Radix Sort
+public class SortingAlgorithm {
+    public static int getMax(int[] arr) {
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+
+    public static void countingSort(int[] arr, int n, int exp) {
+        int[] output = new int[n];
+        int[] count = new int[10];
+
+        for (int i = 0; i < n; i++) {
+            int index = (arr[i] / exp) % 10;
+            count[index]++;
+        }
+
+        for (int i = 1; i < 10; i++) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = n - 1; i >= 0; i--) {
+            int index = (arr[i] / exp) % 10;
+            output[count[index] - 1] = arr[i];
+            count[index]--;
+        }
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = output[i];
+        }
+    }
+
+    public static void radixSort(int[] arr) {
+        int max = getMax(arr);
+
+        for (int exp = 1; max / exp > 0; exp *= 10) {
+            countingSort(arr, arr.length, exp);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {16, 15, 15, 10, 1};
+        System.out.print("Before sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+
+        radixSort(arr);
+
+        System.out.print("\\nAfter sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}`,
+
+            python: `# Python code for Radix Sort
+def getMax(arr):
+    return max(arr)
+
+def countingSort(arr, exp):
+    output = [0] * len(arr)
+    count = [0] * 10
+
+    for i in range(len(arr)):
+        index = (arr[i] // exp) % 10
+        count[index] += 1
+
+    for i in range(1, 10):
+        count[i] += count[i - 1]
+
+    for i in range(len(arr) - 1, -1, -1):
+        index = (arr[i] // exp) % 10
+        output[count[index] - 1] = arr[i]
+        count[index] -= 1
+
+    for i in range(len(arr)):
+        arr[i] = output[i]
+
+def radixSort(arr):
+    max_val = getMax(arr)
+    exp = 1
+    while max_val // exp > 0:
+        countingSort(arr, exp)
+        exp *= 10
+
+arr = [16, 15, 15, 10, 1]
+print('Before sorting:', arr)
+radixSort(arr)
+print('After sorting:', arr)
+`
+        };
+
+
         const sortBtn = document.getElementById("sort-btn");
         const inputBox = document.getElementById("input-num");
         const passesDiv = document.getElementById("passes");

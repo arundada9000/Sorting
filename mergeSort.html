@@ -25,7 +25,7 @@
             <span></span>
             <span></span>
         </div>
-        
+
         <div class="nav-links">
             <a href="./index.html">Home</a>
             <a href="./bubbleSort.html">Bubble <span class="sort-text">sort</span></a>
@@ -179,6 +179,22 @@ function merge(left, right):
                     datasets and is widely utilized in computer science applications.
                 </p>
             </section>
+
+            <section class="language-code-container">
+                <h1 class="scroll-animate">Merge Sort Code Implementation</h1>
+                <div class="language-selector scroll-animate">
+                    <button data-language="c">C</button>
+                    <button data-language="cpp">C++</button>
+                    <button data-language="javascript">JavaScript</button>
+                    <button data-language="python">Python</button>
+                    <button data-language="java">Java</button>
+                </div>
+                <pre class="inside-code-container">
+                    <code id="code-display"></code>
+                </pre>
+                <button class="language-copy-button scroll-animate">Copy</button>
+            </section>
+
         </div>
     </div>
     <button id="backToTopBtn" title="Go to top">↑</button>
@@ -198,6 +214,279 @@ function merge(left, right):
     </footer>
 
     <script>
+
+        const codeSnippets = {
+            javascript: `// JavaScript code for Merge Sort
+function mergeSort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    
+    const mid = Math.floor(arr.length / 2);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
+    
+    return merge(mergeSort(left), mergeSort(right));
+}
+
+function merge(left, right) {
+    let result = [], leftIndex = 0, rightIndex = 0;
+    
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+            result.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            result.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
+    
+    return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+}
+
+let arr = [16, 15, 15, 10, 1];
+console.log('Before sorting:', arr);
+arr = mergeSort(arr);
+console.log('After sorting:', arr);`,
+
+            c: `// C code for Merge Sort
+#include <stdio.h>
+#include <stdlib.h>
+
+void merge(int arr[], int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    int L[n1], R[n2];
+    
+    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];
+
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(int arr[], int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        
+        merge(arr, left, mid, right);
+    }
+}
+
+int main() {
+    int arr[] = {16, 15, 15, 10, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Before sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    mergeSort(arr, 0, n - 1);
+
+    printf("\\nAfter sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}`,
+
+            cpp: `// C++ code for Merge Sort
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void merge(vector<int>& arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+    
+    vector<int> L(n1), R(n2);
+    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
+    for (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];
+
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+void mergeSort(vector<int>& arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        
+        merge(arr, left, mid, right);
+    }
+}
+
+int main() {
+    vector<int> arr = {16, 15, 15, 10, 1};
+    
+    cout << "Before sorting: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+
+    mergeSort(arr, 0, arr.size() - 1);
+
+    cout << "\\nAfter sorting: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+
+    return 0;
+}`,
+
+            java: `// Java code for Merge Sort
+public class SortingAlgorithm {
+    public static void merge(int[] arr, int left, int mid, int right) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+        
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+        
+        for (int i = 0; i < n1; i++) L[i] = arr[left + i];
+        for (int i = 0; i < n2; i++) R[i] = arr[mid + 1 + i];
+        
+        int i = 0, j = 0, k = left;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+
+    public static void mergeSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int mid = left + (right - left) / 2;
+            
+            mergeSort(arr, left, mid);
+            mergeSort(arr, mid + 1, right);
+            
+            merge(arr, left, mid, right);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {16, 15, 15, 10, 1};
+        System.out.print("Before sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+
+        mergeSort(arr, 0, arr.length - 1);
+
+        System.out.print("\\nAfter sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}`,
+
+            python: `# Python code for Merge Sort
+def merge(arr, left, mid, right):
+    n1 = mid - left + 1
+    n2 = right - mid
+    
+    L = arr[left:left + n1]
+    R = arr[mid + 1:mid + 1 + n2]
+    
+    i = j = k = left
+    while i < n1 and j < n2:
+        if L[i] <= R[j]:
+            arr[k] = L[i]
+            i += 1
+        else:
+            arr[k] = R[j]
+            j += 1
+        k += 1
+
+    while i < n1:
+        arr[k] = L[i]
+        i += 1
+        k += 1
+    while j < n2:
+        arr[k] = R[j]
+        j += 1
+        k += 1
+
+def mergeSort(arr, left, right):
+    if left < right:
+        mid = (left + right) // 2
+        mergeSort(arr, left, mid)
+        mergeSort(arr, mid + 1, right)
+        merge(arr, left, mid, right)
+
+arr = [16, 15, 15, 10, 1]
+print('Before sorting:', arr)
+mergeSort(arr, 0, len(arr) - 1)
+print('After sorting:', arr)
+`
+        };
+
+
         const sortBtn = document.getElementById("sort-btn");
         const inputBox = document.getElementById("input-num");
         const passesDiv = document.getElementById("passes");
@@ -248,9 +537,26 @@ function merge(left, right):
             const divs = document.querySelectorAll(".num");
 
             let tValues = mergeSort(values);
-            while (left >= 1 && right >= 1) {
 
-            }
+            sortedArray = tValues.join(", ");
+            howto.style.visibility = "visible";
+            howto.innerHTML = "The array is successfully sorted.There were " + values.length + " numbers and it took " + (values.length - 1) + " passes.The sorted array is : <br>" + sortedArray;
+
+            const btn = document.createElement("button");
+            btn.textContent = "Copy";
+            btn.className = "copy-btn";
+            btn.id = "ans-copy-btn";
+            btn.addEventListener("click", () => {
+                navigator.clipboard.writeText(sortedArray);
+                btn.textContent = "Copied!";
+                setTimeout(() => {
+                    btn.textContent = "Copy";
+                }, 2000);
+            });
+            howto.appendChild(btn);
+
+            displayBtn("none");
+            sortBtn.textContent = "Sort";
 
             function mergeSort(array) {
                 if (array.length <= 1) {
@@ -305,7 +611,7 @@ function merge(left, right):
                     }
                     iterator = gap;
                     gap += gap;
-                    gap > values.length ? gap = values.length: gap = gap;
+                    gap > values.length ? gap = values.length : gap = gap;
                     numbersDiv.appendChild(numWrapper);
                 }
                 counter = 0;

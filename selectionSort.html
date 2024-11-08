@@ -26,7 +26,7 @@
             <span></span>
             <span></span>
         </div>
-        
+
         <div class="nav-links">
             <a href="./index.html">Home</a>
             <a href="./bubbleSort.html">Bubble <span class="sort-text">sort</span></a>
@@ -58,8 +58,7 @@
                     <div class="buttons-div">
                         <div class="sort-btn" id="generate-random-btn" title="Generate random numbers button"
                             onclick="randomGenerate();">
-                            <img src="./images/magic.png" alt="Generate Random Numbers"
-                                title="Generate random numbers">
+                            <img src="./images/magic.png" alt="Generate Random Numbers" title="Generate random numbers">
                         </div>
                         <button id="sort-btn" class="sort-btn">Sort</button>
                     </div>
@@ -179,6 +178,22 @@
                     small
                     datasets and educational purposes.</p>
             </section>
+
+            <section class="language-code-container">
+                <h1 class="scroll-animate">Selection Sort Code Implementation</h1>
+                <div class="language-selector scroll-animate">
+                    <button data-language="c">C</button>
+                    <button data-language="cpp">C++</button>
+                    <button data-language="javascript">JavaScript</button>
+                    <button data-language="python">Python</button>
+                    <button data-language="java">Java</button>
+                </div>
+                <pre class="inside-code-container">
+                    <code id="code-display"></code>
+                </pre>
+                <button class="language-copy-button scroll-animate">Copy</button>
+            </section>
+
         </div>
     </div>
 
@@ -199,6 +214,155 @@
     </footer>
 
     <script>
+
+        const codeSnippets = {
+            javascript: `// JavaScript code for Selection Sort
+function selectionSort(arr) {
+    for (let i = 0; i < arr.length - 1; i++) {
+        let minIdx = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[j] < arr[minIdx]) {
+                minIdx = j;
+            }
+        }
+        // Swap the found minimum element with the first element
+        let temp = arr[minIdx];
+        arr[minIdx] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+let arr = [16, 15, 15, 10, 1];
+console.log('Before sorting:', arr);
+selectionSort(arr);
+console.log('After sorting:', arr);`,
+
+            c: `// C code for Selection Sort
+#include <stdio.h>
+
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIdx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIdx]) {
+                minIdx = j;
+            }
+        }
+        // Swap the found minimum element with the first element
+        int temp = arr[minIdx];
+        arr[minIdx] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+int main() {
+    int arr[] = {16, 15, 15, 10, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Before sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    selectionSort(arr, n);
+
+    printf("\\nAfter sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}`,
+
+            cpp: `// C++ code for Selection Sort
+#include <iostream>
+using namespace std;
+
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIdx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[minIdx]) {
+                minIdx = j;
+            }
+        }
+        // Swap the found minimum element with the first element
+        int temp = arr[minIdx];
+        arr[minIdx] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+int main() {
+    int arr[] = {16, 15, 15, 10, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Before sorting: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    selectionSort(arr, n);
+
+    cout << "\\nAfter sorting: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}`,
+
+            java: `// Java code for Selection Sort
+public class SortingAlgorithm {
+    public static void selectionSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minIdx = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minIdx]) {
+                    minIdx = j;
+                }
+            }
+            // Swap the found minimum element with the first element
+            int temp = arr[minIdx];
+            arr[minIdx] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {16, 15, 15, 10, 1};
+        System.out.print("Before sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+
+        selectionSort(arr);
+
+        System.out.print("\\nAfter sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}`,
+
+            python: `# Python code for Selection Sort
+def selectionSort(arr):
+    for i in range(len(arr) - 1):
+        minIdx = i
+        for j in range(i + 1, len(arr)):
+            if arr[j] < arr[minIdx]:
+                minIdx = j
+        # Swap the found minimum element with the first element
+        arr[i], arr[minIdx] = arr[minIdx], arr[i]
+
+arr = [16, 15, 15, 10, 1]
+print('Before sorting:', arr)
+selectionSort(arr)
+print('After sorting:', arr)
+`
+        };
+
+
         const sortBtn = document.getElementById("sort-btn");
         const inputBox = document.getElementById("input-num");
         const passesDiv = document.getElementById("passes");

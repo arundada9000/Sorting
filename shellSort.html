@@ -173,6 +173,22 @@
                     of gaps. With a time complexity that varies based on the gap sequence, it is particularly effective
                     for small to medium datasets.</p>
             </section>
+
+            <section class="language-code-container">
+                <h1 class="scroll-animate">Shell Sort Code Implementation</h1>
+                <div class="language-selector scroll-animate">
+                    <button data-language="c">C</button>
+                    <button data-language="cpp">C++</button>
+                    <button data-language="javascript">JavaScript</button>
+                    <button data-language="python">Python</button>
+                    <button data-language="java">Java</button>
+                </div>
+                <pre class="inside-code-container">
+                    <code id="code-display"></code>
+                </pre>
+                <button class="language-copy-button scroll-animate">Copy</button>
+            </section>
+
         </div>
 
     </div>
@@ -194,6 +210,161 @@
     </footer>
 
     <script>
+
+        const codeSnippets = {
+            javascript: `// JavaScript code for Shell Sort
+function shellSort(arr) {
+    let n = arr.length;
+    let gap = Math.floor(n / 2);
+
+    while (gap > 0) {
+        for (let i = gap; i < n; i++) {
+            let temp = arr[i];
+            let j = i;
+            while (j >= gap && arr[j - gap] > temp) {
+                arr[j] = arr[j - gap];
+                j -= gap;
+            }
+            arr[j] = temp;
+        }
+        gap = Math.floor(gap / 2);
+    }
+}
+
+let arr = [16, 15, 15, 10, 1];
+console.log('Before sorting:', arr);
+shellSort(arr);
+console.log('After sorting:', arr);`,
+
+            c: `// C code for Shell Sort
+#include <stdio.h>
+
+void shellSort(int arr[], int n) {
+    for (int gap = n / 2; gap > 0; gap /= 2) {
+        for (int i = gap; i < n; i++) {
+            int temp = arr[i];
+            int j = i;
+            while (j >= gap && arr[j - gap] > temp) {
+                arr[j] = arr[j - gap];
+                j -= gap;
+            }
+            arr[j] = temp;
+        }
+    }
+}
+
+int main() {
+    int arr[] = {16, 15, 15, 10, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Before sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    shellSort(arr, n);
+
+    printf("\\nAfter sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}`,
+
+            cpp: `// C++ code for Shell Sort
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void shellSort(vector<int>& arr) {
+    int n = arr.size();
+    for (int gap = n / 2; gap > 0; gap /= 2) {
+        for (int i = gap; i < n; i++) {
+            int temp = arr[i];
+            int j = i;
+            while (j >= gap && arr[j - gap] > temp) {
+                arr[j] = arr[j - gap];
+                j -= gap;
+            }
+            arr[j] = temp;
+        }
+    }
+}
+
+int main() {
+    vector<int> arr = {16, 15, 15, 10, 1};
+
+    cout << "Before sorting: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+
+    shellSort(arr);
+
+    cout << "\\nAfter sorting: ";
+    for (int num : arr) {
+        cout << num << " ";
+    }
+
+    return 0;
+}`,
+
+            java: `// Java code for Shell Sort
+public class SortingAlgorithm {
+    public static void shellSort(int[] arr) {
+        int n = arr.length;
+        for (int gap = n / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < n; i++) {
+                int temp = arr[i];
+                int j = i;
+                while (j >= gap && arr[j - gap] > temp) {
+                    arr[j] = arr[j - gap];
+                    j -= gap;
+                }
+                arr[j] = temp;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {16, 15, 15, 10, 1};
+        System.out.print("Before sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+
+        shellSort(arr);
+
+        System.out.print("\\nAfter sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}`,
+
+            python: `# Python code for Shell Sort
+def shellSort(arr):
+    n = len(arr)
+    gap = n // 2
+    while gap > 0:
+        for i in range(gap, n):
+            temp = arr[i]
+            j = i
+            while j >= gap and arr[j - gap] > temp:
+                arr[j] = arr[j - gap]
+                j -= gap
+            arr[j] = temp
+        gap //= 2
+
+arr = [16, 15, 15, 10, 1]
+print('Before sorting:', arr)
+shellSort(arr)
+print('After sorting:', arr)
+`
+        };
+
+
         const sortBtn = document.getElementById("sort-btn");
         const inputBox = document.getElementById("input-num");
         const passesDiv = document.getElementById("passes");

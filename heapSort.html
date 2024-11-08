@@ -95,7 +95,7 @@
             <span></span>
             <span></span>
         </div>
-        
+
         <div class="nav-links">
             <a href="./index.html">Home</a>
             <a href="./bubbleSort.html">Bubble <span class="sort-text">sort</span></a>
@@ -252,6 +252,22 @@ function heapify(arr, n, i):
                     a time complexity of <code>O(n log n)</code>, it is efficient and suitable for applications
                     requiring guaranteed performance.</p>
             </section>
+
+            <section class="language-code-container">
+                <h1 class="scroll-animate">Heap Sort Code Implementation</h1>
+                <div class="language-selector scroll-animate">
+                    <button data-language="c">C</button>
+                    <button data-language="cpp">C++</button>
+                    <button data-language="javascript">JavaScript</button>
+                    <button data-language="python">Python</button>
+                    <button data-language="java">Java</button>
+                </div>
+                <pre class="inside-code-container">
+                    <code id="code-display"></code>
+                </pre>
+                <button class="language-copy-button scroll-animate">Copy</button>
+            </section>
+
         </div>
 
     </div>
@@ -272,6 +288,268 @@ function heapify(arr, n, i):
     </footer>
 
     <script>
+        const codeSnippets = {
+            javascript: `// JavaScript code for Heap Sort
+function heapify(arr, n, i) {
+    let largest = i;
+    let left = 2 * i + 1;
+    let right = 2 * i + 2;
+
+    if (left < n && arr[left] > arr[largest]) {
+        largest = left;
+    }
+
+    if (right < n && arr[right] > arr[largest]) {
+        largest = right;
+    }
+
+    if (largest !== i) {
+        let temp = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = temp;
+
+        heapify(arr, n, largest);
+    }
+}
+
+function heapSort(arr) {
+    let n = arr.length;
+
+    // Build max heap
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+        heapify(arr, n, i);
+    }
+
+    // Extract elements from heap
+    for (let i = n - 1; i > 0; i--) {
+        let temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        heapify(arr, i, 0);
+    }
+}
+
+let arr = [16, 15, 15, 10, 1];
+console.log('Before sorting:', arr);
+heapSort(arr);
+console.log('After sorting:', arr);`,
+
+            c: `// C code for Heap Sort
+#include <stdio.h>
+
+void heapify(int arr[], int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n && arr[left] > arr[largest]) {
+        largest = left;
+    }
+
+    if (right < n && arr[right] > arr[largest]) {
+        largest = right;
+    }
+
+    if (largest != i) {
+        int temp = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = temp;
+
+        heapify(arr, n, largest);
+    }
+}
+
+void heapSort(int arr[], int n) {
+    // Build max heap
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        heapify(arr, n, i);
+    }
+
+    // Extract elements from heap
+    for (int i = n - 1; i > 0; i--) {
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        heapify(arr, i, 0);
+    }
+}
+
+int main() {
+    int arr[] = {16, 15, 15, 10, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Before sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    heapSort(arr, n);
+
+    printf("\\nAfter sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}`,
+
+            cpp: `// C++ code for Heap Sort
+#include <iostream>
+using namespace std;
+
+void heapify(int arr[], int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left < n && arr[left] > arr[largest]) {
+        largest = left;
+    }
+
+    if (right < n && arr[right] > arr[largest]) {
+        largest = right;
+    }
+
+    if (largest != i) {
+        int temp = arr[i];
+        arr[i] = arr[largest];
+        arr[largest] = temp;
+
+        heapify(arr, n, largest);
+    }
+}
+
+void heapSort(int arr[], int n) {
+    // Build max heap
+    for (int i = n / 2 - 1; i >= 0; i--) {
+        heapify(arr, n, i);
+    }
+
+    // Extract elements from heap
+    for (int i = n - 1; i > 0; i--) {
+        int temp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        heapify(arr, i, 0);
+    }
+}
+
+int main() {
+    int arr[] = {16, 15, 15, 10, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Before sorting: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    heapSort(arr, n);
+
+    cout << "\\nAfter sorting: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}`,
+
+            java: `// Java code for Heap Sort
+public class SortingAlgorithm {
+    public static void heapify(int[] arr, int n, int i) {
+        int largest = i;
+        int left = 2 * i + 1;
+        int right = 2 * i + 2;
+
+        if (left < n && arr[left] > arr[largest]) {
+            largest = left;
+        }
+
+        if (right < n && arr[right] > arr[largest]) {
+            largest = right;
+        }
+
+        if (largest != i) {
+            int temp = arr[i];
+            arr[i] = arr[largest];
+            arr[largest] = temp;
+
+            heapify(arr, n, largest);
+        }
+    }
+
+    public static void heapSort(int[] arr) {
+        int n = arr.length;
+
+        // Build max heap
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(arr, n, i);
+        }
+
+        // Extract elements from heap
+        for (int i = n - 1; i > 0; i--) {
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            heapify(arr, i, 0);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {16, 15, 15, 10, 1};
+        System.out.print("Before sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+
+        heapSort(arr);
+
+        System.out.print("\\nAfter sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}`,
+
+            python: `# Python code for Heap Sort
+def heapify(arr, n, i):
+    largest = i
+    left = 2 * i + 1
+    right = 2 * i + 2
+
+    if left < n and arr[left] > arr[largest]:
+        largest = left
+
+    if right < n and arr[right] > arr[largest]:
+        largest = right
+
+    if largest != i:
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
+
+def heapSort(arr):
+    n = len(arr)
+
+    # Build max heap
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, n, i)
+
+    # Extract elements from heap
+    for i in range(n - 1, 0, -1):
+        arr[0], arr[i] = arr[i], arr[0]
+        heapify(arr, i, 0)
+
+arr = [16, 15, 15, 10, 1]
+print('Before sorting:', arr)
+heapSort(arr)
+print('After sorting:', arr)
+`
+        };
+
+
         const sortBtn = document.getElementById("sort-btn");
         const inputBox = document.getElementById("input-num");
         const passesDiv = document.getElementById("passes");

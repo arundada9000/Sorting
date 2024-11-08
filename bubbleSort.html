@@ -8,8 +8,10 @@
     <meta name="description" content="Bubble sort visualized step by step with its time and space complexities" />
     <meta name="keyword"
         content="bubble sort, bubble sort visualized,step by step, bubble sort in easy way, time complexity, space complexity, bubble sort properties, arun neupane,sorting" />
+
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
+
 </head>
 
 <body>
@@ -141,7 +143,7 @@
                 <h2 class="section-title">Pseudo Code</h2>
                 <div class="code-container">
                     <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
-                    <pre><code><!-- This is the pseudo code for Bubble Sort -->function bubbleSort(arr):
+                    <pre class="pseudo-code-code"><code><!-- This is the pseudo code for Bubble Sort -->function bubbleSort(arr):
     n = length(arr)
     for i from 0 to n-1:
         for j from 0 to n-i-1:
@@ -170,8 +172,26 @@
                     worst-case
                     complexity, its simplicity makes it suitable for educational purposes.</p>
             </section>
+
+            <section class="language-code-container">
+                <h1 class="scroll-animate">Bubble Sort Code Implementation</h1>
+                <div class="language-selector scroll-animate">
+                    <button data-language="c">C</button>
+                    <button data-language="cpp">C++</button>
+                    <button data-language="javascript">JavaScript</button>
+                    <button data-language="python">Python</button>
+                    <button data-language="java">Java</button>
+                </div>
+                <pre class="inside-code-container">
+                    <code id="code-display"></code>
+                </pre>
+                <button class="language-copy-button scroll-animate">Copy</button>
+            </section>
+
         </div>
+
     </div>
+
     <button id="backToTopBtn" title="Go to top">↑</button>
 
     <footer class="site-footer">
@@ -189,6 +209,143 @@
     </footer>
 
     <script>
+
+        const codeSnippets = {
+            javascript: `// JavaScript code for Bubble Sort
+function bubbleSort(arr) {
+    let n = arr.length;
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                let temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+let arr = [16, 15, 15, 10, 1];
+console.log('Before sorting:', arr);
+bubbleSort(arr);
+console.log('After sorting:', arr);`,
+
+            c: `// C code for Bubble Sort
+#include <stdio.h>
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = {16, 15, 15, 10, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Before sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    bubbleSort(arr, n);
+
+    printf("\\nAfter sorting: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}`,
+
+            cpp: `// C++ code for Bubble Sort
+#include <iostream>
+using namespace std;
+
+void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int arr[] = {16, 15, 15, 10, 1};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "Before sorting: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    bubbleSort(arr, n);
+
+    cout << "\\nAfter sorting: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}`,
+
+            java: `// Java code for Bubble Sort
+public class SortingAlgorithm {
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {16, 15, 15, 10, 1};
+        System.out.print("Before sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+
+        bubbleSort(arr);
+
+        System.out.print("\\nAfter sorting: ");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}`,
+
+            python: `# Python code for Bubble Sort
+def bubbleSort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        for j in range(0, n - i - 1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+
+arr = [16, 15, 15, 10, 1]
+print('Before sorting:', arr)
+bubbleSort(arr)
+print('After sorting:', arr)
+`
+        };
+
+
         const sortBtn = document.getElementById("sort-btn");
         const inputBox = document.getElementById("input-num");
         const passesDiv = document.getElementById("passes");
