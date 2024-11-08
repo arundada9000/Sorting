@@ -25,23 +25,22 @@
             align-items: center;
             min-height: 100vh;
             background-color: black;
-            background: linear-gradient(135deg, #07090c, #0fe0f7);
+            background: linear-gradient(135deg, #d8dee8, #d9e9eb);
         }
 
         .menu-toggle span {
             background-color: black;
         }
 
-        .contact-page {
+        .container {
             display: flex;
             flex-direction: row;
-            max-width: 1000px;
+            gap: 1rem;
+            max-width: 1200px;
             width: 100%;
-            background-color: transparent;
             border-radius: 12px;
-            /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); */
             overflow: hidden;
-            padding-top: 3rem;
+
         }
 
         /* Contact Form Section */
@@ -51,7 +50,10 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-color: #b3cced70;
+            background-color: #e7eaee70;
+            box-shadow: 0px 0px 5px black;
+            border-top: 2px solid blue;
+            border-left: 2px solid blue;
         }
 
         .contact-form h1 {
@@ -107,13 +109,17 @@
             font-size: 1rem;
             width: 100%;
             outline: none;
-            background-color: #0f0f0f;
-
             border: none;
+            font-family: roboto, sans-serif, Arial, Helvetica;
+        }
+
+        input[type="text"] {
+            background-color: white;
+            color: black;
         }
 
         input[type="submit"] {
-            background-color: #0044cc40;
+            background-color: #0044cc;
             color: white;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s;
@@ -227,9 +233,10 @@
         }
 
         @media (max-width:768px) {
-            .contact-page {
+            .container {
                 flex-direction: column-reverse;
-                padding-top: 0rem;
+                padding: 0 10px;
+                gap: 2rem;
             }
 
             .follow-me-section {
@@ -247,88 +254,87 @@
             <span></span>
             <span></span>
         </div>
-        <div class="nav-links1">
-            <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html">Bubble</a>
-            <a href="./selectionSort.html">Selection</a>
-            <a href="./insertionSort.html">Insertion</a>
-            <a href="./mergeSort.html">Merge</a>
-            <a href="./quickSort.html">Quick</a>
-            <a href="./heapSort.html">Heap</a>
-            <a href="./radixSort.html">Radix</a>
-            <a href="./shellSort.html">Shell</a>
-            <a href="./summary.html">Summary</a>
-        </div>
+
         <div class="nav-links">
             <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html">Bubble Sort</a>
-            <a href="./selectionSort.html">Selection Sort</a>
-            <a href="./insertionSort.html">Insertion Sort</a>
-            <a href="./mergeSort.html">Merge Sort</a>
-            <a href="./quickSort.html">Quick Sort</a>
-            <a href="./heapSort.html">Heap Sort</a>
-            <a href="./radixSort.html">Radix Sort</a>
-            <a href="./shellSort.html">Shell Sort</a>
+            <a href="./bubbleSort.html">Bubble <span class="sort-text">Sort</span></a>
+            <a href="./selectionSort.html">Selection <span class="sort-text">Sort</span></a>
+            <a href="./insertionSort.html">Insertion <span class="sort-text">Sort</span></a>
+            <a href="./mergeSort.html">Merge <span class="sort-text">Sort</span></a>
+            <a href="./quickSort.html">Quick <span class="sort-text">Sort</span></a>
+            <a href="./heapSort.html">Heap <span class="sort-text">Sort</span></a>
+            <a href="./radixSort.html">Radix <span class="sort-text">Sort</span></a>
+            <a href="./shellSort.html">Shell <span class="sort-text">Sort</span></a>
             <a href="./summary.html">Summary</a>
         </div>
     </nav>
 
-    <div class="contact-page">
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <main class="container">
         <!-- Contact Form Section -->
-        <div class="contact-form">
+        <div class="contact-form ">
             <div class="convert-logo-div">
-                <h1>Contact Me</h1>
-                <img src="./images/animated/phone-contact.gif" alt="Contact" class="description-image">
+                <h1 class="scroll-animate">Contact Me</h1>
+                <img src="./images/animated/phone-contact.gif" alt="Contact" class="description-image scroll-animate">
             </div>
-            <p>Feel free to reach out through this form for any inquiries or support requests!</p>
+            <p class="scroll-animate">Feel free to reach out through this form for any inquiries or support requests!
+            </p>
             <form action="mailto:arunneupane0000@gmail.com" method="post" enctype="text/plain">
-                <label for="name">Your Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                <label for="name" class="scroll-animate">Your Name:</label>
+                <input type="text" class="scroll-animate" id="name" name="name" placeholder="Enter your name" required>
 
-                <label for="email">Your Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <label for="email" class="scroll-animate">Your Email:</label>
+                <input type="email" class="scroll-animate" id="email" name="email" placeholder="Enter your email"
+                    required>
 
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+                <label for="message" class="scroll-animate">Message:</label>
+                <textarea id="message" class="scroll-animate" name="message" placeholder="Write your message here"
+                    required></textarea>
 
-                <input type="submit" value="Send Message">
+                <input type="submit" class="scroll-animate" value="Send Message">
             </form>
         </div>
 
         <!-- Follow Me Section with Profile Photo and Social Icons -->
-        <div class="follow-me-section">
-            <p class="catchphrase">"Connecting with you is just the beginning. Let's turn your ideas into reality!"</p>
-            <img src="./images/me-in-the-pool.jpg" alt="Profile Photo" class="profile-photo">
+        <div class="follow-me-section scroll-animate">
+            <p class="catchphrase scroll-animate">"Connecting with you is just the beginning. Let's turn your ideas into
+                reality!"</p>
+            <img src="./images/me-in-the-pool-300-by-597.png" alt="Profile Photo" class="profile-photo scroll-animate">
 
-            <div class="convert-logo-div">
-                <img src="./images/animated/add.gif" alt="Contact" class="description-image">
-                <h3>Follow Me On</h3>
+            <div class="convert-logo-div scroll-animate">
+                <img src="./images/animated/add.gif" alt="Contact" class="description-image scroll-animate">
+                <h3 class="scroll-animate">Follow Me On</h3>
             </div>
 
             <div class="social-icons">
-                <div class="socials">
-                    <img src="./images/socials/instagram.png" alt="Instagram" class="icon"
+                <div class="socials scroll-animate">
+                    <img src="./images/socials/instagram.png" alt="Instagram" class="icon scroll-animate"
                         onclick="window.open('https://www.instagram.com/arundada9000', '_blank')">
-                    <img src="./images/socials/facebook.png" alt="Facebook" class="icon"
+                    <img src="./images/socials/facebook.png" alt="Facebook" class="icon scroll-animate"
                         onclick="window.open('https://www.facebook.com/arunneupane9000/', '_blank')">
-                    <img src="./images/socials/youtube.png" alt="YouTube" class="icon"
+                    <img src="./images/socials/youtube.png" alt="YouTube" class="icon scroll-animate"
                         onclick="window.open('https://www.youtube.com/@code_with_ease', '_blank')">
-                    <img src="./images/socials/github.png" alt="GitHub" class="icon"
+                    <img src="./images/socials/github.png" alt="GitHub" class="icon scroll-animate"
                         onclick="window.open('https://github.com/arundada9000', '_blank')">
                 </div>
-                <div class="socials">
+                <div class="socials scroll-animate">
                     <p>Email me</p>
-                    <img src="./images/socials/email.png" alt="Email" class="icon"
+                    <img src="./images/socials/email.png" alt="Email" class="icon scroll-animate"
                         onclick="window.open('mailto:arunneupane0000@gmail.com', '_blank')">
                     <p>Whatsapp me</p>
-                    <img src="./images/socials/whatsapp.png" alt="WhatsApp" class="icon"
+                    <img src="./images/socials/whatsapp.png" alt="WhatsApp" class="icon scroll-animate"
                         onclick="window.open('tel:+9779811420975', '_blank')">
                 </div>
 
             </div>
         </div>
-    </div>
+    </main>
 
+    <button id="backToTopBtn" title="Go to top">↑</button>
+    <button class="dummy-btn">Dummy button</button>
     <footer class="site-footer">
         <div class="footer-container">
             <p class="footer-title">Sorting Visualizer</p>
@@ -342,6 +348,12 @@
             <p class="footer-credit">For Learning and Development</p>
         </div>
     </footer>
+
+    <script>
+         const fastBtn = document.querySelector(".dummy-btn");
+         const skipBtn = document.querySelector(".dummy-btn");
+         const inputBox = document.querySelector(".dummy-btn");
+    </script>
     <script src="script.js"></script>
 </body>
 

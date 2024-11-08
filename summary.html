@@ -150,28 +150,17 @@
             <span></span>
             <span></span>
         </div>
-        <div class="nav-links1">
-            <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html">Bubble</a>
-            <a href="./selectionSort.html">Selection</a>
-            <a href="./insertionSort.html">Insertion</a>
-            <a href="./mergeSort.html">Merge</a>
-            <a href="./quickSort.html">Quick</a>
-            <a href="./heapSort.html">Heap</a>
-            <a href="./radixSort.html">Radix</a>
-            <a href="./shellSort.html">Shell</a>
-            <a href="./summary.html" class="bb">Summary</a>
-        </div>
+
         <div class="nav-links">
             <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html">Bubble Sort</a>
-            <a href="./selectionSort.html">Selection Sort</a>
-            <a href="./insertionSort.html">Insertion Sort</a>
-            <a href="./mergeSort.html">Merge Sort</a>
-            <a href="./quickSort.html">Quick Sort</a>
-            <a href="./heapSort.html">Heap Sort</a>
-            <a href="./radixSort.html">Radix Sort</a>
-            <a href="./shellSort.html">Shell Sort</a>
+            <a href="./bubbleSort.html">Bubble <span class="sort-text">Sort</span></a>
+            <a href="./selectionSort.html">Selection <span class="sort-text">Sort</span></a>
+            <a href="./insertionSort.html">Insertion <span class="sort-text">Sort</span></a>
+            <a href="./mergeSort.html">Merge <span class="sort-text">Sort</span></a>
+            <a href="./quickSort.html">Quick <span class="sort-text">Sort</span></a>
+            <a href="./heapSort.html">Heap <span class="sort-text">Sort</span></a>
+            <a href="./radixSort.html">Radix <span class="sort-text">Sort</span></a>
+            <a href="./shellSort.html">Shell <span class="sort-text">Sort</span></a>
             <a href="./summary.html" class="bb">Summary</a>
         </div>
     </nav>
@@ -308,6 +297,8 @@
     </div>
 
     <button id="backToTopBtn" title="Go to top">↑</button>
+    <button class="dummy-btn">Dummy button</button>
+
 
     <footer class="site-footer">
         <div class="footer-container">
@@ -325,7 +316,6 @@
 
     <script>
         const rows = document.querySelectorAll("table tr");
-        console.log(rows);
 
         let isActive = true;
         rows.forEach(row => {
@@ -333,12 +323,10 @@
                 if (isActive) {
                     hideThemRows(row);
                     isActive = false;
-                    console.log(isActive);
                 }
                 else {
                     showThemRows();
                     isActive = true;
-                    console.log(isActive);
                 }
             });
 
@@ -356,6 +344,10 @@
                 row.classList.remove("faded");
             });
         }
+
+        const fastBtn = document.querySelector(".dummy-btn");
+        const skipBtn = document.querySelector(".dummy-btn");
+        const inputBox = document.querySelector(".dummy-btn");
     </script>
     <script src="./script.js"></script>
 

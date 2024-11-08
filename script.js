@@ -24,14 +24,19 @@ for (let i = 0; i < items.length; i++) {
 
 // yaha tak
 
-const navigation = document.querySelector(".nav-links1");
+const navigation = document.querySelector(".nav-links");
 const container = document.querySelector(".container");
-const containerRect = container.getBoundingClientRect();
-const containerLeft = containerRect.left;
+navigationLeftReset();
 
-navigation.style.marginLeft = `${containerLeft}px`;
+function navigationLeftReset() {
+  const containerRect = container.getBoundingClientRect();
+  const containerLeft = containerRect.left;
+  navigation.style.marginLeft = `${containerLeft}px`;
+}
+window.addEventListener("resize", navigationLeftReset);
+
 const navbar = document.querySelector("nav");
-let prevScrollPos = window.pageYOffset;
+let prevScrollPos = window.scrollY;
 window.addEventListener("scroll", function () {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -39,7 +44,7 @@ window.addEventListener("scroll", function () {
   document.querySelector(".progress-bar").style.height = scrollPercent + "%";
 
   // for navbar show hide
-  const currentScrollPos = window.pageYOffset;
+  const currentScrollPos = window.scrollY;
   if (window.innerWidth > 768) {
     if (prevScrollPos > currentScrollPos) {
       navbar.classList.remove("scrolled");
@@ -54,7 +59,7 @@ window.addEventListener("scroll", function () {
 const backToTopBtn = document.getElementById("backToTopBtn");
 
 window.addEventListener("scroll", () => {
-  if (window.pageYOffset > 100) {
+  if (window.scrollY > 100) {
     backToTopBtn.style.display = "flex";
   } else {
     backToTopBtn.style.display = "none";
@@ -84,7 +89,6 @@ const observer = new IntersectionObserver(
   }
 );
 
-// Observe each animated element
 animatedElements.forEach((element) => observer.observe(element));
 // this much for observer
 

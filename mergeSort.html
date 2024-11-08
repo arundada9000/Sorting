@@ -10,6 +10,12 @@
         content="merge sort, merge sort visualized,step by step, merge sort in easy way, time complexity, space complexity, merge sort properties, arun neupane,sorting" />
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
+    <style>
+        .numbers-wrapper {
+            display: flex;
+            border: 5px solid green;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,28 +25,17 @@
             <span></span>
             <span></span>
         </div>
-        <div class="nav-links1">
-            <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html">Bubble</a>
-            <a href="./selectionSort.html">Selection</a>
-            <a href="./insertionSort.html">Insertion</a>
-            <a href="./mergeSort.html" class="bb">Merge</a>
-            <a href="./quickSort.html">Quick</a>
-            <a href="./heapSort.html">Heap</a>
-            <a href="./radixSort.html">Radix</a>
-            <a href="./shellSort.html">Shell</a>
-            <a href="./summary.html">Summary</a>
-        </div>
+        
         <div class="nav-links">
             <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html">Bubble Sort</a>
-            <a href="./selectionSort.html">Selection Sort</a>
-            <a href="./insertionSort.html">Insertion Sort</a>
-            <a href="./mergeSort.html" class="bb">Merge Sort</a>
-            <a href="./quickSort.html">Quick Sort</a>
-            <a href="./heapSort.html">Heap Sort</a>
-            <a href="./radixSort.html">Radix Sort</a>
-            <a href="./shellSort.html">Shell Sort</a>
+            <a href="./bubbleSort.html">Bubble <span class="sort-text">sort</span></a>
+            <a href="./selectionSort.html">Selection <span class="sort-text">sort</span></a>
+            <a href="./insertionSort.html">Insertion <span class="sort-text">sort</span></a>
+            <a href="./mergeSort.html" class="bb">Merge <span class="sort-text">sort</span></a>
+            <a href="./quickSort.html">Quick <span class="sort-text">sort</span></a>
+            <a href="./heapSort.html">Heap <span class="sort-text">sort</span></a>
+            <a href="./radixSort.html">Radix <span class="sort-text">sort</span></a>
+            <a href="./shellSort.html">Shell <span class="sort-text">sort</span></a>
             <a href="./summary.html">Summary</a>
         </div>
     </nav>
@@ -63,8 +58,7 @@
                     <div class="buttons-div">
                         <div class="sort-btn" id="generate-random-btn" title="Generate random numbers button"
                             onclick="randomGenerate();">
-                            <img src="./images/magic.png" alt="Generate Random Numbers"
-                                title="Generate random numbers">
+                            <img src="./images/magic.png" alt="Generate Random Numbers" title="Generate random numbers">
                         </div>
                         <button id="sort-btn" class="sort-btn">Sort</button>
                     </div>
@@ -211,6 +205,7 @@ function merge(left, right):
         const skipBtn = document.getElementById("skip");
         const fastBtn = document.getElementById("fast-btn");
         let ms = 1000;
+        let left, right;
 
         sortBtn.addEventListener("click", () => {
             if (sortBtn.textContent == "Sorting...") return;
@@ -224,14 +219,16 @@ function merge(left, right):
             sortBtn.textContent = "Sorting...";
 
             const values = input.split(',');
-            console.log(values);
+
+            left = values.length / 2;
+            right = values.length - left;
 
             const numDiv = document.getElementById("num-div");
             numDiv.innerHTML = "";
             passesDiv.innerHTML = "";
             howto.innerHTML = "";
             howto.style.visibility = "hidden";
-
+            let pass = 1;
             for (let i = 0; i < values.length; i++) {
                 let el = document.createElement("div");
                 el.className = "num-wrapper";
@@ -250,7 +247,74 @@ function merge(left, right):
             }
             const divs = document.querySelectorAll(".num");
 
+            let tValues = mergeSort(values);
+            while (left >= 1 && right >= 1) {
+
+            }
+
+            function mergeSort(array) {
+                if (array.length <= 1) {
+                    return array;
+                }
+
+                const mid = Math.floor(array.length / 2);
+                const left = mergeSort(array.slice(0, mid));
+                const right = mergeSort(array.slice(mid));
+
+                return merge(left, right);
+            }
+
+            function merge(left, right) {
+                const sortedArray = [];
+
+                while (left.length && right.length) {
+                    if (left[0] < right[0]) {
+                        sortedArray.push(left.shift());
+                    } else {
+                        sortedArray.push(right.shift());
+                    }
+                }
+
+                // Concatenate remaining elements
+                return sortedArray.concat(left).concat(right);
+            }
+
         });
+
+        // divide();
+        function divide() {
+            let values = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+            let gap = values.length;
+            let power = 0, counter = 0;
+
+            while (gap > 0) {
+                const numbersDiv = document.createElement("div");
+                numbersDiv.className = "numbers";
+                let iterator = 0;
+
+                for (let i = 0; i < Math.pow(2, power); i++) {
+                    const numWrapper = document.createElement("div");
+                    numWrapper.className = "numbers-wrapper";
+
+                    for (let j = iterator; j < gap && counter < values.length; j++) {
+                        const numDiv = document.createElement("div");
+                        numDiv.textContent = values[counter];
+                        numDiv.className = "num";
+                        counter++;
+                        numWrapper.appendChild(numDiv);
+                    }
+                    iterator = gap;
+                    gap += gap;
+                    gap > values.length ? gap = values.length: gap = gap;
+                    numbersDiv.appendChild(numWrapper);
+                }
+                counter = 0;
+                passesDiv.appendChild(numbersDiv);
+                gap = parseInt(gap / 2);
+                power++;
+            }
+
+        }
 
     </script>
     <script src="./script.js"></script>

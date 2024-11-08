@@ -38,28 +38,17 @@
             <span></span>
             <span></span>
         </div>
-        <div class="nav-links1">
-            <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html">Bubble</a>
-            <a href="./selectionSort.html">Selection</a>
-            <a href="./insertionSort.html">Insertion</a>
-            <a href="./mergeSort.html">Merge</a>
-            <a href="./quickSort.html">Quick</a>
-            <a href="./heapSort.html">Heap</a>
-            <a href="./radixSort.html" class="bb">Radix</a>
-            <a href="./shellSort.html">Shell</a>
-            <a href="./summary.html">Summary</a>
-        </div>
+
         <div class="nav-links">
             <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html">Bubble Sort</a>
-            <a href="./selectionSort.html">Selection Sort</a>
-            <a href="./insertionSort.html">Insertion Sort</a>
-            <a href="./mergeSort.html">Merge Sort</a>
-            <a href="./quickSort.html">Quick Sort</a>
-            <a href="./heapSort.html">Heap Sort</a>
-            <a href="./radixSort.html" class="bb">Radix Sort</a>
-            <a href="./shellSort.html">Shell Sort</a>
+            <a href="./bubbleSort.html">Bubble <span class="sort-text">sort</span></a>
+            <a href="./selectionSort.html">Selection <span class="sort-text">sort</span></a>
+            <a href="./insertionSort.html">Insertion <span class="sort-text">sort</span></a>
+            <a href="./mergeSort.html">Merge <span class="sort-text">sort</span></a>
+            <a href="./quickSort.html">Quick <span class="sort-text">sort</span></a>
+            <a href="./heapSort.html">Heap <span class="sort-text">sort</span></a>
+            <a href="./radixSort.html" class="bb">Radix <span class="sort-text">sort</span></a>
+            <a href="./shellSort.html">Shell <span class="sort-text">sort</span></a>
             <a href="./summary.html">Summary</a>
         </div>
     </nav>
@@ -92,7 +81,9 @@
             </div>
             <div class="passesandinfo">
                 <div class="numbers" id="num-div"></div>
-                <div class="max-container info" id="max-container">Max = <span id="max"></span></div>
+                <div class="max-container info" id="max-container"><span id="max"></span>
+                    <span id="info-about-sorting" class="info"></span>
+                </div>
                 <div class="passes" id="passes"></div>
             </div>
         </section>
@@ -304,6 +295,8 @@ end function</code></pre>
 
                 sortedArray = values.join(", ");
                 howto.style.visibility = "visible";
+                document.getElementById("max").textContent = "Array is Sorted";
+                document.getElementById("info-about-sorting").textContent = "";
                 howto.innerHTML = "The array is successfully sorted.There were " + values.length + " numbers." + "The sorted array is : <br>" + sortedArray;
 
                 const btn = document.createElement("button");
@@ -476,13 +469,14 @@ end function</code></pre>
 
         function displayMax(max) {
             document.getElementById("max-container").style.display = "block";
-            document.getElementById("max").textContent = max;
+            document.getElementById("max").textContent = "Max = " + max;
         }
 
         function infoAboutPasses(content, cn) {
             const li = document.createElement("div");
             li.className = cn;
             li.textContent = content;
+            document.getElementById("info-about-sorting").textContent = " | " + content;
             return li;
         }
 

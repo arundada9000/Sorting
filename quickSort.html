@@ -10,6 +10,52 @@
         content="quick sort sort, quick sort sort visualized,step by step, quick sort sort in easy way, time complexity, space complexity, quick sort sort properties, arun neupane,sorting" />
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
+    <style>
+        .passInfo {
+            justify-content: space-around;
+            display: none;
+        }
+
+        .border-left::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: -20px;
+            bottom: -20px;
+            width: 5px;
+            background-color: rgb(255, 17, 255);
+        }
+
+        .border-right::before {
+            content: '';
+            position: absolute;
+            right: -5px;
+            top: -20px;
+            bottom: -20px;
+            width: 5px;
+            background-color: rgb(255, 17, 255);
+        }
+
+        .numbers {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .pointer {
+            position: absolute;
+            bottom: -20px;
+            left: -30px;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            color: #ffffff;
+            opacity: 0;
+            transition: left 0.5s ease
+        }
+
+        #right-pointer {
+            left: -20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,28 +65,17 @@
             <span></span>
             <span></span>
         </div>
-        <div class="nav-links1">
-            <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html">Bubble</a>
-            <a href="./selectionSort.html">Selection</a>
-            <a href="./insertionSort.html">Insertion</a>
-            <a href="./mergeSort.html">Merge</a>
-            <a href="./quickSort.html" class="bb">Quick</a>
-            <a href="./heapSort.html">Heap</a>
-            <a href="./radixSort.html">Radix</a>
-            <a href="./shellSort.html">Shell</a>
-            <a href="./summary.html">Summary</a>
-        </div>
+
         <div class="nav-links">
             <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html">Bubble Sort</a>
-            <a href="./selectionSort.html">Selection Sort</a>
-            <a href="./insertionSort.html">Insertion Sort</a>
-            <a href="./mergeSort.html">Merge Sort</a>
-            <a href="./quickSort.html" class="bb">Quick Sort</a>
-            <a href="./heapSort.html">Heap Sort</a>
-            <a href="./radixSort.html">Radix Sort</a>
-            <a href="./shellSort.html">Shell Sort</a>
+            <a href="./bubbleSort.html">Bubble <span class="sort-text">sort</span></a>
+            <a href="./selectionSort.html">Selection <span class="sort-text">sort</span></a>
+            <a href="./insertionSort.html">Insertion <span class="sort-text">sort</span></a>
+            <a href="./mergeSort.html">Merge <span class="sort-text">sort</span></a>
+            <a href="./quickSort.html" class="bb">Quick <span class="sort-text">sort</span></a>
+            <a href="./heapSort.html">Heap <span class="sort-text">sort</span></a>
+            <a href="./radixSort.html">Radix <span class="sort-text">sort</span></a>
+            <a href="./shellSort.html">Shell <span class="sort-text">sort</span></a>
             <a href="./summary.html">Summary</a>
         </div>
     </nav>
@@ -65,8 +100,7 @@
                     <div class="buttons-div">
                         <div class="sort-btn" id="generate-random-btn" title="Generate random numbers button"
                             onclick="randomGenerate();">
-                            <img src="./images/magic.png" alt="Generate Random Numbers"
-                                title="Generate random numbers">
+                            <img src="./images/magic.png" alt="Generate Random Numbers" title="Generate random numbers">
                         </div>
                         <button id="sort-btn" class="sort-btn">Sort</button>
                     </div>
@@ -78,13 +112,16 @@
                 <button id="skip" class="control-btn">Skip Visualization</button>
             </div>
             <div class="passesandinfo flex">
-                <div class="passInfo">
-                    <span class="info-btn" id="pivot"></span>
-                    <span class="info-btn" id="low"></span>
-                    <span class="info-btn" id="high"></span>
-                    <span class="info-btn" id="pi"></span>
+                <div class="passInfo" id="passInfo">
+                    <span class="info" id="pivot"></span>
+                    <span class="info" id="low"></span>
+                    <span class="info" id="high"></span>
+                    <span class="info" id="pi"></span>
                 </div>
-                <div class="numbers" id="num-div"></div>
+                <div class="numbers" id="num-div">
+                    <span class="pointer" id="left-pointer">L</span>
+                    <span class="pointer" id="right-pointer">R</span>
+                </div>
                 <div class="passes" id="passes"></div>
             </div>
         </section>
@@ -231,14 +268,17 @@ function partition(arr, low, high):
             sortBtn.textContent = "Sorting...";
 
             const values = input.split(',');
-            console.log(values);
 
             const numDiv = document.getElementById("num-div");
-            numDiv.innerHTML = "";
+            numDiv.innerHTML = `<span class="pointer" id="left-pointer">L</span>
+                    <span class="pointer" id="right-pointer">R</span>`;
+            document.querySelectorAll(".pointer").forEach(pointer => pointer.style.opacity = "1");
+
             passesDiv.innerHTML = "";
             howto.innerHTML = "";
             howto.style.visibility = "hidden";
             let sorted = [];
+            changeText("");
 
             for (let i = 0; i < values.length; i++) {
                 let el = document.createElement("div");
@@ -258,7 +298,6 @@ function partition(arr, low, high):
             }
 
             const divs = document.querySelectorAll(".num");
-            const infoBtn = document.querySelectorAll(".info-btn");
 
             quickSort1();
 
@@ -268,25 +307,28 @@ function partition(arr, low, high):
                 let i, j, pivot, count = 0;
 
                 async function partition(values, low, high) {
+                    toggleBorder(divs, low, high);
                     pivot = values[high];
                     divs[high].classList.add("pivot");
 
-                    {
-                        document.getElementById("pivot").style.display = "block";
-                        document.getElementById("pivot").textContent = "Pivot = " + pivot;
-                        document.getElementById("low").style.display = "block";
-                        document.getElementById("low").textContent = "Low = " + low;
-                        document.getElementById("high").style.display = "block";
-                        document.getElementById("high").textContent = "High = " + high;
-                    }
+                    document.getElementById("passInfo").style.display = "flex";
+                    document.getElementById("pivot").textContent = "Pivot = " + pivot;
+                    document.getElementById("low").textContent = "Low = " + low;
+                    document.getElementById("high").textContent = "High = " + high;
 
                     await sleep(ms);
 
                     i = low - 1;
+                    updateLeftPointer(numDiv, divs, i);
+
                     for (j = low; j <= high - 1; j++) {
+                        updateRightPointer(numDiv, divs, j);
+
                         divs[j].classList.add("comparing");
                         if (values[j] < pivot) {
                             i++;
+                            updateLeftPointer(numDiv, divs, i);
+
                             [values[i], values[j]] = [values[j], values[i]];
 
                             divs[j].classList.remove("comparing");
@@ -317,7 +359,9 @@ function partition(arr, low, high):
                     divs[i + 1].classList.remove("swapping");
                     divs[high].classList.remove("swapping");
                     divs[i + 1].classList.add("sorted");
+
                     sorted.push(i + 1);
+
                     await sleep(ms);
                     if (low == high - 1 || low == high) {
                         divs[low].classList.add("sorted");
@@ -327,6 +371,7 @@ function partition(arr, low, high):
                     count++;
                     let passes = createDiv("numbers", "num", values, sorted, count, i + 1);
                     passesDiv.appendChild(passes);
+                    toggleBorder(divs, low, high);
                     return i + 1;
                 }
 
@@ -343,9 +388,11 @@ function partition(arr, low, high):
 
                 await quickSort(values, 0, values.length - 1);
 
-                console.log(values);
                 sortedArray = values.join(", ");
+                changeText("Array is Sorted");
                 howto.style.visibility = "visible";
+                document.querySelector("#left-pointer").style.left = "-35px";
+                document.querySelector("#right-pointer").style.left = "-25px";
                 howto.innerHTML = "The array is successfully sorted.There were " + values.length + " numbers.The sorted array is : <br>" + sortedArray;
 
                 const btn = document.createElement("button");
@@ -366,6 +413,54 @@ function partition(arr, low, high):
             }
 
         });
+
+        function toggleBorder(divs, low, high) {
+            if (low >= 0)
+                divs[low].classList.toggle("border-left");
+            if (high < divs.length)
+                divs[high].classList.toggle("border-right");
+        }
+
+        function updateLeftPointer(numDiv, divs, low) {
+            let numbersRect = numDiv.getBoundingClientRect();
+            let leftPointer = document.querySelector("#left-pointer");
+
+            if (low < 0) {
+                leftPointer.style.left = "-30px";
+            }
+            else if (low >= divs.length) {
+                leftPointer.style.right = "-15px";
+            }
+            else {
+                let divsRect = divs[low].getBoundingClientRect();
+                divsRect = parseInt(divsRect.left - numbersRect.left);
+
+                leftPointer.style.left = divsRect + 15 + "px";
+            }
+        }
+
+        function updateRightPointer(numDiv, divs, high) {
+            let rightPointer = document.querySelector("#right-pointer");
+            let numbersRect = numDiv.getBoundingClientRect();
+            if (high < 0) {
+                rightPointer.style.left = "-20px";
+            }
+            else if (high >= divs.length) {
+                rightPointer.style.right = leftPos + "-35px";
+            }
+            else {
+                let divsRect = divs[high].getBoundingClientRect();
+                divsRect = parseInt(divsRect.left) - parseInt(numbersRect.left);
+                rightPointer.style.left = divsRect + 25 + "px";
+            }
+        }
+
+        function changeText(content) {
+            document.querySelector("#pivot").textContent = content;
+            document.querySelector("#low").textContent = "";
+            document.querySelector("#high").textContent = "";
+            document.querySelector("#pi").textContent = "";
+        }
 
         function createDiv(cn1, cn2, content, sorted, passCount, pivot) {
             const outerDiv = document.createElement("div");
@@ -391,6 +486,7 @@ function partition(arr, low, high):
 
             return outerDiv;
         }
+
     </script>
     <script src="./script.js"></script>
 </body>
