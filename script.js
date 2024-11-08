@@ -1,4 +1,35 @@
-// code implementation
+// Custom cursor
+const cursor = document.querySelectorAll(".cursor");
+let big_cursor = document.querySelector(".big");
+let small_cursor = document.querySelector(".small");
+
+document.documentElement.addEventListener("mousemove", (event) => {
+  cursor.forEach(
+    (item) => (item.style.opacity = hasPointerCursor(event.target) ? 0 : 1)
+  );
+
+  big_cursor.style.top = event.clientY + window.scrollY + "px";
+  big_cursor.style.left = event.clientX + window.scrollX + "px";
+
+  setTimeout(() => {
+    small_cursor.style.top = event.clientY + window.scrollY + "px";
+    small_cursor.style.left = event.clientX + window.scrollX + "px";
+  }, 150);
+});
+
+document.documentElement.addEventListener("mouseleave", () => {
+  cursor.forEach((item) => (item.style.opacity = 0));
+});
+function hasPointerCursor(element) {
+  while (element) {
+    if (getComputedStyle(element).cursor === "pointer") {
+      return true;
+    }
+    element = element.parentElement;
+  }
+  return false;
+}
+// code implementation in different languages
 const languageSelector = document.querySelector(".language-selector");
 const codeContainer = document.querySelector("#code-display");
 const copyButton = document.querySelector(".language-copy-button");

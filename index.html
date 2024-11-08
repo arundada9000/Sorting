@@ -20,7 +20,6 @@
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #141414 0%, #000000 100%);
-            /* Subtle gradient */
             color: #ecf0f1;
             display: flex;
             flex-direction: column;
@@ -28,6 +27,7 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            cursor: none;
         }
 
         .icon-container {
@@ -79,7 +79,7 @@
         }
 
         .algorithm-item:hover {
-            transform: translateY(-10px);
+            transform: translate(-10px);
             background-color: #34495e;
         }
 
@@ -88,34 +88,15 @@
             margin-bottom: 15px;
         }
 
-        .algorithm-item h3 {
+        .algorithm-item h2 {
             font-size: 1.4rem;
-            color: #ecf0f1;
+            color: #f0f6f8;
             margin-bottom: 10px;
         }
 
         .algorithm-item p {
             font-size: 1rem;
-            color: #95a5a6;
-        }
-
-        .btn {
-            padding: 12px 25px;
-            background-color: #3498db;
-            color: white;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-        }
-
-        .btn:focus {
-            outline: none;
+            color: #f7feff;
         }
 
         footer {
@@ -155,6 +136,29 @@
             transition: height 0.2s ease;
         }
 
+        .cursor {
+            position: absolute;
+            z-index: 99;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            transition: height 0.15s ease, width 0.15s ease, opacity 0.25s ease;
+        }
+
+        .big {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(250deg, #f8bd0e, #40fc06);
+        }
+
+        .small {
+            width: 15px;
+            height: 15px;
+            background-color: transparent;
+            border: 1px solid white;
+            border-radius: 50%;
+        }
+
         @media (max-width:768px) {
             .progress-bar-container {
                 display: block;
@@ -179,6 +183,10 @@
     <div class="progress-bar-container">
         <div class="progress-bar"></div>
     </div>
+
+    <div class="cursor big"></div>
+    <div class="cursor small"></div>
+
     <div class="container">
         <div class="icon-container">
             <img src="./images/reorder.gif" alt="Sorting" class="scroll-animate">
@@ -193,7 +201,7 @@
                 <!-- <img src="images/bubble_sort_icon.png" alt="Bubble Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/bubble.webp" alt="Bubble sort">
-                    <h3>Bubble Sort</h3>
+                    <h2>Bubble Sort</h2>
                 </div>
 
                 <p>Compares adjacent elements and swaps them if they're in the wrong order.</p>
@@ -203,7 +211,7 @@
 
                 <div class="icon-container">
                     <img src="./images/selection.webp" alt="Selection sort">
-                    <h3>Selection Sort</h3>
+                    <h2>Selection Sort</h2>
                 </div>
                 <p>Finds the smallest element in the array and places it at the front.</p>
             </a>
@@ -212,7 +220,7 @@
                 <!-- <img src="images/insertion_sort_icon.png" alt="Insertion Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/insertion.webp" alt="Insertion sort">
-                    <h3>Insertion Sort</h3>
+                    <h2>Insertion Sort</h2>
                 </div>
                 <p>Builds the sorted array by inserting elements in their correct position.</p>
             </a>
@@ -221,7 +229,7 @@
                 <!-- <img src="images/merge_sort_icon.png" alt="Merge Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/merge.webp" alt="Merge sort">
-                    <h3>Merge Sort</h3>
+                    <h2>Merge Sort</h2>
                 </div>
 
                 <p>Divides the array, sorts them, and merges them back together.</p>
@@ -231,7 +239,7 @@
                 <!-- <img src="images/quick_sort_icon.png" alt="Quick Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/quick.webp" alt="Quick sort">
-                    <h3>Quick Sort</h3>
+                    <h2>Quick Sort</h2>
                 </div>
                 <p>Uses a pivot to partition the array and sorts each partition.</p>
             </a>
@@ -240,7 +248,7 @@
                 <!-- <img src="images/heap_sort_icon.png" alt="Heap Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/heap.webp" alt="Heap sort">
-                    <h3>Heap Sort</h3>
+                    <h2>Heap Sort</h2>
                 </div>
                 <p>Transforms the array into a heap structure and sorts it.</p>
             </a>
@@ -249,7 +257,7 @@
                 <!-- <img src="images/radix_sort_icon.png" alt="Radix Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/radix.webp" alt="Radix sort">
-                    <h3>Radix Sort</h3>
+                    <h2>Radix Sort</h2>
                 </div>
                 <p>Sorts numbers by processing individual digits from least to most significant.</p>
             </a>
@@ -258,7 +266,7 @@
                 <!-- <img src="images/shell_sort_icon.png" alt="Shell Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/shell.webp" alt="Shell sort">
-                    <h3>Shell Sort</h3>
+                    <h2>Shell Sort</h2>
                 </div>
                 <p>Sorts elements by comparing elements at a gap and reducing the gap over time.</p>
             </a>
@@ -266,7 +274,7 @@
                 <!-- <img src="images/shell_sort_icon.png" alt="Shell Sort Icon"> -->
                 <div class="icon-container">
                     <img src="./images/summary.png" alt="Summary">
-                    <h3>Summary</h3>
+                    <h2>Summary</h2>
                 </div>
                 <p>Summary of all the sorting algorithms their worst, average and best case complexities in one table.
                 </p>
@@ -303,6 +311,37 @@
 
         animatedElements.forEach(element => observer.observe(element));
 
+        // Custom cursor
+        const cursor = document.querySelectorAll(".cursor");
+        let big_cursor = document.querySelector(".big");
+        let small_cursor = document.querySelector(".small");
+
+        document.documentElement.addEventListener("mousemove", (event) => {
+            cursor.forEach(
+                (item) => (item.style.opacity = hasPointerCursor(event.target) ? 0 : 1)
+            );
+
+            big_cursor.style.top = event.clientY + window.scrollY + "px";
+            big_cursor.style.left = event.clientX + window.scrollX + "px";
+
+            setTimeout(() => {
+                small_cursor.style.top = event.clientY + window.scrollY + "px";
+                small_cursor.style.left = event.clientX + window.scrollX + "px";
+            }, 150);
+        });
+
+        document.documentElement.addEventListener("mouseleave", () => {
+            cursor.forEach((item) => (item.style.opacity = 0));
+        });
+        function hasPointerCursor(element) {
+            while (element) {
+                if (getComputedStyle(element).cursor === "pointer") {
+                    return true;
+                }
+                element = element.parentElement;
+            }
+            return false;
+        }
     </script>
 </body>
 
