@@ -1,4 +1,5 @@
 // Custom cursor
+inputBox.focus();
 const cursor = document.querySelectorAll(".cursor");
 let big_cursor = document.querySelector(".big");
 let small_cursor = document.querySelector(".small");
