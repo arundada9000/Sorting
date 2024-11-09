@@ -3,6 +3,16 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif, Verdana, Geneva, Tahoma;
+
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* :active,
+* :focus {
+  background-color: transparent;
+  outline: none;
+  transform: none;
 }
 /* Disable caret for all elements except input */
 *:not(input):not(textarea) {
@@ -458,7 +468,6 @@ button {
 .qs:focus {
   background-color: #0c0e00;
   outline: none;
-  transform: scale(0.98);
 }
 .qs {
   display: flex;
