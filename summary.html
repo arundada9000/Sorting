@@ -123,6 +123,10 @@
             font-size: 1.5rem;
         }
 
+        tfoot tr td {
+            font-weight: bold;
+        }
+
         @media (max-width: 600px) {
 
             th,
@@ -135,9 +139,14 @@
                 padding-top: 40px;
             }
 
-            caption,
-            tfoot tr td {
+            caption {
                 text-align: left;
+            }
+
+            tfoot tr td {
+                font-weight: bold;
+                text-align: left;
+                padding-left: 15%;
             }
 
         }
@@ -276,7 +285,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="8">You can click on and scroll the table.</td>
+                        <td colspan="100%">You can click on and scroll the table.</td>
                     </tr>
                 </tfoot>
             </table>
@@ -306,6 +315,7 @@
     <div class="dummy-btn language-selector inside-code-container language-copy-button" id="dummy-btn">Dummy button
     </div>
     <button id="dummy-btn1" data-language="c">Dummy button</button>
+    <button id="dummy-btn2" data-language="javascript">Dummy btn 2</button>
 
     <footer class="site-footer">
         <div class="footer-container">

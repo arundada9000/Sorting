@@ -658,7 +658,8 @@ button {
   transform: translateY(0);
 }
 #dummy-btn,
-#dummy-btn1 {
+#dummy-btn1,
+#dummy-btn2 {
   display: none;
 }
 
