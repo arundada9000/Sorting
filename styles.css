@@ -10,7 +10,6 @@
 
 * :active,
 * :focus {
-  background-color: transparent;
   outline: none;
   transform: none;
 }
