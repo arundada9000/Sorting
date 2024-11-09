@@ -22,6 +22,7 @@
         input,
         textarea {
             caret-color: black;
+            color: black;
         }
 
         body {
@@ -142,7 +143,6 @@
         textarea {
             resize: vertical;
             min-height: 120px;
-            color: white;
         }
 
         /* Follow Me Section */
@@ -290,7 +290,9 @@
             </div>
             <p class="scroll-animate">Feel free to reach out through this form for any inquiries or support requests!
             </p>
-            <form action="mailto:arunneupane0000@gmail.com" method="post" enctype="text/plain">
+            <form action="https://api.web3forms.com/submit" method="post">
+                <input type="hidden" name="access_key" value="a70b99ba-e904-480f-9f8b-e420787fbc0d">
+
                 <label for="name" class="scroll-animate">Your Name:</label>
                 <input type="text" class="scroll-animate" id="name" name="name" placeholder="Enter your name" required>
 
@@ -367,6 +369,45 @@
         const fastBtn = document.querySelector(".dummy-btn");
         const skipBtn = document.querySelector(".dummy-btn");
         const inputBox = document.querySelector(".dummy-btn");
+
+        const form = document.querySelector('form');
+        const submitButton = form.querySelector('input[type="submit"]');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            submitButton.value = 'Sending...';
+
+            const formData = new FormData(form);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => {
+                    if (response.ok) {
+                        submitButton.value = 'Message Sent';
+                        setTimeout(() => {
+                            submitButton.value = 'Send Message'; // Reset button text
+                        }, 5000);
+
+                        form.reset();
+                    } else {
+                        submitButton.value = 'Error, Try Again';
+                        setTimeout(() => {
+                            submitButton.value = 'Send Message';
+                        }, 5000);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
+                    submitButton.value = 'Error, Try Again';
+                    setTimeout(() => {
+                        submitButton.value = 'Send Message';
+                    }, 5000);
+                });
+        });
+
     </script>
     <script src="script.js"></script>
 </body>
