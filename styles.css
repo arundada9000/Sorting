@@ -453,7 +453,9 @@ button {
   margin: 1rem 0.5rem;
 }
 .howto:active,
-.howto:focus {
+.howto:focus,
+.qs:active,
+.qs:focus {
   background-color: #0c0e00;
   outline: none;
 }
