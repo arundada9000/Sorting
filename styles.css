@@ -458,6 +458,7 @@ button {
 .qs:focus {
   background-color: #0c0e00;
   outline: none;
+  transform: scale(0.98);
 }
 .qs {
   display: flex;
