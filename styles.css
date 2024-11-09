@@ -452,9 +452,10 @@ button {
   width: 100%;
   margin: 1rem 0.5rem;
 }
-
-.howto:active {
+.howto:active,
+.howto:focus {
   background-color: #0c0e00;
+  outline: none;
 }
 .qs {
   display: flex;
