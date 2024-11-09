@@ -3,15 +3,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif, Verdana, Geneva, Tahoma;
-
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-* :active,
-* :focus {
-  outline: none;
-  transform: none;
 }
 /* Disable caret for all elements except input */
 *:not(input):not(textarea) {
@@ -72,6 +63,10 @@ body {
 
   .cursor {
     display: none;
+  }
+  * {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 /* Footer Styling */
