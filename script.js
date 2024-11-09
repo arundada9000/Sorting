@@ -3,28 +3,53 @@ const cursor = document.querySelectorAll(".cursor");
 let big_cursor = document.querySelector(".big");
 let small_cursor = document.querySelector(".small");
 
-document.documentElement.addEventListener("mousemove", (event) => {
-  cursor.forEach(
-    (item) => (item.style.opacity = hasPointerCursor(event.target) ? 0 : 1)
-  );
+const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
-  big_cursor.style.top = event.clientY + window.scrollY + "px";
-  big_cursor.style.left = event.clientX + window.scrollX + "px";
+if (!isTouchDevice) {
+  document.documentElement.addEventListener("mousemove", (event) => {
+    if (hasPointerCursor(event.target)) {
+      big_cursor.classList.add("mouse-down");
+      small_cursor.classList.add("mouse-down");
+    } else {
+      if (big_cursor.classList.contains("mouse-down")) {
+        big_cursor.classList.remove("mouse-down");
+        small_cursor.classList.remove("mouse-down");
+      }
+    }
+    // cursor.forEach((item) => (item.style.opacity = hasPointerCursor(event.target)?0:1));
 
-  setTimeout(() => {
-    small_cursor.style.top = event.clientY + window.scrollY + "px";
-    small_cursor.style.left = event.clientX + window.scrollX + "px";
-  }, 150);
+    big_cursor.style.top = event.clientY + window.scrollY + "px";
+    big_cursor.style.left = event.clientX + window.scrollX + "px";
+
+    setTimeout(() => {
+      small_cursor.style.top = event.clientY + window.scrollY + "px";
+      small_cursor.style.left = event.clientX + window.scrollX + "px";
+    }, 150);
+  });
+
+  document.documentElement.addEventListener("mouseleave", () => {
+    cursor.forEach((item) => (item.style.opacity = 0));
+  });
+  document.documentElement.addEventListener("mouseenter", () => {
+    cursor.forEach((item) => (item.style.opacity = 1));
+  });
+} else {
+  document.body.style.cursor = "auto";
+}
+
+document.body.addEventListener("mousedown", () => {
+  big_cursor.classList.add("mouse-down");
+});
+document.body.addEventListener("mouseup", () => {
+  big_cursor.classList.remove("mouse-down");
 });
 
-document.documentElement.addEventListener("mouseleave", () => {
-  cursor.forEach((item) => (item.style.opacity = 0));
-});
 function hasPointerCursor(element) {
   while (element) {
     if (getComputedStyle(element).cursor === "pointer") {
       return true;
     }
+
     element = element.parentElement;
   }
   return false;

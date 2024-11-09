@@ -4,22 +4,51 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif, Verdana, Geneva, Tahoma;
 }
+/* Disable caret for all elements except input */
+*:not(input):not(textarea) {
+  caret-color: transparent;
+}
+input,
+textarea {
+  caret-color: white;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #141414;
+  color: #ecf0f1;
+  min-height: 100vh;
+  cursor: none;
+}
 /* Custom Cursor */
 .cursor {
   position: absolute;
   z-index: 99;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  transition: height 0.15s ease, width 0.15s ease, opacity 0.25s ease;
+  transition: height 0.5s ease, width 0.5s ease, opacity 0.25s ease,
+    background 0.25s ease;
 }
 
 .big {
   width: 30px;
   height: 30px;
   border-radius: 50%;
+  border: none;
   background: linear-gradient(250deg, #0cff03, #073def);
 }
-
+.big.mouse-down {
+  width: 45px;
+  height: 45px;
+  background: transparent;
+  border: 1px solid white;
+}
+.small.mouse-down {
+  width: 0;
+  height: 0;
+}
 .small {
   width: 15px;
   height: 15px;
@@ -27,7 +56,15 @@
   border: 1px solid white;
   border-radius: 50%;
 }
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
 
+  .cursor {
+    display: none;
+  }
+}
 /* Footer Styling */
 
 .site-footer {
@@ -162,16 +199,6 @@ nav a:hover {
   display: none;
 }
 /* nav end */
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: #141414;
-  color: #ecf0f1;
-  min-height: 100vh;
-  cursor: none;
-}
 
 .icon-container {
   display: flex;
@@ -419,17 +446,16 @@ button {
   padding: 1rem;
   border-radius: 8px;
   max-width: 600px;
-  color: #55a1d3;
+  color: #bdc3c7;
   text-align: justify;
   font-size: 0.95rem;
   width: 100%;
   margin: 1rem 0.5rem;
 }
 
-.howto b {
-  color: #f1c40f;
+.howto:active {
+  background-color: #0c0e00;
 }
-
 .qs {
   display: flex;
   align-items: center;
@@ -531,6 +557,7 @@ button {
 }
 #ans-copy-btn {
   position: static;
+  margin-left: 0.5rem;
 }
 .copy-btn:hover {
   background-color: #2980b9;
