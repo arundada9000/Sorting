@@ -69,6 +69,72 @@ body {
     -webkit-tap-highlight-color: transparent;
   }
 }
+
+/* Context Menu (Right click) */
+#context-menu {
+  width: 220px;
+  position: absolute;
+  z-index: 10;
+  display: none;
+  background-color: #333;
+  border: 1px solid #666;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  color: #f0f0f0;
+  border-radius: 8px;
+}
+
+#context-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Top-level menu items */
+#context-menu li {
+  padding: 12px 20px;
+  border-bottom: 1px solid #555;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#context-menu li:hover {
+  background-color: #555;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  height: inherit;
+  width: 200px;
+  left: 100%;
+  top: 0;
+  background-color: #444;
+  border: 1px solid #777;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+  color: #f0f0f0;
+  border-radius: 6px;
+}
+
+.submenu li {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon styling */
+#context-menu .icon {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0.9);
+  transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.icon:hover {
+  transform: rotate(360deg) scale(1.1);
+  filter: brightness(1.2) hue-rotate(30deg);
+}
+
 /* Footer Styling */
 
 .site-footer {
@@ -125,6 +191,9 @@ nav {
   left: 0;
   width: 100%;
   z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 nav.scrolled {
   top: -100px; /* Adjust the negative value to control the hiding distance */
@@ -788,6 +857,7 @@ button {
     top: 10px;
     height: 30px;
     width: fit-content;
+    display: block;
   }
   .sort-text {
     display: block;

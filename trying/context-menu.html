@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Context Menu Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 300vh;
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        /* Main context menu styling */
+        #context-menu {
+            width: 220px;
+            position: absolute;
+            z-index: 10;
+            display: none;
+            background-color: #333;
+            border: 1px solid #666;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            color: #f0f0f0;
+            border-radius: 8px;
+        }
+
+        #context-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Top-level menu items */
+        #context-menu li {
+            padding: 12px 20px;
+            border-bottom: 1px solid #555;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        #context-menu li:hover {
+            background-color: #555;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            height: inherit;
+            width: 200px;
+            left: 100%;
+            top: 0;
+            background-color: #444;
+            border: 1px solid #777;
+            box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+            color: #f0f0f0;
+            border-radius: 6px;
+        }
+
+        .submenu li {
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Icon styling */
+        #context-menu .icon {
+            width: 30px;
+            height: 30px;
+            filter: brightness(0.9);
+            transition: transform 0.4s ease, filter 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: rotate(360deg) scale(1.1);
+            filter: brightness(1.2) hue-rotate(30deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="context-menu" class="hidden">
+        <ul>
+            <li onclick="window.location.reload(true);">Refresh</li>
+
+            <li onclick="window.open('../contact.html','_self')">
+                Contact
+            </li>
+
+            <li>
+                Share
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://easysorting.netlify.app&quote=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer"
+                            target="_blank" rel="noopener">
+                            <img src="../images/svg-icons/facebook.svg" alt="Facebook" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener">
+                            <img src="../images/svg-icons/instagram.svg" alt="Instagram" class="icon">
+                        </a>
+                    </li>
+
+                    <li class="submenu-item">
+                        <a href="https://wa.me/?text=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer%20-%20https://easysorting.netlify.app"
+                            target="_blank" rel="noopener">
+                            <img src="../images/svg-icons/whatsapp.svg" alt="Whatsapp" class="icon">
+                        </a>
+                    </li>
+
+                    <li class="submenu-item">
+                        <a href="https://t.me/share/url?url=https://easysorting.netlify.app&text=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer"
+                            target="_blank" rel="noopener">
+                            <img src="../images/svg-icons/telegram.svg" alt="Telegram" class="icon">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                Follow me
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener">
+                            <img src="../images/svg-icons/facebook.svg" alt="Facebook" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.instagram.com/arundada9000" target="_blank" rel="noopener">
+                            <img src="../images/svg-icons/instagram.svg" alt="Instagram" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.github.com/arundada9000" target="_blank" rel="noopener">
+                            <img src="../images/svg-icons/github.svg" alt="Telegram" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.youtube.com/@code_with_ease" target="_blank" rel="noopener">
+                            <img src="../images/svg-icons/youtube.svg" alt="Youtube" class="icon">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li onclick="window.open('../feedback.html','_self')">
+                Feedback
+            </li>
+
+        </ul>
+    </div>
+
+    <script>
+        const contextMenu = document.getElementById('context-menu');
+
+        document.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+            contextMenu.style.display = 'block';
+
+            const x = event.clientX;
+            const y = event.clientY;
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const scrollY = window.scrollY;
+            const scrollX = window.scrollX;
+            const menuWidth = contextMenu.offsetWidth;
+            const menuHeight = contextMenu.offsetHeight;
+
+            let left = x + scrollX;
+            let top = y + scrollY;
+
+            if (left + menuWidth > windowWidth + scrollX) {
+                left = windowWidth + scrollX - menuWidth;
+            }
+            if (top + menuHeight > windowHeight + scrollY) {
+                top = windowHeight + scrollY - menuHeight;
+            }
+
+            contextMenu.style.left = left + 'px';
+            contextMenu.style.top = top + 'px';
+
+            const submenus = contextMenu.querySelectorAll('.submenu');
+            submenus.forEach(submenu => {
+                const parentLi = submenu.parentElement;
+                parentLeft = parentLi.getBoundingClientRect();
+                submenu.style.top = parentLi.offsetTop + 'px';
+
+                parentLi.addEventListener('mouseenter', () => {
+                    submenu.style.display = 'flex';
+
+                    const submenuWidth = submenu.offsetWidth;
+
+                    if (parentLeft.right + submenuWidth > windowWidth + scrollX) {
+                        submenu.style.left = menuWidth - (2 * submenuWidth) - 20 + 'px';
+                    } else {
+                        submenu.style.left = menuWidth - 2 + 'px';
+                    }
+                });
+
+                parentLi.addEventListener('mouseleave', () => {
+                    submenu.style.display = 'none';
+                });
+            });
+        });
+
+        document.addEventListener('click', () => {
+            contextMenu.style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>

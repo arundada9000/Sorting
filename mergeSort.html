@@ -43,6 +43,78 @@
     <div class="cursor big"></div>
     <div class="cursor small"></div>
 
+    <div id="context-menu" class="hidden">
+        <ul>
+            <li onclick="window.location.reload(true);">Refresh</li>
+
+            <li onclick="window.open('./contact.html','_self')">
+                Contact
+            </li>
+
+            <li>
+                Share
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://easysorting.netlify.app&quote=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer"
+                            target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/facebook.svg" alt="Facebook" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/instagram.svg" alt="Instagram" class="icon">
+                        </a>
+                    </li>
+
+                    <li class="submenu-item">
+                        <a href="https://wa.me/?text=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer%20-%20https://easysorting.netlify.app"
+                            target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/whatsapp.svg" alt="Whatsapp" class="icon">
+                        </a>
+                    </li>
+
+                    <li class="submenu-item">
+                        <a href="https://t.me/share/url?url=https://easysorting.netlify.app&text=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer"
+                            target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/telegram.svg" alt="Telegram" class="icon">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                Follow me
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/facebook.svg" alt="Facebook" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.instagram.com/arundada9000" target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/instagram.svg" alt="Instagram" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.github.com/arundada9000" target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/github.svg" alt="Telegram" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.youtube.com/@code_with_ease" target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/youtube.svg" alt="Youtube" class="icon">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li onclick="window.open('./feedback.html','_self')">
+                Feedback
+            </li>
+
+        </ul>
+    </div>
+
     <div class="progress-bar-container">
         <div class="progress-bar"></div>
     </div>
@@ -57,7 +129,7 @@
                 <div class="sort-input">
 
                     <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
-                         placeholder="Enter numbers separated with commas as 16,15,15,10,1">
+                        placeholder="Enter numbers separated with commas as 16,15,15,10,1">
 
                     <div class="buttons-div">
                         <div class="sort-btn" id="generate-random-btn" title="Generate random numbers button"
@@ -208,7 +280,7 @@ function merge(left, right):
             <p class="footer-title">Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
-                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener">Portfolio</a> |
+                <a href="./feedback.html">Feedback </a> |
                 <a href="./contact.html">Contact</a>
             </div>
             <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>

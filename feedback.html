@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <link rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="shortcut icon" href="./images/feedback.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .feedback-container {
+            width: 90%;
+            max-width: 600px;
+            margin: 80px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        select,
+        textarea,
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        select {
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        textarea {
+            caret-color: black;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Styling for the thank you message */
+        .thank-you-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .menu-toggle span {
+            background-color: black;
+        }
+
+        .big.mouse-down {
+            border-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="scroll-animate">
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./bubbleSort.html">Bubble <span class="sort-text">Sort</span></a>
+            <a href="./selectionSort.html">Selection <span class="sort-text">Sort</span></a>
+            <a href="./insertionSort.html">Insertion <span class="sort-text">Sort</span></a>
+            <a href="./mergeSort.html">Merge <span class="sort-text">Sort</span></a>
+            <a href="./quickSort.html">Quick <span class="sort-text">Sort</span></a>
+            <a href="./heapSort.html">Heap <span class="sort-text">Sort</span></a>
+            <a href="./radixSort.html">Radix <span class="sort-text">Sort</span></a>
+            <a href="./shellSort.html">Shell <span class="sort-text">Sort</span></a>
+            <a href="./summary.html">Summary</a>
+        </div>
+    </nav>
+
+    <div id="context-menu" class="hidden">
+        <ul>
+            <li onclick="window.location.reload(true);">Refresh</li>
+
+            <li onclick="window.open('./contact.html','_self')">
+                Contact
+            </li>
+
+            <li>
+                Share
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://easysorting.netlify.app&quote=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer"
+                            target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/facebook.svg" alt="Facebook" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.instagram.com" target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/instagram.svg" alt="Instagram" class="icon">
+                        </a>
+                    </li>
+
+                    <li class="submenu-item">
+                        <a href="https://wa.me/?text=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer%20-%20https://easysorting.netlify.app"
+                            target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/whatsapp.svg" alt="Whatsapp" class="icon">
+                        </a>
+                    </li>
+
+                    <li class="submenu-item">
+                        <a href="https://t.me/share/url?url=https://easysorting.netlify.app&text=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer"
+                            target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/telegram.svg" alt="Telegram" class="icon">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                Follow me
+                <ul class="submenu">
+                    <li class="submenu-item">
+                        <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/facebook.svg" alt="Facebook" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.instagram.com/arundada9000" target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/instagram.svg" alt="Instagram" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.github.com/arundada9000" target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/github.svg" alt="Telegram" class="icon">
+                        </a>
+                    </li>
+                    <li class="submenu-item">
+                        <a href="https://www.youtube.com/@code_with_ease" target="_blank" rel="noopener">
+                            <img src="./images/svg-icons/youtube.svg" alt="Youtube" class="icon">
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li onclick="window.open('./feedback.html','_self')">
+                Feedback
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="cursor big"></div>
+    <div class="cursor small"></div>
+
+    <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+    </div>
+
+    <div class="feedback-container">
+        <h1 class="scroll-animate">Feedback & Bug Report</h1>
+        <p class="scroll-animate">We appreciate your feedback. Please let us know if you encountered a bug or have
+            suggestions for
+            improvements.</p>
+
+        <form id="feedback-form" action="https://api.web3forms.com/submit" method="post">
+            <input type="hidden" name="access_key" value="a70b99ba-e904-480f-9f8b-e420787fbc0d">
+
+            <div class="form-group">
+                <label for="issue-type" class="scroll-animate">Select Issue Type</label>
+                <select id="issue-type" name="issue-type" required class="scroll-animate">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="bug">Bug Report</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="improvement">Improvement Suggestion</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="description" class="scroll-animate">Describe the issue or feedback</label>
+                <textarea id="description" name="description" rows="5"
+                    placeholder="Please provide a detailed description... " class="scroll-animate" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" id="submit-button" class="scroll-animate" value="Send a Message">
+            </div>
+        </form>
+    </div>
+
+    <button id="backToTopBtn" title="Go to top">↑</button>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="footer-title">Sorting Visualizer</p>
+            <div class="footer-links">
+                <a href="./about.html">About</a> |
+                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener">Portfolio</a> |
+                <a href="./contact.html">Contact</a>
+            </div>
+            <p class="footer-info">&copy; <span id="year">2020</span> Sorting Visualizer. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-credit">For Learning and Development</p>
+        </div>
+    </footer>
+
+    <div class="dummy-btn language-selector inside-code-container language-copy-button" id="dummy-btn">Dummy button
+    </div>
+    <button id="dummy-btn1" data-language="c">Dummy button</button>
+    <button id="dummy-btn2" data-language="javascript">Dummy btn 3</button>
+
+    <script>
+        document.getElementById('issue-type').addEventListener('change', function () {
+            const selectedIssueType = this.value;
+            const submitButton = document.getElementById('submit-button');
+
+            // Change button text based on selected issue type
+            if (selectedIssueType === 'bug') {
+                submitButton.textContent = 'Send Bug Report';
+            } else if (selectedIssueType === 'feedback') {
+                submitButton.textContent = 'Send Feedback';
+            } else if (selectedIssueType === 'improvement') {
+                submitButton.textContent = 'Send Improvement Suggestion';
+            } else {
+                submitButton.textContent = 'Send Feedback'; // Default text
+            }
+        });
+        const fastBtn = document.querySelector(".dummy-btn");
+        const skipBtn = document.querySelector(".dummy-btn");
+        const inputBox = document.querySelector(".dummy-btn");
+
+        const form = document.querySelector('#feedback-form');
+        const submitButton = form.querySelector('#submit-button');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const issueType = document.getElementById('issue-type').value;
+            const description = document.getElementById('description').value;
+
+            if (!issueType || !description) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            submitButton.value = 'Sending...';
+
+            const formData = new FormData(form);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => {
+                    if (response.ok) {
+                        submitButton.value = 'Message Sent';
+                        setTimeout(() => {
+                            submitButton.value = 'Send Message'; // Reset button text
+                        }, 5000);
+
+                        let thankYouMessage = "";
+                        if (issueType === "bug") {
+                            thankYouMessage = "Thank you for reporting the bug. Our team will investigate it shortly.";
+                        } else if (issueType === "feedback") {
+                            thankYouMessage = "Thank you for your valuable feedback. We appreciate your suggestions to help us improve.";
+                        } else if (issueType === "improvement") {
+                            thankYouMessage = "Thank you for suggesting an improvement. We will consider it in our future updates.";
+                        }
+
+                        // Show the message in a more professional and user-friendly way
+                        const thankYouDiv = document.createElement('div');
+                        thankYouDiv.classList.add('thank-you-message');
+                        thankYouDiv.innerHTML = `<p>${thankYouMessage}</p>`;
+                        document.querySelector('.feedback-container').appendChild(thankYouDiv);
+
+
+                        form.reset();
+
+                    } else {
+                        submitButton.value = 'Error, Try Again';
+                        setTimeout(() => {
+                            submitButton.value = 'Send Message';
+                        }, 5000);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
+                    submitButton.value = 'Error, Try Again';
+                    setTimeout(() => {
+                        submitButton.value = 'Send Message';
+                    }, 5000);
+                });
+        });
+
+    </script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

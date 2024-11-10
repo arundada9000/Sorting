@@ -117,14 +117,73 @@ for (let i = 0; i < items.length; i++) {
 
 const navigation = document.querySelector(".nav-links");
 const container = document.querySelector(".container");
-navigationLeftReset();
 
-function navigationLeftReset() {
-  const containerRect = container.getBoundingClientRect();
-  const containerLeft = containerRect.left;
-  navigation.style.marginLeft = `${containerLeft}px`;
-}
-window.addEventListener("resize", navigationLeftReset);
+// navigationLeftReset();
+// function navigationLeftReset() {
+//   const containerRect = container.getBoundingClientRect();
+//   const containerLeft = containerRect.left;
+//   navigation.style.marginLeft = `${containerLeft}px`;
+// }
+// window.addEventListener("resize", navigationLeftReset);
+
+// Custom right click context menu
+const contextMenu = document.getElementById("context-menu");
+
+document.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
+  contextMenu.style.display = "block";
+
+  const x = event.clientX;
+  const y = event.clientY;
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+  const scrollY = window.scrollY;
+  const scrollX = window.scrollX;
+  const menuWidth = contextMenu.offsetWidth;
+  const menuHeight = contextMenu.offsetHeight;
+
+  let left = x + scrollX;
+  let top = y + scrollY;
+
+  if (left + menuWidth > windowWidth + scrollX) {
+    left = windowWidth + scrollX - menuWidth;
+  }
+  if (top + menuHeight > windowHeight + scrollY) {
+    top = windowHeight + scrollY - menuHeight;
+  }
+
+  contextMenu.style.left = left + "px";
+  contextMenu.style.top = top + "px";
+
+  const submenus = contextMenu.querySelectorAll(".submenu");
+  submenus.forEach((submenu) => {
+    const parentLi = submenu.parentElement;
+    parentLeft = parentLi.getBoundingClientRect();
+    submenu.style.top = parentLi.offsetTop + "px";
+
+    parentLi.addEventListener("mouseenter", () => {
+      submenu.style.display = "flex";
+
+      const submenuWidth = submenu.offsetWidth;
+
+      if (parentLeft.right + submenuWidth > windowWidth + scrollX) {
+        submenu.style.left = menuWidth - 2 * submenuWidth - 20 + "px";
+      } else {
+        submenu.style.left = menuWidth - 2 + "px";
+      }
+    });
+
+    parentLi.addEventListener("mouseleave", () => {
+      submenu.style.display = "none";
+    });
+  });
+});
+
+document.addEventListener("click", () => {
+  contextMenu.style.display = "none";
+});
+
+// end context menu
 
 const navbar = document.querySelector("nav");
 let prevScrollPos = window.scrollY;
