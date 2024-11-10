@@ -41,6 +41,12 @@
             margin-bottom: 1rem;
         }
 
+        .passesandinfo .numbers .num-wrapper {
+            margin-bottom: 20px;
+        }
+
+
+
         .pointer {
             position: absolute;
             bottom: -20px;
@@ -54,6 +60,68 @@
 
         #right-pointer {
             left: -20px;
+        }
+
+        /* Container for the toggle and label */
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 200px;
+        }
+
+        /* Style for the toggle switch */
+        .toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        /* Slider styling */
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 30px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        /* Toggle on: background and slider position */
+        input:checked+.slider {
+            background-color: #4CAF50;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(30px);
+        }
+
+        /* Text label styling */
+        #toggle-label {
+            font-size: 18px;
+            color: #777;
         }
     </style>
 </head>
@@ -168,6 +236,13 @@
                 </div>
 
                 <div class="sort-input flex">
+                    <div class="toggle-container">
+                        <label class="toggle">
+                            <input type="checkbox" id="toggle-randomized" title="Randomize Quick Sort" />
+                            <span class="slider"></span>
+                        </label>
+                        <span id="toggle-label">Normal</span>
+                    </div>
 
                     <input type="text" id="input-num" label="Enter numbers" title="Enter numbers separated with commas"
                         placeholder="Enter numbers separated with commas as 16,15,15,10,1">
@@ -517,7 +592,16 @@ print('After sorting:', arr)
         const howto = document.getElementById("howto");
         const skipBtn = document.getElementById("skip");
         const fastBtn = document.getElementById("fast-btn");
-        let ms = 1000;
+        let ms = 1000, randomizer = false;
+
+        const toggleCheckbox = document.getElementById("toggle-randomized");
+        const toggleLabel = document.getElementById("toggle-label");
+
+        // Event listener to update label based on toggle state
+        toggleCheckbox.addEventListener("change", () => {
+            toggleLabel.textContent = toggleCheckbox.checked ? "Randomized" : "Normal";
+            randomizer = toggleCheckbox.checked ? true : false;
+        });
 
         sortBtn.addEventListener("click", () => {
             if (sortBtn.textContent == "Sorting...") return;
@@ -542,6 +626,8 @@ print('After sorting:', arr)
             howto.style.visibility = "hidden";
             let sorted = [];
             changeText("");
+            let randomized = randomizer;
+            document.getElementById("passInfo").style.display = "flex";
 
             for (let i = 0; i < values.length; i++) {
                 let el = document.createElement("div");
@@ -571,10 +657,30 @@ print('After sorting:', arr)
 
                 async function partition(values, low, high) {
                     toggleBorder(divs, low, high);
+
+                    if (randomized) {
+                        let randomPivotIndex = low + Math.floor(Math.random() * (high - low + 1));
+                        document.getElementById("pivot").textContent = "Index " + randomPivotIndex + " is selected as the random pivot.";
+                        await sleep(ms);
+
+                        divs[randomPivotIndex].classList.add("swapping");
+                        divs[high].classList.add("swapping");
+                        await sleep(ms);
+                        document.getElementById("pivot").textContent = "Swapping " + randomPivotIndex + "index  and " + high + " index.";
+                        await sleep(ms);
+                        [values[randomPivotIndex], values[high]] = [values[high], values[randomPivotIndex]];
+                        divs[randomPivotIndex].textContent = values[randomPivotIndex];
+                        divs[high].textContent = values[high];
+                        divs[randomPivotIndex].classList.remove("swapping");
+                        divs[high].classList.remove("swapping");
+                        document.getElementById("pivot").textContent = "Pivot is now " + values[high];
+                        await sleep(ms);
+                        await sleep(ms);
+                    }
+
                     pivot = values[high];
                     divs[high].classList.add("pivot");
 
-                    document.getElementById("passInfo").style.display = "flex";
                     document.getElementById("pivot").textContent = "Pivot = " + pivot;
                     document.getElementById("low").textContent = "Low = " + low;
                     document.getElementById("high").textContent = "High = " + high;
@@ -688,6 +794,7 @@ print('After sorting:', arr)
             let numbersRect = numDiv.getBoundingClientRect();
             let leftPointer = document.querySelector("#left-pointer");
 
+
             if (low < 0) {
                 leftPointer.style.left = "-30px";
             }
@@ -697,8 +804,13 @@ print('After sorting:', arr)
             else {
                 let divsRect = divs[low].getBoundingClientRect();
                 divsRect = parseInt(divsRect.left - numbersRect.left);
-
                 leftPointer.style.left = divsRect + 15 + "px";
+
+                let bottom = divs[low].getBoundingClientRect();
+                bottom = bottom.bottom;
+                bottom = bottom - numbersRect.top;
+                leftPointer.style.top = bottom + 3 + "px";
+
             }
         }
 
@@ -715,6 +827,10 @@ print('After sorting:', arr)
                 let divsRect = divs[high].getBoundingClientRect();
                 divsRect = parseInt(divsRect.left) - parseInt(numbersRect.left);
                 rightPointer.style.left = divsRect + 25 + "px";
+                let bottom = divs[high].getBoundingClientRect();
+                bottom = bottom.bottom;
+                bottom = bottom - numbersRect.top;
+                rightPointer.style.top = bottom + 3 + "px";
             }
         }
 
