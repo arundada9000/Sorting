@@ -10,11 +10,21 @@
     <meta name="keywords"
         content="Sorting, sorting visualized, sorting in easy way, sorting in c , sorting implementation, sorting pseudo code, sorting in c++" />
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
+
+    <link rel="manifest" href="./manifest.json">
+    <!-- For ios -->
+    <link rel="apple-touch-icon" href="./images/sort.png">
+    <meta name="apple-mobile-web-app-status-bar" content="1338BE">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        #installButton {
+            display: none;
         }
 
         body {
@@ -278,6 +288,22 @@
                 display: none;
             }
         }
+
+        #install-button-mobile {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1DB954;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1;
+        }
     </style>
 </head>
 
@@ -356,6 +382,7 @@
                 Feedback
             </li>
 
+            <li id="installButton">Install</li>
         </ul>
     </div>
 
@@ -456,17 +483,18 @@
             </a>
         </div>
     </div>
-
+    <button id="install-button-mobile">Install</button>
     <footer class="scroll-animate">
         <p class="scroll-animate">Created by Arun Neupane | <a href="https://arunneupane.netlify.app/" target="_blank"
                 rel="noopener">Portfolio</a></p>
         <p class="scroll-animate">
-            <a href="./about.html" target="_blank">About </a> |
+            <a href="./about.html">About </a> |
             <a href="./feedback.html">Feedback </a> |
             <a href="./contact.html">Contact</a>
         </p>
     </footer>
 
+    <script src="./app.js"></script>
     <script>
         window.addEventListener("scroll", function () {
             const scrollTop = window.scrollY;

@@ -15,7 +15,48 @@ const assets = [
   "./radixSort.html",
   "./shellSort.html",
   "./summary.html",
-  "./imageList.json",
+  "./images/animated/add.gif",
+  "./images/socials/github.png",
+  "./images/socials/github.webp",
+  "./images/socials/instagram.png",
+  "./images/socials/instagram.webp",
+  "./images/socials/whatsapp.png",
+  "./images/socials/whatsapp.webp",
+  "./images/socials/youtube.png",
+  "./images/socials/youtube.webp",
+  "./images/socials/email.webp",
+  "./images/socials/email.png",
+  "./images/socials/facebook.png",
+  "./images/socials/facebook.webp",
+  "./images/svg-icons/facebook.svg",
+  "./images/svg-icons/github.svg",
+  "./images/svg-icons/telegram.svg",
+  "./images/svg-icons/whatsapp.svg",
+  "./images/svg-icons/instagram.svg",
+  "./images/svg-icons/youtube.svg",
+  "./images/bubble.webp",
+  "./images/heap.webp",
+  "./images/insertion.webp",
+  "./images/magic.webp",
+  "./images/magic.png",
+  "./images/information.png",
+  "./images/me-in-the-pool.webp",
+  "./images/merge.webp",
+  "./images/output-onlinegiftools.gif",
+  "./images/qr-code.png",
+  "./images/write.png",
+  "./images/me.svg",
+  "./images/summary.png",
+  "./images/squiggle.png",
+  "./images/sort.png",
+  "./images/sort-128.png",
+  "./images/shell.webp",
+  "./images/selection.webp",
+  "./images/reorder.gif",
+  "./images/radix.webp",
+  "./images/quick.webp",
+  "./images/happiness.png",
+  "./images/me-in-the-pool-300-by-597.png",
 ];
 // Install service worker
 self.addEventListener("install", (event) => {
@@ -37,6 +78,7 @@ self.addEventListener("activate", (event) => {
       );
     })
   );
+  self.clients.claim();
 });
 
 // Fetch event

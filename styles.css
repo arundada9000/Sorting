@@ -8,6 +8,10 @@
 *:not(input):not(textarea) {
   caret-color: transparent;
 }
+#install-button-mobile {
+  display: none;
+  cursor: pointer;
+}
 input,
 textarea {
   caret-color: white;
@@ -234,7 +238,7 @@ nav.scrolled {
   justify-content: space-between;
   /* nav-links1 */
   background-color: #0f0f0f;
-  max-width: 810px;
+  max-width: 880px;
 }
 nav a::after {
   content: "";

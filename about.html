@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="shortcut icon" href="./images/information.png" type="image/x-icon">
 
+    <link rel="manifest" href="./manifest.json">
+    <!-- For ios -->
+    <link rel="apple-touch-icon" href="./images/sort.png">
+    <meta name="apple-mobile-web-app-status-bar" content="1338BE">
     <style>
         .container p {
             text-align: justify;
@@ -139,6 +143,8 @@
             <a href="./radixSort.html">Radix <span class="sort-text">Sort</span></a>
             <a href="./shellSort.html">Shell <span class="sort-text">Sort</span></a>
             <a href="./summary.html">Summary</a>
+            <a id="install-button-mobile">Install</a>
+
         </div>
     </nav>
 
@@ -213,7 +219,7 @@
             <li onclick="window.open('./feedback.html','_self')">
                 Feedback
             </li>
-
+            <li id="installButton">Install</li>
         </ul>
     </div>
 
@@ -374,6 +380,8 @@
     </div>
     <button id="dummy-btn1" data-language="c">Dummy button</button>
     <button id="dummy-btn2" data-language="javascript">Dummy btn 3</button>
+
+    <script src="./app.js"></script>
 
     <script>
         const fastBtn = document.querySelector(".dummy-btn");

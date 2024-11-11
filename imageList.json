@@ -14,7 +14,6 @@
     "./images/socials/facebook.webp",
     "./images/svg-icons/facebook.svg",
     "./images/svg-icons/github.svg",
-    "./images/svg-icons/instagram.svg",
     "./images/svg-icons/telegram.svg",
     "./images/svg-icons/whatsapp.svg",
     "./images/svg-icons/youtube.svg",
@@ -24,11 +23,10 @@
     "./images/magic.webp",
     "./images/magic.png",
     "./images/information.png",
-    "./images/information.webp",
     "./images/me-in-the-pool.webp",
     "./images/merge.webp",
-    "./images/output-online.gif",
-    "./images/qrcode.png",
+    "./images/output-onlinegiftools.gif",
+    "./images/qr-code.png",
     "./images/write.png",
     "./images/me.svg",
     "./images/summary.png",
@@ -39,7 +37,9 @@
     "./images/selection.webp",
     "./images/reorder.gif",
     "./images/radix.webp",
-    "./images/quick.webp"
-    
+    "./images/quick.webp",
+    "./images/happiness.png",
+    "./images/me-in-the-pool-300-by-597.png",
+    "./images/svg-icons/instagram.svg"
   ]
   

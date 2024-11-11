@@ -11,6 +11,10 @@
     <link rel="shortcut icon" href="./images/contact.webp" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
 
+    <link rel="manifest" href="./manifest.json">
+    <!-- For ios -->
+    <link rel="apple-touch-icon" href="./images/sort.png">
+    <meta name="apple-mobile-web-app-status-bar" content="1338BE">
     <style>
         * {
             margin: 0;
@@ -270,7 +274,8 @@
             <a href="./heapSort.html">Heap <span class="sort-text">Sort</span></a>
             <a href="./radixSort.html">Radix <span class="sort-text">Sort</span></a>
             <a href="./shellSort.html">Shell <span class="sort-text">Sort</span></a>
-            <a href="./summary.html">Summary</a>
+             <a href="./summary.html">Summary</a>
+            <a id="install-button-mobile">Install</a>
         </div>
     </nav>
 
@@ -345,6 +350,7 @@
             <li onclick="window.open('./feedback.html','_self')">
                 Feedback
             </li>
+            <li id="installButton">Install</li>
 
         </ul>
     </div>
@@ -437,6 +443,7 @@
         </div>
     </footer>
 
+    
     <script>
         const fastBtn = document.querySelector(".dummy-btn");
         const skipBtn = document.querySelector(".dummy-btn");
