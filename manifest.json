@@ -1,0 +1,37 @@
+{
+    "name": "Sorting Algorithm Visualizer",
+    "short_name": "Sorting",
+    "description": "Sorting Algorithms visualized step by step.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#000000",
+    "theme_color": "#050505",
+    "orientation":"portrait-primary",
+    "icons": [
+      {
+        "src": "./images/sort-128.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      },
+      {
+        "src": "./images/sort.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "screenshots": [
+      {
+        "src": "./images/screenshots/screenshot-wide.png",
+        "sizes": "1920x1080",
+        "type": "image/png",
+        "form_factor": "wide"
+      },
+      {
+        "src": "./images/screenshots/screenshot-wide.png",
+        "sizes": "1920x1080",
+        "type": "image/png",
+        "form_factor": "narrow"
+      }
+    ]
+  
+  }
