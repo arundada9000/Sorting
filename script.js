@@ -76,6 +76,15 @@ languageSelector.addEventListener("click", (event) => {
   codeContainer.style.display = "block";
   codeContainer.textContent = codeSnippets[selectedLanguage];
 
+  codeContainer.classList.forEach((className) => {
+    if (className.startsWith("language-")) {
+      codeContainer.classList.remove(className);
+    }
+  });
+
+  codeContainer.classList.add(`language-${selectedLanguage}`);
+  Prism.highlightElement(codeContainer);
+
   codeContainer.style.animation = "none";
   codeContainer.offsetHeight;
   codeContainer.style.animation = "fadeInTopToBottom 1s forwards";

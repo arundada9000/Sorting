@@ -1,4 +1,4 @@
-const CACHE_NAME = "cache-v100";
+const CACHE_NAME = "cache-v101";
 const assets = [
   "/",
   "./index.html",
@@ -57,6 +57,13 @@ const assets = [
   "./images/quick.webp",
   "./images/happiness.png",
   "./images/me-in-the-pool-300-by-597.png",
+  "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css",
+  "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+  "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js",
+  "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js",
+  "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js",
+  "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js",
+  "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js",
 ];
 // Install service worker
 self.addEventListener("install", (event) => {

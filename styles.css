@@ -812,6 +812,12 @@ button {
   width: 100%;
   overflow-x: auto;
 }
+pre[class*="language-"],
+code[class*="language-"] {
+  background-color: #141414 !important;
+  color: #f8f8f2;
+  font-family: roboto, "Courier New", Courier, monospace !important;
+}
 #code-display {
   padding: 15px;
   border-radius: 6px;
