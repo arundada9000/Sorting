@@ -1,6 +1,6 @@
 const CACHE_NAME = "cache-v301";
 const assets = [
-  "/",".",
+  "/",
   "./index.html",
   "./styles.css",
   "./script.js",
