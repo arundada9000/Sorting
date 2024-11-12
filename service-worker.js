@@ -66,7 +66,7 @@ const assets = [
   "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js",
-];.
+];
 // Install service worker
 self.addEventListener("install", (event) => {
   // console.log("Service Worker installed");
