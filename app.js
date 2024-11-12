@@ -2,7 +2,14 @@
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("service-worker.js")
-    .then((register) => console.log("Registered ", register))
+    .then((register) => {
+      console.log("Registered ", register);
+      window.addEventListener("appinstalled", () => {
+        if (navigator.serviceWorker.controller) {
+          navigator.serviceWorker.controller.postMessage("cache-resources");
+        }
+      });
+    })
     .catch((error) => console.log("Failed to register ", err));
 }
 

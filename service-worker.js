@@ -1,4 +1,4 @@
-const cacheName = "cache-v0";
+const CACHE_NAME = "cache-v0";
 const assets = [
   "/",
   "./index.html",
@@ -60,12 +60,27 @@ const assets = [
 ];
 // Install service worker
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(cacheName).then((cache) => {
-      console.log("Caching");
-      cache.addAll(assets);
-    })
-  );
+  console.log("Service Worker installed");
+  // event.waitUntil(
+  //   caches.open(CACHE_NAME).then((cache) => {
+  //     console.log("Caching");
+  //     cache.addAll(assets);
+  //   })
+  // );
+});
+
+// Cache only when installed
+self.addEventListener("message", (event) => {
+  if (event.data === "cache-resources") {
+    caches.open(CACHE_NAME).then(async (cache) => {
+      try {
+        await cache.addAll(assets);
+        console.log("Resources cached after installation");
+      } catch (error) {
+        console.error("Failed to cache resources:", error);
+      }
+    });
+  }
 });
 
 // Activate service worker
@@ -74,7 +89,9 @@ self.addEventListener("activate", (event) => {
     caches.keys().then((keys) => {
       console.log("Inside activate", keys);
       return Promise.all(
-        keys.filter((key) => key !== cacheName).map((key) => caches.delete(key))
+        keys
+          .filter((key) => key !== CACHE_NAME)
+          .map((key) => caches.delete(key))
       );
     })
   );
