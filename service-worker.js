@@ -69,7 +69,7 @@ const assets = [
 ];
 // Install service worker
 self.addEventListener("install", (event) => {
-  console.log("Service Worker installed");
+  // console.log("Service Worker installed");
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       console.log("Caching");
@@ -79,18 +79,18 @@ self.addEventListener("install", (event) => {
 });
 
 // Cache only when installed
-self.addEventListener("message", (event) => {
-  if (event.data === "cache-resources") {
-    caches.open(CACHE_NAME).then(async (cache) => {
-      try {
-        await cache.addAll(assets);
-        console.log("Resources cached after installation");
-      } catch (error) {
-        console.error("Failed to cache resources:", error);
-      }
-    });
-  }
-});
+// self.addEventListener("message", (event) => {
+//   if (event.data === "cache-resources") {
+//     caches.open(CACHE_NAME).then(async (cache) => {
+//       try {
+//         await cache.addAll(assets);
+//         console.log("Resources cached after installation");
+//       } catch (error) {
+//         console.error("Failed to cache resources:", error);
+//       }
+//     });
+//   }
+// });
 
 // Activate service worker
 self.addEventListener("activate", (event) => {
@@ -104,7 +104,6 @@ self.addEventListener("activate", (event) => {
       );
     })
   );
-  self.clients.claim();
 });
 
 // Fetch event
