@@ -1,4 +1,4 @@
-const CACHE_NAME = "cache-v101";
+const CACHE_NAME = "cache-v301";
 const assets = [
   "/",
   "./index.html",
@@ -6,6 +6,7 @@ const assets = [
   "./script.js",
   "./about.html",
   "./bubbleSort.html",
+  "./selectionSort.html",
   "./contact.html",
   "./feedback.html",
   "./heapSort.html",
@@ -57,6 +58,7 @@ const assets = [
   "./images/quick.webp",
   "./images/happiness.png",
   "./images/me-in-the-pool-300-by-597.png",
+  "./service-worker.js",
   "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css",
   "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
   "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-clike.min.js",
@@ -68,12 +70,12 @@ const assets = [
 // Install service worker
 self.addEventListener("install", (event) => {
   console.log("Service Worker installed");
-  // event.waitUntil(
-  //   caches.open(CACHE_NAME).then((cache) => {
-  //     console.log("Caching");
-  //     cache.addAll(assets);
-  //   })
-  // );
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log("Caching");
+      cache.addAll(assets);
+    })
+  );
 });
 
 // Cache only when installed
