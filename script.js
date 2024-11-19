@@ -204,12 +204,10 @@ window.addEventListener("scroll", function () {
 
   // for navbar show hide
   const currentScrollPos = window.scrollY;
-  if (window.innerWidth > 768) {
-    if (prevScrollPos > currentScrollPos) {
-      navbar.classList.remove("scrolled");
-    } else {
-      navbar.classList.add("scrolled");
-    }
+  if (prevScrollPos > currentScrollPos) {
+    navbar.classList.remove("scrolled");
+  } else {
+    navbar.classList.add("scrolled");
   }
 
   prevScrollPos = currentScrollPos;

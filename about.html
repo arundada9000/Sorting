@@ -115,11 +115,34 @@
             color: #e807a8;
             font-size: 2rem;
             background: linear-gradient(90deg, #f2ff00, #037bf4);
+            border-radius: 10px;
         }
 
         .happy img {
             width: 2rem;
             height: 2rem;
+        }
+
+        @media(max-width: 768px) {
+            .happy {
+                font-size: 1.5rem;
+            }
+
+            .happy img {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        @media(max-width: 362px) {
+            .happy {
+                font-size: 1rem;
+            }
+
+            .happy img {
+                width: 1rem;
+                height: 1rem;
+            }
         }
     </style>
 </head>
