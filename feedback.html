@@ -16,26 +16,29 @@
     <style>
         body {
             background-color: #f4f4f4;
+            background: url("./images/svg-feedback-background.svg") no-repeat center center;
+            background-size: cover;
         }
 
         .feedback-container {
             width: 90%;
             max-width: 600px;
             margin: 80px auto;
-            background-color: #fff;
+            background-color: transparent;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgb(32, 17, 234);
         }
 
         h1 {
             text-align: center;
-            color: #333;
+            color: #115aeb;
         }
 
         p {
             text-align: center;
-            color: #666;
+            color: #fdfcfc;
             margin-bottom: 20px;
         }
 
@@ -47,7 +50,7 @@
         label {
             display: block;
             font-weight: bold;
-            color: #333;
+            color: #fefcfc;
             margin-bottom: 8px;
         }
 
@@ -124,21 +127,33 @@
             <a href="./heapSort.html">Heap <span class="sort-text">Sort</span></a>
             <a href="./radixSort.html">Radix <span class="sort-text">Sort</span></a>
             <a href="./shellSort.html">Shell <span class="sort-text">Sort</span></a>
-             <a href="./summary.html">Summary</a>
+            <a href="./summary.html">Summary</a>
             <a id="install-button-mobile">Install</a>
         </div>
     </nav>
 
     <div id="context-menu" class="hidden">
         <ul>
-            <li onclick="window.location.reload(true);">Refresh</li>
+            <li onclick="window.location.reload(true);">
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/refresh.svg" alt="Refresh button">
+                    Refresh
+                </div>
+            </li>
 
             <li onclick="window.open('./contact.html','_self')">
-                Contact
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/contact.svg" alt="Refresh button">
+                    Contact
+                </div>
             </li>
 
             <li>
-                Share
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/share.svg" alt="Refresh button">
+                    Share
+                </div>
+
                 <ul class="submenu">
                     <li class="submenu-item">
                         <a href="https://www.facebook.com/sharer/sharer.php?u=https://easysorting.netlify.app&quote=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer"
@@ -169,7 +184,10 @@
             </li>
 
             <li>
-                Follow me
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/follow.svg" alt="Refresh button">
+                    Follow me
+                </div>
                 <ul class="submenu">
                     <li class="submenu-item">
                         <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener">
@@ -193,11 +211,12 @@
                     </li>
                 </ul>
             </li>
-
-            <li onclick="window.open('./feedback.html','_self')">
-                Feedback
+            <li id="installButton">
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/install.svg" alt="Refresh button">
+                    Install
+                </div>
             </li>
-            <li id="installButton">Install</li>
 
         </ul>
     </div>

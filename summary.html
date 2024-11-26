@@ -191,14 +191,26 @@
 
     <div id="context-menu" class="hidden">
         <ul>
-            <li onclick="window.location.reload(true);">Refresh</li>
+            <li onclick="window.location.reload(true);">
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/refresh.svg" alt="Refresh button">
+                    Refresh
+                </div>
+            </li>
 
             <li onclick="window.open('./contact.html','_self')">
-                Contact
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/contact.svg" alt="Refresh button">
+                    Contact
+                </div>
             </li>
 
             <li>
-                Share
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/share.svg" alt="Refresh button">
+                    Share
+                </div>
+
                 <ul class="submenu">
                     <li class="submenu-item">
                         <a href="https://www.facebook.com/sharer/sharer.php?u=https://easysorting.netlify.app&quote=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer"
@@ -229,7 +241,10 @@
             </li>
 
             <li>
-                Follow me
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/follow.svg" alt="Refresh button">
+                    Follow me
+                </div>
                 <ul class="submenu">
                     <li class="submenu-item">
                         <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener">
@@ -255,9 +270,17 @@
             </li>
 
             <li onclick="window.open('./feedback.html','_self')">
-                Feedback
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/feedback.svg" alt="Refresh button">
+                    Feedback
+                </div>
             </li>
-            <li id="installButton">Install</li>
+            <li id="installButton">
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/install.svg" alt="Refresh button">
+                    Install
+                </div>
+            </li>
 
         </ul>
     </div>

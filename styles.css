@@ -95,7 +95,7 @@ body {
 
 /* Top-level menu items */
 #context-menu li {
-  padding: 12px 20px;
+  padding: 12px 20px 12px 5px;
   border-bottom: 1px solid #555;
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -125,7 +125,11 @@ body {
   align-items: center;
   justify-content: center;
 }
-
+.context-menu-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 /* Icon styling */
 #context-menu .icon {
   width: 30px;
@@ -589,7 +593,7 @@ button {
   /* max-width: 800px; */
   margin: auto;
   overflow-x: hidden;
-  background: url("./images/svg-background.svg") no-repeat center center;
+  background: url("./images/svg-background-howto.svg") no-repeat center center;
   background-size: cover;
 }
 

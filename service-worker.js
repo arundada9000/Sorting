@@ -1,6 +1,12 @@
 const CACHE_NAME = "cache-v303";
 const assets = [
   "/",
+  "./images/context-menu-icons/refresh.svg",
+  "./images/context-menu-icons/contact.svg",
+  "./images/context-menu-icons/share.svg",
+  "./images/context-menu-icons/follow.svg",
+  "./images/context-menu-icons/feedback.svg",
+  "./images/context-menu-icons/install.svg",
   "./images/svg-background.svg",
   "./index.html",
   "./styles.css",

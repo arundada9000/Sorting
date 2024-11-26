@@ -35,7 +35,7 @@
             align-items: center;
             min-height: 100vh;
             background-color: black;
-            background: linear-gradient(135deg, #d8dee8, #d9e9eb);
+            background: linear-gradient(135deg, #111212, #163135);
         }
 
         .menu-toggle span {
@@ -50,20 +50,20 @@
             width: 100%;
             border-radius: 12px;
             overflow: hidden;
-
+            padding-top: 3rem;
+            background: url("./images/svg-contact-background.svg") no-repeat center center;
+            background-size: cover;
         }
 
         /* Contact Form Section */
         .contact-form {
             flex: 1;
             padding: 2rem;
+            padding-top: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-color: #e7eaee70;
             box-shadow: 0px 0px 5px black;
-            border-top: 2px solid blue;
-            border-left: 2px solid blue;
         }
 
         .contact-form h1 {
@@ -75,7 +75,7 @@
         .contact-form p,
         .catchphrase {
             font-size: 1rem;
-            color: #000000;
+            color: #ffffff;
             margin-bottom: 2rem;
             opacity: 0;
             transform: translateY(10px);
@@ -107,7 +107,7 @@
 
         label {
             font-size: 1.1rem;
-            color: #0f0f0f;
+            color: #ffffff;
         }
 
         input,
@@ -125,7 +125,7 @@
 
         input[type="text"] {
             background-color: white;
-            color: black;
+            color: #ffffff;
         }
 
         input[type="submit"] {
@@ -156,7 +156,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #e3ecff70;
             text-align: center;
             position: relative;
         }
@@ -253,6 +252,10 @@
                 padding-top: 4rem;
             }
         }
+
+        .menu-toggle span {
+            background-color: white;
+        }
     </style>
 </head>
 
@@ -284,14 +287,19 @@
 
     <div id="context-menu" class="hidden">
         <ul>
-            <li onclick="window.location.reload(true);">Refresh</li>
-
-            <li onclick="window.open('./contact.html','_self')">
-                Contact
+            <li onclick="window.location.reload(true);">
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/refresh.svg" alt="Refresh button">
+                    Refresh
+                </div>
             </li>
 
             <li>
-                Share
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/share.svg" alt="Refresh button">
+                    Share
+                </div>
+
                 <ul class="submenu">
                     <li class="submenu-item">
                         <a href="https://www.facebook.com/sharer/sharer.php?u=https://easysorting.netlify.app&quote=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer"
@@ -322,7 +330,10 @@
             </li>
 
             <li>
-                Follow me
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/follow.svg" alt="Refresh button">
+                    Follow me
+                </div>
                 <ul class="submenu">
                     <li class="submenu-item">
                         <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener">
@@ -348,9 +359,17 @@
             </li>
 
             <li onclick="window.open('./feedback.html','_self')">
-                Feedback
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/feedback.svg" alt="Refresh button">
+                    Feedback
+                </div>
             </li>
-            <li id="installButton">Install</li>
+            <li id="installButton">
+                <div class="context-menu-wrapper">
+                    <img src="./images/context-menu-icons/install.svg" alt="Refresh button">
+                    Install
+                </div>
+            </li>
 
         </ul>
     </div>
