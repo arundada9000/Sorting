@@ -1,6 +1,7 @@
-const CACHE_NAME = "cache-v302";
+const CACHE_NAME = "cache-v303";
 const assets = [
   "/",
+  "./images/svg-background.svg",
   "./index.html",
   "./styles.css",
   "./script.js",
