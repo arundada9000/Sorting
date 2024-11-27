@@ -1,4 +1,4 @@
-const CACHE_NAME = "cache-v304";
+const CACHE_NAME = "cache-v305";
 const assets = [
   "/",
   "./images/context-menu-icons/refresh.svg",
@@ -8,6 +8,8 @@ const assets = [
   "./images/context-menu-icons/feedback.svg",
   "./images/context-menu-icons/install.svg",
   "./images/svg-background.svg",
+  "./images/svg-background2.svg",
+  "./images/svg-background-howto.svg",
   "./index.html",
   "./styles.css",
   "./script.js",

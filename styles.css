@@ -147,7 +147,9 @@ body {
 
 .site-footer {
   width: 100%;
-  background-color: #1e272e;
+  background: #1e272e;
+  background: url("./images/svg-background.svg") no-repeat center center;
+  background-size: cover;
   padding: 1.5rem;
   text-align: center;
   color: #ecf0f1;
@@ -195,7 +197,7 @@ body {
 nav {
   position: fixed;
   padding-left: 10px;
-  top: 0px;
+  top: 10px;
   left: 0;
   width: 100%;
   z-index: 9;
@@ -204,7 +206,7 @@ nav {
   justify-content: center;
 }
 nav.scrolled {
-  top: -100px; /* Adjust the negative value to control the hiding distance */
+  top: -100px;
 }
 
 .menu-toggle {
@@ -240,8 +242,9 @@ nav.scrolled {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* nav-links1 */
-  background-color: #0f0f0f;
+  background-color: #0f0f0f90;
+  border-radius: 30px;
+  border: 1px solid white;
   max-width: 880px;
 }
 nav a::after {
@@ -306,7 +309,8 @@ h1 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: url("./images/svg-background.svg") no-repeat center center;
+  background: #0c0e00;
+  background: url("./images/svg-background2.svg") no-repeat center center;
   background-size: cover;
 }
 /* Input Section */
@@ -858,8 +862,6 @@ code[class*="language-"] {
 @media (max-width: 768px) {
   .front {
     min-height: 95svh;
-    background: url("./images/svg-background.svg") no-repeat center center;
-    background-size: cover;
   }
   .icon-container h1 {
     padding-top: 8px;
