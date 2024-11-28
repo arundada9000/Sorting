@@ -892,6 +892,8 @@ code[class*="language-"] {
     width: 100%;
     background-color: #0c0e00;
     transform: translateX(-100vw) scale(0);
+    border-radius: 0;
+    border: none;
     /* transition: opacity 0.5s ease, transform 0.75s ease-in-out; */
   }
   .language-code-container {
