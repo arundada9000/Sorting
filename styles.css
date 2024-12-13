@@ -21,7 +21,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #141414;
+  background-color: rgb(20, 27, 31);
   color: #ecf0f1;
   min-height: 100vh;
   cursor: none;
@@ -311,20 +311,21 @@ h1 {
   margin-bottom: 2rem;
   padding: 0rem 0.5rem;
   border-radius: 20px;
-  border: 1px solid #3498db;
+  border-left: 1px solid rgb(43, 113, 241);
+  border-right: 1px solid rgb(43, 113, 241);
+  border-bottom: 1px solid rgb(43, 113, 241);
+  box-shadow: 0px 3px 0px rgb(43, 113, 241);
   overflow-y: hidden;
 }
 
 input[type="text"] {
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 1.75rem;
   outline: none;
   border-radius: 20px;
-  /* border: 1px solid #3498db; */
-  /* border: none; */
   background-color: #0e0e0e;
   color: white;
   font-size: 1rem;
-  width: max(60%, 400px);
+  width: max(60%, 500px);
   margin-right: 10px;
   transition: border-color 0.3s ease;
   border: none;
@@ -353,8 +354,12 @@ button {
   border-radius: 8px;
   transition: background-color 0.3s ease;
 }
+.sort-btn {
+  padding: 1rem 1.75rem;
+  border-radius: 20%;
+}
 #generate-random-btn {
-  height: 40px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -572,7 +577,6 @@ button {
   opacity: 1;
 }
 
-/* Container */
 .container {
   margin-top: 4.5rem;
   padding: 2rem;
@@ -856,6 +860,9 @@ code[class*="language-"] {
   .front {
     min-height: 95svh;
   }
+  input[type="text"] {
+    width: max(60%, 300px);
+  }
   .icon-container h1 {
     padding-top: 8px;
   }
@@ -914,17 +921,6 @@ code[class*="language-"] {
     justify-content: center;
   }
 
-  .sort-input {
-    flex-direction: column;
-    gap: 1rem;
-    border: none;
-  }
-  input[type="text"] {
-    width: 90vw;
-    font-size: 1rem;
-    border: 1px solid #3498db;
-  }
-
   .numbers {
     gap: 5px;
   }
@@ -948,6 +944,20 @@ code[class*="language-"] {
     padding: 0;
   }
 }
+@media (max-width: 550px) {
+  .sort-input {
+    flex-direction: column;
+    gap: 1rem;
+    border: none;
+    box-shadow: 0 0 0 black;
+  }
+  input[type="text"] {
+    width: 90vw;
+    font-size: 1rem;
+    border: 1px solid #3498db;
+  }
+}
+
 .num {
   opacity: 0;
   animation: fadeInPopup 0.75s ease forwards;
