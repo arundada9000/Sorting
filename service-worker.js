@@ -1,4 +1,4 @@
-const CACHE_NAME = "cache-v408";
+const CACHE_NAME = "cache-v409";
 const assets = [
   "/",
   "/index.html",
@@ -59,6 +59,7 @@ const assets = [
   "/images/radix.webp",
   "/images/quick.webp",
   "/images/happiness.png",
+  "/images/screenshots/screenshot-wide.png",
   "/images/me-in-the-pool-300-by-597.png",
   "/service-worker.js",
   "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css",
