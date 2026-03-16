@@ -98,6 +98,7 @@ self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
       console.log("Inside activate", keys);
+      console.log("Cache Version : ", CACHE_NAME);
       return Promise.all(
         keys
           .filter((key) => key !== CACHE_NAME)
@@ -109,9 +110,16 @@ self.addEventListener("activate", (event) => {
 
 // Fetch event
 self.addEventListener("fetch", (event) => {
+  console.log(event.request);
   event.respondWith(
     caches.match(event.request).then((cacheRes) => {
-      return cacheRes || fetch(event.request);
+      if (cacheRes) {
+        return cacheRes;
+      }
+
+      return fetch(event.request).catch(() => {
+        return caches.match("/index.html");
+      });
     }),
   );
 });
