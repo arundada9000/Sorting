@@ -119,18 +119,37 @@ self.addEventListener("fetch", (event) => {
   console.log("Mode:", event.request.mode);
   console.log("Destination:", event.request.destination);
 
+  // Only handle navigation requests (clicking links)
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      caches.match(event.request).then((res) => {
+        if (res) {
+          console.log("CACHE HIT (NAV):", url.pathname);
+          return res;
+        }
+        console.log("CACHE MISS (NAV):", url.pathname);
+        return fetch(event.request).catch(() => {
+          console.log("NETWORK FAILED (NAV):", url.pathname);
+          // Fallback to index.html for offline navigation
+          return caches.match("/index.html");
+        });
+      }),
+    );
+    return;
+  }
+
+  // For everything else (CSS, JS, images)
   event.respondWith(
     caches.match(event.request).then((res) => {
       if (res) {
         console.log("CACHE HIT:", url.pathname);
         return res;
       }
-
       console.log("CACHE MISS:", url.pathname);
-
       return fetch(event.request).catch(() => {
         console.log("NETWORK FAILED:", url.pathname);
-        return caches.match("/index.html");
+        // Optional: fallback image or ignore
+        return;
       });
     }),
   );
