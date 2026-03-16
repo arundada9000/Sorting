@@ -1,9 +1,10 @@
-const CACHE_NAME = "cache-v404";
+const CACHE_NAME = "cache-v405";
 const assets = [
   "/",
   "/index.html",
   "/styles.css",
   "/script.js",
+  "/app.js",
   "/about.html",
   "/bubbleSort.html",
   "/selectionSort.html",
