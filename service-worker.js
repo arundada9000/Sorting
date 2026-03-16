@@ -1,4 +1,4 @@
-const CACHE_NAME = "cache-v406";
+const CACHE_NAME = "cache-v407";
 const assets = [
   "/",
   "/index.html",
@@ -112,35 +112,24 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
-  console.log("---- FETCH EVENT ----");
-  console.log("URL:", url.href);
+  console.log("---- FETCH ----");
   console.log("Path:", url.pathname);
   console.log("Mode:", event.request.mode);
-  console.log("Method:", event.request.method);
+  console.log("Destination:", event.request.destination);
 
   event.respondWith(
-    caches.match(event.request).then((cacheRes) => {
-      if (cacheRes) {
-        console.log("✅ Found in cache:", url.pathname);
-        return cacheRes;
+    caches.match(event.request).then((res) => {
+      if (res) {
+        console.log("CACHE HIT:", url.pathname);
+        return res;
       }
 
-      console.log("❌ Not in cache, trying network:", url.pathname);
+      console.log("CACHE MISS:", url.pathname);
 
-      return fetch(event.request)
-        .then((networkRes) => {
-          console.log("🌐 Network success:", url.pathname);
-          return networkRes;
-        })
-        .catch((err) => {
-          console.error("🚨 Network failed:", url.pathname, err);
-
-          // Try fallback
-          return caches.match("/index.html").then((fallback) => {
-            console.log("📦 Serving fallback index.html");
-            return fallback;
-          });
-        });
+      return fetch(event.request).catch(() => {
+        console.log("NETWORK FAILED:", url.pathname);
+        return caches.match("/index.html");
+      });
     }),
   );
 });
