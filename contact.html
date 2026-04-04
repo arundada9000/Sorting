@@ -4,13 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me | Arun Neupane</title>
-    <meta name="description" content="Get in touch for support or inquiries. I'm here to help!" />
-    <meta name="keywords" content="contact, support, inquiry, sorting help, reach out, arun neupane, arundada9000" />
+    <title>Contact Arun Neupane | EasySorting Support & Inquiries</title>
+    <meta name="description"
+        content="Contact Arun Neupane, creator of EasySorting. Reach out for support, collaboration, or questions about the sorting algorithm visualizer." />
+    <meta name="keywords" content="contact arun neupane, easysorting support, sorting help, reach out, arundada9000" />
+    <link rel="canonical" href="https://easysorting.netlify.app/contact" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Contact Arun Neupane | EasySorting" />
+    <meta property="og:description"
+        content="Reach out to Arun Neupane for support, collaboration, or questions about EasySorting." />
+    <meta property="og:url" content="https://easysorting.netlify.app/contact" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/sort.png" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Contact | EasySorting" />
+    <meta name="twitter:description" content="Reach out to Arun Neupane, creator of EasySorting." />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact EasySorting",
+      "url": "https://easysorting.netlify.app/contact",
+      "description": "Contact page for EasySorting — reach out to Arun Neupane.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "EasySorting",
+        "url": "https://easysorting.netlify.app"
+      }
+    }
+    </script>
 
     <link rel="shortcut icon" href="./images/contact.webp" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
-
     <link rel="manifest" href="./manifest.json">
     <!-- For ios -->
     <link rel="apple-touch-icon" href="./images/sort.png">
@@ -429,16 +465,18 @@
     <button id="dummy-btn1" data-language="c">Dummy button</button>
     <button id="dummy-btn2" data-language="javascript">Dummy btn 3</button>
 
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">Sorting Visualizer</p>
+            <p class="footer-title">EasySorting — Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
-                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener">Portfolio</a> |
-                <a href="./contact.html" class="bb">Contact</a>
+                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener noreferrer">Portfolio</a> |
+                <a href="./contact.html" class="bb" aria-current="page">Contact</a> |
+                <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
-            <p class="footer-info">&copy; <span id="year">2025</span> Sorting Visualizer. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+                    rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>
     </footer>
@@ -448,6 +486,8 @@
         const fastBtn = document.querySelector(".dummy-btn");
         const skipBtn = document.querySelector(".dummy-btn");
         const inputBox = document.querySelector(".dummy-btn");
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
 
         const form = document.querySelector('form');
         const submitButton = form.querySelector('input[type="submit"]');

@@ -4,13 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shell Sort</title>
-    <meta name="description" content="shell sort visualized step by step with its time and space complexities" />
+    <title>Shell Sort Visualizer — Step-by-Step Animation, Code & Complexity | EasySorting</title>
+    <meta name="description"
+        content="Visualize Shell Sort step by step. Understand how gap-based comparisons improve upon insertion sort with O(n log n) best case. Code in C, C++, Java, Python, and JavaScript." />
     <meta name="keywords"
-        content="shell sort, shell sort visualized,step by step, shell sort in easy way, time complexity, space complexity, shell sort properties, arun neupane,sorting" />
+        content="shell sort visualizer, shell sort step by step, shell sort time complexity, shell sort gap sequence, shell sort code, shell sort python, sorting algorithm" />
+    <link rel="canonical" href="https://easysorting.netlify.app/shellsort" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Shell Sort Visualizer — Step-by-Step | EasySorting" />
+    <meta property="og:description"
+        content="See Shell Sort's gap-based comparisons in action with interactive animations and code in 5 languages." />
+    <meta property="og:url" content="https://easysorting.netlify.app/shellsort" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/shell.webp" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Shell Sort Visualizer | EasySorting" />
+    <meta name="twitter:description" content="Interactive Shell Sort visualization with gap animations and code." />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Shell Sort — Visual Step-by-Step Explanation",
+      "description": "Interactive visualization of Shell Sort with gap-based animations, time complexity, pseudocode, and code in multiple languages.",
+      "url": "https://easysorting.netlify.app/shellsort",
+      "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
+      "publisher": { "@type": "Organization", "name": "EasySorting", "url": "https://easysorting.netlify.app" },
+      "isPartOf": { "@type": "WebSite", "name": "EasySorting", "url": "https://easysorting.netlify.app" }
+    }
+    </script>
+
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
-
     <link rel="manifest" href="./manifest.json">
     <!-- For ios -->
     <link rel="apple-touch-icon" href="./images/sort.png">
@@ -286,23 +321,26 @@
 
     <button id="backToTopBtn" title="Go to top">↑</button>
 
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">Sorting Visualizer</p>
+            <p class="footer-title">EasySorting — Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
-                <a href="./feedback.html">Feedback </a> |
-                <a href="./contact.html">Contact</a>
+                <a href="./feedback.html">Feedback</a> |
+                <a href="./contact.html">Contact</a> |
+                <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
-            <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+                    rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>
     </footer>
 
     <script src="./app.js"></script>
-
     <script>
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
 
         const codeSnippets = {
             javascript: `// JavaScript code for Shell Sort

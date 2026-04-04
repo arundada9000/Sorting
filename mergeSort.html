@@ -4,13 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merge Sort</title>
-    <meta name="description" content="Merge sort visualized step by step with its time and space complexities" />
+    <title>Merge Sort Visualizer — Step-by-Step Animation, Code & Complexity | EasySorting</title>
+    <meta name="description"
+        content="Visualize Merge Sort's divide and conquer approach step by step. Understand guaranteed O(n log n) performance with code in C, C++, Java, Python, and JavaScript." />
     <meta name="keywords"
-        content="merge sort, merge sort visualized,step by step, merge sort in easy way, time complexity, space complexity, merge sort properties, arun neupane,sorting" />
+        content="merge sort visualizer, merge sort step by step, merge sort time complexity, merge sort code, divide and conquer, sorting algorithm, merge sort python, merge sort java" />
+    <link rel="canonical" href="https://easysorting.netlify.app/mergesort" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Merge Sort Visualizer — Step-by-Step | EasySorting" />
+    <meta property="og:description"
+        content="See Merge Sort's divide and conquer in action with interactive animations and ready-to-copy code in 5 languages." />
+    <meta property="og:url" content="https://easysorting.netlify.app/mergesort" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/merge.webp" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Merge Sort Visualizer | EasySorting" />
+    <meta name="twitter:description"
+        content="Interactive Merge Sort visualization with guaranteed O(n log n) performance." />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Merge Sort — Visual Step-by-Step Explanation",
+      "description": "Interactive visualization of Merge Sort with time complexity, pseudocode, and implementation in multiple languages.",
+      "url": "https://easysorting.netlify.app/mergesort",
+      "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
+      "publisher": { "@type": "Organization", "name": "EasySorting", "url": "https://easysorting.netlify.app" },
+      "isPartOf": { "@type": "WebSite", "name": "EasySorting", "url": "https://easysorting.netlify.app" }
+    }
+    </script>
+
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
-
     <link rel="manifest" href="./manifest.json">
     <!-- For ios -->
     <link rel="apple-touch-icon" href="./images/sort.png">
@@ -291,23 +327,26 @@ function merge(left, right):
     </div>
     <button id="backToTopBtn" title="Go to top">↑</button>
 
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">Sorting Visualizer</p>
+            <p class="footer-title">EasySorting — Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
-                <a href="./feedback.html">Feedback </a> |
-                <a href="./contact.html">Contact</a>
+                <a href="./feedback.html">Feedback</a> |
+                <a href="./contact.html">Contact</a> |
+                <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
-            <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+                    rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>
     </footer>
 
     <script src="./app.js"></script>
-
     <script>
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
 
         const codeSnippets = {
             javascript: `// JavaScript code for Merge Sort

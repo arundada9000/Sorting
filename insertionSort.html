@@ -4,13 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insertion Sort</title>
-    <meta name="description" content="Insertion sort visualized step by step with its time and space complexities" />
+    <title>Insertion Sort Visualizer — Step-by-Step Animation, Code & Complexity | EasySorting</title>
+    <meta name="description"
+        content="Visualize Insertion Sort step by step. Understand how it builds the sorted array one element at a time with O(n) best case. Includes code in C, C++, Java, Python, and JavaScript." />
     <meta name="keywords"
-        content="insertion sort, insertion sort visualized,step by step, insertion sort in easy way, time complexity, space complexity, insertion sort properties, arun neupane,sorting" />
+        content="insertion sort visualizer, insertion sort step by step, insertion sort time complexity, insertion sort code, insertion sort python, insertion sort java, sorting algorithm" />
+    <link rel="canonical" href="https://easysorting.netlify.app/insertionsort" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Insertion Sort Visualizer — Step-by-Step | EasySorting" />
+    <meta property="og:description"
+        content="Visualize Insertion Sort step by step with interactive animations and code examples in 5 languages." />
+    <meta property="og:url" content="https://easysorting.netlify.app/insertionsort" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/insertion.webp" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Insertion Sort Visualizer | EasySorting" />
+    <meta name="twitter:description"
+        content="See Insertion Sort animated step by step with interactive controls and code." />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Insertion Sort — Visual Step-by-Step Explanation",
+      "description": "Interactive visualization of Insertion Sort with time complexity, pseudocode, and implementation in C, C++, Java, Python, and JavaScript.",
+      "url": "https://easysorting.netlify.app/insertionsort",
+      "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
+      "publisher": { "@type": "Organization", "name": "EasySorting", "url": "https://easysorting.netlify.app" },
+      "isPartOf": { "@type": "WebSite", "name": "EasySorting", "url": "https://easysorting.netlify.app" }
+    }
+    </script>
+
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
-
     <link rel="manifest" href="./manifest.json">
     <!-- For ios -->
     <link rel="apple-touch-icon" href="./images/sort.png">
@@ -293,23 +329,26 @@
     </div>
     <button id="backToTopBtn" title="Go to top">↑</button>
 
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">Sorting Visualizer</p>
+            <p class="footer-title">EasySorting — Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
-                <a href="./feedback.html">Feedback </a> |
-                <a href="./contact.html">Contact</a>
+                <a href="./feedback.html">Feedback</a> |
+                <a href="./contact.html">Contact</a> |
+                <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
-            <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+                    rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>
     </footer>
 
     <script src="./app.js"></script>
-
     <script>
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
 
         const codeSnippets = {
             javascript: `// JavaScript code for Insertion Sort

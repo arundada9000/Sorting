@@ -4,11 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Page</title>
-    <link rel="stylesheet">
+    <title>Feedback & Bug Report | EasySorting</title>
+    <meta name="description"
+        content="Share your feedback or report a bug on EasySorting. Help us improve the sorting algorithm visualizer by letting us know what you think." />
+    <meta name="keywords"
+        content="easysorting feedback, bug report, sorting visualizer feedback, improvement suggestion" />
+    <link rel="canonical" href="https://easysorting.netlify.app/feedback" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Feedback & Bug Report | EasySorting" />
+    <meta property="og:description" content="Share your feedback or report a bug to help improve EasySorting." />
+    <meta property="og:url" content="https://easysorting.netlify.app/feedback" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/sort.png" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Feedback | EasySorting" />
+    <meta name="twitter:description" content="Report a bug or share improvement suggestions for EasySorting." />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Feedback & Bug Report",
+      "url": "https://easysorting.netlify.app/feedback",
+      "description": "Submit feedback or report a bug for the EasySorting platform.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "EasySorting",
+        "url": "https://easysorting.netlify.app"
+      }
+    }
+    </script>
+
     <link rel="stylesheet" href="./styles.css">
     <link rel="shortcut icon" href="./images/feedback.png" type="image/x-icon">
-
     <link rel="manifest" href="./manifest.json">
     <!-- For ios -->
     <link rel="apple-touch-icon" href="./images/sort.png">
@@ -124,7 +162,7 @@
             <a href="./heapSort.html">Heap <span class="sort-text">Sort</span></a>
             <a href="./radixSort.html">Radix <span class="sort-text">Sort</span></a>
             <a href="./shellSort.html">Shell <span class="sort-text">Sort</span></a>
-             <a href="./summary.html">Summary</a>
+            <a href="./summary.html">Summary</a>
             <a id="install-button-mobile">Install</a>
         </div>
     </nav>
@@ -242,16 +280,18 @@
 
     <button id="backToTopBtn" title="Go to top">↑</button>
 
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">Sorting Visualizer</p>
+            <p class="footer-title">EasySorting — Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
-                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener">Portfolio</a> |
-                <a href="./contact.html">Contact</a>
+                <a href="https://arunneupane.netlify.app/" target="_blank" rel="noopener noreferrer">Portfolio</a> |
+                <a href="./contact.html">Contact</a> |
+                <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
-            <p class="footer-info">&copy; <span id="year">2020</span> Sorting Visualizer. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+                    rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>
     </footer>
@@ -282,6 +322,8 @@
         const fastBtn = document.querySelector(".dummy-btn");
         const skipBtn = document.querySelector(".dummy-btn");
         const inputBox = document.querySelector(".dummy-btn");
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
 
         const form = document.querySelector('#feedback-form');
         const submitButton = form.querySelector('#submit-button');

@@ -68,7 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
       "js";
   }
   const date = new Date();
-  document.getElementById("year").textContent = date.getFullYear();
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = date.getFullYear();
 });
 
 languageSelector.addEventListener("click", (event) => {
@@ -242,8 +243,8 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    threshold: 0.5,
-  }
+    threshold: 0.1,
+  },
 );
 
 animatedElements.forEach((element) => observer.observe(element));
@@ -291,32 +292,61 @@ function displayBtn(dis) {
 inputBox.addEventListener("keyup", (event) => {
   if (event.key === "Enter" && sortBtn.textContent === "Sort") sortBtn.click();
 });
-//Nav toggle
-function toggleMenu() {
-  const navLinks = document.querySelector(".nav-links");
-  navLinks.classList.toggle("active");
-  document.querySelector(".menu-toggle").classList.toggle("active");
+//Nav toggle — side drawer
+let navOverlay = null;
 
-  if (navLinks.classList.contains("active")) {
-    setTimeout(() => {
-      document.addEventListener("click", handleOutsideClick);
-    }, 1000);
-  } else {
-    document.removeEventListener("click", handleOutsideClick);
+function getOrCreateOverlay() {
+  if (!navOverlay) {
+    navOverlay = document.createElement("div");
+    navOverlay.className = "nav-overlay";
+    document.body.appendChild(navOverlay);
+    navOverlay.addEventListener("click", closeDrawer);
   }
+  return navOverlay;
 }
 
-function handleOutsideClick(event) {
+function openDrawer() {
   const navLinks = document.querySelector(".nav-links");
   const menuToggle = document.querySelector(".menu-toggle");
+  const overlay = getOrCreateOverlay();
 
-  if (!navLinks.contains(event.target)) {
-    navLinks.classList.remove("active");
-    menuToggle.classList.remove("active");
+  navLinks.classList.add("active");
+  menuToggle.classList.add("active");
+  overlay.classList.add("active");
+  document.body.style.overflow = "hidden"; // prevent background scroll
+}
 
-    document.removeEventListener("click", handleOutsideClick);
+function closeDrawer() {
+  const navLinks = document.querySelector(".nav-links");
+  const menuToggle = document.querySelector(".menu-toggle");
+  const overlay = getOrCreateOverlay();
+
+  navLinks.classList.remove("active");
+  menuToggle.classList.remove("active");
+  overlay.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+function toggleMenu() {
+  const navLinks = document.querySelector(".nav-links");
+  if (navLinks.classList.contains("active")) {
+    closeDrawer();
+  } else {
+    openDrawer();
   }
 }
+
+// Close drawer when a nav link is tapped (navigating away)
+document.querySelector(".nav-links").addEventListener("click", (e) => {
+  if (e.target.tagName === "A" && window.innerWidth <= 768) {
+    closeDrawer();
+  }
+});
+
+// Close on Escape key
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeDrawer();
+});
 
 function randomGenerate() {
   if (sortBtn.textContent == "Sorting...") return;

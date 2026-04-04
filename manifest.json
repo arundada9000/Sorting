@@ -1,37 +1,64 @@
 {
-    "name": "Sorting Algorithm Visualizer",
-    "short_name": "Sorting",
-    "description": "Sorting Algorithms visualized step by step.",
-    "start_url": "/index.html",
-    "display": "standalone",
-    "background_color": "#121212",
-    "theme_color": "#1338BE",
-    "orientation":"portrait-primary",
-    "icons": [
-      {
-        "src": "/images/sort-128.png",
-        "sizes": "128x128",
-        "type": "image/png"
-      },
-      {
-        "src": "/images/sort.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ],
-    "screenshots": [
-      {
-        "src": "/images/screenshots/screenshot-wide.png",
-        "sizes": "1920x1080",
-        "type": "image/png",
-        "form_factor": "wide"
-      },
-      {
-        "src": "/images/screenshots/screenshot-wide.png",
-        "sizes": "1920x1080",
-        "type": "image/png",
-        "form_factor": "narrow"
-      }
-    ]
-  
-  }
+  "name": "EasySorting — Sorting Algorithm Visualizer",
+  "short_name": "EasySorting",
+  "description": "Visualize sorting algorithms step by step — Bubble, Merge, Quick, Heap, Radix, Shell, Insertion, Selection Sort with code in 5 languages.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1338BE",
+  "orientation": "any",
+  "lang": "en",
+  "categories": [
+    "education",
+    "productivity",
+    "coding"
+  ],
+  "icons": [
+    {
+      "src": "/images/sort-128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/sort.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshots/screenshot-wide.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "EasySorting — Sorting Visualizer on Desktop"
+    },
+    {
+      "src": "/images/screenshots/screenshot-wide.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "EasySorting — Sorting Visualizer on Mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Bubble Sort",
+      "url": "/bubbleSort.html",
+      "description": "Visualize Bubble Sort"
+    },
+    {
+      "name": "Quick Sort",
+      "url": "/quickSort.html",
+      "description": "Visualize Quick Sort"
+    },
+    {
+      "name": "Merge Sort",
+      "url": "/mergeSort.html",
+      "description": "Visualize Merge Sort"
+    }
+  ]
+}

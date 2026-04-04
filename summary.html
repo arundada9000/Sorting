@@ -4,15 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Sorting Algorithm Complexity Summary — Time & Space Comparison | EasySorting</title>
     <meta name="description"
-        content="All sorting complexities summarized in a single table, their type, stability and more." />
+        content="Compare all sorting algorithms in one table: Bubble Sort, Quick Sort, Merge Sort, Heap Sort, Radix Sort, Shell Sort. See best, average, and worst case time complexity, space complexity, stability, and type." />
     <meta name="keywords"
-        content="Summary, heap sort, merge sort, bubble sort, quick sort , sorting comparison, all sorting comparison , all sorting's time and space complexities, sorting complexities, radix sort, shell sort, insertion sort, selection sort, stable, comparison type, sorting overall summary, each sorting algorithm compared" />
-    <title>Summary | Sorting</title>
+        content="sorting algorithm comparison, sorting complexity table, big o notation, bubble sort complexity, merge sort time complexity, quick sort space complexity, stable sorting, in-place sorting" />
+    <link rel="canonical" href="https://easysorting.netlify.app/summary" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sorting Algorithm Complexity Summary | EasySorting" />
+    <meta property="og:description"
+        content="Compare all sorting algorithms in one table — time complexity, space complexity, stability, and type." />
+    <meta property="og:url" content="https://easysorting.netlify.app/summary" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/sort.png" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sorting Algorithm Complexity Summary | EasySorting" />
+    <meta name="twitter:description"
+        content="One-table comparison of all sorting algorithms — time, space, stability." />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Sorting Algorithm Complexity Summary",
+      "description": "A comprehensive comparison table of sorting algorithms covering time complexity, space complexity, stability, and algorithm type.",
+      "url": "https://easysorting.netlify.app/summary",
+      "author": {
+        "@type": "Person",
+        "name": "Arun Neupane",
+        "url": "https://arunneupane.netlify.app/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EasySorting",
+        "url": "https://easysorting.netlify.app"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "EasySorting",
+        "url": "https://easysorting.netlify.app"
+      }
+    }
+    </script>
+
     <link rel="icon" href="./images/write.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
-
     <link rel="manifest" href="./manifest.json">
     <!-- For ios -->
     <link rel="apple-touch-icon" href="./images/sort.png">
@@ -397,16 +443,18 @@
     <button id="dummy-btn1" data-language="c">Dummy button</button>
     <button id="dummy-btn2" data-language="javascript">Dummy btn 2</button>
 
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">Sorting Visualizer</p>
+            <p class="footer-title">EasySorting — Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
-                <a href="./feedback.html">Feedback </a> |
-                <a href="./contact.html">Contact</a>
+                <a href="./feedback.html">Feedback</a> |
+                <a href="./contact.html">Contact</a> |
+                <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
-            <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+                    rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>
     </footer>
@@ -447,6 +495,8 @@
         const fastBtn = document.querySelector(".dummy-btn");
         const skipBtn = document.querySelector(".dummy-btn");
         const inputBox = document.querySelector(".dummy-btn");
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
     </script>
     <script src="./script.js"></script>
 

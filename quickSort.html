@@ -4,13 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Sort</title>
-    <meta name="description" content="Quick sort sort visualized step by step with its time and space complexities" />
+    <title>Quick Sort Visualizer — Step-by-Step Animation, Code & Complexity | EasySorting</title>
+    <meta name="description"
+        content="Visualize Quick Sort's pivot-based partitioning step by step. Understand average O(n log n) performance, randomized quick sort, with code in C, C++, Java, Python, and JavaScript." />
     <meta name="keywords"
-        content="quick sort sort, quick sort sort visualized,step by step, quick sort sort in easy way, time complexity, space complexity, quick sort sort properties, arun neupane,sorting" />
+        content="quick sort visualizer, quick sort step by step, quick sort time complexity, quick sort pivot, randomized quick sort, sorting algorithm, quick sort python" />
+    <link rel="canonical" href="https://easysorting.netlify.app/quicksort" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Quick Sort Visualizer — Step-by-Step | EasySorting" />
+    <meta property="og:description"
+        content="Visualize Quick Sort's pivot partitioning interactively with animations and code." />
+    <meta property="og:url" content="https://easysorting.netlify.app/quicksort" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/quick.webp" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Quick Sort Visualizer | EasySorting" />
+    <meta name="twitter:description"
+        content="Interactive Quick Sort visualization with both normal and randomized pivot modes." />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Quick Sort — Visual Step-by-Step Explanation",
+      "description": "Interactive visualization of Quick Sort with time complexity, pseudocode, and implementation in multiple languages.",
+      "url": "https://easysorting.netlify.app/quicksort",
+      "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
+      "publisher": { "@type": "Organization", "name": "EasySorting", "url": "https://easysorting.netlify.app" },
+      "isPartOf": { "@type": "WebSite", "name": "EasySorting", "url": "https://easysorting.netlify.app" }
+    }
+    </script>
+
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
-
     <link rel="manifest" href="./manifest.json">
     <!-- For ios -->
     <link rel="apple-touch-icon" href="./images/sort.png">
@@ -415,23 +451,26 @@ function partition(arr, low, high):
 
     <button id="backToTopBtn" title="Go to top">↑</button>
 
-    <footer class="site-footer">
+    <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">Sorting Visualizer</p>
+            <p class="footer-title">EasySorting — Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
-                <a href="./feedback.html">Feedback </a> |
-                <a href="./contact.html">Contact</a>
+                <a href="./feedback.html">Feedback</a> |
+                <a href="./contact.html">Contact</a> |
+                <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
-            <p class="footer-info">&copy; <span id="year">2024</span> Sorting Visualizer. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by Arun Neupane</p>
+            <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
+            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+                    rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>
     </footer>
 
     <script src="./app.js"></script>
-
     <script>
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
 
         const codeSnippets = {
             javascript: `// JavaScript code for Quick Sort

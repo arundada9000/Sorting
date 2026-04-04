@@ -4,13 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorting - Bubble Sort, Insertion Sort, Quick Sort & More</title>
+    <title>EasySorting — Free Sorting Algorithm Visualizer | Bubble, Quick, Merge Sort & More</title>
     <meta name="description"
-        content="Sorting visualized step by step , pass by pass for better understanding in easy way." />
+        content="Understand sorting algorithms visually — step by step, pass by pass. Explore Bubble Sort, Quick Sort, Merge Sort, Heap Sort, Radix Sort and more with interactive animations and code examples." />
     <meta name="keywords"
-        content="Sorting,easysorting, arunneupane, arundada9000, codewithease,pooja, sorting visualized, sorting in easy way, sorting in c , sorting implementation, sorting pseudo code, sorting in c++" />
+        content="sorting algorithm visualizer, bubble sort, quick sort, merge sort, heap sort, insertion sort, selection sort, radix sort, shell sort, sorting in c, sorting in python, learn sorting, data structures" />
+    <link rel="canonical" href="https://easysorting.netlify.app/" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="EasySorting — Free Sorting Algorithm Visualizer" />
+    <meta property="og:description"
+        content="Understand sorting algorithms visually — step by step. Explore Bubble Sort, Quick Sort, Merge Sort and more with interactive animations." />
+    <meta property="og:url" content="https://easysorting.netlify.app/" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/sort.png" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="EasySorting — Sorting Algorithm Visualizer" />
+    <meta name="twitter:description"
+        content="Understand sorting algorithms step by step with interactive visualizations." />
+    <meta name="twitter:image" content="https://easysorting.netlify.app/images/sort.png" />
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "EasySorting",
+      "url": "https://easysorting.netlify.app",
+      "description": "Free interactive sorting algorithm visualizer covering Bubble Sort, Quick Sort, Merge Sort, Heap Sort, Radix Sort, Shell Sort and more.",
+      "author": {
+        "@type": "Person",
+        "name": "Arun Neupane",
+        "url": "https://arunneupane.netlify.app/"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://easysorting.netlify.app"
+      }
+    }
+    </script>
 
     <link rel="manifest" href="./manifest.json">
     <!-- For ios -->
@@ -40,6 +81,48 @@
             padding: 20px;
             cursor: none;
         }
+
+        .home-about-section {
+            max-width: 1000px;
+            width: 100%;
+            margin: 3rem auto 0;
+            padding: 2rem;
+            background: rgba(44, 62, 80, 0.4);
+            border-radius: 12px;
+            border-top: 2px solid #3498db;
+        }
+
+        .home-about-section h2 {
+            font-size: 1.5rem;
+            color: #4a9eff;
+            margin: 1.5rem 0 0.75rem;
+            border-bottom: 1px solid #2c3e50;
+            padding-bottom: 0.4rem;
+        }
+
+        .home-about-section h2:first-child {
+            margin-top: 0;
+        }
+
+        .home-about-section p {
+            font-size: 1rem;
+            color: #bdc3c7;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 0.75rem;
+        }
+
+        .home-features-list {
+            padding-left: 1.5rem;
+            margin: 0.75rem 0 1rem;
+            color: #bdc3c7;
+        }
+
+        .home-features-list li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+        }
+
 
         *:not(input):not(textarea) {
             caret-color: transparent;
@@ -392,10 +475,10 @@
 
     <div class="container">
         <div class="icon-container">
-            <img src="./images/reorder.gif" alt="Sorting" class="scroll-animate">
-            <h1 class="scroll-animate">Sorting Algorithms Visualizer</h1>
+            <img src="./images/reorder.gif" alt="Sorting">
+            <h1>Sorting Algorithms Visualizer</h1>
         </div>
-        <p class="scroll-animate">Explore different sorting algorithms and understand how they work, step-by-step. Click
+        <p>Explore different sorting algorithms and understand how they work, step-by-step. Click
             on any algorithm below
             to start the visualization!</p>
 
@@ -483,16 +566,67 @@
                 </p>
             </a>
         </div>
+
+        <!-- Educational Content Section for SEO -->
+        <section class="home-about-section" aria-label="About sorting algorithms">
+            <h2>What Are Sorting Algorithms?</h2>
+            <p>A <strong>sorting algorithm</strong> is a method for reorganizing a collection of items such as numbers,
+                letters, or records into a specific order, typically ascending or descending. Sorting is one of the most
+                fundamental operations in computer science, forming the backbone of efficient data retrieval, search
+                operations, and data processing pipelines.</p>
+            <p>Whether you are a student learning data structures for the first time, a developer preparing for
+                technical interviews, or a professional brushing up on algorithm fundamentals, understanding sorting
+                algorithms is essential. Each algorithm has unique properties in terms of <strong>time
+                    complexity</strong>, <strong>space complexity</strong>, and real-world applicability.</p>
+
+            <h2>Why Learn Sorting Algorithms Visually?</h2>
+            <p>Sorting algorithms can be difficult to grasp from text or pseudocode alone. That's exactly why
+                <strong>EasySorting</strong> was created to let you <em>see</em> each algorithm in action, pass by pass,
+                comparison by comparison. You can:</p>
+            <ul class="home-features-list">
+                <li>Enter your own array of numbers and watch it get sorted in real time</li>
+                <li>Generate a random array with one click and observe the algorithm's behavior</li>
+                <li>Track every comparison and swap with color-coded visual indicators</li>
+                <li>Review every pass in full detail below the visualization</li>
+                <li>Copy ready-to-run code in C, C++, Java, Python, and JavaScript</li>
+            </ul>
+
+            <h2>Sorting Algorithms Covered</h2>
+            <p>EasySorting covers <strong>8 major sorting algorithms</strong>, each explained with history, time and
+                space complexity, pseudocode, and step-by-step visualization:</p>
+            <ul class="home-features-list">
+                <li><strong>Bubble Sort:</strong> The classic beginner algorithm — compares adjacent elements and swaps
+                    them repeatedly. O(n²) worst case.</li>
+                <li><strong>Selection Sort:</strong> Finds the smallest element and places it at the front in each pass.
+                    O(n²) in all cases.</li>
+                <li><strong>Insertion Sort:</strong> Builds the sorted list one item at a time, ideal for nearly sorted
+                    data. O(n) best case.</li>
+                <li><strong>Merge Sort:</strong> Divide and conquer approach splits the array and merges sorted halves.
+                    O(n log n) guaranteed.</li>
+                <li><strong>Quick Sort:</strong> Uses a pivot element to partition the array. Average O(n log n), very
+                    fast in practice.</li>
+                <li><strong>Heap Sort:</strong> Builds a max-heap structure and extracts elements in order. O(n log n)
+                    always.</li>
+                <li><strong>Radix Sort:</strong> A non-comparison sort that processes digits. Extremely fast for integer
+                    data with O(nk) complexity.</li>
+                <li><strong>Shell Sort:</strong> An improved insertion sort that compares elements at a gap. O(n log n)
+                    to O(n²) depending on the gap sequence.</li>
+            </ul>
+            <p>Click on any algorithm above to begin the interactive visualization. Happy Learning! 🎉</p>
+        </section>
     </div>
-    <button id="install-button-mobile">Install</button>
-    <footer class="scroll-animate">
-        <p class="scroll-animate">Created by Arun Neupane | <a href="https://arunneupane.netlify.app/" target="_blank"
-                rel="noopener">Portfolio</a></p>
+    <button id="install-button-mobile" aria-label="Install app">Install</button>
+    <footer class="scroll-animate" role="contentinfo">
+        <p class="scroll-animate">Created by <a href="https://arunneupane.netlify.app/" target="_blank"
+                rel="noopener noreferrer">Arun Neupane</a></p>
         <p class="scroll-animate">
-            <a href="./about.html">About </a> |
-            <a href="./feedback.html">Feedback </a> |
-            <a href="./contact.html">Contact</a>
+            <a href="./about.html">About</a> |
+            <a href="./feedback.html">Feedback</a> |
+            <a href="./contact.html">Contact</a> |
+            <a href="./privacy-policy.html">Privacy Policy</a>
         </p>
+        <p class="scroll-animate" style="font-size:0.8rem;color:#7f8c8d;">&copy; <span id="copy-year"></span>
+            EasySorting. All rights reserved.</p>
     </footer>
 
     <script src="./app.js"></script>
@@ -633,6 +767,10 @@
         document.addEventListener('click', () => {
             contextMenu.style.display = 'none';
         });
+
+        // Dynamic copyright year
+        const copyYearEl = document.getElementById('copy-year');
+        if (copyYearEl) copyYearEl.textContent = new Date().getFullYear();
 
     </script>
 </body>
