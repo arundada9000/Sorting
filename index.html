@@ -389,6 +389,46 @@
             z-index: 1;
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which sorting algorithm is the fastest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the data. For random data, quick sort is usually fastest in practice thanks to cache friendly partitioning. Merge sort guarantees O(n log n) even in the worst case. For nearly sorted data, insertion sort approaches O(n) and beats them both. For bounded integer keys, radix sort can beat every comparison sort."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do schools still teach bubble sort if nobody uses it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because it is the clearest possible introduction to the core ideas of comparisons, swaps, passes, and loop invariants in about five lines of code. You learn to reason about algorithms on bubble sort, then apply that reasoning to the algorithms that actually get used in production."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between stable and unstable sorting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A stable sort keeps items with equal keys in their original relative order, which matters whenever you sort by more than one field. Merge sort, insertion sort, and Timsort are stable; quick sort, heap sort, and selection sort are not."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can anything sort faster than O(n log n)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not by comparing elements, since O(n log n) is a proven lower bound for comparison based sorting. Algorithms that do not compare elements, like counting sort and radix sort, sidestep the bound and reach linear time when the key range is limited."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -612,6 +652,53 @@
                 <li><strong>Shell Sort:</strong> An improved insertion sort that compares elements at a gap. O(n log n)
                     to O(n²) depending on the gap sequence.</li>
             </ul>
+            <h2>Which Sorting Algorithms Do Real Languages Actually Use?</h2>
+            <p>Here's the part most courses skip: none of the major programming languages ship a plain textbook
+                algorithm. Production sort functions are <strong>hybrids</strong> that combine several of the algorithms
+                you can visualize on this site:</p>
+            <ul class="home-features-list">
+                <li><strong>JavaScript (V8 engine):</strong> <code>Array.prototype.sort</code> has used
+                    <strong>Timsort</strong> since 2018 — a hybrid of merge sort and insertion sort that hunts for
+                    already-sorted runs in your data.</li>
+                <li><strong>Python:</strong> <code>sorted()</code> and <code>list.sort()</code> use
+                    <strong>Timsort</strong> too — in fact it was invented for Python by Tim Peters in 2002 before
+                    other languages adopted it.</li>
+                <li><strong>Java:</strong> <code>Arrays.sort</code> uses a <strong>dual-pivot quicksort</strong> for
+                    primitives, but switches to <strong>Timsort</strong> for object arrays, because object sorting
+                    must be stable.</li>
+                <li><strong>C++:</strong> <code>std::sort</code> is typically <strong>introsort</strong> — quicksort
+                    that falls back to heap sort when recursion gets too deep, and finishes small ranges with
+                    insertion sort.</li>
+            </ul>
+            <p>Notice the pattern: <strong>insertion sort</strong>, often dismissed as a "slow beginner algorithm",
+                appears inside nearly every production hybrid, because for small arrays its low overhead beats the
+                clever algorithms. And <strong>merge sort</strong> lives on inside Timsort because it is stable.
+                The "best" algorithm isn't one algorithm at all — it's knowing when each one wins, which is exactly
+                what the visualizers here help you build an intuition for.</p>
+
+            <h2>Frequently Asked Questions</h2>
+            <h3>Which sorting algorithm is the fastest?</h3>
+            <p>It depends on the data. For random data, <strong>quick sort</strong> is usually fastest in practice
+                thanks to cache-friendly partitioning. <strong>Merge sort</strong> guarantees O(n log n) even in the
+                worst case. For nearly sorted data, <strong>insertion sort</strong> approaches O(n) and beats them
+                both. And for bounded integer keys, <strong>radix sort</strong> can beat every comparison sort.</p>
+
+            <h3>Why do schools still teach bubble sort if nobody uses it?</h3>
+            <p>Because it is the clearest possible introduction to the core ideas — comparisons, swaps, passes, and
+                loop invariants — in about five lines of code. You learn to <em>reason</em> about algorithms on bubble
+                sort, then apply that reasoning to the ones that actually get used.</p>
+
+            <h3>What is the difference between stable and unstable sorting?</h3>
+            <p>A <strong>stable</strong> sort keeps items with equal keys in their original relative order. That
+                matters whenever you sort by more than one field — for example, sorting employees by department after
+                sorting by name only works correctly if the second sort is stable. Merge sort, insertion sort, and
+                Timsort are stable; quick sort, heap sort, and selection sort are not.</p>
+
+            <h3>Can anything sort faster than O(n log n)?</h3>
+            <p>Not by comparing elements — O(n log n) is a proven mathematical lower bound for comparison-based
+                sorting. But algorithms that don't compare, like <strong>counting sort</strong> and <strong>radix
+                sort</strong>, sidestep the bound entirely and reach linear time when the key range is limited.</p>
+
             <p>Click on any algorithm above to begin the interactive visualization. Happy Learning! 🎉</p>
         </section>
     </div>
