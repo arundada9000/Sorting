@@ -3,7 +3,7 @@
 // Strategy: Cache-First for all assets
 // Bump CACHE_VERSION whenever you deploy new content
 // ============================================================
-const CACHE_VERSION = "v502";
+const CACHE_VERSION = "v503";
 const CACHE_NAME = `easysorting-${CACHE_VERSION}`;
 
 // --------------- Core assets (must succeed to install) ---------------
