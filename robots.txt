@@ -1,5 +1,17 @@
 User-agent: *
 Allow: /
-Disallow:
+Disallow: /images/svg-icons/
+Disallow: /images/screenshots/
+
+# Allow Google to index everything else, including images
+User-agent: Googlebot
+Allow: /
+Allow: /images/*.webp
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+User-agent: Bingbot
+Allow: /
 
 Sitemap: https://easysorting.netlify.app/sitemap.xml

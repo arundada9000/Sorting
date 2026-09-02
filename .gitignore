@@ -1,0 +1,46 @@
+# === Operating System ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Editors ===
+.vscode/*
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# === Local / Development ===
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.DS_Store
+
+# === Node / Build (if ever added) ===
+node_modules/
+dist/
+build/
+.vite/
+*.tsbuildinfo
+
+# === Env / Secrets ===
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.*
+
+# === Search Console exports (local analysis only, not for deploy) ===
+https___easysorting.netlify.app_-Performance-on-Search-*/
+
+# === Temporary / Scratch ===
+*.tmp
+*.temp
+scratch/
+tmp/

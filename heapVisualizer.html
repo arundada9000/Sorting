@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heap Visualizer: Build Max and Min Heaps With Animations | EasySorting</title>
+    <meta name="description"
+        content="Build max heaps and min heaps interactively. Watch animated heapify, insertion bubbling up, and root extraction step by step on a live tree, then see how the same structure powers Heap Sort." />
+    <meta name="keywords"
+        content="heap visualizer, max heap, min heap, heapify animation, binary heap, heap sort visualization, priority queue, heap data structure" />
+    <link rel="canonical" href="https://easysorting.netlify.app/heap-visualizer" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
+    <meta name="theme-color" content="#F2F2F7">
+    <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Heap Visualizer: Build Max and Min Heaps With Animations" />
+    <meta property="og:description"
+        content="Animate heapify, insert, and extract on a live binary heap tree. Learn how heaps power Heap Sort and priority queues." />
+    <meta property="og:url" content="https://easysorting.netlify.app/heap-visualizer" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Heap Visualizer: Build Max and Min Heaps With Animations" />
+    <meta name="twitter:description" content="Animated heapify, insertion, and extraction on a live binary heap tree." />
+    <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "EasySorting Heap Visualizer",
+      "url": "https://easysorting.netlify.app/heap-visualizer",
+      "description": "Interactive tool to build max and min binary heaps with animated heapify, insert, and extract operations on a live tree.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Sorting Algorithms", "item": "https://easysorting.netlify.app/sorting-algorithms" },
+        { "@type": "ListItem", "position": 3, "name": "Heap Visualizer", "item": "https://easysorting.netlify.app/heap-visualizer" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to use the heap visualizer",
+      "description": "Enter numbers or shuffle a random set, pick max or min mode, then build the heap and watch heapify, insertion, and extraction animate in a binary tree.",
+      "steps": [
+        { "@type": "HowToStep", "position": 1, "name": "Enter data", "text": "Type comma-separated numbers or click shuffle to generate a random set." },
+        { "@type": "HowToStep", "position": 2, "name": "Choose heap type", "text": "Select Max heap so the largest value sits at the root, or Min heap so the smallest does." },
+        { "@type": "HowToStep", "position": 3, "name": "Build the heap", "text": "Click Build and watch heapify restore the heap property from the last parent up to the root." },
+        { "@type": "HowToStep", "position": 4, "name": "Insert and extract", "text": "Insert a value to watch it bubble up, or extract the root to watch sift-down restore the heap." }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a max heap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A max heap is a complete binary tree where every parent is greater than or equal to its children, so the largest value is always at the root. A min heap is the same rule inverted, so the smallest value is at the root."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does heapify mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Heapify is the process that restores the heap property. Sift-down pushes a node down until it is larger than both children (max heap), and sift-up pulls a node up past smaller parents. Building a heap of n items costs O(n)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the heap relate to Heap Sort?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Heap Sort builds a max heap, then repeatedly swaps the root (the maximum) with the last element and sifts down the smaller root, giving an in-place O(n log n) sort. The unlocked Heap Sort visualizer shows the same tree driving a sorted array."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are heaps used for priority queues?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A heap supports peeking the maximum or minimum in O(1), and extracting it or inserting a new item in O(log n). That makes the binary heap the standard data structure behind priority queues and schedulers."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./images/sort.png">
+    <link rel="stylesheet" href="./hig.css">
+    <style>
+        .toast-wrap { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 60; display: grid; gap: 8px; pointer-events: none; }
+        .toast {
+            background: color-mix(in srgb, var(--label) 92%, var(--bg-2));
+            color: var(--bg-2);
+            padding: 11px 18px;
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: var(--shadow-2);
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.35s var(--ease-ios), transform 0.35s var(--ease-ios);
+        }
+        .toast.show { opacity: 1; transform: translateY(0); }
+        .log-panel {
+            max-height: 260px;
+            overflow-y: auto;
+            border: 1px solid var(--sep);
+            border-radius: var(--radius-md);
+            background: color-mix(in srgb, var(--bg) 55%, var(--bg-2));
+            padding: 12px 14px;
+            font-family: var(--mono);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+        .log-panel p { margin: 0; }
+        .log-panel p + p { border-top: 1px dashed var(--sep); padding-top: 4px; margin-top: 4px; }
+        .heap-caption { font-size: 13px; color: var(--label-3); margin-top: 10px; }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="topbar">
+        <div class="shell topbar__inner">
+            <a class="brand" href="./"><span class="brand__mark brand__mark--logo"><img src="./images/sort.png" alt="" width="30" height="30"></span> EasySorting</a>
+            <nav aria-label="Primary">
+                <ul class="nav-links desktop-links">
+                    <li><a href="./">Visualizers</a></li>
+                    <li><a href="./sorting-algorithms">Guide</a></li>
+                    <li><a href="./heap-visualizer" class="nav-active">Heap</a></li>
+                    <li><a href="./big-o-notation">Big O</a></li>
+                    <li><a href="./sorting-algorithm-race">Race</a></li>
+                    <li><a href="./summary">Compare</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"></button>
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"
+                aria-controls="navLinks"><span></span><span></span><span></span></button>
+            <ul class="nav-links nav-mobile" id="navLinks">
+                <li><a href="./">Visualizers</a></li>
+                <li><a href="./sorting-algorithms">Guide</a></li>
+                <li><a href="./big-o-notation">Big O</a></li>
+                <li><a href="./heap-visualizer">Heap Visualizer</a></li>
+                <li><a href="./sorting-algorithm-race">Algorithm Race</a></li>
+                <li><a href="./summary">Compare</a></li>
+                <li><a href="./about">About</a></li>
+                <li><a href="./feedback">Feedback</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="playing-field" id="main">
+        <div class="shell shell--wide">
+            <div class="hero hero--tool">
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="crumb-sep" aria-hidden="true"></span>
+                    <a href="./sorting-algorithms">Sorting Algorithms</a>
+                    <span class="crumb-sep" aria-hidden="true"></span>
+                    <span>Heap Visualizer</span>
+                </nav>
+                <p class="hero__kicker">Interactive tool</p>
+                <h1>Heap Visualizer</h1>
+                <p class="hero__lead">Build max heaps and min heaps on a live binary tree. Watch heapify restore order from
+                    the leaves to the root, insertions bubble up, and extractions sift down, exactly the motions that power
+                    Heap Sort.</p>
+            </div>
+
+            <div class="toolbar mt-3" data-reveal>
+                <div class="field" style="flex:1.6">
+                    <label for="heapInput">Array values (comma separated)</label>
+                    <input type="text" id="heapInput" placeholder="e.g. 64, 42, 25, 31, 10" autocomplete="off">
+                </div>
+                <div class="field" style="flex:0 0 170px">
+                    <label>Heap type</label>
+                    <div class="segmented" id="heapMode">
+                        <button type="button" class="is-on" data-mode="max">Max heap</button>
+                        <button type="button" data-mode="min">Min heap</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="button" class="btn btn--accent" id="btnBuild">Build heap</button>
+                    <button type="button" class="btn btn--subtle" id="btnShuffle">Shuffle</button>
+                    <button type="button" class="btn btn--ghost" id="btnReset">Reset</button>
+                </div>
+            </div>
+
+            <div class="toolbar mt-1" data-reveal>
+                <div class="field" style="flex:1">
+                    <label for="insertVal">Insert a value</label>
+                    <input type="number" id="insertVal" placeholder="42" min="-9999" max="9999" step="1">
+                    <button type="button" class="btn btn--subtle mt-1" id="btnInsert">Insert and bubble up</button>
+                </div>
+                <div class="field" style="flex:0 0 200px">
+                    <label for="heapSize">Shuffle size</label>
+                    <div class="range-row">
+                        <input type="range" id="heapSize" min="5" max="16" value="9">
+                        <span class="range-value" id="heapSizeLabel">9</span>
+                    </div>
+                </div>
+                <div class="field" style="flex:0 0 200px">
+                    <label for="heapSpeed">Animation speed</label>
+                    <div class="range-row">
+                        <input type="range" id="heapSpeed" min="1" max="10" value="5">
+                        <span class="range-value" id="heapSpeedLabel">5</span>
+                    </div>
+                </div>
+                <div class="field" style="flex:0 0 210px">
+                    <label for="extractTop">Root operation</label>
+                    <button type="button" class="btn btn--subtle" id="btnExtract">Extract root</button>
+                </div>
+            </div>
+
+            <div class="card card--pad mt-2" data-reveal>
+                <div class="row row--between mb-2">
+                    <h2 class="section__title" style="font-size:20px">Live heap tree</h2>
+                    <span class="chip chip--accent" id="heapKindChip">Max heap</span>
+                </div>
+                <div class="tree-stage">
+                    <div id="heapTree" aria-label="Binary heap tree SVG"></div>
+                </div>
+                <p class="heap-caption" id="treeCaption">Orange nodes were just compared or swapped. Green nodes hold their
+                    final heap position.</p>
+                <div class="mt-3">
+                    <p class="muted tiny mb-2">Underlying array (0-indexed). Children of index i sit at 2i+1 and 2i+2.</p>
+                    <div class="array-strip" id="arrayStrip" aria-label="Heap stored as an array"></div>
+                </div>
+            </div>
+
+            <div class="card card--pad mt-2" data-reveal>
+                <h2 class="section__title" style="font-size:20px">Step log</h2>
+                <p class="tiny mt-1">Every swap written out while the heap builds, inserts, and extracts.</p>
+                <div class="log-panel mt-2" id="logPanel" role="log" aria-live="polite">
+                    <p>Click Build heap to begin, or shuffle to load random data.</p>
+                </div>
+            </div>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">01</span>What you are watching</h2>
+                </div>
+                <div class="steps" data-reveal>
+                    <div class="step">
+                        <p class="step__title">The heap rule</p>
+                        <p class="step__desc">Every parent must dominate its children. In a max heap the root is the
+                            largest value; in a min heap it is the smallest. Violations are fixed by swapping along the
+                            tree.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__title">Heapify builds order from the bottom</p>
+                        <p class="step__desc">Building starts at the last parent and walks up. Each parent sifts down until
+                            its whole subtree obeys the rule, so by the time the root is processed the entire tree is a
+                            valid heap.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__title">Insertion bubbles up</p>
+                        <p class="step__desc">A new value is appended as a leaf, then it trades places with parents until
+                            the heap rule holds again, costing at most tree height, O(log n).</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__title">Extraction sifts down</p>
+                        <p class="step__desc">The root leaves, the last leaf takes its place, and the smaller (or larger)
+                            child is picked each round until order returns. This is the exact loop hidden inside Heap
+                            Sort.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">02</span>From heap to Heap Sort</h2>
+                </div>
+                <div class="prose" data-reveal>
+                    <p>A heap is not only a useful priority queue, it is also a sorting machine. <a
+                            href="./heapsort">Heap Sort</a> builds a max heap, then repeats two moves: swap the root with
+                        the last element, shrink the array by one, and sift the new root down. The result is an in-place
+                        sort with a worst case of O(n log n) and no extra memory.</p>
+                    <p>Once the building and sifting motions make sense here, open the <a href="./heapsort">Heap Sort
+                            visualizer</a> to see the same tree powering a completely sorted array, then compare it against
+                        other sorts in the <a href="./sorting-algorithm-race">Algorithm Race</a>.</p>
+                </div>
+                <div class="row mt-2" data-reveal>
+                    <a class="btn btn--accent" href="./heapsort">Open Heap Sort visualizer</a>
+                    <a class="btn btn--subtle" href="./sorting-algorithm-race">Race all eight sorts</a>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">03</span>Frequently asked questions</h2>
+                </div>
+                <div class="faq" data-reveal>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Is a heap the same as a sorted tree?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>No. A heap only guarantees the parent-child rule, so the array is
+                            not fully sorted. This weaker guarantee is exactly why building a heap costs O(n) while fully
+                            sorting costs O(n log n).</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Why is building a heap O(n) and not O(n log n)?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Most nodes are near the bottom and sift down only a few levels. The
+                            sum of heights over all nodes is O(n), not O(n log n). Bottom-up heapify finishes in linear
+                            time even though inserting n items one by one would be O(n log n).</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Where are heaps used in the real world?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Priority queues, OS schedulers, Dijkstra's shortest path, streaming
+                            top-k queries, and the internal workhorse of Heap Sort. Any place that repeatedly needs the
+                            current maximum or minimum while handling a steady stream of inserts.</p></div>
+                    </details>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="shell">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand"><span class="brand__mark"><img src="./images/sort.png" alt="" width="24" height="24"></span> EasySorting</div>
+                    <p class="footer__about">A free, interactive sorting algorithm visualizer. Learn how every major sort
+                        works with step-by-step animations and code in five programming languages.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on GitHub"><img src="./images/svg-icons/github.svg" alt="GitHub"></a>
+                        <a href="https://www.youtube.com/@code_with_ease" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on YouTube"><img src="./images/svg-icons/youtube.svg" alt="YouTube"></a>
+                        <a href="https://www.instagram.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Instagram"><img src="./images/svg-icons/instagram.svg" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Facebook"><img src="./images/svg-icons/facebook.svg" alt="Facebook"></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Algorithms</h4>
+                    <ul>
+                        <li><a href="./heapsort">Heap Sort</a></li>
+                        <li><a href="./quicksort">Quick Sort</a></li>
+                        <li><a href="./mergesort">Merge Sort</a></li>
+                        <li><a href="./bubblesort">Bubble Sort</a></li>
+                        <li><a href="./insertionsort">Insertion Sort</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="./sorting-algorithms">Sorting Algorithms Guide</a></li>
+                        <li><a href="./big-o-notation">Big O Notation</a></li>
+                        <li><a href="./heap-visualizer">Heap Visualizer</a></li>
+                        <li><a href="./sorting-algorithm-race">Algorithm Race</a></li>
+                        <li><a href="./summary">Full Comparison</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Site</h4>
+                    <ul>
+                        <li><a href="./about">About</a></li>
+                        <li><a href="./feedback">Feedback</a></li>
+                        <li><a href="./contact">Contact</a></li>
+                        <li><a href="./privacy-policy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>Copyright <span data-year>2026</span> EasySorting. Made by Arun Neupane.</span>
+                <span>Free forever. No sign-up. Fully offline-ready PWA.</span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+
+    <script src="./hig.js"></script>
+    <script>
+        (function () {
+            var arr = [];
+            var mode = "max";
+            var busy = false;
+            var log = [];
+
+            var $ = function (id) { return document.getElementById(id); };
+            var input = $("heapInput"), treeBox = $("heapTree"), strip = $("arrayStrip"),
+                logPanel = $("logPanel"), chip = $("heapKindChip"), caption = $("treeCaption"),
+                sizeSlider = $("heapSize"), sizeLabel = $("heapSizeLabel"),
+                speedSlider = $("heapSpeed"), speedLabel = $("heapSpeedLabel");
+
+            function ms() { return 950 - (parseInt(speedSlider.value, 10) || 5) * 90; }
+            function sleep(t) { return new Promise(function (r) { setTimeout(r, t); }); }
+            function comma(v) { return v.toLocaleString("en-US"); }
+
+            function isMax() { return mode === "max"; }
+            function better(a, b) {
+                if (a === -1) return b;
+                if (b === -1) return a;
+                return isMax() ? (arr[a] > arr[b] ? a : b) : (arr[a] < arr[b] ? a : b);
+            }
+            function obeys(p, c) { return isMax() ? arr[p] >= arr[c] : arr[p] <= arr[c]; }
+
+            function pushLog(msg) {
+                log.unshift(msg);
+                if (log.length > 30) log.length = 30;
+                logPanel.innerHTML = log.map(function (m) { return "<p>" + m + "</p>"; }).join("");
+            }
+            function toast(msg) {
+                var wrap = $("toastWrap");
+                var el = document.createElement("div");
+                el.className = "toast";
+                el.textContent = msg;
+                wrap.appendChild(el);
+                requestAnimationFrame(function () { el.classList.add("show"); });
+                setTimeout(function () { el.classList.remove("show"); setTimeout(function () { el.remove(); }, 450); }, 2000);
+                while (wrap.children.length > 3) wrap.removeChild(wrap.firstChild);
+            }
+
+            function render(hotList, doneList) {
+                hotList = hotList || [];
+                doneList = doneList || [];
+                var ns = "http://www.w3.org/2000/svg";
+                treeBox.innerHTML = "";
+                var W = 720, H = 260, colGap = 40, rowH = 44, padT = 26, padX = 30;
+                var svg = document.createElementNS(ns, "svg");
+                svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+                svg.setAttribute("role", "img");
+                svg.setAttribute("aria-label", "Binary heap tree with " + arr.length + " nodes");
+                treeBox.appendChild(svg);
+
+                if (!arr.length) {
+                    var t = document.createElementNS(ns, "text");
+                    t.setAttribute("x", W / 2); t.setAttribute("y", H / 2);
+                    t.setAttribute("text-anchor", "middle");
+                    t.setAttribute("fill", "var(--label-3)");
+                    t.setAttribute("font-size", "15");
+                    t.textContent = "Build a heap to draw the tree";
+                    svg.appendChild(t);
+                    return;
+                }
+
+                var maxDepth = Math.floor(Math.log2(arr.length));
+                function pos(i) {
+                    var lvl = Math.floor(Math.log2(i + 1));
+                    var total = Math.pow(2, lvl);
+                    var idxInLvl = (i + 1) - total;
+                    var usable = W - padX * 2;
+                    var x = padX + ((idxInLvl + 1) / (total + 1)) * usable;
+                    var y = padT + lvl * rowH;
+                    return [x, y, lvl, idxInLvl, total];
+                }
+
+                for (var i = 0; i < arr.length; i++) {
+                    var p = pos(i);
+                    if (i > 0) {
+                        var pi = Math.floor((i - 1) / 2);
+                        var pp = pos(pi);
+                        var line = document.createElementNS(ns, "line");
+                        line.setAttribute("x1", pp[0]); line.setAttribute("y1", pp[1] + 18);
+                        line.setAttribute("x2", p[0]); line.setAttribute("y2", p[1] - 18);
+                        line.setAttribute("class", "node-edge" + (hotList.indexOf(i) !== -1 || hotList.indexOf(pi) !== -1 ? " hot" : ""));
+                        svg.appendChild(line);
+                    }
+                }
+                for (var j = 0; j < arr.length; j++) {
+                    var pj = pos(j);
+                    var cls = "node-circle";
+                    if (hotList.indexOf(j) !== -1) cls += " hot";
+                    else if (doneList.indexOf(j) !== -1) cls += " done";
+                    var c = document.createElementNS(ns, "circle");
+                    c.setAttribute("cx", pj[0]); c.setAttribute("cy", pj[1]);
+                    c.setAttribute("r", 19);
+                    c.setAttribute("class", cls);
+                    svg.appendChild(c);
+                    var tx = document.createElementNS(ns, "text");
+                    tx.setAttribute("x", pj[0]); tx.setAttribute("y", pj[1]);
+                    tx.setAttribute("class", "node-label");
+                    tx.textContent = arr[j];
+                    svg.appendChild(tx);
+                }
+            }
+
+            function renderStrip(hotList, doneList) {
+                hotList = hotList || [];
+                doneList = doneList || [];
+                strip.innerHTML = "";
+                arr.forEach(function (v, i) {
+                    var cell = document.createElement("div");
+                    cell.className = "cell" + (hotList.indexOf(i) !== -1 ? " hot" : "") + (doneList.indexOf(i) !== -1 ? " done" : "");
+                    cell.textContent = v;
+                    strip.appendChild(cell);
+                });
+                if (!arr.length) {
+                    var e = document.createElement("div");
+                    e.className = "muted tiny";
+                    e.textContent = "Empty";
+                    strip.appendChild(e);
+                }
+            }
+
+            function parseInput() {
+                var raw = input.value.trim();
+                if (!raw) return null;
+                var parts = raw.split(/[,\s]+/).filter(Boolean);
+                var nums = [];
+                var bad = false;
+                parts.forEach(function (p) {
+                    var n = parseFloat(p);
+                    if (isNaN(n)) { bad = true; return; }
+                    nums.push(Math.round(n));
+                });
+                if (bad) { toast("Ignored a value that was not a number"); }
+                return nums;
+            }
+
+            function shuffle() {
+                var size = parseInt(sizeSlider.value, 10) || 9;
+                var pool = [];
+                for (var i = 1; i <= 64; i++) pool.push(i);
+                for (var j = pool.length - 1; j > 0; j--) {
+                    var k = Math.floor(Math.random() * (j + 1));
+                    var tmp = pool[j]; pool[j] = pool[k]; pool[k] = tmp;
+                }
+                var out = pool.slice(0, size);
+                input.value = out.join(", ");
+                input.classList.remove("shake");
+                void input.offsetWidth;
+                input.classList.add("shake");
+                return out;
+            }
+
+            async function siftDown(i, hold) {
+                var n = arr.length;
+                while (true) {
+                    var left = 2 * i + 1, right = 2 * i + 2;
+                    if (left >= n) break;
+                    var best = better(better(left, right), i);
+                    if (best === i) { markQuiet(i); break; }
+                    if (hold) { await sleep(ms()); }
+                    var hi = [i, best];
+                    render(hi); renderStrip(hi);
+                    pushLog((isMax() ? "Max" : "Min") + " heapify: swap " + arr[i] + " with child " + arr[best] + " at index " + i + " to " + best + ".");
+                    await sleep(ms());
+                    var tmp = arr[i]; arr[i] = arr[best]; arr[best] = tmp;
+                    render([best]); renderStrip([best]);
+                    i = best;
+                }
+            }
+            function markQuiet(i) {
+                if (i >= 0 && i < arr.length) {
+                    render([], [i]); renderStrip([], [i]);
+                }
+            }
+
+            async function buildHeap() {
+                var nums = parseInput();
+                if (nums === null) { toast("Type some numbers first"); input.focus(); return; }
+                if (!nums.length) { toast("The array is empty"); return; }
+                busy = true; log = []; pushLog("Building a " + mode + " heap from " + nums.length + " values.");
+                arr = nums.slice();
+                render(); renderStrip();
+                await sleep(ms() * 0.5);
+                var n = arr.length;
+                for (var i = Math.floor(n / 2) - 1; i >= 0; i--) {
+                    pushLog("Heapify subtree rooted at index " + i + " (value " + arr[i] + ").");
+                    await siftDown(i, true);
+                }
+                render([], []); renderStrip([], []);
+                pushLog("Heap property restored. The " + (isMax() ? "largest" : "smallest") + " value " + arr[0] + " is at the root.");
+                busy = false;
+            }
+
+            async function insertVal(v) {
+                if (busy) return;
+                if (isNaN(v)) { toast("Enter a value to insert"); return; }
+                busy = true;
+                if (!arr.length) { arr = [Math.round(v)]; render(); renderStrip(); busy = false; return; }
+                arr.push(Math.round(v));
+                var i = arr.length - 1;
+                render([i]); renderStrip([i]);
+                pushLog("Inserted " + arr[i] + " at leaf index " + i + ".");
+                await sleep(ms());
+                while (i > 0) {
+                    var p = Math.floor((i - 1) / 2);
+                    if (obeys(p, i)) { markQuiet(i); break; }
+                    var hl = [p, i];
+                    render(hl); renderStrip(hl);
+                    pushLog("Bubble up: swap " + arr[i] + " with parent " + arr[p] + ".");
+                    await sleep(ms());
+                    var tmp = arr[i]; arr[i] = arr[p]; arr[p] = tmp;
+                    i = p;
+                    render([i]); renderStrip([i]);
+                }
+                render([], []); renderStrip([], []);
+                pushLog("Insert finished. Root rule holds again.");
+                busy = false;
+            }
+
+            async function extractTop() {
+                if (busy) return;
+                if (!arr.length) { toast("Nothing to extract"); $("btnExtract").classList.add("shake"); return; }
+                busy = true;
+                var outVal = arr[0];
+                render([0]); renderStrip([0]);
+                toast((isMax() ? "Max" : "Min") + " extracted: " + outVal);
+                pushLog("Extracting root " + outVal + ".");
+                await sleep(ms() * 0.6);
+                var last = arr.length - 1;
+                if (last > 0) {
+                    var hl = [0, last];
+                    render(hl); renderStrip(hl);
+                    pushLog("Move the last leaf " + arr[last] + " into the root position.");
+                    await sleep(ms() * 0.6);
+                    arr[0] = arr[last];
+                }
+                arr.pop();
+                render(); renderStrip();
+                pushLog("Sifting the new root down to restore the heap property.");
+                await siftDown(0, true);
+                render([], []); renderStrip([], []);
+                pushLog("Heap restored. " + arr.length + " values remain.");
+                busy = false;
+            }
+
+            /* events */
+            $("btnBuild").addEventListener("click", buildHeap);
+            $("btnShuffle").addEventListener("click", function () {
+                if (busy) return;
+                var nums = shuffle();
+                log = [];
+                arr = nums.slice();
+                render(); renderStrip();
+                pushLog("Shuffled " + nums.length + " values. Press Build heap to heapify.");
+            });
+            $("btnReset").addEventListener("click", function () {
+                if (busy) return;
+                arr = []; log = [];
+                render(); renderStrip();
+                input.value = "";
+                pushLog("Cleared. Type values or shuffle to start again.");
+            });
+            $("btnInsert").addEventListener("click", function () {
+                if (busy) return;
+                insertVal(parseInt($("insertVal").value, 10));
+            });
+            $("btnExtract").addEventListener("click", extractTop);
+            $("insertVal").addEventListener("keydown", function (ev) {
+                if (ev.key === "Enter") { if (!busy) insertVal(parseInt(ev.target.value, 10)); }
+            });
+
+            $("heapMode").addEventListener("click", function (ev) {
+                var btn = ev.target.closest("button[data-mode]");
+                if (!btn || busy) return;
+                mode = btn.getAttribute("data-mode");
+                this.querySelectorAll("button").forEach(function (b) { b.classList.toggle("is-on", b === btn); });
+                chip.textContent = mode === "max" ? "Max heap" : "Min heap";
+                pushLog("Mode set to " + (mode === "max" ? "max" : "min") + " heap. Rebuild to apply.");
+            });
+
+            sizeSlider.addEventListener("input", function () {
+                sizeLabel.textContent = sizeSlider.value;
+            });
+            speedSlider.addEventListener("input", function () {
+                speedLabel.textContent = speedSlider.value;
+                caption.textContent = "Animation speed " + ms(5) + "ms per step";
+            });
+
+            caption.textContent = "Orange nodes were just compared or swapped. Speed slider tunes the animation.";
+            render(); renderStrip();
+        })();
+    </script>
+</body>
+
+</html>

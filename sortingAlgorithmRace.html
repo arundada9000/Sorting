@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithm Race: Compare 8 Sorts by Time, Comparisons, and Moves | EasySorting</title>
+    <meta name="description"
+        content="Race Bubble Sort, Quick Sort, Merge Sort, Heap Sort and more on identical arrays. Compare measured comparisons, data moves, and elapsed time with live charts, and find the fastest sort for random, sorted, and reversed data." />
+    <meta name="keywords"
+        content="sorting algorithm race, compare sorting algorithms, sorting algorithm comparison, fastest sorting algorithm, bubble sort vs quick sort, merge sort vs heap sort, sorting benchmark" />
+    <link rel="canonical" href="https://easysorting.netlify.app/sorting-algorithm-race" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
+    <meta name="theme-color" content="#F2F2F7">
+    <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sorting Algorithm Race: Compare 8 Sorts Live" />
+    <meta property="og:description"
+        content="Race all 8 sorting algorithms on identical arrays and compare measured comparisons, data moves, and elapsed time." />
+    <meta property="og:url" content="https://easysorting.netlify.app/sorting-algorithm-race" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sorting Algorithm Race: Compare 8 Sorts Live" />
+    <meta name="twitter:description" content="Measure comparisons, data moves, and time across all 8 sorting algorithms." />
+    <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "EasySorting Sorting Algorithm Race",
+      "url": "https://easysorting.netlify.app/sorting-algorithm-race",
+      "description": "Benchmark tool that races 8 sorting algorithms on identical arrays and reports measured comparisons, data moves, and wall time with charts.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Sorting Algorithms", "item": "https://easysorting.netlify.app/sorting-algorithms" },
+        { "@type": "ListItem", "position": 3, "name": "Sorting Algorithm Race", "item": "https://easysorting.netlify.app/sorting-algorithm-race" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which sorting algorithm is fastest in practice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On random data Quick Sort is usually the fastest because it has the fewest comparisons and moves in practice. On reversed data Heap Sort and Quick Sort with randomized pivots keep O(n log n), while Insertion Sort jumps to O(n^2)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does the race run three data patterns?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Random, nearly sorted, and reversed inputs expose how an algorithm behaves in its best, typical, and worst cases. Insertion Sort shines on nearly sorted data, while quick sorts can degrade on sorted input."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do comparisons and data moves mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A comparison is one test between two keys, such as is a[j] greater than a[j+1]. A data move is a single write of a value into the array. Together they measure the actual work an algorithm performs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which sort should I ship in production?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard libraries already pick for you: most use a hybrid such as Introsort (Quick Sort that falls back to Heap Sort) in C++ or Timsort (Merge Sort plus Insertion Sort) in Python. Learning when to prefer stable, in-place, or O(n log n) sorts is the real takeaway."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./images/sort.png">
+    <link rel="stylesheet" href="./hig.css">
+    <style>
+        .runaway-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .runaway-row label { display: inline-flex; gap: 8px; align-items: center; padding: 8px 13px; border-radius: 999px; background: var(--fill); font-size: 14px; font-weight: 600; color: var(--label-2); cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; }
+        .runaway-row label:hover { background: var(--fill-2); color: var(--label); }
+        .runaway-row label input { accent-color: var(--accent); }
+        .result-card { opacity: 0; transform: translateY(14px); transition: opacity 0.6s var(--ease-ios), transform 0.6s var(--ease-ios); }
+        .result-card.is-in { opacity: 1; transform: translateY(0); }
+        .winner-name { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+        .race-note { font-size: 13px; color: var(--label-3); margin-top: 8px; }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="topbar">
+        <div class="shell topbar__inner">
+            <a class="brand" href="./"><span class="brand__mark brand__mark--logo"><img src="./images/sort.png" alt="" width="30" height="30"></span> EasySorting</a>
+            <nav aria-label="Primary">
+                <ul class="nav-links desktop-links">
+                    <li><a href="./">Visualizers</a></li>
+                    <li><a href="./sorting-algorithms">Guide</a></li>
+                    <li><a href="./big-o-notation">Big O</a></li>
+                    <li><a href="./sorting-algorithm-race" class="nav-active">Race</a></li>
+                    <li><a href="./summary">Compare</a></li>
+                    <li><a href="./about">About</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"></button>
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"
+                aria-controls="navLinks"><span></span><span></span><span></span></button>
+            <ul class="nav-links nav-mobile" id="navLinks">
+                <li><a href="./">Visualizers</a></li>
+                <li><a href="./sorting-algorithms">Guide</a></li>
+                <li><a href="./big-o-notation">Big O</a></li>
+                <li><a href="./heap-visualizer">Heap Visualizer</a></li>
+                <li><a href="./sorting-algorithm-race">Algorithm Race</a></li>
+                <li><a href="./summary">Compare</a></li>
+                <li><a href="./about">About</a></li>
+                <li><a href="./feedback">Feedback</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="playing-field" id="main">
+        <div class="shell shell--wide">
+            <div class="hero hero--tool">
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="crumb-sep" aria-hidden="true"></span>
+                    <a href="./sorting-algorithms">Sorting Algorithms</a>
+                    <span class="crumb-sep" aria-hidden="true"></span>
+                    <span>Algorithm Race</span>
+                </nav>
+                <p class="hero__kicker">Interactive benchmark</p>
+                <h1>Sorting Algorithm Race</h1>
+                <p class="hero__lead">Put all eight sorting algorithms on identical arrays and measure the truth: comparisons,
+                    data moves, and wall time. Change the size and data pattern, then press race to see the Big O theory turn
+                    into numbers.</p>
+            </div>
+
+            <div class="toolbar mt-3" data-reveal>
+                <div class="field" style="flex:0 0 280px">
+                    <label for="raceSize">Array size</label>
+                    <div class="range-row">
+                        <input type="range" id="raceSize" min="20" max="500" value="200" step="10">
+                        <span class="range-value" id="raceSizeLabel">200</span>
+                    </div>
+                </div>
+                <div class="field" style="flex:0 0 300px">
+                    <label>Data pattern</label>
+                    <div class="segmented" id="dataPattern">
+                        <button type="button" class="is-on" data-p="random">Random</button>
+                        <button type="button" data-p="nearly">Nearly sorted</button>
+                        <button type="button" data-p="reversed">Reversed</button>
+                    </div>
+                </div>
+                <div class="field" style="flex:0 0 280px">
+                    <label>Quick Sort pivot</label>
+                    <div class="segmented" id="pivotStyle">
+                        <button type="button" data-pv="last">Last</button>
+                        <button type="button" class="is-on" data-pv="random">Random</button>
+                        <button type="button" data-pv="median">Median of three</button>
+                    </div>
+                </div>
+                <div>
+                    <button type="button" class="btn btn--accent btn--lg" id="btnRace">
+                        <span class="spin" aria-hidden="true">o</span>
+                        <span class="btn-label">Start the race</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card card--pad mt-2" data-reveal>
+                <p class="muted tiny">Contenders (toggle to include or exclude)</p>
+                <div class="runaway-row" id="contenderRow"></div>
+            </div>
+
+            <div id="results" class="mt-2" hidden>
+                <div class="stat-strip" data-reveal>
+                    <div class="stat">
+                        <p class="stat__label">Array size</p>
+                        <p class="stat__value" id="statSize">200</p>
+                        <p class="stat__hint" id="statPattern">random data</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">Fastest by time</p>
+                        <p class="stat__value" id="statTime">-</p>
+                        <p class="stat__hint">wall-clock winner</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">Fewest comparisons</p>
+                        <p class="stat__value" id="statComp">-</p>
+                        <p class="stat__hint">theoretical cost</p>
+                    </div>
+                    <div class="stat">
+                        <p class="stat__label">Fewest data moves</p>
+                        <p class="stat__value" id="statMoves">-</p>
+                        <p class="stat__hint">memory writes</p>
+                    </div>
+                </div>
+
+                <div class="card card--pad mt-2 result-card" id="raceCard">
+                    <h2 class="section__title" style="font-size:20px">The replay</h2>
+                    <p class="tiny mt-1">Bars advance in proportion to each sort's measured wall time. Finish order is real
+                        benchmark data, played back at a readable speed.</p>
+                    <div id="raceTracks" class="mt-3"></div>
+                </div>
+
+                <div class="card card--pad mt-2 result-card" id="compCard">
+                    <h2 class="section__title" style="font-size:20px">Comparisons</h2>
+                    <p class="tiny mt-1">Key-to-key comparisons per sort. Big O puts these items in classes, the race puts
+                        them in order.</p>
+                    <div class="mt-3" id="compChart"></div>
+                </div>
+
+                <div class="card card--pad mt-2 result-card" id="movesCard">
+                    <h2 class="section__title" style="font-size:20px">Data moves</h2>
+                    <p class="tiny mt-1">Actual array writes. Selection Sort moves data the least, Merge Sort the most
+                        because of its temporary buffer.</p>
+                    <div class="mt-3" id="movesChart"></div>
+                </div>
+
+                <div class="card card--pad mt-2 result-card" id="tableCard">
+                    <h2 class="section__title" style="font-size:20px">Full results</h2>
+                    <div class="table-wrap mt-2">
+                        <table class="hig" id="resultTable"></table>
+                    </div>
+                </div>
+
+                <div class="section__head mt-2" data-reveal>
+                    <h2 class="section__title" style="font-size:20px">Read the results like a pro</h2>
+                </div>
+                <div class="prose" data-reveal>
+                    <p>Wall time answers "which is fastest on this machine right now", comparisons and moves answer "which
+                        does the least work". Small sizes hide the difference, so bump the slider to 500 and watch the
+                        O(n^2) sorts curve away from the O(n log n) pack, exactly as the Big O chart predicted. Remember that
+                        a benchmark on random data never tells the whole story, switch to the nearly sorted and reversed
+                        patterns to see Insertion Sort soar and naive Quick Sort stumble.</p>
+                </div>
+                <div class="row mt-2" data-reveal>
+                    <a class="btn btn--subtle" href="./big-o-notation">Why this happens: Big O chart</a>
+                    <a class="btn btn--ghost" href="./summary">Full algorithm comparison</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="shell">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand"><span class="brand__mark"><img src="./images/sort.png" alt="" width="24" height="24"></span> EasySorting</div>
+                    <p class="footer__about">A free, interactive sorting algorithm visualizer. Learn how every major sort
+                        works with step-by-step animations and code in five programming languages.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on GitHub"><img src="./images/svg-icons/github.svg" alt="GitHub"></a>
+                        <a href="https://www.youtube.com/@code_with_ease" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on YouTube"><img src="./images/svg-icons/youtube.svg" alt="YouTube"></a>
+                        <a href="https://www.instagram.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Instagram"><img src="./images/svg-icons/instagram.svg" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Facebook"><img src="./images/svg-icons/facebook.svg" alt="Facebook"></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Algorithms</h4>
+                    <ul>
+                        <li><a href="./quicksort">Quick Sort</a></li>
+                        <li><a href="./mergesort">Merge Sort</a></li>
+                        <li><a href="./heapsort">Heap Sort</a></li>
+                        <li><a href="./bubblesort">Bubble Sort</a></li>
+                        <li><a href="./radixsort">Radix Sort</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="./sorting-algorithms">Sorting Algorithms Guide</a></li>
+                        <li><a href="./big-o-notation">Big O Notation</a></li>
+                        <li><a href="./sorting-algorithm-race">Algorithm Race</a></li>
+                        <li><a href="./heap-visualizer">Heap Visualizer</a></li>
+                        <li><a href="./summary">Full Comparison</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Site</h4>
+                    <ul>
+                        <li><a href="./about">About</a></li>
+                        <li><a href="./feedback">Feedback</a></li>
+                        <li><a href="./contact">Contact</a></li>
+                        <li><a href="./privacy-policy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>Copyright <span data-year>2026</span> EasySorting. Made by Arun Neupane.</span>
+                <span>Free forever. No sign-up. Fully offline-ready PWA.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./hig.js"></script>
+    <script>
+        (function () {
+            var COLORS = {
+                bubble: "#FF3B30", selection: "#FF9500", insertion: "#FFCC00",
+                shell: "#5856D6", merge: "#007AFF", quick: "#34C759",
+                heap: "#AF52DE", radix: "#30B0C7"
+            };
+            var NAMES = {
+                bubble: "Bubble Sort", selection: "Selection Sort", insertion: "Insertion Sort",
+                shell: "Shell Sort", merge: "Merge Sort", quick: "Quick Sort",
+                heap: "Heap Sort", radix: "Radix Sort"
+            };
+            var ORDER = ["bubble", "selection", "insertion", "shell", "merge", "quick", "heap", "radix"];
+
+            var state = { size: 200, pattern: "random", pivot: "random", enabled: ORDER.slice() };
+
+            var $ = function (id) { return document.getElementById(id); };
+            var sizeSlider = $("raceSize"), sizeLabel = $("raceSizeLabel");
+
+            sizeSlider.addEventListener("input", function () {
+                state.size = parseInt(sizeSlider.value, 10) || 200;
+                sizeLabel.textContent = state.size;
+            });
+            $("dataPattern").addEventListener("click", function (ev) {
+                var b = ev.target.closest("button[data-p]");
+                if (!b) return;
+                this.querySelectorAll("button").forEach(function (x) { x.classList.toggle("is-on", x === b); });
+                state.pattern = b.getAttribute("data-p");
+            });
+            $("pivotStyle").addEventListener("click", function (ev) {
+                var b = ev.target.closest("button[data-pv]");
+                if (!b) return;
+                this.querySelectorAll("button").forEach(function (x) { x.classList.toggle("is-on", x === b); });
+                state.pivot = b.getAttribute("data-pv");
+            });
+
+            var row = $("contenderRow");
+            ORDER.forEach(function (key) {
+                var lab = document.createElement("label");
+                var inp = document.createElement("input");
+                inp.type = "checkbox";
+                inp.checked = true;
+                inp.setAttribute("data-key", key);
+                var dot = document.createElement("span");
+                dot.className = "badge-dot";
+                dot.style.background = COLORS[key];
+                var name = document.createElement("span");
+                name.textContent = NAMES[key];
+                lab.appendChild(inp); lab.appendChild(dot); lab.appendChild(name);
+                row.appendChild(lab);
+                inp.addEventListener("change", function () {
+                    state.enabled = ORDER.filter(function (k) {
+                        var box = row.querySelector('input[data-key="' + k + '"]');
+                        return box ? box.checked : true;
+                    });
+                });
+            });
+
+            function makeArray() {
+                var n = state.size, a = [];
+                for (var i = 1; i <= n; i++) a.push(i);
+                if (state.pattern === "random") {
+                    for (var j = n - 1; j > 0; j--) {
+                        var k = Math.floor(Math.random() * (j + 1));
+                        var t = a[j]; a[j] = a[k]; a[k] = t;
+                    }
+                } else if (state.pattern === "reversed") {
+                    a.reverse();
+                } else {
+                    for (j = 0; j < n; j++) {
+                        if (Math.random() < 0.03 && j + 1 < n) {
+                            var t2 = a[j]; a[j] = a[j + 1]; a[j + 1] = t2;
+                        }
+                    }
+                }
+                return a;
+            }
+
+            function bubbleRun(a) {
+                var c = 0, w = 0, n = a.length;
+                for (var i = 0; i < n - 1; i++) {
+                    var swapped = false;
+                    for (var j = 0; j < n - 1 - i; j++) {
+                        c++;
+                        if (a[j] > a[j + 1]) {
+                            var t = a[j]; a[j] = a[j + 1]; a[j + 1] = t; w += 2; swapped = true;
+                        }
+                    }
+                    if (!swapped) break;
+                }
+                return { c: c, w: w };
+            }
+            function selectionRun(a) {
+                var c = 0, w = 0, n = a.length;
+                for (var i = 0; i < n - 1; i++) {
+                    var m = i;
+                    for (var j = i + 1; j < n; j++) { c++; if (a[j] < a[m]) m = j; }
+                    if (m !== i) { var t = a[i]; a[i] = a[m]; a[m] = t; w += 2; }
+                }
+                return { c: c, w: w };
+            }
+            function insertionRun(a) {
+                var c = 0, w = 0, n = a.length;
+                for (var i = 1; i < n; i++) {
+                    var key = a[i]; w++;
+                    var j = i - 1;
+                    while (j >= 0) {
+                        c++;
+                        if (a[j] <= key) break;
+                        a[j + 1] = a[j]; w++; j--;
+                    }
+                    a[j + 1] = key; w++;
+                }
+                return { c: c, w: w };
+            }
+            function shellRun(a) {
+                var c = 0, w = 0, n = a.length;
+                for (var gap = Math.floor(n / 2); gap > 0; gap = Math.floor(gap / 2)) {
+                    for (var i = gap; i < n; i++) {
+                        var tmp = a[i]; w++;
+                        var j = i;
+                        while (j >= gap) {
+                            c++;
+                            if (a[j - gap] <= tmp) break;
+                            a[j] = a[j - gap]; w++; j -= gap;
+                        }
+                        a[j] = tmp; w++;
+                    }
+                }
+                return { c: c, w: w };
+            }
+            function mergeRun(orig) {
+                var c = 0, w = 0;
+                var a = orig.slice();
+                var aux = new Array(a.length);
+                function merge(lo, mid, hi) {
+                    for (var i = lo; i <= hi; i++) { aux[i] = a[i]; w++; }
+                    var i0 = lo, i1 = mid + 1;
+                    for (var k = lo; k <= hi; k++) {
+                        if (i0 > mid) { a[k] = aux[i1++]; w++; }
+                        else if (i1 > hi) { a[k] = aux[i0++]; w++; }
+                        else { c++; if (aux[i1] < aux[i0]) { a[k] = aux[i1++]; } else { a[k] = aux[i0++]; } w++; }
+                    }
+                }
+                function sort(lo, hi) {
+                    if (hi <= lo) return;
+                    var mid = lo + Math.floor((hi - lo) / 2);
+                    sort(lo, mid); sort(mid + 1, hi);
+                    if (a[mid] <= a[mid + 1]) { c++; return; }
+                    merge(lo, mid, hi);
+                }
+                sort(0, a.length - 1);
+                return { c: c, w: w };
+            }
+            function pivotRand(a, lo, hi) {
+                return lo + Math.floor(Math.random() * (hi - lo + 1));
+            }
+            function pivotMedian(a, lo, hi) {
+                var mid = lo + Math.floor((hi - lo) / 2);
+                var x = a[lo], y = a[mid], z = a[hi];
+                if ((x > y) !== (x > z)) return lo;
+                if ((y > x) !== (y > z)) return mid;
+                return hi;
+            }
+            function quickRun(orig) {
+                var c = 0, w = 0;
+                var a = orig.slice();
+                var pv = state.pivot;
+                function sort(lo, hi) {
+                    if (lo >= hi) return;
+                    var pi = pv === "last" ? hi : pv === "median" ? pivotMedian(a, lo, hi) : pivotRand(a, lo, hi);
+                    var pv0 = a[pi];
+                    var t = a[pi]; a[pi] = a[hi]; a[hi] = t; w += 2;
+                    var i = lo;
+                    for (var j = lo; j < hi; j++) {
+                        c++;
+                        if (a[j] < pv0) {
+                            var t2 = a[i]; a[i] = a[j]; a[j] = t2; if (i !== j) w += 2;
+                            i++;
+                        }
+                    }
+                    var t3 = a[i]; a[i] = a[hi]; a[hi] = t3; if (i !== hi) w += 2;
+                    sort(lo, i - 1); sort(i + 1, hi);
+                }
+                sort(0, a.length - 1);
+                return { c: c, w: w };
+            }
+            function heapRun(a) {
+                var c = 0, w = 0, n = a.length;
+                function sift(i, len) {
+                    while (true) {
+                        var l = 2 * i + 1, r = 2 * i + 2, best = i;
+                        if (l < len) { c++; if (a[l] > a[best]) best = l; }
+                        if (r < len) { c++; if (a[r] > a[best]) best = r; }
+                        if (best === i) break;
+                        var t = a[i]; a[i] = a[best]; a[best] = t; w += 2; i = best;
+                    }
+                }
+                for (var i = Math.floor(n / 2) - 1; i >= 0; i--) sift(i, n);
+                for (var end = n - 1; end > 0; end--) {
+                    var t2 = a[0]; a[0] = a[end]; a[end] = t2; w += 2;
+                    sift(0, end);
+                }
+                return { c: c, w: w };
+            }
+            function radixRun(a) {
+                var c = 0, w = 0;
+                var max = Math.max.apply(null, a);
+                var exp = 1;
+                var out = new Array(a.length);
+                while (Math.floor(max / exp) > 0) {
+                    var count = new Array(10).fill(0);
+                    for (var i = 0; i < a.length; i++) { count[Math.floor(a[i] / exp) % 10]++; c++; }
+                    for (var j = 1; j < 10; j++) count[j] += count[j - 1];
+                    for (i = a.length - 1; i >= 0; i--) {
+                        var idx = count[Math.floor(a[i] / exp) % 10] - 1;
+                        out[idx] = a[i]; count[Math.floor(a[i] / exp) % 10]--; w++;
+                    }
+                    for (i = 0; i < a.length; i++) { a[i] = out[i]; w++; }
+                    exp *= 10;
+                }
+                return { c: c, w: w, note: "counting buckets, no key comparisons" };
+            }
+
+            var RUNNERS = {
+                bubble: bubbleRun, selection: selectionRun, insertion: insertionRun,
+                shell: shellRun, merge: mergeRun, quick: quickRun, heap: heapRun, radix: radixRun
+            };
+
+            function fmt(n) {
+                if (n >= 1e9) return (n / 1e9).toFixed(2) + "b";
+                if (n >= 1e6) return (n / 1e6).toFixed(2) + "m";
+                if (n >= 1e3) return (n / 1e3).toFixed(1) + "k";
+                return String(n);
+            }
+
+            $("btnRace").addEventListener("click", race);
+            race();
+
+            function race() {
+                var btn = $("btnRace");
+                if (btn.classList.contains("is-busy")) return;
+                btn.classList.add("is-busy");
+                var base = makeArray();
+                setTimeout(function () {
+                    var results = [];
+                    state.enabled.forEach(function (key) {
+                        var copy = base.slice();
+                        var t0 = performance.now();
+                        var m = RUNNERS[key](copy);
+                        var ms = performance.now() - t0;
+                        results.push({ key: key, name: NAMES[key], color: COLORS[key], c: m.c, w: m.w, ms: ms, note: m.note || "" });
+                    });
+                    paint(results, base.length);
+                    btn.classList.remove("is-busy");
+                }, 60);
+            }
+
+            function paint(results, n) {
+                var box = $("results");
+                box.hidden = false;
+                box.scrollIntoView({ behavior: "smooth", block: "start" });
+
+                $("statSize").textContent = fmt(n);
+                $("statPattern").textContent = state.pattern === "random" ? "random data" : state.pattern === "reversed" ? "reversed data" : "nearly sorted data";
+
+                var byMs = results.slice().sort(function (x, y) { return x.ms - y.ms; });
+                var byComp = results.slice().sort(function (x, y) { return x.c - y.c; });
+                var byMove = results.slice().sort(function (x, y) { return x.w - y.w; });
+                $("statTime").textContent = byMs[0].name;
+                $("statComp").textContent = byComp[0].name;
+                $("statMoves").textContent = byMove[0].name;
+
+                /* racer replay */
+                var maxMs = Math.max.apply(null, results.map(function (r) { return r.ms; })) || 1;
+                FastSort.hig.drawRacers($("raceTracks"), results.map(function (r) {
+                    var progress = maxMs <= 0.5 ? 50 : Math.max(6, (1 - r.ms / maxMs) * 100);
+                    return { name: r.name, color: r.color, ms: r.ms, progress: progress };
+                }));
+
+                /* comparisons + moves charts sorted ascending */
+                var sortedComp = results.slice().sort(function (x, y) { return x.c - y.c; });
+                var maxC = Math.max.apply(null, sortedComp.map(function (r) { return r.c; })) || 1;
+                FastSort.hig.drawBars($("compChart"), sortedComp.map(function (r) {
+                    return { label: r.name, sub: r.note || "comparisons", value: r.c, color: r.color };
+                }), { max: maxC, format: fmt });
+
+                var sortedMove = results.slice().sort(function (x, y) { return x.w - y.w; });
+                var maxW = Math.max.apply(null, sortedMove.map(function (r) { return r.w; })) || 1;
+                FastSort.hig.drawBars($("movesChart"), sortedMove.map(function (r) {
+                    return { label: r.name, sub: "array writes", value: r.w, color: r.color };
+                }), { max: maxW, format: fmt });
+
+                /* table */
+                var rows = "";
+                var t = document.createElement("table");
+                t.className = "hig";
+                t.innerHTML =
+                    "<caption>Measured on this device. Wall time varies with hardware and browser; comparisons and moves are exact counts.</caption>" +
+                    "<thead><tr><th>Algorithm</th><th class='num'>Comparisons</th><th class='num'>Data moves</th><th class='num'>Wall time</th><th>Average</th></tr></thead><tbody>";
+                results.slice().sort(function (x, y) { return x.c - y.c; }).forEach(function (r) {
+                    t.insertAdjacentHTML("beforeend",
+                        "<tr><td><span class='badge-dot' style='background:" + r.color + "'></span> <a href='./" + r.key + "'>" + r.name + "</a></td>" +
+                        "<td class='num'>" + fmt(r.c) + "</td><td class='num'>" + fmt(r.w) + "</td>" +
+                        "<td class='num'>" + r.ms.toFixed(2) + " ms</td><td>" + COMPLEX[r.key] + "</td></tr>");
+                });
+                rows = t;
+                var holder = $("resultTable");
+                holder.replaceWith(t);
+                t.id = "resultTable";
+
+                [ "raceCard", "compCard", "movesCard", "tableCard" ].forEach(function (id) {
+                    var c = $(id);
+                    c.classList.add("is-in");
+                });
+            }
+
+            var COMPLEX = {
+                bubble: "O(n^2)", selection: "O(n^2)", insertion: "O(n^2)",
+                shell: "O(n^1.25)", merge: "O(n log n)", quick: "O(n log n)",
+                heap: "O(n log n)", radix: "O(nk)"
+            };
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms Explained: Visual Guide and Complexity Comparison | EasySorting</title>
+    <meta name="description"
+        content="Learn what sorting algorithms are, how Quick Sort, Merge Sort, Heap Sort, Radix Sort and more work, and how to choose the right algorithm by time and space complexity. Includes interactive charts, a decision guide, and visual demonstrations." />
+    <meta name="keywords"
+        content="sorting algorithms explained, what is a sorting algorithm, how sorting algorithms work, sorting algorithm comparison, choose sorting algorithm, bubble sort, quick sort, merge sort, heap sort, radix sort, shell sort, selection sort, insertion sort" />
+    <link rel="canonical" href="https://easysorting.netlify.app/sorting-algorithms" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
+    <meta name="theme-color" content="#F2F2F7">
+    <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Sorting Algorithms Explained: Visual Guide and Complexity Comparison" />
+    <meta property="og:description"
+        content="How do sorting algorithms work? This guide breaks down each algorithm, compares Big O complexity with live charts, and helps you choose the right one for your data." />
+    <meta property="og:url" content="https://easysorting.netlify.app/sorting-algorithms" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="EasySorting sorting algorithm visualizer" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sorting Algorithms Explained: Visual Guide and Complexity Comparison" />
+    <meta name="twitter:description"
+        content="How do sorting algorithms work? Compare Big O complexity with interactive charts and a decision guide." />
+    <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Sorting Algorithms Explained: Visual Guide and Complexity Comparison",
+      "description": "A complete guide to the 8 most important sorting algorithms, their time and space complexity, and how to choose the right one.",
+      "url": "https://easysorting.netlify.app/sorting-algorithms",
+      "image": "https://easysorting.netlify.app/images/social-card.png",
+      "datePublished": "2026-09-02",
+      "dateModified": "2026-09-02",
+      "inLanguage": "en",
+      "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EasySorting",
+        "url": "https://easysorting.netlify.app",
+        "logo": { "@type": "ImageObject", "url": "https://easysorting.netlify.app/images/sort.png", "width": 512, "height": 512 }
+      },
+      "mainEntityOfPage": "https://easysorting.netlify.app/sorting-algorithms"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Sorting Algorithms",
+      "url": "https://easysorting.netlify.app/sorting-algorithms",
+      "description": "Interactive visualizers and guides for Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, Quick Sort, Heap Sort, Radix Sort and Shell Sort.",
+      "hasPart": [
+        { "@type": "WebPage", "name": "Bubble Sort Visualizer", "url": "https://easysorting.netlify.app/bubblesort" },
+        { "@type": "WebPage", "name": "Selection Sort Visualizer", "url": "https://easysorting.netlify.app/selectionsort" },
+        { "@type": "WebPage", "name": "Insertion Sort Visualizer", "url": "https://easysorting.netlify.app/insertionsort" },
+        { "@type": "WebPage", "name": "Merge Sort Visualizer", "url": "https://easysorting.netlify.app/mergesort" },
+        { "@type": "WebPage", "name": "Quick Sort Visualizer", "url": "https://easysorting.netlify.app/quicksort" },
+        { "@type": "WebPage", "name": "Heap Sort Visualizer", "url": "https://easysorting.netlify.app/heapsort" },
+        { "@type": "WebPage", "name": "Radix Sort Visualizer", "url": "https://easysorting.netlify.app/radixsort" },
+        { "@type": "WebPage", "name": "Shell Sort Visualizer", "url": "https://easysorting.netlify.app/shellsort" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Sorting Algorithms", "item": "https://easysorting.netlify.app/sorting-algorithms" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a sorting algorithm?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A sorting algorithm is a step-by-step procedure that rearranges a collection of items (such as numbers, strings, or records) into a defined order, usually ascending or descending. Sorting algorithms are measured by time complexity, space complexity, and stability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which sorting algorithm is fastest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On average, Quick Sort, Merge Sort, and Heap Sort are the fastest general-purpose comparison sorts, all running in O(n log n) time. In practice Quick Sort is often fastest on random data. For bounded integer inputs, Radix Sort can be even faster at O(nk)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does O(n log n) mean in sorting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O(n log n) describes how runtime grows with input size n. A 10x increase in input causes about a 10 to 33x increase in time (n log base 2 of n). Merge Sort, Quick Sort, and Heap Sort are in this class, while Bubble, Selection, and Insertion Sort are O(n^2)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I use which sorting algorithm?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use Insertion Sort for tiny or nearly-sorted arrays, Quick Sort for random data when average speed matters, Merge Sort when you need a stable sort with guaranteed O(n log n) time, Heap Sort when you cannot afford extra memory, and Radix Sort when keys are bounded integers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a stable sorting algorithm?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A stable sort keeps the original relative order of items with equal keys. Merge Sort, Insertion Sort, and Bubble Sort are stable. Quick Sort and Heap Sort are typically not stable, which matters when sorting records that are already ordered by a secondary field."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./images/sort.png">
+    <link rel="stylesheet" href="./hig.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="topbar">
+        <div class="shell topbar__inner">
+            <a class="brand" href="./"><span class="brand__mark brand__mark--logo"><img src="./images/sort.png" alt="" width="30" height="30"></span> EasySorting</a>
+            <nav aria-label="Primary">
+                <ul class="nav-links desktop-links">
+                    <li><a href="./">Visualizers</a></li>
+                    <li><a href="./sorting-algorithms" class="nav-active">Guide</a></li>
+                    <li><a href="./big-o-notation">Big O</a></li>
+                    <li><a href="./sorting-algorithm-race">Race</a></li>
+                    <li><a href="./summary">Compare</a></li>
+                    <li><a href="./about">About</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"></button>
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"
+                aria-controls="navLinks"><span></span><span></span><span></span></button>
+            <ul class="nav-links nav-mobile" id="navLinks">
+                <li><a href="./">Visualizers</a></li>
+                <li><a href="./sorting-algorithms">Guide</a></li>
+                <li><a href="./big-o-notation">Big O</a></li>
+                <li><a href="./heap-visualizer">Heap Visualizer</a></li>
+                <li><a href="./sorting-algorithm-race">Algorithm Race</a></li>
+                <li><a href="./summary">Compare</a></li>
+                <li><a href="./about">About</a></li>
+                <li><a href="./feedback">Feedback</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="playing-field" id="main">
+        <div class="shell shell--narrow">
+            <div class="hero">
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="crumb-sep" aria-hidden="true"></span>
+                    <span>Sorting Algorithms</span>
+                </nav>
+                <p class="hero__kicker">Complete visual guide</p>
+                <h1>Sorting Algorithms Explained</h1>
+                <p class="hero__lead">A sorting algorithm rearranges a collection of items into a defined order. Visualize
+                    the 8 algorithms you must know, compare their time and space complexity with live charts, and learn
+                    how to pick the right one for your data.</p>
+            </div>
+
+            <div class="card card--pad mt-3" data-reveal>
+                <h2 class="section__title" style="font-size:18px"><span class="t-index">TL;DR</span> Sorting in one answer</h2>
+                <div class="prose mt-1">
+                    <p>Sorting is the act of arranging records into ascending or descending order by a key. Computer
+                        scientists measure sorts two ways: <strong>time</strong> (how many operations as input size grows) and
+                        <strong>space</strong> (how much extra memory). Quick Sort, Merge Sort, and Heap Sort achieve
+                        <code>O(n log n)</code> average time. Bubble, Selection, and Insertion Sort are simpler but run in
+                        <code>O(n^2)</code>. Radix Sort skips comparisons entirely and sorts integers in <code>O(nk)</code>.
+                        There is no single best sort; the right choice depends on data size, order, stability, and memory.</p>
+                </div>
+            </div>
+
+            <section class="section" data-reveal>
+                <div class="section__head">
+                    <h2 class="section__title"><span class="t-index">01</span>How to choose a sorting algorithm</h2>
+                    <p class="section__desc">Tap the scenario closest to your data. EasySorting recommends an algorithm and
+                        explains why, based on time complexity, stability, and memory.</p>
+                </div>
+                <div class="decision" id="decisionPanel">
+                    <p class="muted tiny">Select a scenario</p>
+                    <div class="decision__scenarios" id="scenarioList">
+                        <button type="button" class="scenario-btn" data-sc="nearly">Nearly sorted data</button>
+                        <button type="button" class="scenario-btn" data-sc="random">Random data, average speed</button>
+                        <button type="button" class="scenario-btn" data-sc="worst">Guaranteed worst-case time</button>
+                        <button type="button" class="scenario-btn" data-sc="stable">Stable sort required</button>
+                        <button type="button" class="scenario-btn" data-sc="tiny">Tiny array (under 20 items)</button>
+                        <button type="button" class="scenario-btn" data-sc="ints">Bounded integer keys</button>
+                        <button type="button" class="scenario-btn" data-sc="mem">No extra memory allowed</button>
+                        <button type="button" class="scenario-btn" data-sc="learn">Just starting to learn</button>
+                    </div>
+                    <div class="decision__outcome" id="decisionOutcome" role="status" aria-live="polite">
+                        <p class="muted" style="font-size:15px">Your recommendation will appear here.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">02</span>The 8 essential sorting algorithms</h2>
+                    <p class="section__desc">Each card links to a full step-by-step visualizer with code in C, C++, Java,
+                        Python, and JavaScript.</p>
+                </div>
+                <div class="card-grid" id="algGrid"></div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">03</span>How sorting classes compare at scale</h2>
+                    <p class="section__desc">This chart plots actual operations for inputs from n = 1 to n = 100. Watch the
+                        <code>O(n^2)</code> class curve away from <code>O(n log n)</code> as sorting time explodes for large
+                        arrays.</p>
+                </div>
+                <div class="card card--pad" data-reveal>
+                    <div class="chart-box" id="growthChart"></div>
+                    <div class="legend">
+                        <span class="legend__item"><span class="legend__swatch" style="background:#34C759"></span>O(n) linear</span>
+                        <span class="legend__item"><span class="legend__swatch" style="background:#007AFF"></span>O(n log n) efficient sorts</span>
+                        <span class="legend__item"><span class="legend__swatch" style="background:#FF3B30"></span>O(n^2) simple sorts</span>
+                    </div>
+                    <p class="tiny mt-2">Log-scaled y-axis. Merge Sort, Quick Sort, and Heap Sort live on the blue curve.
+                        Bubble, Selection, and Insertion Sort live on the red curve.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">04</span>Comparison at a glance</h2>
+                    <p class="section__desc">Average and worst cases, extra memory, and stability for every algorithm.
+                        Open the full interactive comparison for details.</p>
+                </div>
+                <div class="table-wrap" data-reveal>
+                    <table class="hig" id="cmpTable">
+                        <caption>Complexity summary. Best (already sorted) cases can be far better, for example Insertion
+                            Sort runs in O(n) on sorted data.</caption>
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th class="num">Average</th>
+                                <th class="num">Worst</th>
+                                <th class="num">Space</th>
+                                <th>Stable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="./bubblesort">Bubble Sort</a></td>
+                                <td class="num">O(n^2)</td>
+                                <td class="num">O(n^2)</td>
+                                <td class="num">O(1)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td><a href="./selectionsort">Selection Sort</a></td>
+                                <td class="num">O(n^2)</td>
+                                <td class="num">O(n^2)</td>
+                                <td class="num">O(1)</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td><a href="./insertionsort">Insertion Sort</a></td>
+                                <td class="num">O(n^2)</td>
+                                <td class="num">O(n^2)</td>
+                                <td class="num">O(1)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td><a href="./shellsort">Shell Sort</a></td>
+                                <td class="num">O(n^1.25)</td>
+                                <td class="num">O(n^2)</td>
+                                <td class="num">O(1)</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td><a href="./mergesort">Merge Sort</a></td>
+                                <td class="num">O(n log n)</td>
+                                <td class="num">O(n log n)</td>
+                                <td class="num">O(n)</td>
+                                <td>Yes</td>
+                            </tr>
+                            <tr>
+                                <td><a href="./quicksort">Quick Sort</a></td>
+                                <td class="num">O(n log n)</td>
+                                <td class="num">O(n^2)</td>
+                                <td class="num">O(log n)</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td><a href="./heapsort">Heap Sort</a></td>
+                                <td class="num">O(n log n)</td>
+                                <td class="num">O(n log n)</td>
+                                <td class="num">O(1)</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td><a href="./radixsort">Radix Sort</a></td>
+                                <td class="num">O(nk)</td>
+                                <td class="num">O(nk)</td>
+                                <td class="num">O(n + k)</td>
+                                <td>Yes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row mt-2" data-reveal>
+                    <a class="btn btn--subtle" href="./summary">Full comparison and decision guide</a>
+                    <a class="btn btn--ghost" href="./big-o-notation">Learn Big O notation</a>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">05</span>Why sorting matters</h2>
+                </div>
+                <div class="prose" data-reveal>
+                    <p>Almost every data structure and algorithm builds on sorted data. Binary search, which finds a value
+                        in <code>O(log n)</code> time, requires a sorted array. Databases, ranking systems, search results,
+                        and statistics all depend on fast and stable sorting. Choosing the right algorithm can be the
+                        difference between a query that returns in milliseconds and one that stalls for seconds.</p>
+                    <p>Sorting is also the best way to learn complexity analysis. Because every sort is a complete,
+                        self-contained program, it is the ideal first exercise for comparing how code structure changes
+                        runtime as inputs grow.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">06</span>Learning path</h2>
+                    <p class="section__desc">A suggested order that builds intuition first and theory second.</p>
+                </div>
+                <div class="steps" data-reveal>
+                    <div class="step">
+                        <p class="step__title">Start with the simple sorts</p>
+                        <p class="step__desc">Run the <a href="./bubblesort">Bubble Sort</a>, <a href="./selectionsort">Selection Sort</a>,
+                            and <a href="./insertionsort">Insertion Sort</a> visualizers. Watch how each pass moves values
+                            toward their final position.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__title">Grasp divide and conquer</p>
+                        <p class="step__desc">Study <a href="./quicksort">Quick Sort</a> and <a href="./mergesort">Merge Sort</a>.
+                            Notice how splitting the problem makes each recursive step cheaper.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__title">Learn tree-based and non-comparison sorting</p>
+                        <p class="step__desc">Explore the <a href="./heapsort">Heap Sort</a> visualizer and the interactive
+                            <a href="./heap-visualizer">Heap Visualizer</a>, then compare with <a href="./radixsort">Radix Sort</a>
+                            for integer data.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__title">Prove it with data</p>
+                        <p class="step__desc">Open the <a href="./sorting-algorithm-race">Algorithm Race</a> to measure real
+                            comparisons, swaps, and time on identical random, sorted, and reversed arrays.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__title">Formalize with Big O</p>
+                        <p class="step__desc">Finish with the <a href="./big-o-notation">Big O guide</a> so the complexity
+                            numbers everywhere on this site become second nature.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">07</span>Frequently asked questions</h2>
+                </div>
+                <div class="faq" data-reveal>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>What is the easiest sorting algorithm to learn?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p><a href="./bubblesort">Bubble Sort</a> is the most intuitive:
+                            repeatedly swap adjacent items that are out of order until the array is sorted. Its simplicity
+                            makes it a classic teaching tool, though it is rarely used in production software.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Which sorting algorithm uses the least memory?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Heap Sort, Selection Sort, Insertion Sort, and Bubble Sort all sort
+                            in place using O(1) extra space. Merge Sort needs O(n) extra memory for its temporary arrays,
+                            which is its main drawback.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Why is Quick Sort fast but risky?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Quick Sort has excellent average performance with low constants and
+                            in-place partitioning. However, a naive implementation picks a bad pivot on already-sorted data
+                            and degrades to O(n^2). Randomized pivoting avoids this in practice.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Is Merge Sort always stable?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Yes when implemented correctly. The merge step preserves left-to-right
+                            order for equal keys, so records keep their original relative order. This makes Merge Sort a
+                            safe default for stable multi-key sorts.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Can sorting be faster than O(n log n)?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Not with comparisons alone. The comparison model has a proven lower
+                            bound of O(n log n). Non-comparison sorts such as Radix Sort or Counting Sort can beat it only
+                            when keys are bounded or have a known structure.</p></div>
+                    </details>
+                </div>
+            </section>
+
+            <section class="section" data-reveal>
+                <div class="card card--pad center mt-0">
+                    <h2 class="section__title" style="justify-content:center;font-size:22px">Put it on screen</h2>
+                    <p class="muted mt-1">Skip the theory and watch the bars move. Every algorithm on this site is fully
+                        animated and has code in five languages.</p>
+                    <div class="row center" style="justify-content:center" role="list">
+                        <a class="btn btn--accent" href="./sorting-algorithm-race">Run the Algorithm Race</a>
+                        <a class="btn btn--subtle" href="./">Open all visualizers</a>
+                        <a class="btn btn--ghost" href="./heap-visualizer">Try the Heap Visualizer</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="shell">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand"><span class="brand__mark"><img src="./images/sort.png" alt="" width="24" height="24"></span> EasySorting</div>
+                    <p class="footer__about">A free, interactive sorting algorithm visualizer. Learn how every major sort
+                        works with step-by-step animations and code in five programming languages.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on GitHub"><img src="./images/svg-icons/github.svg" alt="GitHub"></a>
+                        <a href="https://www.youtube.com/@code_with_ease" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on YouTube"><img src="./images/svg-icons/youtube.svg" alt="YouTube"></a>
+                        <a href="https://www.instagram.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Instagram"><img src="./images/svg-icons/instagram.svg" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Facebook"><img src="./images/svg-icons/facebook.svg" alt="Facebook"></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Algorithms</h4>
+                    <ul>
+                        <li><a href="./bubblesort">Bubble Sort</a></li>
+                        <li><a href="./insertionsort">Insertion Sort</a></li>
+                        <li><a href="./quicksort">Quick Sort</a></li>
+                        <li><a href="./mergesort">Merge Sort</a></li>
+                        <li><a href="./heapsort">Heap Sort</a></li>
+                        <li><a href="./radixsort">Radix Sort</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="./sorting-algorithms">Sorting Algorithms Guide</a></li>
+                        <li><a href="./big-o-notation">Big O Notation</a></li>
+                        <li><a href="./summary">Full Comparison</a></li>
+                        <li><a href="./sorting-algorithm-race">Algorithm Race</a></li>
+                        <li><a href="./heap-visualizer">Heap Visualizer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Site</h4>
+                    <ul>
+                        <li><a href="./about">About</a></li>
+                        <li><a href="./feedback">Feedback</a></li>
+                        <li><a href="./contact">Contact</a></li>
+                        <li><a href="./privacy-policy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>Copyright <span data-year>2026</span> EasySorting. Made by Arun Neupane.</span>
+                <span>Free forever. No sign-up. Fully offline-ready PWA.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./hig.js"></script>
+    <script>
+        (function () {
+            var PATH = "https://easysorting.netlify.app/";
+            var algs = [
+                { slug: "bubblesort", thumb: "bubble", name: "Bubble Sort", desc: "Repeatedly swaps adjacent out-of-order values. Simple, stable, O(n^2), best for tiny arrays.", avg: "O(n^2)", stable: true, color: "#FF3B30", ring: "#FF3B30" },
+                { slug: "selectionsort", thumb: "selection", name: "Selection Sort", desc: "Picks the smallest remaining value each pass and swaps it into place. Minimal writes at O(n^2).", avg: "O(n^2)", stable: false, color: "#FF9500", ring: "#FF9500" },
+                { slug: "insertionsort", thumb: "insertion", name: "Insertion Sort", desc: "Builds the sorted part one item at a time. Blazing fast on nearly sorted data, O(n) best case.", avg: "O(n^2)", stable: true, color: "#FFCC00", ring: "#FF9500" },
+                { slug: "shellsort", thumb: "shell", name: "Shell Sort", desc: "Insertion sort over shrinking gaps. Sub-quadratic average, in place, and easy to reason about.", avg: "O(n^1.25)", stable: false, color: "#5856D6", ring: "#5856D6" },
+                { slug: "mergesort", thumb: "merge", name: "Merge Sort", desc: "Divide and conquer with guaranteed O(n log n) and full stability. Costs O(n) extra memory.", avg: "O(n log n)", stable: true, color: "#007AFF", ring: "#007AFF" },
+                { slug: "quicksort", thumb: "quick", name: "Quick Sort", desc: "Partitions around a pivot. The fastest general sort on average, at O(n log n), in place.", avg: "O(n log n)", stable: false, color: "#34C759", ring: "#34C759" },
+                { slug: "heapsort", thumb: "heap", name: "Heap Sort", desc: "Turns the array into a heap, then extracts the max every step. O(n log n) guaranteed, in place.", avg: "O(n log n)", stable: false, color: "#AF52DE", ring: "#AF52DE" },
+                { slug: "radixsort", thumb: "radix", name: "Radix Sort", desc: "Sorts numbers digit by digit with counting passes. O(nk) and fastest on bounded integers.", avg: "O(nk)", stable: true, color: "#30B0C7", ring: "#30B0C7" }
+            ];
+
+            var grid = document.getElementById("algGrid");
+            algs.forEach(function (a, i) {
+                var card = document.createElement("article");
+                card.className = "card card--lift alg-card";
+                card.setAttribute("data-reveal", "");
+                card.style.setProperty("--reveal-delay", (i * 60) + "ms");
+
+                var top = document.createElement("div");
+                top.className = "alg-card__top";
+                var orb = document.createElement("img");
+                orb.className = "alg-thumb";
+                orb.src = "./images/" + a.thumb + ".webp";
+                orb.alt = a.name + " visualizer artwork";
+                orb.width = 48;
+                orb.height = 48;
+                orb.loading = "lazy";
+                top.appendChild(orb);
+                var chip = document.createElement("span");
+                chip.className = "chip chip--accent";
+                chip.textContent = a.avg + (a.stable ? "  Stable" : "");
+                top.appendChild(chip);
+                card.appendChild(top);
+
+                var name = document.createElement("h3");
+                name.className = "alg-card__name";
+                name.textContent = a.name;
+                card.appendChild(name);
+
+                var desc = document.createElement("p");
+                desc.className = "alg-card__desc";
+                desc.textContent = a.desc;
+                card.appendChild(desc);
+
+                var meta = document.createElement("div");
+                meta.className = "alg-card__meta";
+                var badge = document.createElement("span");
+                badge.className = "badge-dot";
+                badge.style.background = a.color;
+                badge.setAttribute("aria-hidden", "true");
+                meta.appendChild(badge);
+                var lab = document.createElement("span");
+                lab.textContent = a.stable ? "Stable" : "Not stable";
+                meta.appendChild(lab);
+                card.appendChild(meta);
+
+                var go = document.createElement("a");
+                go.className = "alg-card__go";
+                go.href = "./" + a.slug;
+                go.textContent = "Visualize ";
+                var arrow = document.createElement("span");
+                arrow.className = "go-arrow";
+                arrow.setAttribute("aria-hidden", "true");
+                arrow.textContent = ">";
+                go.appendChild(arrow);
+                card.appendChild(go);
+
+                grid.appendChild(card);
+            });
+
+            var chart = document.getElementById("growthChart");
+            var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            chart.appendChild(svg);
+            FastSort.hig.drawGrowthCurve(svg, [
+                { label: "O(n)", color: "#34C759", fn: function (n) { return n; } },
+                { label: "O(n log n)", color: "#007AFF", fn: function (n) { return n * Math.log2(n); } },
+                { label: "O(n^2)", color: "#FF3B30", fn: function (n) { return n * n; } }
+            ], { nMax: 100 });
+
+            function paintOutcome(sc) {
+                var map = {
+                    nearly: { name: "Insertion Sort", url: "insertionsort", color: "#FF9500",
+                        why: "On almost-sorted data Insertion Sort runs in near-linear O(n) time with O(1) space. It moves each item at most a couple of positions, so it wins in practice." },
+                    random: { name: "Quick Sort", url: "quicksort", color: "#34C759",
+                        why: "Quick Sort averages O(n log n) with small constant overhead and sorts in place. For unknown random data it is usually the fastest general-purpose choice." },
+                    worst: { name: "Merge Sort", url: "mergesort", color: "#007AFF",
+                        why: "Merge Sort guarantees O(n log n) in every case and is stable. If a hard worst case is unacceptable, it is the safest selection (Heap Sort also works, in place)." },
+                    stable: { name: "Merge Sort", url: "mergesort", color: "#007AFF",
+                        why: "Merge Sort is stable, so records with equal keys keep their original order, and it still delivers a guaranteed O(n log n). Insertion Sort is the lighter stable option for small inputs." },
+                    tiny: { name: "Insertion Sort", url: "insertionsort", color: "#FF9500",
+                        why: "Below roughly 20 items Insertion Sort outperforms divide and conquer because it has no recursion overhead and constant extra space. Many real sorters use it for small n." },
+                    ints: { name: "Radix Sort", url: "radixsort", color: "#30B0C7",
+                        why: "Radix Sort counts digits instead of comparing values, reaching O(nk). For fixed-width integers it beats comparison sorts outright." },
+                    mem: { name: "Heap Sort", url: "heapsort", color: "#AF52DE",
+                        why: "Heap Sort sorts in place with O(1) extra memory and a guaranteed O(n log n) worst case, the same guarantee as Merge Sort without the buffer." },
+                    learn: { name: "Bubble Sort", url: "bubblesort", color: "#FF3B30",
+                        why: "Start with Bubble Sort to build intuition for passes and swaps, then move through Selection Sort and Insertion Sort before tackling divide and conquer." }
+                };
+                var m = map[sc];
+                if (!m) return;
+                var out = document.getElementById("decisionOutcome");
+                out.classList.add("is-fired");
+                out.innerHTML =
+                    '<div class="decision__pick">' +
+                    '<span class="badge-dot" style="background:' + m.color + '" aria-hidden="true"></span>' +
+                    '<span class="decision__pick-name gradient-text">' + m.name + '</span>' +
+                    '<span class="chip chip--accent">Recommended pick</span>' +
+                    '</div>' +
+                    '<p class="decision__reason">' + m.why + '</p>' +
+                    '<a class="decision__cta" href="./' + m.url + '">Open the ' + m.name + ' visualizer <span class="go-arrow">&gt;</span></a>';
+            }
+
+            var list = document.getElementById("scenarioList");
+            list.addEventListener("click", function (ev) {
+                var btn = ev.target.closest(".scenario-btn");
+                if (!btn) return;
+                list.querySelectorAll(".scenario-btn").forEach(function (b) { b.classList.remove("is-on"); });
+                btn.classList.add("is-on");
+                paintOutcome(btn.getAttribute("data-sc"));
+            });
+        })();
+    </script>
+</body>
+
+</html>

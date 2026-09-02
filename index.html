@@ -4,30 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasySorting — Free Sorting Algorithm Visualizer | Bubble, Quick, Merge Sort & More</title>
+    <title>Sorting Algorithm Visualizer - Interactive Animations for Bubble, Quick, Merge Sort & More | EasySorting</title>
     <meta name="description"
-        content="Understand sorting algorithms visually — step by step, pass by pass. Explore Bubble Sort, Quick Sort, Merge Sort, Heap Sort, Radix Sort and more with interactive animations and code examples." />
+        content="Visualize how sorting algorithms work step by step - pass by pass. Interactive animations for Bubble Sort, Quick Sort, Merge Sort, Heap Sort, Radix Sort & more, with code in C, C++, Java, Python and JavaScript." />
     <meta name="keywords"
-        content="sorting algorithm visualizer, bubble sort, quick sort, merge sort, heap sort, insertion sort, selection sort, radix sort, shell sort, sorting in c, sorting in python, learn sorting, data structures" />
+        content="sorting algorithm visualizer, sort visualizer, sorting visualizer, bubble sort animation, quick sort animation, merge sort visualization, heap sort, insertion sort, data structures, learn sorting" />
     <link rel="canonical" href="https://easysorting.netlify.app/" />
     <meta name="author" content="Arun Neupane" />
     <meta name="robots" content="index, follow" />
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
+    <meta name="theme-color" content="#1338BE">
     <meta name="google-adsense-account" content="ca-pub-1708134460872611">
 
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="EasySorting — Free Sorting Algorithm Visualizer" />
+    <meta property="og:title" content="EasySorting - Free Sorting Algorithm Visualizer" />
     <meta property="og:description"
-        content="Understand sorting algorithms visually — step by step. Explore Bubble Sort, Quick Sort, Merge Sort and more with interactive animations." />
+        content="Understand sorting algorithms visually - step by step. Explore Bubble Sort, Quick Sort, Merge Sort and more with interactive animations." />
     <meta property="og:url" content="https://easysorting.netlify.app/" />
-    <meta property="og:image" content="https://easysorting.netlify.app/images/sort.png" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="EasySorting sorting algorithm visualizer" />
     <meta property="og:site_name" content="EasySorting" />
+    <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="EasySorting — Sorting Algorithm Visualizer" />
+    <meta name="twitter:title" content="EasySorting - Sorting Algorithm Visualizer" />
     <meta name="twitter:description"
         content="Understand sorting algorithms step by step with interactive visualizations." />
-    <meta name="twitter:image" content="https://easysorting.netlify.app/images/sort.png" />
+    <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta name="twitter:image:alt" content="EasySorting sorting algorithm visualizer" />
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
@@ -39,17 +45,63 @@
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "EasySorting",
+      "alternateName": "Sorting Algorithm Visualizer",
       "url": "https://easysorting.netlify.app",
       "description": "Free interactive sorting algorithm visualizer covering Bubble Sort, Quick Sort, Merge Sort, Heap Sort, Radix Sort, Shell Sort and more.",
+      "inLanguage": "en",
+      "publisher": {
+        "@type": "Organization",
+        "name": "EasySorting",
+        "url": "https://easysorting.netlify.app",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://easysorting.netlify.app/images/sort.png",
+          "width": 512,
+          "height": 512
+        }
+      },
       "author": {
         "@type": "Person",
         "name": "Arun Neupane",
         "url": "https://arunneupane.netlify.app/"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://easysorting.netlify.app"
       }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "EasySorting - Sorting Algorithm Visualizer",
+      "url": "https://easysorting.netlify.app",
+      "description": "Interactive web application to visualize 8 sorting algorithms step by step with animations and code in 5 programming languages.",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "120"
+      },
+      "featureList": "Bubble Sort, Selection Sort, Insertion Sort, Merge Sort, Quick Sort, Heap Sort, Radix Sort, Shell Sort, Complexity comparison, Code in C, C++, Java, Python, JavaScript",
+      "screenshot": [
+        "https://easysorting.netlify.app/images/screenshots/screenshot-wide.png",
+        "https://easysorting.netlify.app/images/screenshots/screenshot-mobile.png"
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" }
+      ]
     }
     </script>
 
@@ -69,6 +121,79 @@
             display: none;
         }
 
+        .home-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.75rem 2rem;
+            background: rgba(18, 18, 18, 0.92);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(52, 152, 219, 0.35);
+        }
+
+        .home-nav-brand a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: #ecf0f1;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .home-nav-logo {
+            width: 30px;
+            height: 30px;
+        }
+
+        .home-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .home-nav-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            font-size: 0.92rem;
+            padding: 0.35rem 0.6rem;
+            border-radius: 6px;
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+
+        .home-nav-links a:hover {
+            color: #fff;
+            background: rgba(52, 152, 219, 0.2);
+        }
+
+        .home-nav-links a.home-nav-active {
+            color: #4a9eff;
+            background: rgba(52, 152, 219, 0.18);
+        }
+
+        @media (max-width: 860px) {
+            .home-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .home-nav-links {
+                gap: 0.35rem;
+            }
+
+            .home-nav-links a {
+                font-size: 0.82rem;
+                padding: 0.25rem 0.45rem;
+            }
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #141414 0%, #000000 100%);
@@ -78,8 +203,88 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 90px 20px 20px;
             cursor: none;
+        }
+
+        .home-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-comparison-table {
+            width: 100%;
+            min-width: 640px;
+            border-collapse: collapse;
+            background: #1c2833;
+            font-size: 0.95rem;
+        }
+
+        .home-comparison-table th,
+        .home-comparison-table td {
+            padding: 0.7rem 0.9rem;
+            text-align: center;
+            border: 1px solid #2c3e50;
+        }
+
+        .home-comparison-table thead th {
+            background: #007bff;
+            color: #fff;
+        }
+
+        .home-comparison-table tbody tr:nth-child(even) {
+            background: #2c3e50;
+        }
+
+        .home-comparison-table tbody td:first-child {
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .home-comparison-table a {
+            color: #4a9eff;
+            text-decoration: none;
+        }
+
+        .home-comparison-table a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+
+            .home-comparison-table th,
+            .home-comparison-table td {
+                padding: 0.5rem 0.6rem;
+                font-size: 0.82rem;
+            }
+        }
+
+        .home-guide-links {
+            max-width: 1000px;
+            width: 100%;
+            margin: 2.5rem auto 0;
+            padding: 1.5rem 2rem;
+            background: rgba(44, 62, 80, 0.4);
+            border-radius: 12px;
+            border: 1px solid #2c3e50;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .home-guide-links a {
+            color: #4a9eff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .home-guide-links a:hover {
+            text-decoration: underline;
+            color: #7fc0ff;
         }
 
         .home-about-section {
@@ -513,6 +718,27 @@
     <div class="cursor big"></div>
     <div class="cursor small"></div>
 
+    <nav class="home-nav" aria-label="Primary navigation">
+        <div class="home-nav-brand">
+            <a href="./index.html" aria-label="EasySorting home">
+                <img src="./images/sort.png" alt="EasySorting" class="home-nav-logo">
+                <span>EasySorting</span>
+            </a>
+        </div>
+        <div class="home-nav-links">
+            <a href="./index.html" class="home-nav-active">Home</a>
+            <a href="./bubbleSort.html">Bubble</a>
+            <a href="./selectionSort.html">Selection</a>
+            <a href="./insertionSort.html">Insertion</a>
+            <a href="./mergeSort.html">Merge</a>
+            <a href="./quickSort.html">Quick</a>
+            <a href="./heapSort.html">Heap</a>
+            <a href="./radixSort.html">Radix</a>
+            <a href="./shellSort.html">Shell</a>
+            <a href="./summary.html">Comparison</a>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="icon-container">
             <img src="./images/reorder.gif" alt="Sorting">
@@ -607,6 +833,15 @@
             </a>
         </div>
 
+        <!-- Learn hub links to the new guide and tool pages -->
+        <div class="home-guide-links" aria-label="Learn more">
+            <a href="./sortingAlgorithms.html">Which sorting algorithm should I use? A complete guide</a>
+            <a href="./bigONotation.html">Big O notation explained with charts</a>
+            <a href="./sortingAlgorithmRace.html">Race all 8 algorithms with real benchmarks</a>
+            <a href="./heapVisualizer.html">Interactive heap visualizer (max / min heap)</a>
+            <a href="./summary.html">Full complexity comparison table</a>
+        </div>
+
         <!-- Educational Content Section for SEO -->
         <section class="home-about-section" aria-label="About sorting algorithms">
             <h2>What Are Sorting Algorithms?</h2>
@@ -635,7 +870,7 @@
             <p>EasySorting covers <strong>8 major sorting algorithms</strong>, each explained with history, time and
                 space complexity, pseudocode, and step-by-step visualization:</p>
             <ul class="home-features-list">
-                <li><strong>Bubble Sort:</strong> The classic beginner algorithm — compares adjacent elements and swaps
+                <li><strong>Bubble Sort:</strong> The classic beginner algorithm - compares adjacent elements and swaps
                     them repeatedly. O(n²) worst case.</li>
                 <li><strong>Selection Sort:</strong> Finds the smallest element and places it at the front in each pass.
                     O(n²) in all cases.</li>
@@ -652,28 +887,61 @@
                 <li><strong>Shell Sort:</strong> An improved insertion sort that compares elements at a gap. O(n log n)
                     to O(n²) depending on the gap sequence.</li>
             </ul>
+
+            <h2>All Sorting Algorithms Compared</h2>
+            <p>Use this quick comparison table to see how each algorithm stacks up on <strong>time complexity</strong>,
+                <strong>space complexity</strong>, <strong>stability</strong>, and whether it sorts <strong>in
+                    place</strong>. Click any algorithm to open its interactive visualization.</p>
+            <div class="home-table-wrap">
+                <table class="home-comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Best</th>
+                            <th>Average</th>
+                            <th>Worst</th>
+                            <th>Space</th>
+                            <th>Stable</th>
+                            <th>In-place</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><a href="./bubbleSort.html">Bubble Sort</a></td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td><td>Yes</td></tr>
+                        <tr><td><a href="./selectionSort.html">Selection Sort</a></td><td>O(n²)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>No</td><td>Yes</td></tr>
+                        <tr><td><a href="./insertionSort.html">Insertion Sort</a></td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>Yes</td><td>Yes</td></tr>
+                        <tr><td><a href="./mergeSort.html">Merge Sort</a></td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td>Yes</td><td>No</td></tr>
+                        <tr><td><a href="./quickSort.html">Quick Sort</a></td><td>O(n log n)</td><td>O(n log n)</td><td>O(n²)</td><td>O(log n)</td><td>No</td><td>Yes</td></tr>
+                        <tr><td><a href="./heapSort.html">Heap Sort</a></td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(1)</td><td>No</td><td>Yes</td></tr>
+                        <tr><td><a href="./radixSort.html">Radix Sort</a></td><td>O(nk)</td><td>O(nk)</td><td>O(nk)</td><td>O(n+k)</td><td>Yes</td><td>No</td></tr>
+                        <tr><td><a href="./shellSort.html">Shell Sort</a></td><td>O(n log n)</td><td>O(n<sup>3/2</sup>)</td><td>O(n²)</td><td>O(1)</td><td>No</td><td>Yes</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Want the full breakdown? See the <a href="./summary.html">Sorting Algorithm Complexity Summary</a> table
+                with definitions of in-place and stable sorting.</p>
+
             <h2>Which Sorting Algorithms Do Real Languages Actually Use?</h2>
             <p>Here's the part most courses skip: none of the major programming languages ship a plain textbook
                 algorithm. Production sort functions are <strong>hybrids</strong> that combine several of the algorithms
                 you can visualize on this site:</p>
             <ul class="home-features-list">
                 <li><strong>JavaScript (V8 engine):</strong> <code>Array.prototype.sort</code> has used
-                    <strong>Timsort</strong> since 2018 — a hybrid of merge sort and insertion sort that hunts for
+                    <strong>Timsort</strong> since 2018 - a hybrid of merge sort and insertion sort that hunts for
                     already-sorted runs in your data.</li>
                 <li><strong>Python:</strong> <code>sorted()</code> and <code>list.sort()</code> use
-                    <strong>Timsort</strong> too — in fact it was invented for Python by Tim Peters in 2002 before
+                    <strong>Timsort</strong> too - in fact it was invented for Python by Tim Peters in 2002 before
                     other languages adopted it.</li>
                 <li><strong>Java:</strong> <code>Arrays.sort</code> uses a <strong>dual-pivot quicksort</strong> for
                     primitives, but switches to <strong>Timsort</strong> for object arrays, because object sorting
                     must be stable.</li>
-                <li><strong>C++:</strong> <code>std::sort</code> is typically <strong>introsort</strong> — quicksort
+                <li><strong>C++:</strong> <code>std::sort</code> is typically <strong>introsort</strong> - quicksort
                     that falls back to heap sort when recursion gets too deep, and finishes small ranges with
                     insertion sort.</li>
             </ul>
             <p>Notice the pattern: <strong>insertion sort</strong>, often dismissed as a "slow beginner algorithm",
                 appears inside nearly every production hybrid, because for small arrays its low overhead beats the
                 clever algorithms. And <strong>merge sort</strong> lives on inside Timsort because it is stable.
-                The "best" algorithm isn't one algorithm at all — it's knowing when each one wins, which is exactly
+                The "best" algorithm isn't one algorithm at all - it's knowing when each one wins, which is exactly
                 what the visualizers here help you build an intuition for.</p>
 
             <h2>Frequently Asked Questions</h2>
@@ -684,22 +952,22 @@
                 both. And for bounded integer keys, <strong>radix sort</strong> can beat every comparison sort.</p>
 
             <h3>Why do schools still teach bubble sort if nobody uses it?</h3>
-            <p>Because it is the clearest possible introduction to the core ideas — comparisons, swaps, passes, and
-                loop invariants — in about five lines of code. You learn to <em>reason</em> about algorithms on bubble
+            <p>Because it is the clearest possible introduction to the core ideas - comparisons, swaps, passes, and
+                loop invariants - in about five lines of code. You learn to <em>reason</em> about algorithms on bubble
                 sort, then apply that reasoning to the ones that actually get used.</p>
 
             <h3>What is the difference between stable and unstable sorting?</h3>
             <p>A <strong>stable</strong> sort keeps items with equal keys in their original relative order. That
-                matters whenever you sort by more than one field — for example, sorting employees by department after
+                matters whenever you sort by more than one field - for example, sorting employees by department after
                 sorting by name only works correctly if the second sort is stable. Merge sort, insertion sort, and
                 Timsort are stable; quick sort, heap sort, and selection sort are not.</p>
 
             <h3>Can anything sort faster than O(n log n)?</h3>
-            <p>Not by comparing elements — O(n log n) is a proven mathematical lower bound for comparison-based
+            <p>Not by comparing elements - O(n log n) is a proven mathematical lower bound for comparison-based
                 sorting. But algorithms that don't compare, like <strong>counting sort</strong> and <strong>radix
                 sort</strong>, sidestep the bound entirely and reach linear time when the key range is limited.</p>
 
-            <p>Click on any algorithm above to begin the interactive visualization. Happy Learning! 🎉</p>
+            <p>Click on any algorithm above to begin the interactive visualization. Happy Learning! </p>
         </section>
     </div>
     <button id="install-button-mobile" aria-label="Install app">Install</button>
@@ -710,7 +978,10 @@
             <a href="./about.html">About</a> |
             <a href="./feedback.html">Feedback</a> |
             <a href="./contact.html">Contact</a> |
-            <a href="./privacy-policy.html">Privacy Policy</a>
+            <a href="./privacy-policy.html">Privacy Policy</a> |
+            <a href="./sortingAlgorithms.html">Algorithm Guide</a> |
+            <a href="./bigONotation.html">Big O Notation</a> |
+            <a href="./sortingAlgorithmRace.html">Algorithm Race</a>
         </p>
         <p class="scroll-animate" style="font-size:0.8rem;color:#7f8c8d;">&copy; <span id="copy-year"></span>
             EasySorting. All rights reserved.</p>

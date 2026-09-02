@@ -1,0 +1,30 @@
+# Netlify configuration for EasySorting
+
+[build]
+  publish = "."
+
+[build.environment]
+  DEBUG = "0"
+
+# Headers and redirects are defined in the root _headers and _redirects files,
+# which Netlify applies automatically for every published site.
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/404.html"
+  status = 404

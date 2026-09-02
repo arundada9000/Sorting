@@ -650,6 +650,60 @@ button {
 .sorting-algorithm-container ul li {
   text-align: justify;
 }
+
+/* Educational content - algorithm steps, use cases, related links */
+.sorting-algorithm-container ol.algorithm-steps {
+  list-style: decimal;
+  margin: 1rem 0 1rem 1.4rem;
+  color: #bdc3c7;
+}
+.sorting-algorithm-container ol.algorithm-steps li {
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+.sorting-algorithm-container .algorithm-steps strong {
+  color: #68efa5;
+}
+
+.sorting-algorithm-container ul.algorithm-list-inline {
+  list-style: disc;
+  margin-left: 1.4rem;
+}
+.sorting-algorithm-container ul.algorithm-list-inline li {
+  margin-bottom: 0.5rem;
+}
+.sorting-algorithm-container .algorithm-list-inline strong {
+  color: #68efa5;
+}
+
+.sorting-algorithm-container .related-visualizations {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  border-left: 4px solid #3498db;
+  background: rgba(52, 152, 219, 0.08);
+  border-radius: 6px;
+}
+.sorting-algorithm-container .related-links {
+  margin: 0.75rem 0;
+  line-height: 2;
+}
+.sorting-algorithm-container .related-links a {
+  color: #4a9eff;
+  text-decoration: none;
+  font-weight: 600;
+}
+.sorting-algorithm-container .related-links a:hover {
+  text-decoration: underline;
+}
+.sorting-algorithm-container .related-visualizations p a {
+  color: #4a9eff;
+  text-decoration: none;
+}
+.sorting-algorithm-container .related-visualizations p a:hover {
+  text-decoration: underline;
+}
+
 .code-container {
   position: relative;
   max-width: 100%;

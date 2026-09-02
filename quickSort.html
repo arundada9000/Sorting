@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Sort Visualizer — Step-by-Step Animation, Code & Complexity | EasySorting</title>
+    <title>Quick Sort Visualizer - Step-by-Step Animation, Code & Complexity | EasySorting</title>
     <meta name="description"
         content="Visualize Quick Sort's pivot-based partitioning step by step. Understand average O(n log n) performance, randomized quick sort, with code in C, C++, Java, Python, and JavaScript." />
     <meta name="keywords"
@@ -16,16 +16,19 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Quick Sort Visualizer — Step-by-Step | EasySorting" />
+    <meta property="og:title" content="Quick Sort Visualizer - Step-by-Step | EasySorting" />
     <meta property="og:description"
         content="Visualize Quick Sort's pivot partitioning interactively with animations and code." />
     <meta property="og:url" content="https://easysorting.netlify.app/quicksort" />
-    <meta property="og:image" content="https://easysorting.netlify.app/images/quick.webp" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="EasySorting" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Quick Sort Visualizer | EasySorting" />
     <meta name="twitter:description"
         content="Interactive Quick Sort visualization with both normal and randomized pivot modes." />
+  <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
@@ -36,7 +39,7 @@
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "Quick Sort — Visual Step-by-Step Explanation",
+      "headline": "Quick Sort - Visual Step-by-Step Explanation",
       "description": "Interactive visualization of Quick Sort with time complexity, pseudocode, and implementation in multiple languages.",
       "url": "https://easysorting.netlify.app/quicksort",
       "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
@@ -52,6 +55,39 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" },
         { "@type": "ListItem", "position": 2, "name": "Quick Sort", "item": "https://easysorting.netlify.app/quicksort" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does quick sort work step by step?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quick sort picks a pivot element, then partitions the array so all elements smaller than the pivot come before it and all larger elements come after. It then recursively quick sorts the two partitions until the whole array is sorted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the time complexity of quick sort?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quick sort has O(n log n) average and best-case time complexity, but degrades to O(n²) in the worst case when a poor pivot is chosen (e.g., repeatedly picking the smallest or largest element). Randomizing the pivot avoids this in practice."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is quick sort stable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The standard in-place quick sort is NOT stable, because partitioning swaps elements non-adjacently, which can reorder equal keys."
+          }
+        }
       ]
     }
     </script>
@@ -389,16 +425,16 @@
                 <h2 class="section-title">Time and Space Complexity</h2>
                 <h3>Time Complexity</h3>
                 <ul>
-                    <li><strong>Best Case:</strong> <code>O(n log n)</code> – When the pivot divides the array into
+                    <li><strong>Best Case:</strong> <code>O(n log n)</code> - When the pivot divides the array into
                         nearly equal halves.</li>
-                    <li><strong>Average Case:</strong> <code>O(n log n)</code> – The average case performance is
+                    <li><strong>Average Case:</strong> <code>O(n log n)</code> - The average case performance is
                         efficient.</li>
-                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> – Occurs when the smallest or largest
+                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> - Occurs when the smallest or largest
                         element
                         is always chosen as the pivot.</li>
                 </ul>
                 <h3>Space Complexity</h3>
-                <p><strong>Space Complexity:</strong> <code>O(log n)</code> – Due to the recursive stack space used
+                <p><strong>Space Complexity:</strong> <code>O(log n)</code> - Due to the recursive stack space used
                     during the algorithm's execution.</p>
             </section>
 
@@ -441,6 +477,54 @@ function partition(arr, low, high):
                     average-case efficiency and practical performance.</p>
             </section>
 
+            <section class="how-it-works  scroll-animate">
+                <h2 class="section-title">How Quick Sort Works</h2>
+                <p>Quick sort is a divide-and-conquer algorithm built around the idea of a <strong>pivot</strong>. Its
+                    efficiency comes from partitioning the array in place:</p>
+                <ol class="algorithm-steps">
+                    <li><strong>Choose a pivot</strong> element (any element - often the last, first, or a random
+                        one).</li>
+                    <li><strong>Partition</strong> the array so that every element smaller than the pivot comes before
+                        it, and every element larger comes after it. The pivot is now in its final sorted position.</li>
+                    <li><strong>Recursively</strong> quick sort the sub-array to the left of the pivot and the
+                        sub-array to the right.</li>
+                    <li><strong>Terminate</strong> when a sub-array has zero or one element - the whole array is then
+                        sorted.</li>
+                </ol>
+                <p>On average quick sort makes <code>O(n log n)</code> comparisons and is famously cache-friendly,
+                    which is why it is so fast in practice - but its worst case is <code>O(n²)</code> when the pivot is
+                    consistently the smallest or largest element (randomizing the pivot avoids this).</p>
+            </section>
+
+            <section class="application-code  scroll-animate">
+                <h2 class="section-title">When To Use Quick Sort</h2>
+                <ul class="algorithm-list-inline">
+                    <li><strong>Random or shuffled data:</strong> excellent expected performance with low overhead.</li>
+                    <li><strong>Average-case sensitive workloads:</strong> cache-friendly partitioning beats merge sort
+                        in most comparisons.</li>
+                    <li><strong>In-place sorting:</strong> uses only O(log n) stack space.</li>
+                    <li><strong>Base of Introsort:</strong> combined with heap and insertion sort for production C++
+                        std::sort.</li>
+                </ul>
+            </section>
+
+            <section class="related-visualizations scroll-animate">
+                <h2 class="section-title">Related Sorting Visualizers</h2>
+                <p>Quick sort is an in-place but unstable comparison sort. Compare it with related algorithms:</p>
+                <div class="related-links">
+                    <a href="./mergeSort.html">Merge Sort Visualizer</a> -
+                    <a href="./heapSort.html">Heap Sort Visualizer</a> -
+                    <a href="./insertionSort.html">Insertion Sort Visualizer</a> -
+                    <a href="./shellSort.html">Shell Sort Visualizer</a> -
+                    <a href="./bubbleSort.html">Bubble Sort Visualizer</a>
+                </div>
+                <p>Compare all algorithms side by side in the <a href="./summary.html">Sorting Algorithm Complexity
+                        Summary</a>.</p>
+                <p>Prefer a plain-English answer? See <a href="./sortingAlgorithms.html">Which sorting algorithm
+                        should I use?</a>, benchmark every algorithm live in the <a href="./sortingAlgorithmRace.html">Sorting
+                        Algorithm Race</a>, or learn <a href="./bigONotation.html">Big O notation</a> with charts.</p>
+            </section>
+
             <section class="language-code-container">
                 <h1 class="scroll-animate">Quick Sort Code Implementation</h1>
                 <div class="language-selector scroll-animate">
@@ -463,7 +547,7 @@ function partition(arr, low, high):
 
     <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">EasySorting — Sorting Visualizer</p>
+            <p class="footer-title">EasySorting - Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
                 <a href="./feedback.html">Feedback</a> |
@@ -471,7 +555,7 @@ function partition(arr, low, high):
                 <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
             <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+            <p class="footer-credit">Made by <a href="https://arunneupane.netlify.app/" target="_blank"
                     rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>

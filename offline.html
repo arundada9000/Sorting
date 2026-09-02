@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - You Are Not Connected | EasySorting</title>
+    <meta name="description" content="You appear to be offline. EasySorting works as a PWA: the visualizers you visited before can still run here without a connection." />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
+    <meta name="theme-color" content="#F2F2F7">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./images/sort.png">
+    <link rel="stylesheet" href="./hig.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="topbar">
+        <div class="shell topbar__inner">
+            <a class="brand" href="./"><span class="brand__mark brand__mark--logo"><img src="./images/sort.png" alt="" width="30" height="30"></span> EasySorting</a>
+            <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"></button>
+        </div>
+    </header>
+
+    <main class="playing-field" id="main">
+        <div class="shell shell--narrow">
+            <div class="hero center" style="text-align:center">
+                <p class="hero__kicker" style="justify-content:center">Offline cache</p>
+                <h1 style="margin-inline:auto">You are offline</h1>
+                <p class="hero__lead" style="margin-inline:auto">
+                    The network is unreachable, but EasySorting is a progressive web app. Pages you opened before are saved
+                    on this device and still work.
+                </p>
+            </div>
+
+            <div class="card card--pad center mt-3" data-reveal>
+                <div class="bars-scene" aria-hidden="true" style="height:80px;margin:8px 0">
+                    <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                </div>
+                <h2 class="section__title" style="justify-content:center;font-size:20px">Try one of your cached pages</h2>
+                <div class="row center" style="justify-content:center;margin-top:18px">
+                    <a class="btn btn--accent" href="./">Home visualizer</a>
+                    <a class="btn btn--subtle" href="./sorting-algorithms">Guide</a>
+                    <a class="btn btn--subtle" href="./big-o-notation">Big O</a>
+                    <a class="btn btn--subtle" href="./summary">Comparison</a>
+                    <a class="btn btn--subtle" href="./sorting-algorithm-race">Race</a>
+                </div>
+                <p class="tiny mt-3">If a page was never visited, it cannot load until your connection returns. Check that
+                    your device is online and try again.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="shell">
+            <div class="footer__bottom" style="margin-top:0;border-top:none">
+                <span>Copyright <span data-year>2026</span> EasySorting. Made by Arun Neupane.</span>
+                <span>Free forever. No sign-up. Fully offline-ready PWA.</span>
+            </div>
+            <div class="footer-social" style="margin-top:16px">
+                <a href="https://github.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on GitHub"><img src="./images/svg-icons/github.svg" alt="GitHub"></a>
+                <a href="https://www.youtube.com/@code_with_ease" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on YouTube"><img src="./images/svg-icons/youtube.svg" alt="YouTube"></a>
+                <a href="https://www.instagram.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Instagram"><img src="./images/svg-icons/instagram.svg" alt="Instagram"></a>
+                <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Facebook"><img src="./images/svg-icons/facebook.svg" alt="Facebook"></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./hig.js"></script>
+    <script>
+        window.addEventListener("online", function () {
+            window.location.href = "./";
+        });
+    </script>
+</body>
+
+</html>

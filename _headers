@@ -1,0 +1,32 @@
+# ============================================================
+# EasySorting — Netlify Headers
+# Security + caching best practices
+# ============================================================
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-XSS-Protection: 1; mode=block
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Long-cache immutable build assets (images, css, js)
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/styles.css
+/script.js
+/hig.css
+/hig.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Never cache the service worker (must always check for updates)
+/service-worker.js
+  Cache-Control: no-cache
+  Service-Worker-Allowed: /
+
+# Never cache Google verification files
+/googlee96642ac7e0a4cdd.html
+  Cache-Control: no-store, must-revalidate

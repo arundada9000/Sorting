@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selection Sort Visualizer — Step-by-Step Animation, Code & Complexity | EasySorting</title>
+    <title>Selection Sort Visualizer - Step-by-Step Animation, Code & Complexity | EasySorting</title>
     <meta name="description"
         content="Visualize Selection Sort step by step. Understand why it always runs in O(n²) time, how it finds the minimum element in each pass, with full code in C, C++, Java, Python, and JavaScript." />
     <meta name="keywords"
@@ -16,15 +16,18 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Selection Sort Visualizer — Step-by-Step | EasySorting" />
+    <meta property="og:title" content="Selection Sort Visualizer - Step-by-Step | EasySorting" />
     <meta property="og:description"
         content="See how Selection Sort finds the minimum element in each pass with interactive animations and ready-to-copy code." />
     <meta property="og:url" content="https://easysorting.netlify.app/selectionsort" />
-    <meta property="og:image" content="https://easysorting.netlify.app/images/selection.webp" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="EasySorting" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Selection Sort Visualizer | EasySorting" />
     <meta name="twitter:description" content="Interactive Selection Sort visualization with code in 5 languages." />
+  <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
@@ -35,7 +38,7 @@
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "Selection Sort — Visual Step-by-Step Explanation",
+      "headline": "Selection Sort - Visual Step-by-Step Explanation",
       "description": "Interactive visualization of Selection Sort with time complexity, pseudocode, and implementation in C, C++, Java, Python, and JavaScript.",
       "url": "https://easysorting.netlify.app/selectionsort",
       "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
@@ -54,6 +57,40 @@
       ]
     }
     </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does selection sort work step by step?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Selection sort repeatedly finds the smallest (or largest) element from the unsorted portion and swaps it into its correct position at the front. Each pass grows the sorted region by one element, so after n passes the whole array is sorted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the time complexity of selection sort?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Selection sort always has O(n²) time complexity - best, average, and worst case - because it scans the remaining unsorted portion completely on every pass."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is selection sort stable or in-place?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Selection sort is in-place (O(1) extra space) but it is NOT stable, because the swap of the minimum element with the current position can reorder equal elements."
+          }
+        }
+      ]
+    }
+    </script>
+
     <link rel="icon" href="./images/sort.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
     <link rel="manifest" href="./manifest.json">
@@ -263,18 +300,18 @@
                 <h2 class="section-title">Time and Space Complexity</h2>
                 <h3>Time Complexity</h3>
                 <ul>
-                    <li><strong>Best Case:</strong> <code>O(n<sup>2</sup>)</code> – Regardless of the initial
+                    <li><strong>Best Case:</strong> <code>O(n<sup>2</sup>)</code> - Regardless of the initial
                         arrangement.
                     </li>
-                    <li><strong>Average Case:</strong> <code>O(n<sup>2</sup>)</code> – Quadratic complexity for average
+                    <li><strong>Average Case:</strong> <code>O(n<sup>2</sup>)</code> - Quadratic complexity for average
                         cases.
                     </li>
-                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> – Quadratic complexity for worst
+                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> - Quadratic complexity for worst
                         cases.
                     </li>
                 </ul>
                 <h3>Space Complexity</h3>
-                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm
+                <p><strong>Space Complexity:</strong> <code>O(1)</code> - It is an in-place sorting algorithm
                     requiring
                     a constant amount of additional space.</p>
             </section>
@@ -315,6 +352,51 @@
                     datasets and educational purposes.</p>
             </section>
 
+            <section class="how-it-works  scroll-animate">
+                <h2 class="section-title">How Selection Sort Works</h2>
+                <p>Selection sort builds the sorted array one element at a time from left to right. On each pass it
+                    scans the remaining unsorted portion to find the minimum:</p>
+                <ol class="algorithm-steps">
+                    <li><strong>Find the minimum</strong> element in the unsorted portion of the array.</li>
+                    <li><strong>Swap</strong> it with the first element of the unsorted portion, placing it in its
+                        correct sorted position.</li>
+                    <li><strong>Advance</strong> the boundary between sorted and unsorted regions by one.</li>
+                    <li><strong>Repeat</strong> until no unsorted elements remain - the array is now fully sorted.</li>
+                </ol>
+                <p>In the visualization above, the <strong>minimum</strong> of each pass is highlighted in green, and
+                    elements locked into their final sorted position appear in blue. Notice that selection sort makes
+                    at most <code>n</code> swaps regardless of input, but still performs <code>O(n²)</code>
+                    comparisons.</p>
+            </section>
+
+            <section class="application-code  scroll-animate">
+                <h2 class="section-title">When To Use Selection Sort</h2>
+                <ul class="algorithm-list-inline">
+                    <li><strong>Minimal-swap scenarios:</strong> when writes/swaps are expensive but comparisons are
+                        cheap, selection sort is often the best choice.</li>
+                    <li><strong>Small datasets:</strong> easy to implement and reason about for tiny arrays.</li>
+                    <li><strong>Teaching selection &amp; finding minima:</strong> a clear illustration of the selection
+                        primitive.</li>
+                </ul>
+            </section>
+
+            <section class="related-visualizations scroll-animate">
+                <h2 class="section-title">Related Sorting Visualizers</h2>
+                <p>Selection sort is an in-place but unstable comparison sort. Compare it with similar algorithms:</p>
+                <div class="related-links">
+                    <a href="./bubbleSort.html">Bubble Sort Visualizer</a> -
+                    <a href="./insertionSort.html">Insertion Sort Visualizer</a> -
+                    <a href="./heapSort.html">Heap Sort Visualizer</a> -
+                    <a href="./mergeSort.html">Merge Sort Visualizer</a> -
+                    <a href="./quickSort.html">Quick Sort Visualizer</a>
+                </div>
+                <p>Compare all algorithms side by side in the <a href="./summary.html">Sorting Algorithm Complexity
+                        Summary</a>.</p>
+                <p>Prefer a plain-English answer? See <a href="./sortingAlgorithms.html">Which sorting algorithm
+                        should I use?</a>, benchmark every algorithm live in the <a href="./sortingAlgorithmRace.html">Sorting
+                        Algorithm Race</a>, or learn <a href="./bigONotation.html">Big O notation</a> with charts.</p>
+            </section>
+
             <section class="language-code-container">
                 <h1 class="scroll-animate">Selection Sort Code Implementation</h1>
                 <div class="language-selector scroll-animate">
@@ -337,7 +419,7 @@
 
     <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">EasySorting — Sorting Visualizer</p>
+            <p class="footer-title">EasySorting - Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
                 <a href="./feedback.html">Feedback</a> |
@@ -345,7 +427,7 @@
                 <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
             <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+            <p class="footer-credit">Made by <a href="https://arunneupane.netlify.app/" target="_blank"
                     rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>

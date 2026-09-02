@@ -1,18 +1,21 @@
 {
-  "name": "EasySorting — Sorting Algorithm Visualizer",
+  "name": "EasySorting - Sorting Algorithm Visualizer",
   "short_name": "EasySorting",
-  "description": "Visualize sorting algorithms step by step — Bubble, Merge, Quick, Heap, Radix, Shell, Insertion, Selection Sort with code in 5 languages.",
-  "start_url": "/index.html",
+  "description": "Visualize sorting algorithms step by step: Bubble, Merge, Quick, Heap, Radix, Shell, Insertion, Selection Sort with animations and code in 5 languages.",
+  "id": "easysorting",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#121212",
   "theme_color": "#1338BE",
   "orientation": "any",
   "lang": "en",
+  "dir": "ltr",
   "categories": [
     "education",
     "productivity",
-    "coding"
+    "developer"
   ],
   "icons": [
     {
@@ -25,7 +28,13 @@
       "src": "/images/sort.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/images/sort.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "screenshots": [
@@ -34,31 +43,78 @@
       "sizes": "1920x1080",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "EasySorting — Sorting Visualizer on Desktop"
+      "label": "EasySorting - Interactive sorting visualizer on desktop"
     },
     {
-      "src": "/images/screenshots/screenshot-wide.png",
-      "sizes": "1920x1080",
+      "src": "/images/screenshots/screenshot-mobile.png",
+      "sizes": "750x1334",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "EasySorting — Sorting Visualizer on Mobile"
+      "label": "EasySorting - Visualize bubble sort on mobile"
     }
   ],
   "shortcuts": [
     {
-      "name": "Bubble Sort",
-      "url": "/bubbleSort.html",
-      "description": "Visualize Bubble Sort"
+      "name": "Bubble Sort Visualizer",
+      "url": "/bubblesort",
+      "description": "Visualize Bubble Sort step by step"
     },
     {
-      "name": "Quick Sort",
-      "url": "/quickSort.html",
-      "description": "Visualize Quick Sort"
+      "name": "Selection Sort Visualizer",
+      "url": "/selectionsort",
+      "description": "Visualize Selection Sort step by step"
     },
     {
-      "name": "Merge Sort",
-      "url": "/mergeSort.html",
-      "description": "Visualize Merge Sort"
+      "name": "Insertion Sort Visualizer",
+      "url": "/insertionsort",
+      "description": "Visualize Insertion Sort step by step"
+    },
+    {
+      "name": "Merge Sort Visualizer",
+      "url": "/mergesort",
+      "description": "Visualize Merge Sort step by step"
+    },
+    {
+      "name": "Quick Sort Visualizer",
+      "url": "/quicksort",
+      "description": "Visualize Quick Sort step by step"
+    },
+    {
+      "name": "Heap Sort Visualizer",
+      "url": "/heapsort",
+      "description": "Visualize Heap Sort step by step"
+    },
+    {
+      "name": "Radix Sort Visualizer",
+      "url": "/radixsort",
+      "description": "Visualize Radix Sort step by step"
+    },
+    {
+      "name": "Shell Sort Visualizer",
+      "url": "/shellsort",
+      "description": "Visualize Shell Sort step by step"
+    },
+    {
+      "name": "Complexity Summary",
+      "url": "/summary",
+      "description": "Compare time and space complexity of all algorithms"
+    },
+    {
+      "name": "Which Sort Should I Use",
+      "url": "/sorting-algorithms",
+      "description": "Choose the right algorithm with the interactive guide"
+    },
+    {
+      "name": "Heap Visualizer",
+      "url": "/heap-visualizer",
+      "description": "Build and animate max and min heaps live"
+    },
+    {
+      "name": "Algorithm Race",
+      "url": "/sorting-algorithm-race",
+      "description": "Benchmark all eight sorting algorithms"
     }
-  ]
+  ],
+  "prefer_related_applications": false,
+  "handle_links": "preferred"
 }

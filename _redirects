@@ -1,0 +1,61 @@
+# ============================================================
+# EasySorting — Netlify Redirects
+# 1. Canonicalize: camelCase/`.html` file paths -> lowercase clean URLs
+# 2. Force trailing-slash behavior and remove .html from URLs
+# ============================================================
+
+# Canonical redirects (camelCase -> lowercase clean path)
+/bubbleSort.html      /bubblesort       301
+/bubbleSort           /bubblesort       301
+/selectionSort.html   /selectionsort    301
+/selectionSort        /selectionsort    301
+/insertionSort.html   /insertionsort    301
+/insertionSort        /insertionsort    301
+/mergeSort.html       /mergesort        301
+/mergeSort            /mergesort        301
+/quickSort.html       /quicksort        301
+/quickSort            /quicksort        301
+/heapSort.html        /heapsort         301
+/heapSort             /heapsort         301
+/radixSort.html       /radixsort        301
+/radixSort            /radixsort        301
+/shellSort.html       /shellsort        301
+/shellSort            /shellsort        301
+
+# Guide and tool pages
+/sortingAlgorithms.html  /sorting-algorithms      301
+/sortingAlgorithms       /sorting-algorithms      301
+/bigONotation.html       /big-o-notation          301
+/bigONotation            /big-o-notation          301
+/heapVisualizer.html     /heap-visualizer         301
+/heapVisualizer          /heap-visualizer         301
+/sortingAlgorithmRace.html /sorting-algorithm-race 301
+/sortingAlgorithmRace      /sorting-algorithm-race 301
+
+# Static pages (strip .html)
+/about.html           /about            301
+/contact.html         /contact          301
+/feedback.html        /feedback         301
+/summary.html         /summary          301
+/privacy-policy.html  /privacy-policy   301
+/index.html           /                 301
+
+# Serve algorithm pages at their clean URLs
+/bubblesort           /bubbleSort.html   200
+/selectionsort        /selectionSort.html 200
+/insertionsort        /insertionSort.html 200
+/mergesort            /mergeSort.html     200
+/quicksort            /quickSort.html     200
+/heapsort             /heapSort.html      200
+/radixsort            /radixSort.html     200
+/shellsort            /shellSort.html     200
+/summary              /summary.html       200
+/sorting-algorithms   /sortingAlgorithms.html 200
+/big-o-notation       /bigONotation.html      200
+/heap-visualizer      /heapVisualizer.html    200
+/sorting-algorithm-race /sortingAlgorithmRace.html 200
+/about                /about.html         200
+/contact              /contact.html       200
+/feedback             /feedback.html      200
+/privacy-policy       /privacy-policy.html 200
+/offline              /offline.html       200

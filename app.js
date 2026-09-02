@@ -1,5 +1,5 @@
 // ============================================================
-// EasySorting — app.js
+// EasySorting - app.js
 // Service Worker registration + PWA install prompt
 // ============================================================
 
@@ -19,7 +19,7 @@ if ("serviceWorker" in navigator) {
             newWorker.state === "activated" &&
             navigator.serviceWorker.controller
           ) {
-            // New version activated — optionally inform user
+            // New version activated - optionally inform user
             console.log("[App] New version activated.");
           }
         });

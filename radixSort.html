@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radix Sort Visualizer — Step-by-Step Animation, Code & Complexity | EasySorting</title>
+    <title>Radix Sort Visualizer - Step-by-Step Animation, Code & Complexity | EasySorting</title>
     <meta name="description"
         content="Visualize Radix Sort step by step. Understand this non-comparison digit-by-digit sorting algorithm with O(nk) complexity. Code in C, C++, Java, Python, and JavaScript." />
     <meta name="keywords"
@@ -16,16 +16,19 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Radix Sort Visualizer — Step-by-Step | EasySorting" />
+    <meta property="og:title" content="Radix Sort Visualizer - Step-by-Step | EasySorting" />
     <meta property="og:description"
         content="See Radix Sort process digits one at a time with interactive bucket animations and code in 5 languages." />
     <meta property="og:url" content="https://easysorting.netlify.app/radixsort" />
-    <meta property="og:image" content="https://easysorting.netlify.app/images/radix.webp" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="EasySorting" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Radix Sort Visualizer | EasySorting" />
     <meta name="twitter:description"
-        content="Interactive Radix Sort visualization — see counting sort applied digit by digit." />
+        content="Interactive Radix Sort visualization - see counting sort applied digit by digit." />
+    <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
@@ -36,7 +39,7 @@
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "Radix Sort — Visual Step-by-Step Explanation",
+      "headline": "Radix Sort - Visual Step-by-Step Explanation",
       "description": "Interactive visualization of Radix Sort with digit-by-digit animations, time complexity, and code in multiple languages.",
       "url": "https://easysorting.netlify.app/radixsort",
       "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
@@ -52,6 +55,39 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" },
         { "@type": "ListItem", "position": 2, "name": "Radix Sort", "item": "https://easysorting.netlify.app/radixsort" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does radix sort work step by step?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Radix sort is a non-comparison sort that processes numbers digit by digit. In the LSD (least significant digit) variant, it sorts the array by each digit from right to left using a stable counting sort for every pass until the whole number is sorted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the time complexity of radix sort?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Radix sort runs in O(nk) time, where n is the number of elements and k is the number of digits (or key length). For bounded integer keys this can beat every comparison-based sort."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is radix sort stable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, radix sort must be stable internally (it relies on a stable counting sort per digit) for the LSD algorithm to produce a correct overall sort."
+          }
+        }
       ]
     }
     </script>
@@ -278,14 +314,14 @@
                 <h2 class="section-title">Time and Space Complexity</h2>
                 <h3>Time Complexity</h3>
                 <ul>
-                    <li><strong>Best Case:</strong> <code>O(nk)</code> – Where <code>n</code> is the number of elements
+                    <li><strong>Best Case:</strong> <code>O(nk)</code> - Where <code>n</code> is the number of elements
                         and <code>k</code> is the number of digits in the largest number.</li>
-                    <li><strong>Average Case:</strong> <code>O(nk)</code> – Efficiency depends on the number of digits.
+                    <li><strong>Average Case:</strong> <code>O(nk)</code> - Efficiency depends on the number of digits.
                     </li>
-                    <li><strong>Worst Case:</strong> <code>O(nk)</code> – Same as the average case.</li>
+                    <li><strong>Worst Case:</strong> <code>O(nk)</code> - Same as the average case.</li>
                 </ul>
                 <h3>Space Complexity</h3>
-                <p><strong>Space Complexity:</strong> <code>O(n + k)</code> – Requires additional space for the output
+                <p><strong>Space Complexity:</strong> <code>O(n + k)</code> - Requires additional space for the output
                     array and counting array.</p>
             </section>
 
@@ -354,6 +390,52 @@ end function</code></pre>
                     data, particularly when the range of digits is small.</p>
             </section>
 
+            <section class="how-it-works  scroll-animate">
+                <h2 class="section-title">How Radix Sort Works</h2>
+                <p>Radix sort avoids comparisons entirely. Instead, it groups numbers digit by digit using a stable
+                    helper sort (usually counting sort). The <strong>LSD</strong> (least significant digit) variant works
+                    like this:</p>
+                <ol class="algorithm-steps">
+                    <li><strong>Find the maximum</strong> element to know how many digits (passes) are needed.</li>
+                    <li><strong>Sort</strong> the array by the least significant digit (1s place) using a stable counting
+                        sort.</li>
+                    <li><strong>Move</strong> to the next digit (10s place) and sort again, keeping previous order for
+                        ties.</li>
+                    <li><strong>Repeat</strong> for every digit up to the most significant - the array is now fully
+                        sorted.</li>
+                </ol>
+                <p>Because it runs in linear-plus-key-length <code>O(nk)</code> time and is stable, radix sort can beat
+                    every comparison-based sort for bounded integer data, but it uses <code>O(n + k)</code> extra space.
+                </p>
+            </section>
+
+            <section class="application-code  scroll-animate">
+                <h2 class="section-title">When To Use Radix Sort</h2>
+                <ul class="algorithm-list-inline">
+                    <li><strong>Bounded integer keys:</strong> reaches linear-ish time for fixed-width integers.</li>
+                    <li><strong>Fixed-length strings/IDs:</strong> sorts keys like phone numbers, dates, or ZIP codes.
+                    </li>
+                    <li><strong>High-performance scenarios:</strong> when n is large and the key range is small.</li>
+                </ul>
+            </section>
+
+            <section class="related-visualizations scroll-animate">
+                <h2 class="section-title">Related Sorting Visualizers</h2>
+                <p>Radix sort is a stable non-comparison sort. Explore related algorithms that help explain it:</p>
+                <div class="related-links">
+                    <a href="./mergeSort.html">Merge Sort Visualizer</a> -
+                    <a href="./heapSort.html">Heap Sort Visualizer</a> -
+                    <a href="./quickSort.html">Quick Sort Visualizer</a> -
+                    <a href="./shellSort.html">Shell Sort Visualizer</a> -
+                    <a href="./selectionSort.html">Selection Sort Visualizer</a>
+                </div>
+                <p>Compare all algorithms side by side in the <a href="./summary.html">Sorting Algorithm Complexity
+                        Summary</a>.</p>
+                <p>Prefer a plain-English answer? See <a href="./sortingAlgorithms.html">Which sorting algorithm
+                        should I use?</a>, benchmark every algorithm live in the <a href="./sortingAlgorithmRace.html">Sorting
+                        Algorithm Race</a>, or learn <a href="./bigONotation.html">Big O notation</a> with charts.</p>
+            </section>
+
             <section class="language-code-container">
                 <h1 class="scroll-animate">Radix Sort Code Implementation</h1>
                 <div class="language-selector scroll-animate">
@@ -376,7 +458,7 @@ end function</code></pre>
 
     <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">EasySorting — Sorting Visualizer</p>
+            <p class="footer-title">EasySorting - Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
                 <a href="./feedback.html">Feedback</a> |
@@ -384,7 +466,7 @@ end function</code></pre>
                 <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
             <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+            <p class="footer-credit">Made by <a href="https://arunneupane.netlify.app/" target="_blank"
                     rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>

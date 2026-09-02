@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insertion Sort Visualizer — Step-by-Step Animation, Code & Complexity | EasySorting</title>
+    <title>Insertion Sort Visualizer - Step-by-Step Animation, Code & Complexity | EasySorting</title>
     <meta name="description"
         content="Visualize Insertion Sort step by step. Understand how it builds the sorted array one element at a time with O(n) best case. Includes code in C, C++, Java, Python, and JavaScript." />
     <meta name="keywords"
@@ -16,16 +16,19 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Insertion Sort Visualizer — Step-by-Step | EasySorting" />
+    <meta property="og:title" content="Insertion Sort Visualizer - Step-by-Step | EasySorting" />
     <meta property="og:description"
         content="Visualize Insertion Sort step by step with interactive animations and code examples in 5 languages." />
     <meta property="og:url" content="https://easysorting.netlify.app/insertionsort" />
-    <meta property="og:image" content="https://easysorting.netlify.app/images/insertion.webp" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="EasySorting" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Insertion Sort Visualizer | EasySorting" />
     <meta name="twitter:description"
         content="See Insertion Sort animated step by step with interactive controls and code." />
+  <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
@@ -36,7 +39,7 @@
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "Insertion Sort — Visual Step-by-Step Explanation",
+      "headline": "Insertion Sort - Visual Step-by-Step Explanation",
       "description": "Interactive visualization of Insertion Sort with time complexity, pseudocode, and implementation in C, C++, Java, Python, and JavaScript.",
       "url": "https://easysorting.netlify.app/insertionsort",
       "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
@@ -52,6 +55,39 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" },
         { "@type": "ListItem", "position": 2, "name": "Insertion Sort", "item": "https://easysorting.netlify.app/insertionsort" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does insertion sort work step by step?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Insertion sort builds the sorted array one element at a time. Starting from the second element, it picks each element and inserts it into its correct position within the already-sorted part of the array, shifting larger elements to the right."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the time complexity of insertion sort?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Insertion sort has O(n) best-case time complexity on nearly sorted data, O(n²) average and worst-case complexity, and O(1) extra space."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is insertion sort stable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Insertion sort is stable because it inserts equal elements after previously placed equal elements, preserving their relative order, which is why it is used inside hybrid sorts like Timsort."
+          }
+        }
       ]
     }
     </script>
@@ -267,16 +303,16 @@
                 <h2 class="section-title">Time and Space Complexity</h2>
                 <h3>Time Complexity</h3>
                 <ul>
-                    <li><strong>Best Case:</strong> <code>O(n)</code> – When the array is already sorted.</li>
-                    <li><strong>Average Case:</strong> <code>O(n<sup>2</sup>)</code> – Quadratic complexity for average
+                    <li><strong>Best Case:</strong> <code>O(n)</code> - When the array is already sorted.</li>
+                    <li><strong>Average Case:</strong> <code>O(n<sup>2</sup>)</code> - Quadratic complexity for average
                         cases.
                     </li>
-                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> – When the array is sorted in reverse
+                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> - When the array is sorted in reverse
                         order.
                     </li>
                 </ul>
                 <h3>Space Complexity</h3>
-                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm requiring
+                <p><strong>Space Complexity:</strong> <code>O(1)</code> - It is an in-place sorting algorithm requiring
                     a
                     constant amount of additional space.</p>
             </section>
@@ -320,6 +356,51 @@
                     simplicity, low overhead, and adaptive nature.</p>
             </section>
 
+            <section class="how-it-works  scroll-animate">
+                <h2 class="section-title">How Insertion Sort Works</h2>
+                <p>Think of sorting a hand of cards: you pick up each new card and slide it into its correct place
+                    among the cards you already hold. Insertion sort works the same way on the array:</p>
+                <ol class="algorithm-steps">
+                    <li><strong>Assume</strong> the first element is already a sorted sub-array of length one.</li>
+                    <li><strong>Pick</strong> the next element (the "key").</li>
+                    <li><strong>Shift</strong> all elements in the sorted part that are greater than the key one
+                        position to the right.</li>
+                    <li><strong>Insert</strong> the key into the vacated slot.</li>
+                    <li><strong>Repeat</strong> until every element has been inserted - the array is now sorted.</li>
+                </ol>
+                <p>Because it only ever moves elements by adjacent shifts, insertion sort is <strong>stable</strong> and
+                    reaches near-linear <code>O(n)</code> behavior on data that is already mostly sorted.</p>
+            </section>
+
+            <section class="application-code  scroll-animate">
+                <h2 class="section-title">When To Use Insertion Sort</h2>
+                <ul class="algorithm-list-inline">
+                    <li><strong>Nearly sorted data:</strong> approaches O(n) and beats O(n log n) algorithms in
+                        practice.</li>
+                    <li><strong>Very small arrays:</strong> its low constant overhead makes it the fastest option.</li>
+                    <li><strong>Inside hybrid sorts:</strong> it is the finishing step of Timsort (JavaScript, Python)
+                        and Introsort (C++).</li>
+                    <li><strong>Online sorting:</strong> useful when elements arrive one at a time.</li>
+                </ul>
+            </section>
+
+            <section class="related-visualizations scroll-animate">
+                <h2 class="section-title">Related Sorting Visualizers</h2>
+                <p>Insertion sort is a stable, adaptive, in-place comparison sort. Explore related algorithms:</p>
+                <div class="related-links">
+                    <a href="./bubbleSort.html">Bubble Sort Visualizer</a> -
+                    <a href="./selectionSort.html">Selection Sort Visualizer</a> -
+                    <a href="./shellSort.html">Shell Sort Visualizer</a> -
+                    <a href="./mergeSort.html">Merge Sort Visualizer</a> -
+                    <a href="./quickSort.html">Quick Sort Visualizer</a>
+                </div>
+                <p>Compare all algorithms side by side in the <a href="./summary.html">Sorting Algorithm Complexity
+                        Summary</a>.</p>
+                <p>Prefer a plain-English answer? See <a href="./sortingAlgorithms.html">Which sorting algorithm
+                        should I use?</a>, benchmark every algorithm live in the <a href="./sortingAlgorithmRace.html">Sorting
+                        Algorithm Race</a>, or learn <a href="./bigONotation.html">Big O notation</a> with charts.</p>
+            </section>
+
             <section class="language-code-container">
                 <h1 class="scroll-animate">Insertion Sort Code Implementation</h1>
                 <div class="language-selector scroll-animate">
@@ -341,7 +422,7 @@
 
     <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">EasySorting — Sorting Visualizer</p>
+            <p class="footer-title">EasySorting - Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
                 <a href="./feedback.html">Feedback</a> |
@@ -349,7 +430,7 @@
                 <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
             <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+            <p class="footer-credit">Made by <a href="https://arunneupane.netlify.app/" target="_blank"
                     rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>

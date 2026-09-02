@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shell Sort Visualizer — Step-by-Step Animation, Code & Complexity | EasySorting</title>
+    <title>Shell Sort Visualizer - Step-by-Step Animation, Code & Complexity | EasySorting</title>
     <meta name="description"
         content="Visualize Shell Sort step by step. Understand how gap-based comparisons improve upon insertion sort with O(n log n) best case. Code in C, C++, Java, Python, and JavaScript." />
     <meta name="keywords"
@@ -16,15 +16,18 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Shell Sort Visualizer — Step-by-Step | EasySorting" />
+    <meta property="og:title" content="Shell Sort Visualizer - Step-by-Step | EasySorting" />
     <meta property="og:description"
         content="See Shell Sort's gap-based comparisons in action with interactive animations and code in 5 languages." />
     <meta property="og:url" content="https://easysorting.netlify.app/shellsort" />
-    <meta property="og:image" content="https://easysorting.netlify.app/images/shell.webp" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="EasySorting" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Shell Sort Visualizer | EasySorting" />
     <meta name="twitter:description" content="Interactive Shell Sort visualization with gap animations and code." />
+    <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
@@ -35,7 +38,7 @@
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "Shell Sort — Visual Step-by-Step Explanation",
+      "headline": "Shell Sort - Visual Step-by-Step Explanation",
       "description": "Interactive visualization of Shell Sort with gap-based animations, time complexity, pseudocode, and code in multiple languages.",
       "url": "https://easysorting.netlify.app/shellsort",
       "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
@@ -51,6 +54,39 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" },
         { "@type": "ListItem", "position": 2, "name": "Shell Sort", "item": "https://easysorting.netlify.app/shellsort" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does shell sort work step by step?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Shell sort is an optimized insertion sort. Instead of comparing adjacent elements, it first compares elements separated by a large 'gap', then progressively reduces the gap down to 1. This lets elements move long distances quickly early on, and the final gap-1 pass is a standard insertion sort on a nearly sorted array."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the time complexity of shell sort?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Shell sort's complexity depends on the gap sequence used. Common sequences give between O(n log² n) and O(n^(3/2)) average complexity, with a worst case of O(n²) for some sequences. It uses O(1) extra space."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is shell sort stable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Shell sort is NOT stable because inserting elements across large gaps can reorder equal keys."
+          }
+        }
       ]
     }
     </script>
@@ -261,16 +297,16 @@
                 <h2 class="section-title">Time and Space Complexity</h2>
                 <h3>Time Complexity</h3>
                 <ul>
-                    <li><strong>Best Case:</strong> <code>O(n log n)</code> – Efficient for certain sequences.</li>
-                    <li><strong>Average Case:</strong> <code>O(n<sup>3/2</sup>)</code> – Dependent on the gap sequence
+                    <li><strong>Best Case:</strong> <code>O(n log n)</code> - Efficient for certain sequences.</li>
+                    <li><strong>Average Case:</strong> <code>O(n<sup>3/2</sup>)</code> - Dependent on the gap sequence
                         used.
                     </li>
-                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> – Similar to insertion sort for
+                    <li><strong>Worst Case:</strong> <code>O(n<sup>2</sup>)</code> - Similar to insertion sort for
                         certain gap
                         sequences.</li>
                 </ul>
                 <h3>Space Complexity</h3>
-                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm requiring
+                <p><strong>Space Complexity:</strong> <code>O(1)</code> - It is an in-place sorting algorithm requiring
                     minimal additional space.</p>
             </section>
 
@@ -310,6 +346,50 @@
                     for small to medium datasets.</p>
             </section>
 
+            <section class="how-it-works  scroll-animate">
+                <h2 class="section-title">How Shell Sort Works</h2>
+                <p>Shell sort is insertion sort with a crucial upgrade: it first compares elements that are far apart
+                    using a decreasing <strong>gap</strong> sequence, letting distant elements move into place quickly
+                    before finishing with a normal adjacent insertion sort:</p>
+                <ol class="algorithm-steps">
+                    <li><strong>Choose a gap</strong> sequence (commonly starting at n/2 and halving each step).</li>
+                    <li><strong>Insertion-sort</strong> each sub-array formed by elements that are <code>gap</code>
+                        apart - moving each element back by the gap when needed.</li>
+                    <li><strong>Reduce the gap</strong> and repeat, further sorting the more-ordered elements.</li>
+                    <li><strong>Final gap of 1</strong> is a standard insertion sort - but on a nearly sorted array, so
+                        it runs very fast.</li>
+                </ol>
+                <p>The key payoff: elements travel long distances early (while the gap is large), so far fewer moves are
+                    needed overall than in plain insertion sort.</p>
+            </section>
+
+            <section class="application-code  scroll-animate">
+                <h2 class="section-title">When To Use Shell Sort</h2>
+                <ul class="algorithm-list-inline">
+                    <li><strong>Medium datasets:</strong> a good balance of simplicity and speed.</li>
+                    <li><strong>Embedded/low-memory:</strong> in-place with O(1) extra space.</li>
+                    <li><strong>Teaching gap-based exchange:</strong> a stepping stone toward advanced sorts.</li>
+                </ul>
+            </section>
+
+            <section class="related-visualizations scroll-animate">
+                <h2 class="section-title">Related Sorting Visualizers</h2>
+                <p>Shell sort is an in-place, non-stable comparison sort built on insertion sort. Explore related
+                    algorithms:</p>
+                <div class="related-links">
+                    <a href="./insertionSort.html">Insertion Sort Visualizer</a> -
+                    <a href="./bubbleSort.html">Bubble Sort Visualizer</a> -
+                    <a href="./quickSort.html">Quick Sort Visualizer</a> -
+                    <a href="./mergeSort.html">Merge Sort Visualizer</a> -
+                    <a href="./heapSort.html">Heap Sort Visualizer</a>
+                </div>
+                <p>Compare all algorithms side by side in the <a href="./summary.html">Sorting Algorithm Complexity
+                        Summary</a>.</p>
+                <p>Prefer a plain-English answer? See <a href="./sortingAlgorithms.html">Which sorting algorithm
+                        should I use?</a>, benchmark every algorithm live in the <a href="./sortingAlgorithmRace.html">Sorting
+                        Algorithm Race</a>, or learn <a href="./bigONotation.html">Big O notation</a> with charts.</p>
+            </section>
+
             <section class="language-code-container">
                 <h1 class="scroll-animate">Shell Sort Code Implementation</h1>
                 <div class="language-selector scroll-animate">
@@ -333,7 +413,7 @@
 
     <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">EasySorting — Sorting Visualizer</p>
+            <p class="footer-title">EasySorting - Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
                 <a href="./feedback.html">Feedback</a> |
@@ -341,7 +421,7 @@
                 <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
             <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+            <p class="footer-credit">Made by <a href="https://arunneupane.netlify.app/" target="_blank"
                     rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>

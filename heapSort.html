@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heap Sort Visualizer — Step-by-Step Animation, Code & Complexity | EasySorting</title>
+    <title>Heap Sort Visualizer - Step-by-Step Animation, Code & Complexity | EasySorting</title>
     <meta name="description"
         content="Visualize Heap Sort with interactive tree and array animations. Understand how a max-heap is built and elements are extracted in O(n log n) time. Code in C, C++, Java, Python, and JavaScript." />
     <meta name="keywords"
@@ -16,16 +16,19 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Heap Sort Visualizer — Step-by-Step | EasySorting" />
+    <meta property="og:title" content="Heap Sort Visualizer - Step-by-Step | EasySorting" />
     <meta property="og:description"
         content="Visualize Heap Sort with tree animations. See max-heap construction and extraction step by step." />
     <meta property="og:url" content="https://easysorting.netlify.app/heapsort" />
-    <meta property="og:image" content="https://easysorting.netlify.app/images/heap.webp" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="EasySorting" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Heap Sort Visualizer | EasySorting" />
     <meta name="twitter:description"
         content="Interactive Heap Sort visualization with tree animations and code in 5 languages." />
+  <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
@@ -36,7 +39,7 @@
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "Heap Sort — Visual Step-by-Step Explanation",
+      "headline": "Heap Sort - Visual Step-by-Step Explanation",
       "description": "Interactive visualization of Heap Sort with tree animations, time complexity, pseudocode, and code in multiple languages.",
       "url": "https://easysorting.netlify.app/heapsort",
       "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
@@ -52,6 +55,39 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" },
         { "@type": "ListItem", "position": 2, "name": "Heap Sort", "item": "https://easysorting.netlify.app/heapsort" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does heap sort work step by step?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Heap sort first builds a max-heap from the array so the largest value sits at the root. It then repeatedly swaps the root with the last unsorted element, shrinks the heap by one, and calls heapify to restore the max-heap property. Repeating this extracts every element in descending order."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the time and space complexity of heap sort?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Heap sort always runs in O(n log n) time - best, average, and worst case - with O(1) auxiliary space because it sorts in place."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is heap sort stable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Heap sort is NOT stable because the heap operations move elements non-adjacently, which can reorder equal keys."
+          }
+        }
       ]
     }
     </script>
@@ -333,14 +369,14 @@
                 <h2 class="section-title">Time and Space Complexity</h2>
                 <h3>Time Complexity</h3>
                 <ul>
-                    <li><strong>Best Case:</strong> <code>O(n log n)</code> – Performance is consistent regardless of
+                    <li><strong>Best Case:</strong> <code>O(n log n)</code> - Performance is consistent regardless of
                         input.</li>
-                    <li><strong>Average Case:</strong> <code>O(n log n)</code> – Efficient average performance.</li>
-                    <li><strong>Worst Case:</strong> <code>O(n log n)</code> – Consistent performance even in the worst
+                    <li><strong>Average Case:</strong> <code>O(n log n)</code> - Efficient average performance.</li>
+                    <li><strong>Worst Case:</strong> <code>O(n log n)</code> - Consistent performance even in the worst
                         case.</li>
                 </ul>
                 <h3>Space Complexity</h3>
-                <p><strong>Space Complexity:</strong> <code>O(1)</code> – It is an in-place sorting algorithm that
+                <p><strong>Space Complexity:</strong> <code>O(1)</code> - It is an in-place sorting algorithm that
                     requires minimal additional space.</p>
             </section>
 
@@ -389,6 +425,54 @@ function heapify(arr, n, i):
                     requiring guaranteed performance.</p>
             </section>
 
+            <section class="how-it-works  scroll-animate">
+                <h2 class="section-title">How Heap Sort Works</h2>
+                <p>Heap sort turns the array into a <strong>max-heap</strong> - a binary tree where every parent is
+                    larger than its children and the largest value sits at the root. It then repeatedly extracts that
+                    root:</p>
+                <ol class="algorithm-steps">
+                    <li><strong>Build a max-heap</strong> from the input array by calling <code>heapify</code> on every
+                        internal node, from bottom up.</li>
+                    <li><strong>Swap</strong> the root (largest element) with the last unsorted element.</li>
+                    <li><strong>Shrink</strong> the heap by one and call <code>heapify</code> on the new root to restore
+                        the max-heap property.</li>
+                    <li><strong>Repeat</strong> extracting the root until only one element remains - the array is now
+                        sorted in ascending order.</li>
+                </ol>
+                <p>Heap sort is notably <strong>in-place</strong> (<code>O(1)</code> extra space) and guarantees
+                    <code>O(n log n)</code> in every case, but it is not cache-friendly like quick sort and is not
+                    stable.</p>
+            </section>
+
+            <section class="application-code  scroll-animate">
+                <h2 class="section-title">When To Use Heap Sort</h2>
+                <ul class="algorithm-list-inline">
+                    <li><strong>Guaranteed O(n log n):</strong> reliable performance no matter the input order.</li>
+                    <li><strong>Priority queues:</strong> the heap data structure behind task scheduling.</li>
+                    <li><strong>Embedded systems:</strong> in-place sorting with bounded memory usage.</li>
+                    <li><strong>Fallback in Introsort:</strong> C++ std::sort switches to heap sort when recursion gets
+                        too deep.</li>
+                </ul>
+            </section>
+
+            <section class="related-visualizations scroll-animate">
+                <h2 class="section-title">Related Sorting Visualizers</h2>
+                <p>Heap sort is an in-place, guaranteed O(n log n) comparison sort. Compare it with related algorithms:
+                </p>
+                <div class="related-links">
+                    <a href="./quickSort.html">Quick Sort Visualizer</a> -
+                    <a href="./mergeSort.html">Merge Sort Visualizer</a> -
+                    <a href="./selectionSort.html">Selection Sort Visualizer</a> -
+                    <a href="./radixSort.html">Radix Sort Visualizer</a> -
+                    <a href="./insertionSort.html">Insertion Sort Visualizer</a>
+                </div>
+                <p>Compare all algorithms side by side in the <a href="./summary.html">Sorting Algorithm Complexity
+                        Summary</a>.</p>
+                <p>Prefer a plain-English answer? See <a href="./sortingAlgorithms.html">Which sorting algorithm
+                        should I use?</a>, benchmark every algorithm live in the <a href="./sortingAlgorithmRace.html">Sorting
+                        Algorithm Race</a>, or learn <a href="./bigONotation.html">Big O notation</a> with charts.</p>
+            </section>
+
             <section class="language-code-container">
                 <h1 class="scroll-animate">Heap Sort Code Implementation</h1>
                 <div class="language-selector scroll-animate">
@@ -411,7 +495,7 @@ function heapify(arr, n, i):
 
     <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">EasySorting — Sorting Visualizer</p>
+            <p class="footer-title">EasySorting - Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
                 <a href="./feedback.html">Feedback</a> |
@@ -419,7 +503,7 @@ function heapify(arr, n, i):
                 <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
             <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+            <p class="footer-credit">Made by <a href="https://arunneupane.netlify.app/" target="_blank"
                     rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>

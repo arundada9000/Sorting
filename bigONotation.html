@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big O Notation Explained: A Practical Guide for Sorting and Algorithms | EasySorting</title>
+    <meta name="description"
+        content="Big O notation explained simply. Learn O(1), O(log n), O(n), O(n log n), O(n^2), and O(2^n) with an interactive growth chart, real numbers, and sorting algorithm examples." />
+    <meta name="keywords"
+        content="big o notation, time complexity, space complexity, big o chart, asymptotic analysis, algorithm complexity, o(n log n), o(n^2), complexity of sorting algorithms" />
+    <link rel="canonical" href="https://easysorting.netlify.app/big-o-notation" />
+    <meta name="author" content="Arun Neupane" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
+    <meta name="theme-color" content="#F2F2F7">
+    <meta name="google-adsense-account" content="ca-pub-1708134460872611">
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Big O Notation Explained: A Practical Guide" />
+    <meta property="og:description"
+        content="Understand time and space complexity with an interactive growth chart, real numbers, and sorting algorithm examples." />
+    <meta property="og:url" content="https://easysorting.netlify.app/big-o-notation" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="EasySorting" />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Big O Notation Explained: A Practical Guide" />
+    <meta name="twitter:description"
+        content="Time and space complexity made visual with an interactive growth chart." />
+    <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
+        crossorigin="anonymous"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Big O Notation Explained: A Practical Guide for Sorting and Algorithms",
+      "description": "Learn what Big O notation means, how to read it, and how the complexity classes compare from O(1) to O(2^n) with real numbers and sorting examples.",
+      "url": "https://easysorting.netlify.app/big-o-notation",
+      "datePublished": "2026-09-02",
+      "dateModified": "2026-09-02",
+      "inLanguage": "en",
+      "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "EasySorting",
+        "url": "https://easysorting.netlify.app",
+        "logo": { "@type": "ImageObject", "url": "https://easysorting.netlify.app/images/sort.png", "width": 512, "height": 512 }
+      },
+      "mainEntityOfPage": "https://easysorting.netlify.app/big-o-notation"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" },
+        { "@type": "ListItem", "position": 2, "name": "Sorting Algorithms", "item": "https://easysorting.netlify.app/sorting-algorithms" },
+        { "@type": "ListItem", "position": 3, "name": "Big O Notation", "item": "https://easysorting.netlify.app/big-o-notation" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Big O notation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Big O notation describes how an algorithm's runtime or memory usage grows as the input size grows. It ignores constants and focuses on the dominant term. For example O(n^2) means operations grow like the square of the input size."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does O(n log n) mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O(n log n) means the runtime grows as n times the base-2 logarithm of n. Merge Sort, Quick Sort, and Heap Sort run in O(n log n). Doubling the input more than doubles the time, but far less than squaring it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which is faster, O(n log n) or O(n^2)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O(n log n) is much faster for large inputs. For n equal to one million, O(n log n) needs about 20 million operations while O(n^2) needs one trillion, roughly 50,000 times more."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is time complexity vs space complexity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Time complexity measures the number of operations as input grows. Space complexity measures extra memory used beyond the input. A sort such as Merge Sort has O(n log n) time but O(n) space, while Heap Sort has O(n log n) time and O(1) space."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can an algorithm be faster than O(n log n)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For comparison-based sorting, no. There is a proven lower bound of O(n log n). Non-comparison sorts such as Radix Sort and Counting Sort can reach O(nk) or O(n + k) by exploiting bounded key structure."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./images/sort.png">
+    <link rel="stylesheet" href="./hig.css">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="topbar">
+        <div class="shell topbar__inner">
+            <a class="brand" href="./"><span class="brand__mark brand__mark--logo"><img src="./images/sort.png" alt="" width="30" height="30"></span> EasySorting</a>
+            <nav aria-label="Primary">
+                <ul class="nav-links desktop-links">
+                    <li><a href="./">Visualizers</a></li>
+                    <li><a href="./sorting-algorithms">Guide</a></li>
+                    <li><a href="./big-o-notation" class="nav-active">Big O</a></li>
+                    <li><a href="./sorting-algorithm-race">Race</a></li>
+                    <li><a href="./summary">Compare</a></li>
+                    <li><a href="./about">About</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"></button>
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"
+                aria-controls="navLinks"><span></span><span></span><span></span></button>
+            <ul class="nav-links nav-mobile" id="navLinks">
+                <li><a href="./">Visualizers</a></li>
+                <li><a href="./sorting-algorithms">Guide</a></li>
+                <li><a href="./big-o-notation">Big O</a></li>
+                <li><a href="./heap-visualizer">Heap Visualizer</a></li>
+                <li><a href="./sorting-algorithm-race">Algorithm Race</a></li>
+                <li><a href="./summary">Compare</a></li>
+                <li><a href="./about">About</a></li>
+                <li><a href="./feedback">Feedback</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="playing-field" id="main">
+        <div class="shell shell--narrow">
+            <div class="hero">
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="crumb-sep" aria-hidden="true"></span>
+                    <a href="./sorting-algorithms">Sorting Algorithms</a>
+                    <span class="crumb-sep" aria-hidden="true"></span>
+                    <span>Big O Notation</span>
+                </nav>
+                <p class="hero__kicker">Complexity made visual</p>
+                <h1>Big O Notation Explained</h1>
+                <p class="hero__lead">Big O notation describes how an algorithm's runtime or memory grows as the input
+                    size grows. This guide shows every complexity class from O(1) to O(2^n) on a live chart, with real
+                    numbers you can feel and sorting examples you already know.</p>
+            </div>
+
+            <div class="card card--pad mt-3" data-reveal>
+                <h2 class="section__title" style="font-size:18px"><span class="t-index">TL;DR</span> Big O in one answer</h2>
+                <div class="prose mt-1">
+                    <p>Big O gives you the shape of an algorithm's cost curve. <code>O(1)</code> is instant and constant.
+                        <code>O(log n)</code> grows slowly. <code>O(n)</code> grows in a straight line. <code>O(n log n)</code>
+                        grows a little faster and is where the best sorts live. <code>O(n^2)</code> grows like a square and is
+                        where the simple sorts live. <code>O(2^n)</code> grows explosively and is unusable beyond small inputs.
+                        Constants and micro-optimizations matter less than the curve, and the curve is what Big O names.</p>
+                </div>
+            </div>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">01</span>The Big O growth chart</h2>
+                    <p class="section__desc">Six complexity classes plotted to n = 40 on a log scale. Notice how O(2^n)
+                        exits the top of the chart almost immediately while O(log n) barely rises.</p>
+                </div>
+                <div class="card card--pad" data-reveal>
+                    <div class="chart-box" id="bigOChart"></div>
+                    <div class="legend">
+                        <span class="legend__item"><span class="legend__swatch" style="background:#FF3B30"></span>O(2^n) exponential</span>
+                        <span class="legend__item"><span class="legend__swatch" style="background:#FF9500"></span>O(n^2) quadratic</span>
+                        <span class="legend__item"><span class="legend__swatch" style="background:#AF52DE"></span>O(n log n) linearithmic</span>
+                        <span class="legend__item"><span class="legend__swatch" style="background:#34C759"></span>O(n) linear</span>
+                        <span class="legend__item"><span class="legend__swatch" style="background:#30B0C7"></span>O(log n) logarithmic</span>
+                        <span class="legend__item"><span class="legend__swatch" style="background:#007AFF"></span>O(1) constant</span>
+                    </div>
+                    <p class="tiny mt-2">Log-scaled y-axis. An O(1) algorithm costs the same whether there is one item or a
+                        billion.</p>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">02</span>Every complexity class in plain English</h2>
+                </div>
+                <div class="table-wrap" data-reveal>
+                    <table class="hig">
+                        <caption>Big O classes ordered from fastest to slowest, with sorting examples.</caption>
+                        <thead>
+                            <tr>
+                                <th>Class</th>
+                                <th>Means</th>
+                                <th>Example in sorting</th>
+                                <th>Feels like</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>O(1)</code></td>
+                                <td>Constant time, ignores input size</td>
+                                <td>Swapping two elements</td>
+                                <td>Instant</td>
+                            </tr>
+                            <tr>
+                                <td><code>O(log n)</code></td>
+                                <td>Halves the problem each step</td>
+                                <td>Binary search on a sorted array</td>
+                                <td>Nearly instant</td>
+                            </tr>
+                            <tr>
+                                <td><code>O(n)</code></td>
+                                <td>One pass over the data</td>
+                                <td>Insertion Sort on sorted input</td>
+                                <td>Linear and fast</td>
+                            </tr>
+                            <tr>
+                                <td><code>O(n log n)</code></td>
+                                <td>One pass, logged per step</td>
+                                <td>Merge, Quick, Heap Sort</td>
+                                <td>Fast, scales well</td>
+                            </tr>
+                            <tr>
+                                <td><code>O(n^2)</code></td>
+                                <td>Nested passes over the data</td>
+                                <td>Bubble, Selection, Insertion Sort</td>
+                                <td>Slow past 10,000 items</td>
+                            </tr>
+                            <tr>
+                                <td><code>O(2^n)</code></td>
+                                <td>Doubles for every added item</td>
+                                <td>Brute-force subset problems</td>
+                                <td>Impossible past ~30 items</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">03</span>What the numbers actually look like</h2>
+                    <p class="section__desc">Approximate operations for a single run at different input sizes. The gap
+                        between O(n log n) and O(n^2) is not linear, it is divide-and-conquer versus brute force.</p>
+                </div>
+                <div class="table-wrap" data-reveal>
+                    <table class="hig">
+                        <caption>Estimated operations, rounded. A real machine does roughly a billion simple operations per
+                            second.</caption>
+                        <thead>
+                            <tr>
+                                <th>n</th>
+                                <th class="num">O(log n)</th>
+                                <th class="num">O(n)</th>
+                                <th class="num">O(n log n)</th>
+                                <th class="num">O(n^2)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>10</td><td class="num">4</td><td class="num">10</td><td class="num">34</td><td class="num">100</td></tr>
+                            <tr><td>100</td><td class="num">7</td><td class="num">100</td><td class="num">664</td><td class="num">10,000</td></tr>
+                            <tr><td>1,000</td><td class="num">10</td><td class="num">1,000</td><td class="num">9,966</td><td class="num">1,000,000</td></tr>
+                            <tr><td>10,000</td><td class="num">14</td><td class="num">10,000</td><td class="num">132,877</td><td class="num">100,000,000</td></tr>
+                            <tr><td>100,000</td><td class="num">17</td><td class="num">100,000</td><td class="num">1.66 million</td><td class="num">10 billion</td></tr>
+                            <tr><td>1,000,000</td><td class="num">20</td><td class="num">1,000,000</td><td class="num">19.9 million</td><td class="num">1 trillion</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="callout callout--info mt-2" data-reveal>
+                    <span class="callout__icon" aria-hidden="true">i</span>
+                    <div>Sorting a million numbers takes roughly <strong>20 million</strong> operations with Merge Sort but
+                        about <strong>one trillion</strong> with Bubble Sort, about 50,000 times longer. This is why real
+                        software never ships super-quadratic sorts.</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">04</span>Big O of every sorting algorithm</h2>
+                    <p class="section__desc">Time complexity in the best, average, and worst cases, plus the extra memory
+                        each sort needs.</p>
+                </div>
+                <div class="table-wrap" data-reveal>
+                    <table class="hig">
+                        <caption>Complexity of the eight algorithms on EasySorting. Best case usually means data that is
+                            already or nearly sorted.</caption>
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th class="num">Best</th>
+                                <th class="num">Average</th>
+                                <th class="num">Worst</th>
+                                <th class="num">Space</th>
+                                <th>Stable</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><a href="./bubblesort">Bubble Sort</a></td><td class="num">O(n)</td><td class="num">O(n^2)</td><td class="num">O(n^2)</td><td class="num">O(1)</td><td>Yes</td></tr>
+                            <tr><td><a href="./selectionsort">Selection Sort</a></td><td class="num">O(n^2)</td><td class="num">O(n^2)</td><td class="num">O(n^2)</td><td class="num">O(1)</td><td>No</td></tr>
+                            <tr><td><a href="./insertionsort">Insertion Sort</a></td><td class="num">O(n)</td><td class="num">O(n^2)</td><td class="num">O(n^2)</td><td class="num">O(1)</td><td>Yes</td></tr>
+                            <tr><td><a href="./shellsort">Shell Sort</a></td><td class="num">O(n log n)</td><td class="num">O(n^1.25)</td><td class="num">O(n^2)</td><td class="num">O(1)</td><td>No</td></tr>
+                            <tr><td><a href="./mergesort">Merge Sort</a></td><td class="num">O(n log n)</td><td class="num">O(n log n)</td><td class="num">O(n log n)</td><td class="num">O(n)</td><td>Yes</td></tr>
+                            <tr><td><a href="./quicksort">Quick Sort</a></td><td class="num">O(n log n)</td><td class="num">O(n log n)</td><td class="num">O(n^2)</td><td class="num">O(log n)</td><td>No</td></tr>
+                            <tr><td><a href="./heapsort">Heap Sort</a></td><td class="num">O(n log n)</td><td class="num">O(n log n)</td><td class="num">O(n log n)</td><td class="num">O(1)</td><td>No</td></tr>
+                            <tr><td><a href="./radixsort">Radix Sort</a></td><td class="num">O(nk)</td><td class="num">O(nk)</td><td class="num">O(nk)</td><td class="num">O(n + k)</td><td>Yes</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="callout callout--warn mt-2" data-reveal>
+                    <span class="callout__icon" aria-hidden="true">w</span>
+                    <div>Quick Sort has a terrible worst case of O(n^2), but randomized pivot selection makes that scenario
+                        nearly impossible in practice, which is why it remains the default sort in many standard libraries.
+                        Heap Sort keeps O(n log n) everywhere at the price of a worst-case merge fast path that loses to
+                        Quick Sort on real hardware.</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">05</span>How to read Big O without fear</h2>
+                </div>
+                <div class="prose" data-reveal>
+                    <p>Look for the term that grows fastest and drop everything else. If your function does a loop of
+                        <code>n</code> steps inside another loop of <code>n</code> steps, that is <code>O(n^2)</code> regardless of
+                        the extra <code>2n</code> work next to it. Drops the constants, keep the curve.</p>
+                    <p>Two mistakes confuse beginners. First, big O does not tell you which algorithm is faster on small
+                        inputs; Insertion Sort beats Merge Sort below about 20 items even though its big O is worse. Second,
+                        space complexity is just as important as time; Merge Sort's O(n) buffer can be decisive on memory
+                        constrained devices, which is where in-place Heap Sort shines.</p>
+                </div>
+                <div class="steps mt-2" data-reveal>
+                    <div class="step">
+                        <p class="step__title">Count the dominant loop</p>
+                        <p class="step__desc">A single pass over the data is O(n). A loop nested inside another loop is
+                            O(n^2). Recursion that halves the data is O(log n) per level.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__title">Ask about memory</p>
+                        <p class="step__desc">Does the algorithm build a second array (Merge Sort, O(n)) or rearrange in
+                            place (Heap Sort, O(1))? Note both when comparing.</p>
+                    </div>
+                    <div class="step">
+                        <p class="step__title">Measure it for real</p>
+                        <p class="step__desc">Open the <a href="./sorting-algorithm-race">Algorithm Race</a> and watch
+                            measured comparisons and swaps line up with the theory on identical arrays.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">06</span>Frequently asked questions</h2>
+                </div>
+                <div class="faq" data-reveal>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Is O(log n) faster than O(n)?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Yes, and the gap grows as n grows. Binary search on a billion items
+                            needs only about 30 steps, while a linear scan would need a billion. That is the difference
+                            between usable and unusable at scale.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Why do we ignore constants in Big O?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Because Big O answers the question of scaling, not of speed at one
+                            fixed size. Constants matter for fine tuning, but no constant can save O(n^2) at n equal to a
+                            million.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>What is the difference between best, average, and worst case?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Best case is the fastest input (often already sorted), worst case is
+                            the slowest (often reversed), and average case is the expected cost over typical inputs. Quick
+                            Sort is O(n log n) average but O(n^2) worst, while Merge and Heap Sort hold O(n log n) in all
+                            three.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Is O(n log n) always better than O(n^2)?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Yes for large n, no for tiny n. Below a threshold around 20 items the
+                            constant overhead of divide and conquer makes straight Insertion Sort faster. Real libraries
+                            hybridize exactly this way, for example Timsort.</p></div>
+                    </details>
+                </div>
+            </section>
+
+            <section class="section" data-reveal>
+                <div class="card card--pad center mt-0">
+                    <h2 class="section__title" style="justify-content:center;font-size:22px">See the curve in action</h2>
+                    <p class="muted mt-1">The complexity chart comes alive when you watch algorithms race on real arrays.</p>
+                    <div class="row center" style="justify-content:center">
+                        <a class="btn btn--accent" href="./sorting-algorithm-race">Race the algorithms</a>
+                        <a class="btn btn--subtle" href="./sorting-algorithms">Back to the guide</a>
+                        <a class="btn btn--ghost" href="./summary">Full comparison table</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="shell">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand"><span class="brand__mark"><img src="./images/sort.png" alt="" width="24" height="24"></span> EasySorting</div>
+                    <p class="footer__about">A free, interactive sorting algorithm visualizer. Learn how every major sort
+                        works with step-by-step animations and code in five programming languages.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on GitHub"><img src="./images/svg-icons/github.svg" alt="GitHub"></a>
+                        <a href="https://www.youtube.com/@code_with_ease" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on YouTube"><img src="./images/svg-icons/youtube.svg" alt="YouTube"></a>
+                        <a href="https://www.instagram.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Instagram"><img src="./images/svg-icons/instagram.svg" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Facebook"><img src="./images/svg-icons/facebook.svg" alt="Facebook"></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Algorithms</h4>
+                    <ul>
+                        <li><a href="./bubblesort">Bubble Sort</a></li>
+                        <li><a href="./insertionsort">Insertion Sort</a></li>
+                        <li><a href="./quicksort">Quick Sort</a></li>
+                        <li><a href="./mergesort">Merge Sort</a></li>
+                        <li><a href="./heapsort">Heap Sort</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="./sorting-algorithms">Sorting Algorithms Guide</a></li>
+                        <li><a href="./big-o-notation">Big O Notation</a></li>
+                        <li><a href="./summary">Full Comparison</a></li>
+                        <li><a href="./sorting-algorithm-race">Algorithm Race</a></li>
+                        <li><a href="./heap-visualizer">Heap Visualizer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Site</h4>
+                    <ul>
+                        <li><a href="./about">About</a></li>
+                        <li><a href="./feedback">Feedback</a></li>
+                        <li><a href="./contact">Contact</a></li>
+                        <li><a href="./privacy-policy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>Copyright <span data-year>2026</span> EasySorting. Made by Arun Neupane.</span>
+                <span>Free forever. No sign-up. Fully offline-ready PWA.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./hig.js"></script>
+    <script>
+        (function () {
+            var chart = document.getElementById("bigOChart");
+            var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            chart.appendChild(svg);
+            FastSort.hig.drawGrowthCurve(svg, [
+                { label: "O(2^n)", color: "#FF3B30", fn: function (n) { return Math.pow(2, n); } },
+                { label: "O(n^2)", color: "#FF9500", fn: function (n) { return n * n; } },
+                { label: "O(n log n)", color: "#AF52DE", fn: function (n) { return n * Math.log2(n); } },
+                { label: "O(n)", color: "#34C759", fn: function (n) { return n; } },
+                { label: "O(log n)", color: "#30B0C7", fn: function (n) { return Math.log2(n + 1); } },
+                { label: "O(1)", color: "#007AFF", fn: function (n) { return 1; } }
+            ], { nMax: 40 });
+        })();
+    </script>
+</body>
+
+</html>

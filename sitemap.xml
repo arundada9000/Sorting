@@ -3,100 +3,118 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+  <!-- Core homepage -->
   <url>
     <loc>https://easysorting.netlify.app/</loc>
-    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.00</priority>
   </url>
 
-  <url>
-    <loc>https://easysorting.netlify.app/bubblesort</loc>
-    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://easysorting.netlify.app/selectionsort</loc>
-    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://easysorting.netlify.app/insertionsort</loc>
-    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://easysorting.netlify.app/mergesort</loc>
-    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
-    <loc>https://easysorting.netlify.app/quicksort</loc>
-    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
-  </url>
-
+  <!-- Algorithm visualizer pages (highest value) -->
   <url>
     <loc>https://easysorting.netlify.app/heapsort</loc>
-    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.95</priority>
   </url>
-
+  <url>
+    <loc>https://easysorting.netlify.app/quicksort</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://easysorting.netlify.app/insertionsort</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://easysorting.netlify.app/bubblesort</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://easysorting.netlify.app/mergesort</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://easysorting.netlify.app/selectionsort</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
   <url>
     <loc>https://easysorting.netlify.app/radixsort</loc>
-    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.90</priority>
+    <priority>0.95</priority>
   </url>
-
   <url>
     <loc>https://easysorting.netlify.app/shellsort</loc>
-    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- Resource / comparison page -->
+  <url>
+    <loc>https://easysorting.netlify.app/sorting-algorithms</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.92</priority>
+  </url>
+  <url>
+    <loc>https://easysorting.netlify.app/summary</loc>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
   </url>
-
   <url>
-    <loc>https://easysorting.netlify.app/summary</loc>
-    <lastmod>2026-07-22T00:00:00+00:00</lastmod>
+    <loc>https://easysorting.netlify.app/sorting-algorithm-race</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://easysorting.netlify.app/big-o-notation</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://easysorting.netlify.app/heap-visualizer</loc>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
+  <!-- Utility pages -->
   <url>
     <loc>https://easysorting.netlify.app/about</loc>
-    <lastmod>2026-04-04T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
-
   <url>
     <loc>https://easysorting.netlify.app/contact</loc>
-    <lastmod>2026-04-04T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
-
   <url>
     <loc>https://easysorting.netlify.app/feedback</loc>
-    <lastmod>2026-04-04T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.60</priority>
   </url>
-
   <url>
     <loc>https://easysorting.netlify.app/privacy-policy</loc>
-    <lastmod>2026-04-04T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.40</priority>
   </url>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merge Sort Visualizer — Step-by-Step Animation, Code & Complexity | EasySorting</title>
+    <title>Merge Sort Visualizer - Step-by-Step Animation, Code & Complexity | EasySorting</title>
     <meta name="description"
         content="Visualize Merge Sort's divide and conquer approach step by step. Understand guaranteed O(n log n) performance with code in C, C++, Java, Python, and JavaScript." />
     <meta name="keywords"
@@ -16,16 +16,19 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Merge Sort Visualizer — Step-by-Step | EasySorting" />
+    <meta property="og:title" content="Merge Sort Visualizer - Step-by-Step | EasySorting" />
     <meta property="og:description"
         content="See Merge Sort's divide and conquer in action with interactive animations and ready-to-copy code in 5 languages." />
     <meta property="og:url" content="https://easysorting.netlify.app/mergesort" />
-    <meta property="og:image" content="https://easysorting.netlify.app/images/merge.webp" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="EasySorting" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Merge Sort Visualizer | EasySorting" />
     <meta name="twitter:description"
         content="Interactive Merge Sort visualization with guaranteed O(n log n) performance." />
+  <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
@@ -36,7 +39,7 @@
     {
       "@context": "https://schema.org",
       "@type": "TechArticle",
-      "headline": "Merge Sort — Visual Step-by-Step Explanation",
+      "headline": "Merge Sort - Visual Step-by-Step Explanation",
       "description": "Interactive visualization of Merge Sort with time complexity, pseudocode, and implementation in multiple languages.",
       "url": "https://easysorting.netlify.app/mergesort",
       "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
@@ -52,6 +55,39 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" },
         { "@type": "ListItem", "position": 2, "name": "Merge Sort", "item": "https://easysorting.netlify.app/mergesort" }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does merge sort work step by step?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Merge sort uses divide and conquer. It recursively splits the array into two halves until each piece holds a single element (trivially sorted), then repeatedly merges adjacent sorted halves by comparing their fronts and combining them in order."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the time and space complexity of merge sort?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Merge sort always runs in O(n log n) time - best, average, and worst case - because it consistently divides and merges regardless of input order. It uses O(n) auxiliary space for the merge step."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is merge sort stable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Merge sort is stable, which is why it is used as the stable component inside Timsort, the default sort in JavaScript and Python."
+          }
+        }
       ]
     }
     </script>
@@ -263,15 +299,15 @@
                 <h2 class="section-title">Time and Space Complexity</h2>
                 <h3>Time Complexity</h3>
                 <ul>
-                    <li><strong>Best Case:</strong> <code>O(n log n)</code> – Consistent performance across all cases.
+                    <li><strong>Best Case:</strong> <code>O(n log n)</code> - Consistent performance across all cases.
                     </li>
-                    <li><strong>Average Case:</strong> <code>O(n log n)</code> – Maintains efficient performance on
+                    <li><strong>Average Case:</strong> <code>O(n log n)</code> - Maintains efficient performance on
                         average.</li>
-                    <li><strong>Worst Case:</strong> <code>O(n log n)</code> – Efficient even in the worst-case
+                    <li><strong>Worst Case:</strong> <code>O(n log n)</code> - Efficient even in the worst-case
                         scenario.</li>
                 </ul>
                 <h3>Space Complexity</h3>
-                <p><strong>Space Complexity:</strong> <code>O(n)</code> – Requires additional space for the temporary
+                <p><strong>Space Complexity:</strong> <code>O(n)</code> - Requires additional space for the temporary
                     arrays used in the merging process.</p>
             </section>
 
@@ -318,6 +354,52 @@ function merge(left, right):
                 </p>
             </section>
 
+            <section class="how-it-works  scroll-animate">
+                <h2 class="section-title">How Merge Sort Works</h2>
+                <p>Merge sort is the canonical <strong>divide and conquer</strong> algorithm. It never worries about
+                    comparing elements across the whole array at once - instead it breaks the problem into tiny
+                    pieces and combines sorted results:</p>
+                <ol class="algorithm-steps">
+                    <li><strong>Divide:</strong> split the array into two halves recursively until each sub-array
+                        contains a single element (a single element is trivially sorted).</li>
+                    <li><strong>Conquer:</strong> merge two adjacent sorted sub-arrays by repeatedly comparing their
+                        front elements and placing the smaller one into the result.</li>
+                    <li><strong>Combine:</strong> after merging all the way back up, the full array is sorted.</li>
+                </ol>
+                <p>Because the merge step only ever takes the smaller front element, merge sort is <strong>stable</strong>,
+                    and because it always halves and always merges fully, it runs in <code>O(n log n)</code> in every
+                    case.</p>
+            </section>
+
+            <section class="application-code  scroll-animate">
+                <h2 class="section-title">When To Use Merge Sort</h2>
+                <ul class="algorithm-list-inline">
+                    <li><strong>Guaranteed performance:</strong> O(n log n) even in the worst case.</li>
+                    <li><strong>Stable sorting needed:</strong> preserving equal-key order matters.</li>
+                    <li><strong>Linked lists:</strong> merge sort works naturally on lists without O(n) extra space.
+                    </li>
+                    <li><strong>External sorting:</strong> sorts data too large to fit in memory.</li>
+                </ul>
+            </section>
+
+            <section class="related-visualizations scroll-animate">
+                <h2 class="section-title">Related Sorting Visualizers</h2>
+                <p>Merge sort is a stable comparison sort with O(n) space. Compare it with other divide-and-conquer and
+                    non-comparison algorithms:</p>
+                <div class="related-links">
+                    <a href="./quickSort.html">Quick Sort Visualizer</a> -
+                    <a href="./heapSort.html">Heap Sort Visualizer</a> -
+                    <a href="./insertionSort.html">Insertion Sort Visualizer</a> -
+                    <a href="./radixSort.html">Radix Sort Visualizer</a> -
+                    <a href="./selectionSort.html">Selection Sort Visualizer</a>
+                </div>
+                <p>Compare all algorithms side by side in the <a href="./summary.html">Sorting Algorithm Complexity
+                        Summary</a>.</p>
+                <p>Prefer a plain-English answer? See <a href="./sortingAlgorithms.html">Which sorting algorithm
+                        should I use?</a>, benchmark every algorithm live in the <a href="./sortingAlgorithmRace.html">Sorting
+                        Algorithm Race</a>, or learn <a href="./bigONotation.html">Big O notation</a> with charts.</p>
+            </section>
+
             <section class="language-code-container">
                 <h1 class="scroll-animate">Merge Sort Code Implementation</h1>
                 <div class="language-selector scroll-animate">
@@ -339,7 +421,7 @@ function merge(left, right):
 
     <footer class="site-footer" role="contentinfo">
         <div class="footer-container">
-            <p class="footer-title">EasySorting — Sorting Visualizer</p>
+            <p class="footer-title">EasySorting - Sorting Visualizer</p>
             <div class="footer-links">
                 <a href="./about.html">About</a> |
                 <a href="./feedback.html">Feedback</a> |
@@ -347,7 +429,7 @@ function merge(left, right):
                 <a href="./privacy-policy.html">Privacy Policy</a>
             </div>
             <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
+            <p class="footer-credit">Made by <a href="https://arunneupane.netlify.app/" target="_blank"
                     rel="noopener noreferrer">Arun Neupane</a></p>
             <p class="footer-credit">For Learning and Development</p>
         </div>

@@ -292,7 +292,7 @@ function displayBtn(dis) {
 inputBox.addEventListener("keyup", (event) => {
   if (event.key === "Enter" && sortBtn.textContent === "Sort") sortBtn.click();
 });
-//Nav toggle — side drawer
+//Nav toggle - side drawer
 let navOverlay = null;
 
 function getOrCreateOverlay() {

@@ -4,56 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorting Algorithm Complexity Summary — Time & Space Comparison | EasySorting</title>
+    <title>Sorting Algorithms Comparison: Time and Space Complexity Table | EasySorting</title>
     <meta name="description"
-        content="Compare all sorting algorithms in one table: Bubble Sort, Quick Sort, Merge Sort, Heap Sort, Radix Sort, Shell Sort. See best, average, and worst case time complexity, space complexity, stability, and type." />
+        content="Compare all 8 sorting algorithms in one place: Bubble Sort, Quick Sort, Merge Sort, Heap Sort, Radix Sort, Shell Sort, Selection Sort, Insertion Sort. See best, average, and worst case time, space complexity, stability, and in-place sorting, with charts and a decision guide." />
     <meta name="keywords"
-        content="sorting algorithm comparison, sorting complexity table, big o notation, bubble sort complexity, merge sort time complexity, quick sort space complexity, stable sorting, in-place sorting" />
+        content="sorting algorithm comparison, sorting complexity table, big o sorting, which sorting algorithm to use, stable vs unstable sort, in-place sorting, bubble sort complexity, merge sort complexity" />
     <link rel="canonical" href="https://easysorting.netlify.app/summary" />
     <meta name="author" content="Arun Neupane" />
     <meta name="robots" content="index, follow" />
+    <link rel="icon" href="./images/sort.png" type="image/x-icon">
+    <meta name="theme-color" content="#F2F2F7">
     <meta name="google-adsense-account" content="ca-pub-1708134460872611">
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Sorting Algorithm Complexity Summary | EasySorting" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Sorting Algorithms Comparison: Time and Space Complexity Table" />
     <meta property="og:description"
-        content="Compare all sorting algorithms in one table — time complexity, space complexity, stability, and type." />
+        content="One interactive table for all 8 sorting algorithms with time complexity, space, stability, and a decision guide." />
     <meta property="og:url" content="https://easysorting.netlify.app/summary" />
-    <meta property="og:image" content="https://easysorting.netlify.app/images/sort.png" />
+    <meta property="og:image" content="https://easysorting.netlify.app/images/social-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="EasySorting" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sorting Algorithm Complexity Summary | EasySorting" />
-    <meta name="twitter:description"
-        content="One-table comparison of all sorting algorithms — time, space, stability." />
+    <meta property="og:locale" content="en_US" />
 
-    <!-- Google AdSense -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sorting Algorithms Comparison: Time and Space Complexity Table" />
+    <meta name="twitter:description"
+        content="Interactive comparison of all 8 sorting algorithms with charts and a decision guide." />
+    <meta name="twitter:image" content="https://easysorting.netlify.app/images/social-card.png" />
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1708134460872611"
         crossorigin="anonymous"></script>
 
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": "Sorting Algorithm Complexity Summary",
-      "description": "A comprehensive comparison table of sorting algorithms covering time complexity, space complexity, stability, and algorithm type.",
+      "headline": "Sorting Algorithms Comparison: Time and Space Complexity Table",
+      "description": "An interactive comparison of all 8 sorting algorithms covering best, average, and worst case time, space complexity, stability, and in-place behavior.",
       "url": "https://easysorting.netlify.app/summary",
-      "author": {
-        "@type": "Person",
-        "name": "Arun Neupane",
-        "url": "https://arunneupane.netlify.app/"
-      },
+      "datePublished": "2026-09-02",
+      "dateModified": "2026-09-02",
+      "inLanguage": "en",
+      "author": { "@type": "Person", "name": "Arun Neupane", "url": "https://arunneupane.netlify.app/" },
       "publisher": {
         "@type": "Organization",
         "name": "EasySorting",
-        "url": "https://easysorting.netlify.app"
+        "url": "https://easysorting.netlify.app",
+        "logo": { "@type": "ImageObject", "url": "https://easysorting.netlify.app/images/sort.png", "width": 512, "height": 512 }
       },
-      "isPartOf": {
-        "@type": "WebSite",
-        "name": "EasySorting",
-        "url": "https://easysorting.netlify.app"
-      }
+      "mainEntityOfPage": "https://easysorting.netlify.app/summary"
     }
     </script>
 
@@ -63,453 +63,475 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://easysorting.netlify.app/" },
-        { "@type": "ListItem", "position": 2, "name": "Complexity Summary", "item": "https://easysorting.netlify.app/summary" }
+        { "@type": "ListItem", "position": 2, "name": "Sorting Algorithms", "item": "https://easysorting.netlify.app/sorting-algorithms" },
+        { "@type": "ListItem", "position": 3, "name": "Comparison", "item": "https://easysorting.netlify.app/summary" }
       ]
     }
     </script>
-    <link rel="icon" href="./images/write.png" type="image/x-icon">
-    <link rel="stylesheet" href="./styles.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which sorting algorithm is the best overall?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no single best sort. Quick Sort wins on average speed for random data, Merge Sort wins when stability and guaranteed O(n log n) matter, Heap Sort wins when extra memory is forbidden, and Insertion Sort wins for tiny or nearly sorted arrays."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does in-place mean for sorting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In-place sorting rearranges the values using a constant amount of extra memory, O(1). Bubble, Selection, Insertion, Shell, Quick, and Heap Sort are in-place. Merge Sort and Radix Sort need a copy buffer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does Quick Sort have a worst case of O(n^2)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When a poor pivot splits the array into one element and the rest every round, Quick Sort does n levels of n work. Randomized or median-of-three pivoting makes that degenerate case practically impossible."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between comparison and non-comparison sorts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Comparison sorts such as Bubble, Merge, and Quick Sort order elements by comparing keys and have an O(n log n) lower bound. Non-comparison sorts such as Radix Sort bucket values by structure and can run in O(nk), but only for bounded key types."
+          }
+        }
+      ]
+    }
+    </script>
+
     <link rel="manifest" href="./manifest.json">
-    <!-- For ios -->
     <link rel="apple-touch-icon" href="./images/sort.png">
-    <meta name="apple-mobile-web-app-status-bar" content="1338BE">
+    <link rel="stylesheet" href="./hig.css">
     <style>
-        .menu-toggle span {
-            background-color: black;
-        }
-
-        body {
-            /* background: #f4f7f9; */
-            background: linear-gradient(135deg, #f4f1f4, #0a2cec);
-            color: #000000;
-        }
-
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-            margin: 20px auto;
-            max-width: 1000px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        h1,
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #444;
-            border: none;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
-            padding-top: 70px;
-        }
-
-        .table-container table {
-            min-width: 800px;
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 12px;
-            text-align: center;
-            border: 1px solid #ddd;
-            font-size: 1.1rem;
-        }
-
-        .table-container table th:first-child,
-        .table-container table td:first-child {
+        .table-wrap table.hig td:first-child,
+        .table-wrap table.hig th:first-child {
             position: sticky;
-            left: 0px;
+            left: 0;
+            background: var(--bg-2);
             z-index: 2;
-            background-color: #f4f7f9;
         }
-
-        .table-container table th:first-child {
-            background-color: #007acc;
-        }
-
-        thead {
-            background-color: #007acc;
-            color: #fff;
-        }
-
-        .table-container table tbody tr:nth-child(even) {
-            background-color: #f0f0f0;
-        }
-
-        tbody tr:hover {
-            background-color: #e0e0e0;
-        }
-
-        .definitions {
-            background-color: #e8f6f979;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .definitions p {
-            margin-bottom: 10px;
-            color: #000000;
-            font-size: 1.1rem;
-        }
-
-        .definitions strong {
-            color: #007acc;
-        }
-
-        .best {
-            color: blue;
-        }
-
-        .worst {
-            color: red;
-        }
-
-        table tr {
-            transition: filter 0.1s ease-in-out;
+        .table-wrap table.hig thead th:first-child { z-index: 3; }
+        table.hig tbody tr {
             cursor: pointer;
+            transition: filter 0.25s ease, background-color 0.25s ease;
         }
-
-        .faded {
-            filter: opacity(0.15);
-        }
-
-        caption {
-            font-size: 1.5rem;
-        }
-
-        tfoot tr td {
-            font-weight: bold;
-        }
-
-        @media (max-width: 600px) {
-
-            th,
-            td {
-                padding: 8px;
-                font-size: 14px;
-            }
-
-            .container {
-                padding-top: 40px;
-            }
-
-            caption {
-                text-align: left;
-            }
-
-            tfoot tr td {
-                font-weight: bold;
-                text-align: left;
-                padding-left: 15%;
-            }
-
-        }
+        table.hig tbody tr.row-dim { filter: opacity(0.28); }
+        table.hig tbody tr.row-hot { background: var(--accent-soft); }
+        table.hig td.st { color: var(--green); font-weight: 700; }
+        table.hig td.slow { color: var(--red); font-weight: 700; }
+        table.hig td.space-ok { color: var(--accent); font-weight: 700; }
+        .legend-note { font-size: 13px; color: var(--label-3); margin-top: 10px; }
+        .quick-card { text-align: left; }
+        .quick-card h3 { font-size: 17px; }
+        .quick-card p { color: var(--label-2); font-size: 14.5px; margin-top: 6px; }
+        .quick-card .chip { width: fit-content; }
     </style>
 </head>
 
 <body>
-    <nav>
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-        <div class="nav-links">
-            <a href="./index.html">Home</a>
-            <a href="./bubbleSort.html">Bubble <span class="sort-text">Sort</span></a>
-            <a href="./selectionSort.html">Selection <span class="sort-text">Sort</span></a>
-            <a href="./insertionSort.html">Insertion <span class="sort-text">Sort</span></a>
-            <a href="./mergeSort.html">Merge <span class="sort-text">Sort</span></a>
-            <a href="./quickSort.html">Quick <span class="sort-text">Sort</span></a>
-            <a href="./heapSort.html">Heap <span class="sort-text">Sort</span></a>
-            <a href="./radixSort.html">Radix <span class="sort-text">Sort</span></a>
-            <a href="./shellSort.html">Shell <span class="sort-text">Sort</span></a>
-            <a href="./summary.html" class="bb">Summary</a>
-            <a id="install-button-mobile">Install</a>
-
-        </div>
-    </nav>
-
-    <div class="progress-bar-container">
-        <div class="progress-bar"></div>
-    </div>
-
-    <div class="cursor big"></div>
-    <div class="cursor small"></div>
-
-    <div id="context-menu" class="hidden">
-        <ul>
-            <li onclick="window.location.reload(true);">Refresh</li>
-
-            <li onclick="window.open('./contact.html','_self')">
-                Contact
-            </li>
-
-            <li>
-                Share
-                <ul class="submenu">
-                    <li class="submenu-item">
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://easysorting.netlify.app&quote=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer"
-                            target="_blank" rel="noopener">
-                            <img src="./images/svg-icons/facebook.svg" alt="Facebook" class="icon">
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="https://www.instagram.com" target="_blank" rel="noopener">
-                            <img src="./images/svg-icons/instagram.svg" alt="Instagram" class="icon">
-                        </a>
-                    </li>
-
-                    <li class="submenu-item">
-                        <a href="https://wa.me/?text=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer%20-%20https://easysorting.netlify.app"
-                            target="_blank" rel="noopener">
-                            <img src="./images/svg-icons/whatsapp.svg" alt="Whatsapp" class="icon">
-                        </a>
-                    </li>
-
-                    <li class="submenu-item">
-                        <a href="https://t.me/share/url?url=https://easysorting.netlify.app&text=Hey%20check%20out%20this%20sorting%20algorithm%20visualizer"
-                            target="_blank" rel="noopener">
-                            <img src="./images/svg-icons/telegram.svg" alt="Telegram" class="icon">
-                        </a>
-                    </li>
+    <header class="topbar">
+        <div class="shell topbar__inner">
+            <a class="brand" href="./"><span class="brand__mark brand__mark--logo"><img src="./images/sort.png" alt="" width="30" height="30"></span> EasySorting</a>
+            <nav aria-label="Primary">
+                <ul class="nav-links desktop-links">
+                    <li><a href="./">Visualizers</a></li>
+                    <li><a href="./sorting-algorithms">Guide</a></li>
+                    <li><a href="./big-o-notation">Big O</a></li>
+                    <li><a href="./sorting-algorithm-race">Race</a></li>
+                    <li><a href="./summary" class="nav-active">Compare</a></li>
+                    <li><a href="./about">About</a></li>
                 </ul>
-            </li>
-
-            <li>
-                Follow me
-                <ul class="submenu">
-                    <li class="submenu-item">
-                        <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener">
-                            <img src="./images/svg-icons/facebook.svg" alt="Facebook" class="icon">
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="https://www.instagram.com/arundada9000" target="_blank" rel="noopener">
-                            <img src="./images/svg-icons/instagram.svg" alt="Instagram" class="icon">
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="https://www.github.com/arundada9000" target="_blank" rel="noopener">
-                            <img src="./images/svg-icons/github.svg" alt="Telegram" class="icon">
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <a href="https://www.youtube.com/@code_with_ease" target="_blank" rel="noopener">
-                            <img src="./images/svg-icons/youtube.svg" alt="Youtube" class="icon">
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li onclick="window.open('./feedback.html','_self')">
-                Feedback
-            </li>
-            <li id="installButton">Install</li>
-
-        </ul>
-    </div>
-
-    <div class="container">
-        <h1 class=" scroll-animate">Sorting Algorithm Summary</h1>
-
-        <h2 class=" scroll-animate">Algorithm Complexity Table</h2>
-        <div class="table-container">
-            <table>
-                <caption>Sorting Algorithms</caption>
-                <thead>
-                    <tr>
-                        <th>Algorithm</th>
-                        <th>Average Time</th>
-                        <th>Worst Time</th>
-                        <th>Best Time</th>
-                        <th>Space Complexity</th>
-                        <th>Stable</th>
-                        <th>In-place</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Bubble Sort</td>
-                        <td class="worst">O(n²)</td>
-                        <td class="worst">O(n²)</td>
-                        <td>O(n)</td>
-                        <td class="best">O(1)</td>
-                        <td>&#10004;</td>
-                        <td>&#10004;</td>
-                        <td>Comparison</td>
-                    </tr>
-                    <tr>
-                        <td>Selection Sort</td>
-                        <td class="worst">O(n²)</td>
-                        <td class="worst">O(n²)</td>
-                        <td class="worst">O(n²)</td>
-                        <td class="best">O(1)</td>
-                        <td>X</td>
-                        <td>&#10004;</td>
-                        <td>Comparison</td>
-                    </tr>
-                    <tr>
-                        <td>Insertion Sort</td>
-                        <td class="worst">O(n²)</td>
-                        <td class="worst">O(n²)</td>
-                        <td>O(n)</td>
-                        <td class="best">O(1)</td>
-                        <td>&#10004;</td>
-                        <td>&#10004;</td>
-                        <td>Comparison</td>
-                    </tr>
-                    <tr>
-                        <td>Merge Sort</td>
-                        <td>O(n log n)</td>
-                        <td>O(n log n)</td>
-                        <td>O(n log n)</td>
-                        <td>O(n)</td>
-                        <td>&#10004;</td>
-                        <td>X</td>
-                        <td>Comparison</td>
-                    </tr>
-                    <tr>
-                        <td>Quick Sort</td>
-                        <td>O(n log n)</td>
-                        <td class="worst">O(n²)</td>
-                        <td>O(n log n)</td>
-                        <td>O(log n)</td>
-                        <td>X</td>
-                        <td>&#10004;</td>
-                        <td>Comparison</td>
-                    </tr>
-                    <tr>
-                        <td>Heap Sort</td>
-                        <td>O(n log n)</td>
-                        <td>O(n log n)</td>
-                        <td>O(n log n)</td>
-                        <td class="best">O(1)</td>
-                        <td>X</td>
-                        <td>&#10004;</td>
-                        <td>Comparison</td>
-                    </tr>
-                    <tr>
-                        <td>Radix Sort</td>
-                        <td>O(nk)</td>
-                        <td>O(nk)</td>
-                        <td>O(nk)</td>
-                        <td>O(n + k)</td>
-                        <td>&#10004;</td>
-                        <td>X</td>
-                        <td>Non-comparison</td>
-                    </tr>
-                    <tr>
-                        <td>Shell Sort</td>
-                        <td>O(n<sup>3/2</sup>)</td>
-                        <td class="worst">O(n<sup>2</sup>)</td>
-                        <td>O(n log n)</td>
-                        <td>O(1)</td>
-                        <td>X</td>
-                        <td>&#10004;</td>
-                        <td>Comparison</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="100%">You can click on and scroll the table.</td>
-                    </tr>
-                </tfoot>
-            </table>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" type="button" title="Toggle dark mode"></button>
+            <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"
+                aria-controls="navLinks"><span></span><span></span><span></span></button>
+            <ul class="nav-links nav-mobile" id="navLinks">
+                <li><a href="./">Visualizers</a></li>
+                <li><a href="./sorting-algorithms">Guide</a></li>
+                <li><a href="./big-o-notation">Big O</a></li>
+                <li><a href="./heap-visualizer">Heap Visualizer</a></li>
+                <li><a href="./sorting-algorithm-race">Algorithm Race</a></li>
+                <li><a href="./summary">Compare</a></li>
+                <li><a href="./about">About</a></li>
+                <li><a href="./feedback">Feedback</a></li>
+            </ul>
         </div>
+    </header>
 
-        <h2 class=" scroll-animate">Key Definitions</h2>
-        <div class="definitions">
-            <p class=" scroll-animate"><strong>Sorting:</strong> Sorting is the process of arranging elements in a
-                specific order (ascending or
-                descending) based on a criterion, typically numerical or lexicographical.</p>
-
-            <p class=" scroll-animate"><strong>In-place Sorting:</strong> An algorithm is in-place if it requires a
-                constant amount of extra
-                space (O(1)) to rearrange the elements. These algorithms do not use additional data structures for
-                storage.</p>
-
-            <p class=" scroll-animate"><strong>Stable Sorting:</strong> A sorting algorithm is stable if it maintains
-                the relative order of
-                equal elements in the input array. In other words, two equal elements retain their positions relative to
-                each other even after sorting.</p>
-        </div>
-    </div>
-
-    <button id="backToTopBtn" title="Go to top" type="button">↑</button>
-
-    <!-- dummy is used to stop those script.js errors that tries to fetch buttons -->
-    <div class="dummy-btn language-selector inside-code-container language-copy-button" id="dummy-btn">Dummy button
-    </div>
-    <button id="dummy-btn1" data-language="c">Dummy button</button>
-    <button id="dummy-btn2" data-language="javascript">Dummy btn 2</button>
-
-    <footer class="site-footer" role="contentinfo">
-        <div class="footer-container">
-            <p class="footer-title">EasySorting — Sorting Visualizer</p>
-            <div class="footer-links">
-                <a href="./about.html">About</a> |
-                <a href="./feedback.html">Feedback</a> |
-                <a href="./contact.html">Contact</a> |
-                <a href="./privacy-policy.html">Privacy Policy</a>
+    <main class="playing-field" id="main">
+        <div class="shell shell--narrow">
+            <div class="hero">
+                <nav class="breadcrumbs" aria-label="Breadcrumb">
+                    <a href="./">Home</a>
+                    <span class="crumb-sep" aria-hidden="true"></span>
+                    <a href="./sorting-algorithms">Sorting Algorithms</a>
+                    <span class="crumb-sep" aria-hidden="true"></span>
+                    <span>Comparison</span>
+                </nav>
+                <p class="hero__kicker">Everything compared</p>
+                <h1>Sorting Algorithms Comparison</h1>
+                <p class="hero__lead">Every sorting algorithm at a glance: best, average, and worst case time, space
+                    complexity, stability, and in-place behavior. Click any row or column to focus it, then read the
+                    decision guide below the table.</p>
             </div>
-            <p class="footer-info">&copy; <span id="year"></span> EasySorting. All rights reserved.</p>
-            <p class="footer-credit">Made with ❤️ by <a href="https://arunneupane.netlify.app/" target="_blank"
-                    rel="noopener noreferrer">Arun Neupane</a></p>
-            <p class="footer-credit">For Learning and Development</p>
+
+            <div class="card card--pad mt-3" data-reveal>
+                <h2 class="section__title" style="font-size:18px"><span class="t-index">TL;DR</span> The short version</h2>
+                <div class="prose mt-1">
+                    <p>Three algorithms hold O(n log n): Merge Sort, Quick Sort, and Heap Sort. Radical differences hide in
+                        the details. Merge Sort needs O(n) memory but is stable. Quick Sort uses almost no extra memory but
+                        can degrade to O(n^2). Heap Sort needs no memory and never degrades, but is not stable. Everything
+                        else is O(n^2) and only worth using on tiny, nearly sorted, or memory-constrained inputs. Radix Sort
+                        is the outlier: non-comparison, stable, and linear for bounded integers.</p>
+                </div>
+            </div>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">01</span>The full comparison table</h2>
+                    <p class="section__desc">Click a row to spotlight that algorithm, or click a column header to spotlight
+                        that property.</p>
+                </div>
+                <div class="table-wrap" data-reveal id="tableWrap">
+                    <table class="hig" id="cmpTable">
+                        <caption>The eight EasySorting algorithms. Green means best-in-class, red means the weak point.</caption>
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th>Best</th>
+                                <th>Average</th>
+                                <th>Worst</th>
+                                <th>Space</th>
+                                <th>Stable</th>
+                                <th>In-place</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-slug="bubblesort">
+                                <td><a href="./bubblesort">Bubble Sort</a></td>
+                                <td class="st">O(n)</td><td class="slow">O(n^2)</td><td class="slow">O(n^2)</td>
+                                <td class="space-ok">O(1)</td><td>Yes</td><td>Yes</td><td>Comparison</td>
+                            </tr>
+                            <tr data-slug="selectionsort">
+                                <td><a href="./selectionsort">Selection Sort</a></td>
+                                <td class="slow">O(n^2)</td><td class="slow">O(n^2)</td><td class="slow">O(n^2)</td>
+                                <td class="space-ok">O(1)</td><td>No</td><td>Yes</td><td>Comparison</td>
+                            </tr>
+                            <tr data-slug="insertionsort">
+                                <td><a href="./insertionsort">Insertion Sort</a></td>
+                                <td class="st">O(n)</td><td class="slow">O(n^2)</td><td class="slow">O(n^2)</td>
+                                <td class="space-ok">O(1)</td><td>Yes</td><td>Yes</td><td>Comparison</td>
+                            </tr>
+                            <tr data-slug="shellsort">
+                                <td><a href="./shellsort">Shell Sort</a></td>
+                                <td class="st">O(n log n)</td><td>O(n^1.25)</td><td class="slow">O(n^2)</td>
+                                <td class="space-ok">O(1)</td><td>No</td><td>Yes</td><td>Comparison</td>
+                            </tr>
+                            <tr data-slug="mergesort">
+                                <td><a href="./mergesort">Merge Sort</a></td>
+                                <td class="st">O(n log n)</td><td class="st">O(n log n)</td><td class="st">O(n log n)</td>
+                                <td>O(n)</td><td>Yes</td><td>No</td><td>Comparison</td>
+                            </tr>
+                            <tr data-slug="quicksort">
+                                <td><a href="./quicksort">Quick Sort</a></td>
+                                <td class="st">O(n log n)</td><td class="st">O(n log n)</td><td class="slow">O(n^2)</td>
+                                <td>O(log n)</td><td>No</td><td>Yes</td><td>Comparison</td>
+                            </tr>
+                            <tr data-slug="heapsort">
+                                <td><a href="./heapsort">Heap Sort</a></td>
+                                <td class="st">O(n log n)</td><td class="st">O(n log n)</td><td class="st">O(n log n)</td>
+                                <td class="space-ok">O(1)</td><td>No</td><td>Yes</td><td>Comparison</td>
+                            </tr>
+                            <tr data-slug="radixsort">
+                                <td><a href="./radixsort">Radix Sort</a></td>
+                                <td class="st">O(nk)</td><td class="st">O(nk)</td><td class="st">O(nk)</td>
+                                <td>O(n + k)</td><td>Yes</td><td>No</td><td>Non-comparison</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="legend-note" data-reveal>O(n log n) means efficient and scalable. O(n^2) means simple but slow
+                    past roughly 10,000 items. Space and in-place are the hidden costs that decide real systems.</p>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">02</span>The complexity classes on a chart</h2>
+                    <p class="section__desc">The same Big O numbers, drawn for n from 1 to 100. Efficient sorts stay low
+                        and flat; O(n^2) sorts break away early.</p>
+                </div>
+                <div class="card card--pad" data-reveal>
+                    <div class="chart-box" id="summaryChart"></div>
+                    <div class="legend">
+                        <span class="legend__item"><span class="legend__swatch" style="background:#34C759"></span>O(n log n): Merge, Quick, Heap</span>
+                        <span class="legend__item"><span class="legend__swatch" style="background:#FF3B30"></span>O(n^2): Bubble, Selection, Insertion</span>
+                        <span class="legend__item"><span class="legend__swatch" style="background:#5856D6"></span>O(n^1.25): Shell</span>
+                        <span class="legend__item"><span class="legend__swatch" style="background:#30B0C7"></span>O(n): Radix (bounded keys)</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">03</span>Key definitions</h2>
+                </div>
+                <div class="glist" data-reveal>
+                    <div class="glist__cell">
+                        <div class="glist__main">
+                            <p class="glist__title">Best, average, and worst case</p>
+                            <p class="glist__desc">Best is the input that finishes fastest, usually already sorted. Worst is
+                                the slowest, usually reversed. Average is the expected cost over typical inputs. Quick Sort
+                                is O(n log n) average but O(n^2) worst.</p>
+                        </div>
+                    </div>
+                    <div class="glist__cell">
+                        <div class="glist__main">
+                            <p class="glist__title">In-place</p>
+                            <p class="glist__desc">Sorts using a constant O(1) amount of extra memory. Great when memory is
+                                tight. Merge Sort and Radix Sort are the exceptions because they build a copy buffer.</p>
+                        </div>
+                    </div>
+                    <div class="glist__cell">
+                        <div class="glist__main">
+                            <p class="glist__title">Stable</p>
+                            <p class="glist__desc">Preserves the original relative order of equal keys. Required when sorting
+                                records that already carry a secondary order. Merge, Insertion, and Bubble are stable;
+                                Quick and Heap are not.</p>
+                        </div>
+                    </div>
+                    <div class="glist__cell">
+                        <div class="glist__main">
+                            <p class="glist__title">Comparison vs non-comparison</p>
+                            <p class="glist__desc">Comparison sorts order by comparing keys and stop at O(n log n). Radix
+                                Sort buckets values by digit and reaches O(nk), but only works on bounded-key data such as
+                                integers.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">04</span>Which algorithm wins for your case</h2>
+                    <p class="section__desc">The practical rules behind the decision panel on the guide page.</p>
+                </div>
+                <div class="card-grid card-grid--3" data-reveal>
+                    <div class="card card--lift quick-card card--pad">
+                        <span class="chip chip--green">Sorted or almost sorted</span>
+                        <h3>Insertion Sort</h3>
+                        <p>Runs in O(n) on sorted data with zero overhead. The linear scan wins by a mile.</p>
+                    </div>
+                    <div class="card card--lift quick-card card--pad">
+                        <span class="chip chip--green">Random data</span>
+                        <h3>Quick Sort</h3>
+                        <p>Fewest comparisons and moves in practice at O(n log n) average.</p>
+                    </div>
+                    <div class="card card--lift quick-card card--pad">
+                        <span class="chip chip--blue" style="background:color-mix(in srgb, var(--accent) 14%, transparent);color:var(--accent)">Guaranteed time</span>
+                        <h3>Merge or Heap Sort</h3>
+                        <p>Both hold O(n log n) in every case. Merge is stable, Heap is memory-free.</p>
+                    </div>
+                    <div class="card card--lift quick-card card--pad">
+                        <span class="chip chip--accent">No extra memory</span>
+                        <h3>Heap Sort</h3>
+                        <p>The strongest in-place O(n log n) sort. Merge Sort cannot compete on memory.</p>
+                    </div>
+                    <div class="card card--lift quick-card card--pad">
+                        <span class="chip chip--teal">Bounded integers</span>
+                        <h3>Radix Sort</h3>
+                        <p>Linear O(nk), stable, and unbeatable when the key width is small.</p>
+                    </div>
+                    <div class="card card--lift quick-card card--pad">
+                        <span class="chip chip--accent">Learning the basics</span>
+                        <h3>Bubble Sort</h3>
+                        <p>Awful in production but the clearest possible introduction to passes and swaps.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">05</span>Prove the table wrong</h2>
+                </div>
+                <div class="prose" data-reveal>
+                    <p>Big O is theory, and the race is the check. Open the <a href="./sorting-algorithm-race">Sorting
+                            Algorithm Race</a> and feed every algorithm the same array. The measured comparisons and moves
+                        should line up with this table: Insertion Sort at the top on sorted data, the three O(n log n)
+                        sorts clustered on random data, and the O(n^2) sorts fading fast as the size slider climbs.</p>
+                </div>
+                <div class="row mt-2" data-reveal>
+                    <a class="btn btn--accent" href="./sorting-algorithm-race">Race the algorithms</a>
+                    <a class="btn btn--subtle" href="./sorting-algorithms">Back to the guide</a>
+                    <a class="btn btn--ghost" href="./big-o-notation">Big O refresher</a>
+                </div>
+            </section>
+
+            <section class="section">
+                <div class="section__head" data-reveal>
+                    <h2 class="section__title"><span class="t-index">06</span>Frequently asked questions</h2>
+                </div>
+                <div class="faq" data-reveal>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Is there a sorting algorithm that wins on everything?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>No. Stability, memory, worst case, and simplicity trade off against
+                            each other. Real libraries ship hybrids instead of a single winner: Introsort starts as Quick
+                            Sort and falls back to Heap Sort, and Timsort blends Merge Sort with Insertion Sort.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Why does Shell Sort have a strange complexity like O(n^1.25)?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Shell Sort is Insertion Sort run over shrinking gaps. The total work
+                            depends on the gap sequence, and good sequences land between linear and quadratic. O(n^1.25) is
+                            the accepted average for practical gap choices.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>Should I memorize this table?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>Memorize the shape instead: three O(n log n) sorts, four O(n^2)
+                            simple sorts, one linear non-comparison sort. Then remember one distinguishing fact each: Merge
+                            is stable, Quick is fastest, Heap needs no memory, Radix is linear, and the rest are educational.</p></div>
+                    </details>
+                    <details class="faq-item">
+                        <summary><span class="q-mark">Q</span>What do interviewers actually ask about sorting?
+                            <span class="faq-chevron" aria-hidden="true">v</span></summary>
+                        <div class="faq-item__body"><p>The most common questions are: when is Merge Sort preferred, why can
+                            Quick Sort be O(n^2) and how to avoid it, what stability means, and how to sort when memory is
+                            severely limited. Practicing the animated versions of each algorithm is the fastest way to answer.</p></div>
+                    </details>
+                </div>
+            </section>
+
+            <section class="section mt-2" data-reveal>
+                <div class="card card--pad center mt-0">
+                    <h2 class="section__title" style="justify-content:center;font-size:22px">Open any algorithm</h2>
+                    <p class="muted mt-1">Every row in the table links to a full step-by-step visualizer.</p>
+                    <div class="row center" style="justify-content:center">
+                        <a class="btn btn--accent" href="./quicksort">Quick Sort</a>
+                        <a class="btn btn--subtle" href="./mergesort">Merge Sort</a>
+                        <a class="btn btn--subtle" href="./heapsort">Heap Sort</a>
+                        <a class="btn btn--ghost" href="./radixsort">Radix Sort</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="shell">
+            <div class="footer__grid">
+                <div>
+                    <div class="footer__brand"><span class="brand__mark"><img src="./images/sort.png" alt="" width="24" height="24"></span> EasySorting</div>
+                    <p class="footer__about">A free, interactive sorting algorithm visualizer. Learn how every major sort
+                        works with step-by-step animations and code in five programming languages.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on GitHub"><img src="./images/svg-icons/github.svg" alt="GitHub"></a>
+                        <a href="https://www.youtube.com/@code_with_ease" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on YouTube"><img src="./images/svg-icons/youtube.svg" alt="YouTube"></a>
+                        <a href="https://www.instagram.com/arundada9000" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Instagram"><img src="./images/svg-icons/instagram.svg" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/arunneupane9000/" target="_blank" rel="noopener noreferrer" aria-label="EasySorting on Facebook"><img src="./images/svg-icons/facebook.svg" alt="Facebook"></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Algorithms</h4>
+                    <ul>
+                        <li><a href="./bubblesort">Bubble Sort</a></li>
+                        <li><a href="./selectionsort">Selection Sort</a></li>
+                        <li><a href="./insertionsort">Insertion Sort</a></li>
+                        <li><a href="./shellsort">Shell Sort</a></li>
+                        <li><a href="./radixsort">Radix Sort</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Learn</h4>
+                    <ul>
+                        <li><a href="./sorting-algorithms">Sorting Algorithms Guide</a></li>
+                        <li><a href="./big-o-notation">Big O Notation</a></li>
+                        <li><a href="./summary">Full Comparison</a></li>
+                        <li><a href="./sorting-algorithm-race">Algorithm Race</a></li>
+                        <li><a href="./heap-visualizer">Heap Visualizer</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Site</h4>
+                    <ul>
+                        <li><a href="./about">About</a></li>
+                        <li><a href="./feedback">Feedback</a></li>
+                        <li><a href="./contact">Contact</a></li>
+                        <li><a href="./privacy-policy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <span>Copyright <span data-year>2026</span> EasySorting. Made by Arun Neupane.</span>
+                <span>Free forever. No sign-up. Fully offline-ready PWA.</span>
+            </div>
         </div>
     </footer>
 
-    <script src="./app.js"></script>
-
+    <script src="./hig.js"></script>
     <script>
-        const rows = document.querySelectorAll("table tr");
+        (function () {
+            var chart = document.getElementById("summaryChart");
+            var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            chart.appendChild(svg);
+            FastSort.hig.drawGrowthCurve(svg, [
+                { label: "O(n^2)", color: "#FF3B30", fn: function (n) { return n * n; } },
+                { label: "O(n^1.25)", color: "#5856D6", fn: function (n) { return Math.pow(n, 1.25); } },
+                { label: "O(n log n)", color: "#34C759", fn: function (n) { return n * Math.log2(n); } },
+                { label: "O(n)", color: "#30B0C7", fn: function (n) { return n; } }
+            ], { nMax: 100 });
 
-        let isActive = true;
-        rows.forEach(row => {
-            row.addEventListener("click", () => {
-                if (isActive) {
-                    hideThemRows(row);
-                    isActive = false;
-                }
-                else {
-                    showThemRows();
-                    isActive = true;
-                }
+            var table = document.getElementById("cmpTable");
+
+            table.querySelectorAll("thead th").forEach(function (th, idx) {
+                th.addEventListener("click", function () {
+                    clearAll();
+                    if (idx > 0) {
+                        table.querySelectorAll("tbody tr").forEach(function (tr) {
+                            var cell = tr.children[idx];
+                            if (cell) { cell.style.background = "var(--accent-soft)"; }
+                        });
+                    }
+                });
             });
 
-        });
-        function hideThemRows(row1) {
-            rows.forEach(row => {
-                row.classList.add("faded");
+            table.querySelectorAll("tbody tr").forEach(function (tr) {
+                tr.addEventListener("click", function () {
+                    var active = tr.classList.contains("row-hot");
+                    clearAll();
+                    if (!active) {
+                        table.querySelectorAll("tbody tr").forEach(function (r) {
+                            if (r !== tr) r.classList.add("row-dim");
+                        });
+                        tr.classList.add("row-hot");
+                    }
+                });
             });
-            row1.classList.remove("faded");
-            rows[0].classList.remove("faded");
-        }
 
-        function showThemRows() {
-            rows.forEach(row => {
-                row.classList.remove("faded");
-            });
-        }
-
-        const fastBtn = document.querySelector(".dummy-btn");
-        const skipBtn = document.querySelector(".dummy-btn");
-        const inputBox = document.querySelector(".dummy-btn");
-        const yearEl = document.getElementById('year');
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
+            function clearAll() {
+                table.querySelectorAll("tbody tr").forEach(function (tr) {
+                    tr.classList.remove("row-dim", "row-hot");
+                    Array.prototype.forEach.call(tr.children, function (cell) {
+                        cell.style.background = "";
+                    });
+                });
+            }
+        })();
     </script>
-    <script src="./script.js"></script>
-
 </body>
 
 </html>
